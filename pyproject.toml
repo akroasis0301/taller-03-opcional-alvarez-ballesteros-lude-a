@@ -17,6 +17,7 @@ dependencies = [
     # --- Lector (PDF -> texto + tablas) ---
     "pdfplumber>=0.11",
     "pypdf>=4.0",                # tambien cuenta paginas del entregable PDF
+    "pymupdf>=1.28",             # kit solver-v2: evaluar_solver.py y parte0 leen PDF con PyMuPDF
     # --- Indexador (GraphRAG) ---
     "networkx>=3.3",             # grafo, ciclos del plan y comunidades (louvain)
     # --- Lo que importan los scripts que corre el sandbox ---
@@ -29,8 +30,10 @@ dependencies = [
     # --- Redactor: notebook ejecutado y PDF ---
     "nbformat>=5.10",
     "nbclient>=0.10",
+    "nbconvert>=7.17",           # kit solver-v2
     "ipykernel>=6.29",
     "markdown>=3.6",
+    "markdown-it-py>=4.0",       # kit solver-v2: generar_enunciados.py
     "fpdf2>=2.7",
 ]
 
