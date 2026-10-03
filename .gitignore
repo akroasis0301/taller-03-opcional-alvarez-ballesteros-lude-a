@@ -1,5 +1,6 @@
 # =========================================================
 #  Taller 03 v2 — Solver multiagente · MMIA 6013
+#  Base: .gitignore del Taller 02, adaptado (ver notas ⚠)
 # =========================================================
 
 # ---------- Secretos (hallazgo bloqueante si se suben) ----------
@@ -14,29 +15,43 @@ credentials*.json
 # ---------- Entorno virtual / uv ----------
 .venv/
 venv/
+env/
 .uv-cache/
 
 # ---------- Python ----------
 __pycache__/
 *.py[cod]
+*$py.class
+*.so
 build/
 dist/
 *.egg-info/
+.eggs/
 .pytest_cache/
+.mypy_cache/
 .ruff_cache/
+.coverage
+htmlcov/
 
 # ---------- Jupyter ----------
 .ipynb_checkpoints/
+.virtual_documents/
 
-# ---------- Caches del solver (se regeneran) ----------
-# El grafo de las notas del curso tarda ~6 min en indexarse: se cachea, no se versiona
+# ---------- Artefactos regenerables del solver ----------
+# Grafo y embeddings de las notas del curso (~6 min de indexado): se cachean, no se versionan
 cache/
-.cache/
 # Carpetas de trabajo temporales del sandbox
 sandbox_tmp/
-
-# OJO: corridas/ (traza.jsonl, plan.json, entregables) SI se versiona: es entregable.
+# ⚠ A diferencia del Taller 02, NO se ignoran:
+#   *.jsonl  -> corridas/tarea-*/traza.jsonl es entregable
+#   data/    -> tareas/reales/semana*/data/*.csv son entradas del golden set
+#   corridas/ (plan.json, entregables) también es entregable.
 # Revisen las trazas antes de subirlas: guardan los mensajes enteros.
+
+# ---------- Cachés de modelos (Hugging Face / sentence-transformers / torch) ----------
+.cache/
+hf_cache/
+models_cache/
 
 # ---------- Comprimidos ----------
 *.zip
