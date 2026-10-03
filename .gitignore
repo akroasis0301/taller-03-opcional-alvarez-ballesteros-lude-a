@@ -1,0 +1,50 @@
+# =========================================================
+#  Taller 03 v2 — Solver multiagente · MMIA 6013
+# =========================================================
+
+# ---------- Secretos (hallazgo bloqueante si se suben) ----------
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+secrets/
+credentials*.json
+
+# ---------- Entorno virtual / uv ----------
+.venv/
+venv/
+.uv-cache/
+
+# ---------- Python ----------
+__pycache__/
+*.py[cod]
+build/
+dist/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+
+# ---------- Jupyter ----------
+.ipynb_checkpoints/
+
+# ---------- Caches del solver (se regeneran) ----------
+# El grafo de las notas del curso tarda ~6 min en indexarse: se cachea, no se versiona
+cache/
+.cache/
+# Carpetas de trabajo temporales del sandbox
+sandbox_tmp/
+
+# OJO: corridas/ (traza.jsonl, plan.json, entregables) SI se versiona: es entregable.
+# Revisen las trazas antes de subirlas: guardan los mensajes enteros.
+
+# ---------- Comprimidos ----------
+*.zip
+*.tar.gz
+
+# ---------- Sistema operativo / editores ----------
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
