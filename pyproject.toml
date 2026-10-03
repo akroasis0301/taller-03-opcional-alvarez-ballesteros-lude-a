@@ -25,6 +25,7 @@ dependencies = [
     "scipy>=1.13",
     "scikit-learn>=1.5",
     "matplotlib>=3.9",
+    "pyarrow>=16.0",             # tarea real semana 1: Parquet
     # --- Redactor: notebook ejecutado y PDF ---
     "nbformat>=5.10",
     "nbclient>=0.10",
@@ -36,6 +37,8 @@ dependencies = [
 [project.optional-dependencies]
 # PDF escaneado: OCR con docling (pesado: trae torch). Solo si una tarea real lo necesita.
 ocr = ["docling>=2.0"]
+# Tarea real semana 3 (PyTorch, ruta CPU en la Mac). Pesado: solo para esa tarea.
+torch = ["torch>=2.4"]
 
 [dependency-groups]
 dev = [
