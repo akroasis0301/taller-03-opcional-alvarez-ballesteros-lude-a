@@ -8,14 +8,11 @@ authors = [
 ]
 requires-python = ">=3.12,<3.13"
 dependencies = [
-    # --- LLM y orquestacion ---
-    "openai>=1.40",              # cliente compatible con el vLLM de la H200 (y con la clave del curso)
+    # --- LLM y orquestacion (cliente: solver-v2/h200.py, solo stdlib) ---
     "langgraph==1.2.12",         # version fijada por el laboratorio
-    "httpx>=0.27",               # embeddings bge-m3 en el Ollama de la H200 (/api/embed)
     "python-dotenv>=1.0",
     "pydantic>=2.7",             # esquemas: plan, subtareas, veredicto del critico
-    # --- Lector (PDF -> texto + tablas) ---
-    "pdfplumber>=0.11",
+    # --- Lector (PDF -> texto + tablas, con PyMuPDF como el evaluador) ---
     "pypdf>=4.0",                # tambien cuenta paginas del entregable PDF
     "pymupdf>=1.28",             # kit solver-v2: evaluar_solver.py y parte0 leen PDF con PyMuPDF
     # --- Indexador (GraphRAG) ---

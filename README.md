@@ -41,17 +41,20 @@ Transversal: traza en todo camino (C6) y frenos (Parte 3).
 ## Estructura
 
 ```
-solver/
-  estado.py  cliente_llm.py  traza.py  frenos.py  procedencia.py  orquestador.py
-  agentes/   lector, indexador, planificador, investigador,
-             programador, ejecutor, critico, redactor
-  sandbox/   guarda.py (guarda estática sobre el AST)
-parte0/      salidas de los tres scripts de la Parte 0
-tareas/      practica/ (A, B, C del Lab-03) y reales/ (las del grupo)
-corridas/    tarea-*/ con traza.jsonl, plan.json y el entregable
-informe/     el PDF y sus figuras
-scripts/     utilidades (verificar_entorno.py)
-tests/       pruebas de la guarda, del plan y de la procedencia
+solver/          el solver (Parte 1): agentes, orquestador, sandbox, traza, frenos
+  agentes/       lector, indexador, planificador, investigador,
+                 programador, ejecutor, critico, redactor
+  sandbox/       guarda.py (guarda estática sobre el AST)
+solver-v2/       kit del profesor, intacto: enunciados A-C, parte0/, golden_tareas.json,
+                 evaluar_solver.py, verdades.py, h200.py
+conocimiento/    base del GraphRAG: notas-teoricas/ (s1-s4) y papers/
+tareas/reales/   tareas del grupo (semanas 1-3 de Matemáticas y Programación para IA)
+resultados/      entregables por parte (Entregables_Parte_0/, ...)
+corridas/        tarea-*/ con traza.jsonl, plan.json y el entregable
+docs/            interfaces.md: el contrato interno entre las partes del grupo
+informe/         el PDF y sus figuras
+scripts/         utilidades (verificar_entorno.py)
+tests/           pruebas de la guarda, del plan, de la traza y del cliente
 ```
 
 ## Contrato
