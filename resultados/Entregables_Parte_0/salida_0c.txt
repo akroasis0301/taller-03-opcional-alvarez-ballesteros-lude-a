@@ -1,0 +1,8 @@
+stdout del experimento: Exactitud: 1.000
+
+1) Evaluador ingenuo: APROBADO  (returncode=0, resultados.json=sí)
+
+2) Evaluador con dos comprobaciones de código:
+   estática  — se predice sobre lo mismo que se ajustó: ['X']
+   plausible — métricas ≥ 0,999 en un problema con ruido: ['accuracy=1.0']
+   → RECHAZADO: el programador recibe esto como retroalimentación y reintenta.
