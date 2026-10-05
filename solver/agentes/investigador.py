@@ -7,7 +7,9 @@ Sin grafo (ablación de la 2.b): los k fragmentos más similares por TF-IDF, y n
 
 Lo que viene de las subtareas previas (sus resultados.json) no es recuperación: es el flujo de
 datos del plan, y llega igual en las dos variantes.
-M2 añade la búsqueda local en el grafo y en las notas del curso.
+Con la capa 2 (solver/graphrag.py), el orquestador SUMA a esto la búsqueda local en el grafo
+de entidades y en las notas del curso, y los resúmenes de comunidad (búsqueda global), todo
+con su cita. La sección literal y sus dependencias van siempre, haya capa 2 o no.
 """
 from __future__ import annotations
 

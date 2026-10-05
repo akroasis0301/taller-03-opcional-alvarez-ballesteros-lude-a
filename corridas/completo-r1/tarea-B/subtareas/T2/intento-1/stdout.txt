@@ -1,20 +1,14 @@
-=== T2: Muestreo de núcleo top-p (p=0.9) sobre la distribución T=1 ===
-Fuente de la distribución: entrada/T1/resultados.json
-Orden descendente y acumulada:
-  t0: p=0.551623  acum=0.551623
-  t1: p=0.202931  acum=0.754553
-  t2: p=0.123084  acum=0.877637
-  t3: p=0.091183  acum=0.968820
-  t4: p=0.027464  acum=0.996283
-  t5: p=0.003717  acum=1.000000
+=== T2: Muestreo de núcleo (top-p) con p=0.9 sobre la distribución de T=1 ===
+Fuente de la distribución: entrada/T1/resultados.json (salida de T1)
+Orden descendente : t0=0.5516, t1=0.2029, t2=0.1231, t3=0.0912, t4=0.0275, t5=0.0037
+Acumulada         : 0.5516, 0.7546, 0.8776, 0.9688, 0.9963, 1.0000
 Tokens supervivientes (conjunto mínimo con acumulada >= 0.9): ['t0', 't1', 't2', 't3']
-Probabilidad acumulada del núcleo: 0.968820 (>= 0.9: True)
+Tokens descartados: ['t4', 't5']
+Masa acumulada del núcleo (antes de renormalizar): 0.968820
 Distribución renormalizada:
   t0: 0.569376
   t1: 0.209462
   t2: 0.127045
   t3: 0.094117
-Suma de la distribución renormalizada: 1.000000
-Tokens descartados: ['t4', 't5'] (masa descartada = 0.031180)
-Verificación softmax T=1 (máx. dif. absoluta): 0.00e+00
-Figura guardada: top_p_nucleus.png | Resultados en resultados.json
+Suma de la distribución renormalizada: 1.0000000000
+Figura guardada: top_p_T2.png | Resultados escritos en resultados.json

@@ -98,7 +98,10 @@ def validar(plan: dict, documento: dict, grafo: nx.DiGraph) -> list[str]:
                 calculo_de.setdefault(sec, set()).add(i)
     for s, i in zip(subtareas, ids):
         for sec in s.get("secciones") or []:
-            for _, dep in grafo.out_edges(sec) if sec in grafo else []:
+            # solo depende_de: la capa 2 también cuelga aristas «menciona» de cada sección
+            for _, dep, d in grafo.out_edges(sec, data=True) if sec in grafo else []:
+                if d.get("tipo") != "depende_de":
+                    continue
                 proveedores = calculo_de.get(dep, set()) - {i}
                 if proveedores and not proveedores & (nx.ancestors(dag, i) | {i}):
                     problemas.append(f"{i} cubre {sec}, que depende de {dep} "

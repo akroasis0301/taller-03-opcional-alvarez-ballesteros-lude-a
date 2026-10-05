@@ -20,6 +20,7 @@ from __future__ import annotations
 import json
 import os
 import re
+import threading
 import time
 from collections import defaultdict
 from pathlib import Path
@@ -67,23 +68,28 @@ class Traza:
         self.ruta.parent.mkdir(parents=True, exist_ok=True)
         self._seq = 0
         self._tokens = defaultdict(lambda: [0, 0])   # agente -> [entrada, salida]
+        # El indexador llama al LLM en paralelo (capa 2): numerar, sumar y escribir es atómico.
+        self._candado = threading.RLock()
 
     # ------------------------------------------------------------------ escritura
     def evento(self, tipo: str, **campos) -> dict:
-        self._seq += 1
-        fila = {"seq": self._seq, "ts": round(time.time(), 3), "tipo": tipo, **_limpiar(campos)}
-        with self.ruta.open("a", encoding="utf-8") as f:   # abrir-escribir-cerrar: sobrevive a un crash
-            f.write(json.dumps(fila, ensure_ascii=False, default=str) + "\n")
+        campos = _limpiar(campos)
+        with self._candado:
+            self._seq += 1
+            fila = {"seq": self._seq, "ts": round(time.time(), 3), "tipo": tipo, **campos}
+            with self.ruta.open("a", encoding="utf-8") as f:   # abrir-escribir-cerrar: sobrevive a un crash
+                f.write(json.dumps(fila, ensure_ascii=False, default=str) + "\n")
         return fila
 
     def llamada(self, agente: str, *, modelo: str, tokens_entrada: int, tokens_salida: int,
                 latencia_s: float, fin: str | None, intento: int = 1, subtarea: str | None = None,
                 error: str | None = None, **extra) -> dict:
-        self._tokens[agente][0] += tokens_entrada
-        self._tokens[agente][1] += tokens_salida
-        return self.evento("llamada", agente=agente, subtarea=subtarea, modelo=modelo,
-                           tokens_entrada=tokens_entrada, tokens_salida=tokens_salida,
-                           latencia_s=latencia_s, fin=fin, intento=intento, error=error, **extra)
+        with self._candado:
+            self._tokens[agente][0] += tokens_entrada
+            self._tokens[agente][1] += tokens_salida
+            return self.evento("llamada", agente=agente, subtarea=subtarea, modelo=modelo,
+                               tokens_entrada=tokens_entrada, tokens_salida=tokens_salida,
+                               latencia_s=latencia_s, fin=fin, intento=intento, error=error, **extra)
 
     def ejecucion(self, agente: str, *, subtarea: str, intento: int, returncode: int | None,
                   duracion_s: float, archivos: list[str], error: str | None = None, **extra) -> dict:

@@ -5,8 +5,8 @@ Capa 1, el esqueleto determinístico (M1): cada sección es un nodo y cada refer
 extrae una REGLA, no el modelo: referencias explícitas («Parte 1»), «la pregunta anterior» y
 anáforas («los dos modelos», «las mismas consultas») que remiten a la sección de trabajo previa. Es la arista que la Parte 0.b mostró que el RAG plano pierde.
 
-Capa 2 (M2): entidades y relaciones del LLM, fusionadas con las notas del curso,
-embeddings para las semillas y comunidades con resumen.
+Capa 2 (solver/graphrag.py): entidades y relaciones del LLM, fusionadas con las notas del
+curso por nombre normalizado, embeddings para las semillas y comunidades con resumen.
 """
 from __future__ import annotations
 

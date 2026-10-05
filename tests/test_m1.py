@@ -573,6 +573,6 @@ def test_de_punta_a_punta_con_notebook(tmp_path):
     r = Solver(Config(llm=LLMGuion([responder]))).solve(str(carpeta), str(tmp_path / "corrida"))
     assert r["status"] == "completado", r
     nb = Path(r["entregables"][0])
-    assert nb.suffix == ".ipynb" and nb.parent.name == "notebook"
+    assert nb.suffix == ".ipynb" and nb.parent == (tmp_path / "corrida").resolve()   # en la raíz, como lo busca B01
     from solver.formatos import errores_notebook, texto_notebook
     assert errores_notebook(nb) == [] and "entropia 1.9873" in texto_notebook(nb)

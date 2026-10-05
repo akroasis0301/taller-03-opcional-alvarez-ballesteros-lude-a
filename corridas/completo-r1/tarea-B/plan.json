@@ -7,8 +7,8 @@
     "Parte 1"
    ],
    "depende_de": [],
-   "objetivo": "Implementar en NumPy la softmax con temperatura de forma numéricamente estable (restando el máximo de los logits) sobre el vocabulario t0..t5 con logits [2.0, 1.0, 0.5, 0.2, -1.0, -3.0]; calcular la distribución para T=0.5, T=1 y T=2 y la entropía en bits de cada una; construir una tabla con las tres distribuciones y las tres entropías redondeadas a cuatro decimales.",
-   "criterio": "Existe una tabla con las tres distribuciones (cada una suma 1.0) y las tres entropías en bits con cuatro decimales; la función softmax es estable (usa max-shift) y los valores de T=1 coinciden con la softmax estándar de los logits dados.",
+   "objetivo": "Implementar en NumPy la softmax con temperatura de forma numéricamente estable (restando el máximo de los logits), calcular la distribución para T=0.5, T=1 y T=2 con los logits dados (t0..t5 = 2.0, 1.0, 0.5, 0.2, -1.0, -3.0) y la entropía en bits de cada una; presentar las tres distribuciones y las tres entropías en una tabla con cuatro decimales.",
+   "criterio": "Existe una tabla con las tres distribuciones (cada una suma 1.0) y las tres entropías en bits con cuatro decimales; la función softmax es estable (usa max-subtraction) y los valores provienen de código ejecutado, no escritos a mano.",
    "status": "pendiente",
    "intentos": 0
   },
@@ -21,8 +21,8 @@
    "depende_de": [
     "T1"
    ],
-   "objetivo": "Usando la distribución de T=1 calculada en T1, aplicar muestreo de núcleo top-p con p=0.9: ordenar los tokens por probabilidad descendente, conservar el conjunto mínimo cuya probabilidad acumulada alcanza 0.9 y renormalizar las probabilidades de los tokens supervivientes.",
-   "criterio": "Se reporta explícitamente la lista de tokens que sobreviven al corte top-p (con su probabilidad acumulada >= 0.9) y la distribución renormalizada sobre ellos, cuyas probabilidades suman 1.0.",
+   "objetivo": "Usando la distribución de T=1 obtenida en T1, aplicar muestreo de núcleo top-p con p=0.9: ordenar los tokens por probabilidad descendente, conservar el conjunto mínimo cuya probabilidad acumulada alcanza 0.9 y renormalizar; reportar qué tokens sobreviven y la distribución renormalizada.",
+   "criterio": "Se identifican explícitamente los tokens supervivientes (el conjunto mínimo que acumula ≥ 0.9 con la distribución de T=1) y se muestra la distribución renormalizada que suma 1.0, calculada a partir de la salida de T1.",
    "status": "pendiente",
    "intentos": 0
   },
@@ -35,8 +35,8 @@
    "depende_de": [
     "T2"
    ],
-   "objetivo": "Tomar 10,000 muestras de la distribución renormalizada de T2 con numpy.random.default_rng(0); construir un gráfico de barras que compare las frecuencias observadas con las probabilidades teóricas de la distribución renormalizada; calcular la divergencia KL en bits de la distribución empírica respecto de la teórica.",
-   "criterio": "Existe una figura de barras con frecuencias observadas vs probabilidades teóricas por token (generada con código, no a mano), las muestras provienen de default_rng(0) y se reporta la divergencia KL en bits entre empírica y teórica (valor pequeño, cercano a 0).",
+   "objetivo": "Tomar 10,000 muestras de la distribución renormalizada de T2 con numpy.random.default_rng(0), graficar en barras las frecuencias observadas frente a las probabilidades teóricas y calcular la divergencia KL en bits de la distribución empírica respecto de la teórica.",
+   "criterio": "Existe un gráfico de barras comparando frecuencias observadas vs probabilidades teóricas, la semilla usada es default_rng(0) con 10,000 muestras, y se reporta la divergencia KL en bits calculada en el notebook.",
    "status": "pendiente",
    "intentos": 0
   },
@@ -49,8 +49,8 @@
    "depende_de": [
     "T1"
    ],
-   "objetivo": "Redactar la explicación conceptual de qué le ocurre a la distribución cuando T→0 (se concentra en el token de mayor logit, distribución degenerada tipo delta) y cuando T→∞ (tiende a la uniforme sobre el vocabulario), y por qué T→0 equivale a la decodificación voraz (greedy), usando como evidencia las entropías calculadas en T1 (entropía que decrece al bajar T hacia 0 y crece al subir T).",
-   "criterio": "El texto explica ambos límites de T, justifica la equivalencia T→0 con greedy y cita las entropías numéricas de la tabla de la Parte 1 como evidencia de la concentración/aplanamiento de la distribución.",
+   "objetivo": "Explicar qué le ocurre a la distribución cuando T→0 (se concentra en el token de mayor logit, entropía → 0) y cuando T→∞ (tiende a la uniforme, entropía → log2(6) bits), y por qué T→0 equivale a la decodificación voraz (greedy), usando como evidencia las entropías calculadas en T1.",
+   "criterio": "La explicación menciona el comportamiento límite en ambos extremos de T, conecta T→0 con greedy, y cita las entropías numéricas de la tabla de T1 como evidencia.",
    "status": "pendiente",
    "intentos": 0
   }

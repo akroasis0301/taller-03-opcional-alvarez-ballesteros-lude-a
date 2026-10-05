@@ -55,6 +55,20 @@ class Config:
     # Tiempo máximo de UNA llamada al LLM. h200.py usa 600 s; con el Ollama compartido,
     # una llamada del programador pasó de 10 min (corrida del 2026-10-04).
     timeout_llm_s: int = field(default_factory=lambda: _entero("H200_TIMEOUT_S", 900))
+    # --- GraphRAG capa 2 (M2c) ---
+    # SOLVER_CAPA2=0 la apaga (las pruebas viejas y los frenos de P3 no la necesitan).
+    capa2: bool = field(default_factory=lambda: os.environ.get("SOLVER_CAPA2", "1") != "0")
+    notas: Path | None = field(default_factory=lambda: Path(os.environ.get(
+        "SOLVER_NOTAS", RAIZ / "conocimiento" / "notas-teoricas")))
+    cache_graphrag: Path = field(default_factory=lambda: Path(os.environ.get(
+        "SOLVER_CACHE_GRAPHRAG", RAIZ / "cache" / "graphrag")))
+    hilos_indexador: int = field(default_factory=lambda: _entero("SOLVER_HILOS_INDEXADOR", 8))
+    # El índice de las notas se construye una vez y se amortiza: tiene su propio presupuesto.
+    presupuesto_notas: int = field(default_factory=lambda: _entero("SOLVER_PRESUPUESTO_NOTAS", 2_000_000))
+    # Un objeto con .nombre y .embed(textos) -> matriz normalizada. None = bge-m3 de la H200
+    # (con respaldo léxico si no responde).
+    embedder: object | None = None
+
     # Un objeto con .modelo y .chat(...) como el de solver-v2/h200.py. None = la H200 real.
     # P3 inyecta aquí un modelo de guion para forzar los frenos sin gastar.
     llm: object | None = None

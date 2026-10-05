@@ -1,0 +1,13 @@
+=== T3: Comprobación empírica del muestreo top-p ===
+Muestras: 10000 | Generador: numpy.random.default_rng(0)
+Fuente de la distribución: entrada/T2/resultados.json
+Tokens supervivientes: ['t0', 't1', 't2', 't3']
+Token |  teórica  |  observada | conteo
+  t0  | 0.569376 | 0.568200 | 5682
+  t1  | 0.209462 | 0.209300 | 2093
+  t2  | 0.127045 | 0.129600 | 1296
+  t3  | 0.094117 | 0.092900 | 929
+Divergencia KL (empírica || teórica) = 0.000050 bits (0.000035 nats) -> cercana a 0: True
+Distancia de variación total = 0.002555
+Figura guardada: T3_frecuencias_observadas_vs_teoricas.png
+Resultados escritos en resultados.json

@@ -11,7 +11,7 @@ propia clase:
 | Clase | Qué cambia | Para |
 |---|---|---|
 | `solver.orquestador:Solver` | nada: el solver completo | 1, 2.b |
-| `solver.orquestador:SolverSinGrafo` | `usar_grafo=False`: el investigador recibe los k fragmentos más similares | 2.b |
+| `solver.orquestador:SolverSinGrafo` | `usar_grafo=False`: el investigador recibe los k fragmentos más similares; no corre la capa 2 | 2.b |
 | `solver.orquestador:SolverSinCritico` | `usar_critico=False`: un intento por script, sin comprobaciones | 2.b |
 
 ```bash
@@ -34,6 +34,11 @@ con `answer`, `trace`, `status`, `model`, `usage` para el Taller 4.
 | `confirmar(motivo) -> bool` | niega siempre | P3: freno 4 y extensión D |
 | `usar_grafo`, `usar_critico` | `True` | P2: ablaciones |
 | `llm` | `None` (= la H200 real) | P3: modelo de guion |
+| `capa2` | `SOLVER_CAPA2` (1) | apagarla abarata las pruebas de frenos |
+| `notas`, `cache_graphrag` | `conocimiento/notas-teoricas`, `cache/graphrag` | capa 2 (sección 10) |
+| `hilos_indexador` | 8 | llamadas en paralelo del indexador |
+| `presupuesto_notas` | 2 000 000 | el índice de las notas, aparte del de la tarea |
+| `embedder` | `None` (= bge-m3, con respaldo léxico) | pruebas sin red |
 
 `Solver(cfg=Config(...))` acepta una configuración explícita para pruebas y frenos.
 
@@ -94,13 +99,15 @@ df[df.tipo == "llamada"].groupby("agente")[["tokens_entrada", "tokens_salida"]].
 ```
 corridas/<variante>/tarea-X/
 ├── traza.jsonl            C6: todo evento, en todo camino
-├── grafo.json, grafo.png  [2] esqueleto del enunciado (aristas depende_de en rojo)
+├── grafo.json, grafo.png  [2] esqueleto del enunciado (aristas depende_de en rojo) + capa 2 en el json
+├── grafo_entidades.png    [2] capa 2: entidades de cada sección y cuáles se fusionaron con las notas
 ├── plan.json              [3] el plan validado, en orden topológico
 ├── subtareas/T1/intento-N/{script.py, stdout.txt, stderr.txt, resultados.json, *.png, entrada/, data/}
 ├── figuras/               [8] las figuras aprobadas que cita el entregable
 ├── reporte.md             [8] el entregable (M1: Markdown; M2: PDF y notebook)
 └── cache_solver/          lo que NO escribió una ejecución aprobada
     ├── enunciado_leido.json   [1] secciones, tablas, restricciones
+    ├── graphrag/entidades_enunciado.json  [2] entidades por sección
     ├── contextos/T1.md        [4] lo que recibió el programador (evidencia para la 2.c)
     ├── rechazados/T2/intento-1/  scripts que el crítico rechazó, con su salida
     └── tmp/                   cachés del sandbox (ignorado por git)
@@ -135,3 +142,37 @@ El evento `decision: rechazado` lleva `por`: `"codigo"` (guarda, código de sali
 NaN, figura, fugas, plausibilidad, script repetido) o `"llm"` (el crítico LLM, que lee el
 enunciado completo). Un rechazo del LLM siempre cita una frase literal del enunciado; si la
 cita no existe, el rechazo se descarta y queda `decision: rechazo_descartado`.
+
+## 10. GraphRAG capa 2 (C2, `solver/graphrag.py`)
+
+Va **encima** del esqueleto y nunca lo reemplaza: la sección literal y sus dependencias
+llegan siempre al programador.
+
+1. **Notas del curso** (`conocimiento/notas-teoricas/*.md`): se parten por `##`/`###` en
+   31 fragmentos; el LLM extrae entidades (dataset, metodo, metrica, concepto, restriccion) y
+   relaciones; Louvain arma comunidades y el LLM resume cada una. Se construye **una vez**
+   (`uv run python scripts/indexar_notas.py`) y queda en `cache/graphrag/notas-<clave>/`
+   con su propia traza (`traza_notas.jsonl`). La clave cambia si cambian las notas, el modelo
+   o el prompt.
+2. **Enunciado**: una extracción por sección, en paralelo, **con cargo a la tarea**. Las
+   entidades se fusionan con las de las notas por nombre normalizado (sin acentos, artículos
+   ni plural) y por alias («accuracy» = «Exactitud»).
+3. **Investigador**: búsqueda local = semillas (entidades de las secciones de la subtarea + las
+   más parecidas por embeddings) → vecinos → fragmentos de las notas; búsqueda global = los
+   resúmenes de comunidad más parecidos. Cada fragmento lleva su cita
+   (`[notas del curso — s2-rag-y-vector-search § 4. Chunking …]`, `comunidad 3`).
+
+Eventos en la traza:
+
+| Evento | Qué dice |
+|---|---|
+| `decision: indice_notas` | `cache: true/false`; si se construyó, tokens y duración (no se cobran a la tarea) |
+| `decision: capa2` | entidades por tipo, cuántas se fusionaron con las notas y ejemplos |
+| `evento: embeddings` | modelo (`bge-m3` o `lexico-…`), cuántos textos, latencia |
+| `decision: grafo+capa2` | por subtarea: `citas`, `semillas`, `vecinos` |
+| `decision: capa2_no_disponible` | la capa 2 falló y la corrida siguió con el esqueleto |
+| `decision: embeddings_lexicos` | bge-m3 no respondió; se usó el respaldo léxico |
+
+**Para la 2.b (P2):** los tokens del índice de las notas son un costo fijo que se paga una
+vez; repórtenlo aparte (están en `indice.json`, campo `tokens`). Los tokens de extraer el
+enunciado sí están en `resumen_solver.csv` del solver completo, y no en `sin_grafo`.

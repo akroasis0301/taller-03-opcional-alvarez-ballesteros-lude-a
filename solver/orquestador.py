@@ -30,7 +30,7 @@ try:
 except ImportError:  # pragma: no cover  (nombres anteriores de LangGraph)
     from langgraph.checkpoint.memory import MemorySaver as InMemorySaver
 
-from solver import formatos
+from solver import formatos, graphrag
 from solver.agentes import critico, ejecutor, indexador, investigador, lector, planificador, programador, redactor
 from solver.cliente_llm import ClienteLLM, PresupuestoAgotado
 from solver.config import RAIZ, Config
@@ -78,6 +78,7 @@ class Solver:
         self.cfg = cfg or Config()
         self.traza: Traza | None = None
         self.llm: ClienteLLM | None = None
+        self.capa2: graphrag.IndiceTarea | None = None   # en memoria, como el LLM: no es serializable
         self.app = self._grafo().compile(checkpointer=InMemorySaver())
 
     # ================================================================ grafo
@@ -201,12 +202,41 @@ class Solver:
 
     def _indexar(self, estado: Estado) -> dict:
         doc = _cargar(estado["documento"])
-        g = indexador.esqueleto(doc["secciones"])
-        ruta, png = indexador.guardar(g, self._salida(estado))
+        g = indexador.esqueleto(doc["secciones"])                     # capa 1: regla, no modelo
         aristas = [f"{u} → {v} ({d['regla']}: «{d['evidencia']}»)" for u, v, d in g.edges(data=True)]
         self.traza.decision("indexador", "esqueleto", "; ".join(aristas) or "sin aristas depende_de",
-                            nodos=g.number_of_nodes(), aristas=g.number_of_edges(), figura=str(png))
+                            nodos=g.number_of_nodes(), aristas=g.number_of_edges())
+        if self.cfg.usar_grafo and self.cfg.capa2:
+            self._capa2(doc, g, self._salida(estado))
+        ruta, png = indexador.guardar(g, self._salida(estado))
+        self.traza.decision("indexador", "grafo_guardado", str(ruta), figura=str(png),
+                            nodos=g.number_of_nodes(), aristas=g.number_of_edges())
         return {"grafo": str(ruta)}
+
+    def _capa2(self, doc: dict, g, salida: Path) -> None:
+        """Capa 2 del GraphRAG (C2): entidades del LLM fusionadas con las notas del curso,
+        embeddings y comunidades. Si falla, la corrida sigue con la capa 1 y queda en la traza;
+        el presupuesto agotado sí se propaga (es un freno)."""
+        try:
+            notas = graphrag.indice_notas(self.llm, self.cfg, self.traza)
+            self.capa2 = graphrag.indexar_tarea(self.llm, self.cfg, doc, self.traza, notas)
+            graphrag.al_grafo(g, self.capa2)
+            ents = self.capa2.fusion.entidades
+            _guardar(salida / INTERNO / "graphrag" / "entidades_enunciado.json",
+                     {s: [ents[c] for c in cs] for s, cs in self.capa2.del_enunciado.items()})
+            png = graphrag.dibujar_entidades(g, salida / "grafo_entidades.png")
+            r = self.capa2.resumen()
+            self.traza.decision("indexador", "capa2",
+                                f"{r['entidades_enunciado']} entidades del enunciado {r['por_tipo']}; "
+                                f"{r['fusionadas_con_notas']} fusionadas con las notas (p. ej. {r['ejemplos_fusion']}); "
+                                f"{r['relaciones']} relaciones; {r['comunidades']} comunidades; "
+                                f"embeddings: {r['embeddings']}", figura=str(png), **r)
+        except PresupuestoAgotado:
+            raise
+        except Exception as err:
+            self.capa2 = None
+            self.traza.decision("indexador", "capa2_no_disponible",
+                                f"{type(err).__name__}: {err}"[:500] + " — se sigue con el esqueleto (capa 1)")
 
     def _planificar(self, estado: Estado) -> dict:
         doc, g = _cargar(estado["documento"]), indexador.cargar(estado["grafo"])
@@ -247,6 +277,17 @@ class Solver:
         doc = _cargar(estado["documento"])
         g = indexador.cargar(estado["grafo"]) if self.cfg.usar_grafo else None
         ctx = investigador.investigar(s, doc, g, estado["plan"], usar_grafo=self.cfg.usar_grafo)
+        local = {}
+        if self.cfg.usar_grafo and self.capa2 is not None:
+            try:                                 # búsqueda local + global de la capa 2, con citas
+                titulos = [x["titulo"] for x in doc["secciones"] if x["clave"] in (s.get("secciones") or [])]
+                local = graphrag.busqueda_local(self.capa2, s, s.get("secciones") or [], titulos)
+                ctx["texto"] += "\n\n" + local["texto"]
+                ctx["citas"] = ctx["citas"] + local["citas"]
+                ctx["modo"] = "grafo+capa2"
+            except Exception as err:
+                self.traza.decision("investigador", "busqueda_local_fallida", f"{type(err).__name__}: {err}"[:300],
+                                    subtarea=s["id"])
         if doc.get("datos"):                    # los archivos de la tarea, con la ruta que verá el script
             base = Path(doc["datos"])
             archivos = [f"{base.name}/{f.relative_to(base)}" for f in sorted(base.rglob("*")) if f.is_file()][:30]
@@ -255,7 +296,8 @@ class Solver:
         ruta.parent.mkdir(parents=True, exist_ok=True)
         ruta.write_text(ctx["texto"] + "\n\n" + ctx["previos"], encoding="utf-8")
         self.traza.decision("investigador", ctx["modo"], f"citas: {ctx['citas']}", subtarea=s["id"],
-                            caracteres=len(ctx["texto"]))
+                            caracteres=len(ctx["texto"]), semillas=local.get("semillas"),
+                            vecinos=local.get("vecinos"))
         return {"contexto": ctx}
 
     def _programar(self, estado: Estado) -> dict:
@@ -392,9 +434,9 @@ class Solver:
             paginas = formatos.md_a_pdf(texto, destino, salida)
             self.traza.decision("redactor", "pdf_generado", f"{paginas} páginas", paginas=paginas)
         elif fmt == "ipynb":
-            carpeta = salida / "notebook"
-            if carpeta.exists():                       # un intento anterior de ESTA corrida
-                shutil.rmtree(carpeta)
+            # En la RAÍZ de la corrida: el golden busca «*.ipynb» sin recursión (B01 falló el
+            # 2026-10-04 con el notebook en notebook/). Las celdas leen entrada/<id>/ desde aquí.
+            carpeta = salida
             formatos.preparar_carpeta(carpeta, aprobadas, doc.get("datos"))
             scripts = {sid: (c / "script.py").read_text(encoding="utf-8") for sid, c in aprobadas.items()
                        if (c / "script.py").exists()}
@@ -471,10 +513,11 @@ class Solver:
         carpeta.mkdir(parents=True, exist_ok=True)
         traza_ruta = carpeta / "traza.jsonl"
         self.traza = Traza(traza_ruta)
+        self.capa2 = None
         if apartada:
             self.traza.decision("orquestador", "corrida_anterior_apartada", str(apartada))
         self.traza.evento("inicio", agente="orquestador", variante=self.variante, entrada=str(ruta_pdf),
-                          config={k: v for k, v in vars(self.cfg).items() if k not in {"llm", "confirmar"}})
+                          config={k: v for k, v in vars(self.cfg).items() if k not in {"llm", "confirmar", "embedder"}})
         t0 = time.perf_counter()
         try:
             self.llm = ClienteLLM(self.cfg, self.traza)
