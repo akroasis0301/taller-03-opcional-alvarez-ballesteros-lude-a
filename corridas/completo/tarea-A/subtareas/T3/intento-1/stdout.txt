@@ -1,0 +1,14 @@
+T3 — Curva de aprendizaje (NB vs. regresión logística)
+División usada: índices de la división 70/30 leídos de entrada/T1/resultados.json
+Entrenamiento total: 398 ejemplos | Prueba fija: 171 ejemplos
+
+Exactitud en prueba por tamaño de entrenamiento:
+ fracción | n_train |       NB |   RegLog
+      5% |      19 |   0.9415 |   0.9298
+     10% |      39 |   0.9474 |   0.9357
+     25% |      99 |   0.9474 |   0.9415
+     50% |     199 |   0.9357 |   0.9766
+    100% |     398 |   0.9474 |   0.9883
+
+Figura guardada en: curva_aprendizaje.png
+Resultados guardados en: resultados.json

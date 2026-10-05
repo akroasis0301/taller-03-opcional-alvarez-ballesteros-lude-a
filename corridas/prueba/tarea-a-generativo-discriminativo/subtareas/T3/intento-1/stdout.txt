@@ -1,0 +1,9 @@
+T3 — Curva de aprendizaje (generativo vs discriminativo)
+División T1 (índices de entrada/T1/resultados.json): 398 entrenamiento / 171 prueba
+ fracción  n_train  exact. NB  exact. RL
+       5%       19     0.9415     0.9123
+      10%       39     0.9474     0.9064
+      25%       99     0.9474     0.9415
+      50%      199     0.9357     0.9415
+     100%      398     0.9474     0.9474
+Figura guardada: curva_aprendizaje.png | Resultados: resultados.json

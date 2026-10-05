@@ -1,0 +1,66 @@
+{
+ "directed": true,
+ "multigraph": false,
+ "graph": {},
+ "nodes": [
+  {
+   "titulo": "Tarea A — Generativo contra discriminativo con pocos datos",
+   "trabajo": false,
+   "id": "Preámbulo",
+   "capa": "enunciado"
+  },
+  {
+   "titulo": "Parte 1 — Datos",
+   "trabajo": true,
+   "id": "Parte 1",
+   "capa": "enunciado"
+  },
+  {
+   "titulo": "Parte 2 — Dos clasificadores",
+   "trabajo": true,
+   "id": "Parte 2",
+   "capa": "enunciado"
+  },
+  {
+   "titulo": "Parte 3 — La curva de aprendizaje",
+   "trabajo": true,
+   "id": "Parte 3",
+   "capa": "enunciado"
+  },
+  {
+   "titulo": "Parte 4 — Discusión",
+   "trabajo": true,
+   "id": "Parte 4",
+   "capa": "enunciado"
+  },
+  {
+   "titulo": "El reporte",
+   "trabajo": false,
+   "id": "El reporte",
+   "capa": "enunciado"
+  }
+ ],
+ "aristas": [
+  {
+   "tipo": "depende_de",
+   "regla": "referencia",
+   "evidencia": "Sobre la misma división de la Parte 1, entrena los dos modelos con el 5 %, 10 %, 25 %, 50",
+   "source": "Parte 3",
+   "target": "Parte 1"
+  },
+  {
+   "tipo": "depende_de",
+   "regla": "referencia",
+   "evidencia": ": Introducción, Metodología, Resultados (con la tabla de la Parte 2 y la figura de la Parte 3), Discusión y Conclusiones",
+   "source": "El reporte",
+   "target": "Parte 2"
+  },
+  {
+   "tipo": "depende_de",
+   "regla": "referencia",
+   "evidencia": "a, Resultados (con la tabla de la Parte 2 y la figura de la Parte 3), Discusión y Conclusiones. Máximo 1 200 palabras. T",
+   "source": "El reporte",
+   "target": "Parte 3"
+  }
+ ]
+}

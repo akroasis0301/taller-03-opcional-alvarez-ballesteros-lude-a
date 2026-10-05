@@ -1,0 +1,6 @@
+T2 completada: NB gaussiano y regresión logística evaluados en prueba.
+División T1: n_train=398, n_test=171
+             modelo  accuracy_test  f1_macro_test
+         GaussianNB       0.947368       0.942867
+Regresion_logistica       0.988304       0.987515
+Archivos generados: resultados.json, T2_tabla_metricas.csv, T2_tabla_metricas.png

@@ -1,0 +1,65 @@
+{
+  "subtarea": "T2_nb_gaussiano_vs_regresion_logistica",
+  "division_usada": "División única de T1: train/test 70/30 estratificada, random_state=42 (índices leídos de entrada/T1/resultados.json)",
+  "n_train": 398,
+  "n_test": 171,
+  "modelos": {
+    "gaussian_nb": {
+      "preprocesamiento": "ninguno (atributos crudos)",
+      "accuracy_test": 0.9473684210526315,
+      "f1_macro_test": 0.942866688940862,
+      "matriz_confusion_test": [
+        [
+          57,
+          7
+        ],
+        [
+          2,
+          105
+        ]
+      ]
+    },
+    "regresion_logistica": {
+      "preprocesamiento": "StandardScaler ajustado solo con el conjunto de entrenamiento",
+      "parametros": {
+        "max_iter": 5000,
+        "random_state": 42,
+        "solver": "lbfgs"
+      },
+      "accuracy_test": 0.9883040935672515,
+      "f1_macro_test": 0.9875146028037383,
+      "matriz_confusion_test": [
+        [
+          63,
+          1
+        ],
+        [
+          1,
+          106
+        ]
+      ]
+    }
+  },
+  "tabla_metricas": [
+    {
+      "modelo": "GaussianNB",
+      "accuracy_test": 0.9473684210526315,
+      "f1_macro_test": 0.942866688940862
+    },
+    {
+      "modelo": "Regresion_logistica",
+      "accuracy_test": 0.9883040935672515,
+      "f1_macro_test": 0.9875146028037383
+    }
+  ],
+  "tabla_metricas_por_modelo": {
+    "GaussianNB": {
+      "accuracy_test": 0.9473684210526315,
+      "f1_macro_test": 0.942866688940862
+    },
+    "Regresion_logistica": {
+      "accuracy_test": 0.9883040935672515,
+      "f1_macro_test": 0.9875146028037383
+    }
+  }
+}

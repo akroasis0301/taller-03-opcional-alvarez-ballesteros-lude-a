@@ -1,3 +1,12 @@
-Datos cargados: 569 ejemplos, 30 atributos
-Distribución de clases: {'benign': 357, 'malignant': 212}
-División estratificada: 398 entrenamiento, 171 prueba
+==============================================================
+T1 — Breast Cancer Wisconsin: carga y división 70/30
+==============================================================
+Ejemplos totales : 569
+Atributos        : 30
+Casos por clase  :
+  - malignant : 212
+  - benign    : 357
+Entrenamiento    : 398 ejemplos {'malignant': 148, 'benign': 250}
+Prueba           : 171 ejemplos {'malignant': 64, 'benign': 107}
+División persistida en 't1_split.npz'; cifras en 'resultados.json';
+figura en 't1_resumen_datos.png'.

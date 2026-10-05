@@ -1,0 +1,9 @@
+t1_split.npz no encontrado; se usan los índices de entrada/T1/resultados.json
+
+=== T2: Resultados en el conjunto de prueba (n_test=171) ===
+                       accuracy  F1 macro
+modelo                                   
+Naive Bayes gaussiano  0.947368  0.942867
+Regresión logística    0.988304  0.987515
+
+Archivos generados: resultados.json, t2_tabla_modelos.csv, t2_metricas_modelos.png

@@ -1,0 +1,117 @@
+{
+  "subtarea": "T3_curva_aprendizaje",
+  "descripcion": "Exactitud en prueba contra tamaño de la submuestra estratificada del entrenamiento (5 %, 10 %, 25 %, 50 %, 100 %); generativo (GaussianNB) contra discriminativo (LogisticRegression); evaluación siempre sobre el mismo conjunto de prueba de T1.",
+  "dataset": "breast_cancer (sklearn.datasets.load_breast_cancer)",
+  "n_ejemplos_total": 569,
+  "n_atributos": 30,
+  "split_t1": {
+    "origen": "índices de entrada/T1/resultados.json",
+    "test_size": 0.3,
+    "estratificado": true,
+    "random_state": 42,
+    "n_train": 398,
+    "n_test": 171
+  },
+  "modelos": {
+    "generativo": "GaussianNB (Naive Bayes gaussiano)",
+    "discriminativo": "LogisticRegression(max_iter=10000, random_state=42)"
+  },
+  "submuestreo": {
+    "estratificado": true,
+    "random_state": 42,
+    "fracciones": [
+      0.05,
+      0.1,
+      0.25,
+      0.5,
+      1.0
+    ]
+  },
+  "curva_aprendizaje": {
+    "naive_bayes_gaussiano": {
+      "n_ejemplos_entrenamiento": [
+        19,
+        39,
+        99,
+        199,
+        398
+      ],
+      "exactitud_test": [
+        0.9415204678362573,
+        0.9473684210526315,
+        0.9473684210526315,
+        0.935672514619883,
+        0.9473684210526315
+      ]
+    },
+    "regresion_logistica": {
+      "n_ejemplos_entrenamiento": [
+        19,
+        39,
+        99,
+        199,
+        398
+      ],
+      "exactitud_test": [
+        0.9122807017543859,
+        0.9064327485380117,
+        0.9415204678362573,
+        0.9415204678362573,
+        0.9473684210526315
+      ]
+    }
+  },
+  "tabla_por_tamano": [
+    {
+      "fraccion": 0.05,
+      "n_ejemplos_entrenamiento": 19,
+      "clases_en_submuestra": {
+        "0": 7,
+        "1": 12
+      },
+      "exactitud_test_naive_bayes_gaussiano": 0.9415204678362573,
+      "exactitud_test_regresion_logistica": 0.9122807017543859
+    },
+    {
+      "fraccion": 0.1,
+      "n_ejemplos_entrenamiento": 39,
+      "clases_en_submuestra": {
+        "0": 15,
+        "1": 24
+      },
+      "exactitud_test_naive_bayes_gaussiano": 0.9473684210526315,
+      "exactitud_test_regresion_logistica": 0.9064327485380117
+    },
+    {
+      "fraccion": 0.25,
+      "n_ejemplos_entrenamiento": 99,
+      "clases_en_submuestra": {
+        "0": 37,
+        "1": 62
+      },
+      "exactitud_test_naive_bayes_gaussiano": 0.9473684210526315,
+      "exactitud_test_regresion_logistica": 0.9415204678362573
+    },
+    {
+      "fraccion": 0.5,
+      "n_ejemplos_entrenamiento": 199,
+      "clases_en_submuestra": {
+        "0": 74,
+        "1": 125
+      },
+      "exactitud_test_naive_bayes_gaussiano": 0.935672514619883,
+      "exactitud_test_regresion_logistica": 0.9415204678362573
+    },
+    {
+      "fraccion": 1.0,
+      "n_ejemplos_entrenamiento": 398,
+      "clases_en_submuestra": {
+        "0": 148,
+        "1": 250
+      },
+      "exactitud_test_naive_bayes_gaussiano": 0.9473684210526315,
+      "exactitud_test_regresion_logistica": 0.9473684210526315
+    }
+  ],
+  "figura_png": "curva_aprendizaje.png"
+}

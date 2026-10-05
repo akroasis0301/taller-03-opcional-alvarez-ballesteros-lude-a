@@ -1,0 +1,59 @@
+{
+ "subtareas": [
+  {
+   "id": "T1",
+   "tipo": "calculo",
+   "secciones": [
+    "Parte 1"
+   ],
+   "depende_de": [],
+   "objetivo": "Cargar el dataset Breast Cancer Wisconsin de sklearn.datasets.load_breast_cancer, reportar número de ejemplos, número de atributos y casos por clase, y crear la división entrenamiento/prueba 70/30 estratificada por clase con random_state=42, que será la única división usada en toda la tarea.",
+   "criterio": "Salida con las cifras del dataset (n ejemplos, n atributos, conteo por clase) y los tamaños de train/test (70%/30%) verificables; la división queda guardada/reutilizable para las demás subtareas.",
+   "status": "pendiente",
+   "intentos": 0
+  },
+  {
+   "id": "T2",
+   "tipo": "calculo",
+   "secciones": [
+    "Parte 2"
+   ],
+   "depende_de": [
+    "T1"
+   ],
+   "objetivo": "Entrenar sobre la división de T1 un Naive Bayes gaussiano y una regresión logística (con StandardScaler ajustado solo con el entrenamiento) y evaluar ambos sobre el conjunto de prueba, produciendo una tabla con exactitud y F1 macro de cada modelo.",
+   "criterio": "Tabla con accuracy y F1 macro en prueba para los dos modelos, calculada ejecutando código sobre la división de T1.",
+   "status": "pendiente",
+   "intentos": 0
+  },
+  {
+   "id": "T3",
+   "tipo": "calculo",
+   "secciones": [
+    "Parte 3"
+   ],
+   "depende_de": [
+    "T1"
+   ],
+   "objetivo": "Sobre la misma división de T1, entrenar ambos modelos con submuestras estratificadas del 5%, 10%, 25%, 50% y 100% del entrenamiento (random_state=42), evaluar cada tamaño siempre sobre el mismo conjunto de prueba, y graficar exactitud contra número de ejemplos de entrenamiento con una curva por modelo, guardando la figura como PNG.",
+   "criterio": "Figura PNG con dos curvas (NB y regresión logística) de exactitud en prueba frente a los 5 tamaños de entrenamiento, más los valores numéricos de exactitud por punto de la curva.",
+   "status": "pendiente",
+   "intentos": 0
+  },
+  {
+   "id": "T4",
+   "tipo": "conceptual",
+   "secciones": [
+    "Parte 4"
+   ],
+   "depende_de": [
+    "T2",
+    "T3"
+   ],
+   "objetivo": "Redactar la discusión explicando, con las cifras de T2 y T3, si se observa el cruce que predicen Ng y Jordan: en qué tamaño de entrenamiento conviene cada modelo y por qué, relacionándolo con el sesgo y la varianza de un modelo generativo frente a uno discriminativo.",
+   "criterio": "Texto que cita las exactitudes de la curva de aprendizaje y la tabla de la Parte 2, identifica el punto de cruce (o su ausencia) y argumenta en términos de sesgo/varianza generativo vs discriminativo.",
+   "status": "pendiente",
+   "intentos": 0
+  }
+ ]
+}
