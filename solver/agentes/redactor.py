@@ -4,7 +4,7 @@ El LLM redacta con los resultados APROBADOS (y solo con ellos); el código compr
 publicar: secciones exigidas y en orden, límite de palabras, y procedencia (C5). Lo que falla
 vuelve al redactor por su nombre («estas cifras no salen de ninguna ejecución: …»).
 
-M1: Markdown. M2: PDF (con límite de páginas) y notebook ejecutado.
+El formato (Markdown, PDF con límite de páginas, notebook ejecutado) lo arma solver/formatos.py.
 """
 from __future__ import annotations
 
@@ -87,7 +87,16 @@ def mensajes(documento: dict, plan: list[dict], figuras: list[str], problemas: l
         else:
             resultados.append(f"[{s['id']} · conceptual · {', '.join(s.get('secciones') or [])}] "
                               f"{s.get('objetivo', '')} (depende de {s.get('depende_de') or []})")
-    usuario = (f"ENUNCIADO:\n{documento['texto']}\n\n"
+    claves = [s["clave"] for s in documento["secciones"] if s["trabajo"]]
+    formato = {
+        "ipynb": ("FORMATO: notebook. Escribe un encabezado '## <clave> — <título>' por cada sección de "
+                  f"trabajo, en este orden: {claves}. Bajo cada uno, la explicación con las cifras medidas. "
+                  "El sistema inserta debajo de cada encabezado la celda con el código aprobado y la "
+                  "ejecuta: NO escribas código ni insertes imágenes (las figuras salen de las celdas)."),
+        "pdf": (f"FORMATO: PDF de máximo {r.get('paginas_max') or '?'} páginas (unas 450 palabras por página "
+                "si hay una figura). Sé conciso: tablas compactas, sin repetir cifras."),
+    }.get(r.get("formato", "md"), "FORMATO: Markdown.")
+    usuario = (f"ENUNCIADO:\n{documento['texto']}\n\n{formato}\n"
                f"SECCIONES EXIGIDAS, EN ORDEN: {r.get('secciones') or 'las que pida el enunciado'}\n"
                f"LÍMITE DE PALABRAS: {r.get('palabras_max') or 'sin límite'}\n"
                f"FIGURAS DISPONIBLES: {figuras or 'ninguna'}\n\n"

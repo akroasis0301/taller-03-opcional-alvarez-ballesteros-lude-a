@@ -1,0 +1,66 @@
+{
+  "subtarea": "T3_comprobacion_empirica",
+  "n_muestras": 10000,
+  "semilla": 0,
+  "generador": "numpy.random.default_rng(0)",
+  "fuente_distribucion": "entrada/T2/resultados.json",
+  "tokens_supervivientes_top_p": [
+    "t0",
+    "t1",
+    "t2",
+    "t3"
+  ],
+  "probabilidades_teoricas_renormalizadas": [
+    0.5693760554907313,
+    0.2094617451103304,
+    0.12704497044632815,
+    0.09411722895261025
+  ],
+  "conteos_observados": [
+    5682,
+    2093,
+    1296,
+    929
+  ],
+  "frecuencias_observadas": [
+    0.5682,
+    0.2093,
+    0.1296,
+    0.0929
+  ],
+  "suma_frecuencias_observadas": 1.0,
+  "divergencia_KL_bits_empirica_respecto_teorica": 5.006898814879229e-05,
+  "divergencia_KL_nats_empirica_respecto_teorica": 3.470517796882468e-05,
+  "distancia_variacion_total": 0.0025550295536718864,
+  "tabla_comparativa": [
+    {
+      "token": "t0",
+      "prob_teorica": 0.5693760554907313,
+      "conteo_observado": 5682,
+      "frecuencia_observada": 0.5682,
+      "diferencia_obs_menos_teo": -0.0011760554907312981
+    },
+    {
+      "token": "t1",
+      "prob_teorica": 0.2094617451103304,
+      "conteo_observado": 2093,
+      "frecuencia_observada": 0.2093,
+      "diferencia_obs_menos_teo": -0.00016174511033037464
+    },
+    {
+      "token": "t2",
+      "prob_teorica": 0.12704497044632815,
+      "conteo_observado": 1296,
+      "frecuencia_observada": 0.1296,
+      "diferencia_obs_menos_teo": 0.002555029553671845
+    },
+    {
+      "token": "t3",
+      "prob_teorica": 0.09411722895261025,
+      "conteo_observado": 929,
+      "frecuencia_observada": 0.0929,
+      "diferencia_obs_menos_teo": -0.0012172289526102553
+    }
+  ],
+  "figura": "T3_frecuencias_observadas_vs_teoricas.png"
+}

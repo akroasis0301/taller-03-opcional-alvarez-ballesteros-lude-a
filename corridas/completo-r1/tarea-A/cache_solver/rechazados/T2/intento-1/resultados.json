@@ -1,0 +1,83 @@
+{
+  "subtarea": "T2",
+  "descripcion": "Naive Bayes gaussiano y regresión logística (con estandarización ajustada solo con el entrenamiento) evaluados sobre el conjunto de prueba de la división de T1 (70/30 estratificada, random_state=42).",
+  "dataset": "Breast Cancer Wisconsin (Diagnostic) — sklearn.datasets.load_breast_cancer",
+  "division_usada": "T1: train_test_split(test_size=0.3, stratify=y, random_state=42)",
+  "n_train": 398,
+  "n_test": 171,
+  "n_atributos": 30,
+  "tabla_prueba": [
+    {
+      "modelo": "Naive Bayes gaussiano",
+      "accuracy": 0.9473684210526315,
+      "f1_macro": 0.942866688940862
+    },
+    {
+      "modelo": "Regresión logística (atributos estandarizados)",
+      "accuracy": 0.9883040935672515,
+      "f1_macro": 0.9875146028037383
+    }
+  ],
+  "metricas_prueba": {
+    "gaussian_nb": {
+      "accuracy": 0.9473684210526315,
+      "f1_macro": 0.942866688940862
+    },
+    "logistic_regression": {
+      "accuracy": 0.9883040935672515,
+      "f1_macro": 0.9875146028037383
+    }
+  },
+  "metricas_train_informativo": {
+    "gaussian_nb": {
+      "accuracy": 0.9447236180904522,
+      "f1_macro": 0.9403298350824587
+    },
+    "logistic_regression": {
+      "accuracy": 0.9874371859296482,
+      "f1_macro": 0.9864973978653675
+    }
+  },
+  "matrices_confusion_prueba": {
+    "gaussian_nb": [
+      [
+        57,
+        7
+      ],
+      [
+        2,
+        105
+      ]
+    ],
+    "logistic_regression": [
+      [
+        63,
+        1
+      ],
+      [
+        1,
+        106
+      ]
+    ]
+  },
+  "detalles_modelos": {
+    "gaussian_nb": {
+      "clase": "sklearn.naive_bayes.GaussianNB",
+      "parametros": "por defecto; atributos originales (sin estandarizar)"
+    },
+    "logistic_regression": {
+      "clase": "sklearn.linear_model.LogisticRegression",
+      "parametros": {
+        "max_iter": 5000,
+        "random_state": 42,
+        "resto": "por defecto"
+      },
+      "estandarizacion": "StandardScaler ajustado únicamente con X_train; X_test solo transformado"
+    }
+  },
+  "archivos_generados": [
+    "resultados.json",
+    "t2_tabla_metricas_prueba.csv",
+    "t2_metricas_prueba.png"
+  ]
+}

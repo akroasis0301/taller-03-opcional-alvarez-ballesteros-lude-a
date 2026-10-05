@@ -484,3 +484,95 @@ def test_la_salida_no_puede_contener_la_entrada(enunciado):
     with pytest.raises(ValueError):
         Solver(Config(llm=LLMGuion([guion()]))).solve(str(enunciado), str(enunciado))
     assert (enunciado / "enunciado.md").exists()
+
+
+# ======================================================================== M2-B: PDF y notebook
+MD_B = """# Tarea B
+## Parte 1 — Softmax
+La entropía con T=1 es 1.9873 bits.
+## Parte 2 — Top-p
+Sobreviven t0, t1, t2 y t3.
+## Parte 4 — Pregunta conceptual
+Con T → 0 la distribución se concentra.
+"""
+
+
+def test_notebook_intercala_codigo_aprobado_bajo_cada_parte():
+    from solver.formatos import construir_notebook
+    plan = [{"id": "T1", "tipo": "calculo", "secciones": ["Parte 1"]},
+            {"id": "T2", "tipo": "calculo", "secciones": ["Parte 2", "Parte 3"]},
+            {"id": "T3", "tipo": "calculo", "secciones": ["Parte 9"]},          # sin encabezado: al final
+            {"id": "T4", "tipo": "conceptual", "secciones": ["Parte 4"]}]
+    nb = construir_notebook(MD_B, plan, {"T1": "print(1)", "T2": "print(2)", "T3": "print(3)"})
+    tipos = [(c["cell_type"], c["source"].splitlines()[0]) for c in nb["cells"]]
+    assert tipos == [("markdown", "# Tarea B"), ("markdown", "## Parte 1 — Softmax"),
+                     ("code", "# T1: código aprobado por el crítico"), ("markdown", "## Parte 2 — Top-p"),
+                     ("code", "# T2: código aprobado por el crítico"),
+                     ("markdown", "## Parte 4 — Pregunta conceptual"),
+                     ("code", "# T3: código aprobado por el crítico")]
+    assert nb["nbformat"] == 4
+
+
+def test_errores_del_notebook_como_los_ve_el_evaluador(tmp_path):
+    from solver.formatos import errores_notebook
+    nb = {"cells": [{"cell_type": "code", "execution_count": 1, "outputs": [], "source": "x"},
+                    {"cell_type": "code", "execution_count": None, "outputs": [], "source": "y"},
+                    {"cell_type": "code", "execution_count": 3, "source": "z",
+                     "outputs": [{"output_type": "error", "ename": "ValueError", "evalue": "malo"}]}],
+          "metadata": {}, "nbformat": 4, "nbformat_minor": 5}
+    (tmp_path / "n.ipynb").write_text(json.dumps(nb))
+    errores = errores_notebook(tmp_path / "n.ipynb")
+    assert any("ValueError" in e for e in errores) and any("sin ejecutar" in e for e in errores)
+
+
+def test_notebook_se_ejecuta_de_verdad(tmp_path):
+    pytest.importorskip("nbconvert")
+    from solver.formatos import construir_notebook, ejecutar_notebook, errores_notebook, texto_notebook
+    nb = construir_notebook("## Parte 1 — x\nTexto.", [{"id": "T1", "tipo": "calculo", "secciones": ["Parte 1"]}],
+                            {"T1": "import json\nv = 0.12345\nprint(f'entropia {v}')\n"})
+    ruta = tmp_path / "nb" / "solucion.ipynb"
+    ruta.parent.mkdir()
+    ruta.write_text(json.dumps(nb))
+    r = ejecutar_notebook(ruta, 120, tmp_path / "tmp")
+    assert r["returncode"] == 0, r["stderr"]
+    assert errores_notebook(ruta) == [] and "entropia 0.12345" in texto_notebook(ruta)
+
+
+def test_pdf_respeta_paginas(tmp_path):
+    pytest.importorskip("pymupdf")
+    from solver.formatos import md_a_pdf
+    corto = "## Objetivo\nUno.\n\n| a | b |\n|---|---|\n| 1 | 2 |\n"
+    assert md_a_pdf(corto, tmp_path / "c.pdf", tmp_path) == 1
+    largo = "## Resultados\n" + "\n\n".join("Párrafo largo de prueba. " * 40 for _ in range(30))
+    assert md_a_pdf(largo, tmp_path / "l.pdf", tmp_path) > 2
+
+
+def test_de_punta_a_punta_con_notebook(tmp_path):
+    pytest.importorskip("nbconvert")
+    from solver.orquestador import Solver
+    carpeta = tmp_path / "tarea-b"
+    carpeta.mkdir()
+    (carpeta / "enunciado.md").write_text(
+        "# Tarea B\n**Entrega:** un notebook de Jupyter (`.ipynb`) ejecutado.\n"
+        "## Parte 1 — Entropía\nCalcula la entropía en bits.\n## Parte 2 — Pregunta\nExplica la Parte 1.\n",
+        encoding="utf-8")
+    plan = {"subtareas": [
+        {"id": "T1", "tipo": "calculo", "secciones": ["Parte 1"], "depende_de": [], "objetivo": "entropía", "criterio": "entropia"},
+        {"id": "T2", "tipo": "conceptual", "secciones": ["Parte 2"], "depende_de": ["T1"], "objetivo": "explicar", "criterio": "c"}]}
+    script = "import json\nh = 1.9873\nprint(f'entropia {h}')\njson.dump({'entropia': h}, open('resultados.json', 'w'))\n"
+
+    def responder(m):
+        s = m[0]["content"]
+        if "planificador" in s:
+            return json.dumps(plan)
+        if "programador" in s:
+            return f"```python\n{script}```"
+        if "crítico" in s:
+            return '{"aprobado": true, "problemas": []}'
+        return "## Parte 1 — Entropía\nLa entropía es 1.9873 bits.\n\n## Parte 2 — Pregunta\nCon la Parte 1.\n"
+    r = Solver(Config(llm=LLMGuion([responder]))).solve(str(carpeta), str(tmp_path / "corrida"))
+    assert r["status"] == "completado", r
+    nb = Path(r["entregables"][0])
+    assert nb.suffix == ".ipynb" and nb.parent.name == "notebook"
+    from solver.formatos import errores_notebook, texto_notebook
+    assert errores_notebook(nb) == [] and "entropia 1.9873" in texto_notebook(nb)

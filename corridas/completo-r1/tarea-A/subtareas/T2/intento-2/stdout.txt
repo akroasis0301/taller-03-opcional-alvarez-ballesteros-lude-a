@@ -1,0 +1,10 @@
+T2 — Métricas en el conjunto de prueba (división T1: 70/30 estratificada, random_state=42)
+                                        modelo  accuracy  f1_macro
+                         Naive Bayes gaussiano  0.947368  0.942867
+Regresión logística (atributos estandarizados)  0.988304  0.987515
+
+Matrices de confusión en prueba (clases: 0=malignant, 1=benign):
+  GaussianNB: [[57, 7], [2, 105]]
+  LogReg    : [[63, 1], [1, 106]]
+
+Archivos escritos: resultados.json, t2_tabla_metricas_prueba.csv, t2_metricas_prueba.png

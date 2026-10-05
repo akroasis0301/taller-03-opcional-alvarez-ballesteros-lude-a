@@ -1,0 +1,37 @@
+==============================================================================
+T3 · Análisis por consulta — fallos por método y términos compartidos
+==============================================================================
+metodo consulta relevante  posicion_relevante  en_top3  fallo
+ tfidf       q1       d04                   1     True  False
+ tfidf       q2       d03                   1     True  False
+ tfidf       q3       d08                   1     True  False
+ tfidf       q4       d05                   1     True  False
+ tfidf       q5       d09                   6    False   True
+ tfidf       q6       d02                   1     True  False
+   lsa       q1       d04                   1     True  False
+   lsa       q2       d03                   1     True  False
+   lsa       q3       d08                   1     True  False
+   lsa       q4       d05                   3     True  False
+   lsa       q5       d09                   6    False   True
+   lsa       q6       d02                   1     True  False
+
+Fallos TF-IDF (relevante fuera del top 3): ['q5']
+Fallos LSA-4  (relevante fuera del top 3): ['q5']
+Consultas degradadas por LSA frente a TF-IDF: ['q4']
+
+Métricas recomputadas a partir de los rankings usados:
+  tfidf: {'hit@1': 0.8333333333333334, 'hit@3': 0.8333333333333334, 'mrr': 0.8611111111111112}
+  lsa: {'hit@1': 0.6666666666666666, 'hit@3': 0.8333333333333334, 'mrr': 0.75}
+
+Términos compartidos consulta–documento relevante (vocabulario TF-IDF):
+  q1 ↔ d04 (8): de, frecuencia, función, la, léxica, pondera, ranking, términos
+  q2 ↔ d03 (3): al, fragmentos, prompt
+  q3 ↔ d08 (5): bajo, de, entrena, matrices, rango
+  q4 ↔ d05 (4): compara, la, orientación, vectores
+  q5 ↔ d09 (1): la
+  q6 ↔ d02 (5): autoatención, capas, con, feed, forward
+
+Caso q5: q5 («¿Qué hace que el modelo sea más determinista al elegir la siguiente palabra?») tiene como relevante d09 («La temperatura reescala los logits antes del softmax; valores bajos concentran la probabilidad.»). La intersección de tokens según el vocabulario TF-IDF se reduce a un único término, 'la' (DF=6/10, IDF=1.4520, el IDF mínimo del corpus (empatado con 'los')). Los términos de contenido de la consulta están fuera del vocabulario (determinista, elegir, hace, más, palabra, sea, siguiente); los demás tokens que sí pertenecen al vocabulario aparecen en otros documentos: al → {d03}; el → {d01, d06, d08}; modelo → {d03}; que → {d04}; qué → {d06}. La evidencia léxica favorece a otros documentos (TF-IDF encabeza con d03 y d06). En consecuencia d09 queda en el puesto 6 con TF-IDF y en el puesto 6 con LSA: fuera del top 3 en ambos métodos (fallo documentado).
+
+Verificación: {'rankings_tfidf_coinciden_con_recalculo': True, 'rankings_lsa_coinciden_con_recalculo': True, 'tfidf_T1_coincide_con_fuente_usada': True, 'metricas_tfidf_coinciden_con_T2': True, 'metricas_lsa_coinciden_con_T2': True}
+Archivos generados: resultados.json, t3_tabla_fallos.csv, t3_terminos_compartidos.csv, t3_analisis_consultas.png

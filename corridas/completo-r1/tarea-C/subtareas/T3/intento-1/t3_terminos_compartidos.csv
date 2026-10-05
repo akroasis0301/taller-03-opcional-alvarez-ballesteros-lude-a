@@ -1,0 +1,7 @@
+consulta,relevante,n_terminos_compartidos,terminos_compartidos,tokens_consulta_fuera_del_vocabulario
+q1,d04,8,de; frecuencia; función; la; léxica; pondera; ranking; términos,
+q2,d03,3,al; fragmentos; prompt,añaden; cómo; recuperados; se
+q3,d08,5,bajo; de; entrena; matrices; rango,técnica
+q4,d05,4,compara; la; orientación; vectores,cómo; dos; se; texto
+q5,d09,1,la,determinista; elegir; hace; más; palabra; sea; siguiente
+q6,d02,5,autoatención; capas; con; feed; forward,arquitectura; combina

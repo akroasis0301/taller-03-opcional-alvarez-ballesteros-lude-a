@@ -30,6 +30,7 @@ try:
 except ImportError:  # pragma: no cover  (nombres anteriores de LangGraph)
     from langgraph.checkpoint.memory import MemorySaver as InMemorySaver
 
+from solver import formatos
 from solver.agentes import critico, ejecutor, indexador, investigador, lector, planificador, programador, redactor
 from solver.cliente_llm import ClienteLLM, PresupuestoAgotado
 from solver.config import RAIZ, Config
@@ -371,9 +372,6 @@ class Solver:
             notas.append("El presupuesto de tokens se agotó: se entrega lo que se alcanzó a medir.")
         elif (m := estado.get("motivo_parada")):
             notas.append(f"La corrida se detuvo: {m}.")
-        fmt = (estado.get("restricciones") or {}).get("formato", "md")
-        if fmt != "md":
-            notas.append(f"El enunciado pide formato .{fmt}; esta versión del solver entrega Markdown.")
         return notas
 
     def _redactar(self, estado: Estado) -> dict:
@@ -385,16 +383,53 @@ class Solver:
         figuras = redactor.copiar_figuras(aprobadas, self._salida(estado))
         texto = redactor.redactar(self.llm, doc, plan, figuras, estado.get("problemas_redaccion"),
                                   estado.get("borrador"), self._notas(estado))
-        nombre = Path(doc["restricciones"]["entregable"])
-        destino = self._salida(estado) / (nombre.name if nombre.suffix == ".md" else nombre.stem + ".md")
-        destino.write_text(texto, encoding="utf-8")
+        salida, r = self._salida(estado), doc["restricciones"]
+        nombre, fmt = Path(r["entregable"]).name, r.get("formato", "md")
+        if fmt == "pdf":
+            (salida / INTERNO).mkdir(parents=True, exist_ok=True)
+            (salida / INTERNO / "borrador.md").write_text(texto, encoding="utf-8")
+            destino = salida / nombre
+            paginas = formatos.md_a_pdf(texto, destino, salida)
+            self.traza.decision("redactor", "pdf_generado", f"{paginas} páginas", paginas=paginas)
+        elif fmt == "ipynb":
+            carpeta = salida / "notebook"
+            if carpeta.exists():                       # un intento anterior de ESTA corrida
+                shutil.rmtree(carpeta)
+            formatos.preparar_carpeta(carpeta, aprobadas, doc.get("datos"))
+            scripts = {sid: (c / "script.py").read_text(encoding="utf-8") for sid, c in aprobadas.items()
+                       if (c / "script.py").exists()}
+            destino = carpeta / nombre
+            destino.write_text(json.dumps(formatos.construir_notebook(texto, plan, scripts), ensure_ascii=False,
+                                          indent=1), encoding="utf-8")
+            ej = formatos.ejecutar_notebook(destino, max(self.cfg.timeout_s, 120),
+                                            salida / INTERNO / "tmp" / "notebook")
+            self.traza.ejecucion("ejecutor", subtarea="notebook", intento=estado.get("intentos_redaccion", 0) + 1,
+                                 returncode=ej["returncode"], duracion_s=ej["duracion_s"], archivos=[nombre],
+                                 error="; ".join(ej["errores"]) or None, stderr=ej["stderr"][-1500:])
+        else:
+            destino = salida / (nombre if nombre.endswith(".md") else Path(nombre).stem + ".md")
+            destino.write_text(texto, encoding="utf-8")
         return {"borrador": texto, "entregables": [str(destino)], "intentos_redaccion": estado.get("intentos_redaccion", 0) + 1}
 
     def _verificar(self, estado: Estado) -> dict:
         doc = _cargar(estado["documento"])
         plan = estado.get("plan") or []
         aprobadas = [Path(s["carpeta"]) for s in plan if s.get("status") == "aprobada" and s.get("carpeta")]
-        problemas = redactor.comprobar_forma(estado["borrador"], doc["restricciones"], self._salida(estado))
+        r = dict(doc["restricciones"])
+        fmt, entregable = r.get("formato", "md"), Path(estado["entregables"][0])
+        if fmt == "ipynb" and not r.get("secciones"):     # una celda Markdown que encabece cada parte
+            r["secciones"] = [s["clave"] for s in doc["secciones"] if s["trabajo"]]
+        problemas = redactor.comprobar_forma(estado["borrador"], r, self._salida(estado))
+        if fmt == "pdf" and r.get("paginas_max"):
+            import pymupdf
+            with pymupdf.open(entregable) as pdf:
+                if pdf.page_count > r["paginas_max"]:
+                    problemas.append(f"el PDF tiene {pdf.page_count} páginas y el máximo es {r['paginas_max']}: "
+                                     "recorta texto, une párrafos o quita una figura")
+        if fmt == "ipynb":
+            if errores := formatos.errores_notebook(entregable):
+                problemas.append(f"el notebook no se ejecutó limpio: {errores[:3]}")
+            aprobadas = aprobadas + [entregable.parent]      # sus salidas de celda también son ejecución
         proc = verificar_procedencia(estado["borrador"], doc["texto"], aprobadas)
         if proc["sin_origen"]:
             problemas.append("estas cifras no salen de ninguna ejecución aprobada ni del enunciado; "
@@ -410,7 +445,7 @@ class Solver:
         if not estado.get("entregables"):
             status = "fallido"
         elif all(s["status"] == "aprobada" for s in calculo) and not estado.get("problemas_redaccion") \
-                and not estado.get("motivo_parada") and (estado.get("restricciones") or {}).get("formato", "md") == "md":
+                and not estado.get("motivo_parada"):
             status = "completado"
         else:
             status = "parcial"

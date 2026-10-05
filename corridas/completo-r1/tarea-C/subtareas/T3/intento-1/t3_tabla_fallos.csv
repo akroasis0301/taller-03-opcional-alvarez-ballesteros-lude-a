@@ -1,0 +1,13 @@
+metodo,consulta,relevante,posicion_relevante,en_top3,fallo,similitud_relevante
+tfidf,q1,d04,1,True,False,0.6890762406943802
+tfidf,q2,d03,1,True,False,0.517438736756843
+tfidf,q3,d08,1,True,False,0.560429272422995
+tfidf,q4,d05,1,True,False,0.45692453531459537
+tfidf,q5,d09,6,False,True,0.07900232923856973
+tfidf,q6,d02,1,True,False,0.5674153888326815
+lsa,q1,d04,1,True,False,0.9542338764603773
+lsa,q2,d03,1,True,False,0.975361619861609
+lsa,q3,d08,1,True,False,0.9746239272656921
+lsa,q4,d05,3,True,False,0.898421713413974
+lsa,q5,d09,6,False,True,0.499885516803482
+lsa,q6,d02,1,True,False,0.9530957100505457

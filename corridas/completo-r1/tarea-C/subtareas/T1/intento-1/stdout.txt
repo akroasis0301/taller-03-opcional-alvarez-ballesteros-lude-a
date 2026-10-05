@@ -1,0 +1,20 @@
+========================================================================
+T1 — Línea base TF-IDF (coseno) | 10 documentos, 6 consultas
+========================================================================
+q1 (relevante=d04): ranking=d04 > d01 > d06 > d10 > d02 > d08 > d09 > d05 > d03 > d07
+    posición del relevante =  1 | Hit@1=1 | Hit@3=1 | RR=1.0000
+q2 (relevante=d03): ranking=d03 > d01 > d02 > d04 > d05 > d06 > d07 > d08 > d09 > d10
+    posición del relevante =  1 | Hit@1=1 | Hit@3=1 | RR=1.0000
+q3 (relevante=d08): ranking=d08 > d06 > d04 > d01 > d10 > d02 > d03 > d05 > d07 > d09
+    posición del relevante =  1 | Hit@1=1 | Hit@3=1 | RR=1.0000
+q4 (relevante=d05): ranking=d05 > d01 > d04 > d10 > d02 > d08 > d09 > d03 > d06 > d07
+    posición del relevante =  1 | Hit@1=1 | Hit@3=1 | RR=1.0000
+q5 (relevante=d09): ranking=d03 > d06 > d04 > d01 > d10 > d09 > d08 > d05 > d02 > d07
+    posición del relevante =  6 | Hit@1=0 | Hit@3=0 | RR=0.1667
+q6 (relevante=d02): ranking=d02 > d06 > d03 > d08 > d01 > d04 > d05 > d07 > d09 > d10
+    posición del relevante =  1 | Hit@1=1 | Hit@3=1 | RR=1.0000
+------------------------------------------------------------------------
+Hit@1 = 0.8333  (5/6 consultas)
+Hit@3 = 0.8333  (5/6 consultas)
+MRR   = 0.8611
+Archivos generados: resultados.json, t1_heatmap_similitud.png

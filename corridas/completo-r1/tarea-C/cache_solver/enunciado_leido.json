@@ -1,0 +1,185 @@
+{
+ "fuente": "/Users/miguelestebanalvarez/Posgrado Maestría Inteligencia Artificial/1er Semestre/IA Generativa y Agentes/Talleres/Taller 03/taller-03-opcional-alvarez-ballesteros-ludeña/solver-v2/enunciados/tarea-c-recuperacion-lexica-lsa.pdf",
+ "texto": "Tarea C — Recuperación léxica contra semántica latente\nsobre un corpus mínimo\nMMIA 6013 · Tarea de práctica para el solver del Taller 03 v2 Entrega: un reporte en PDF\n(reporte.pdf) de dos páginas como máximo, con el código.\nEl corpus son diez documentos cortos y las consultas son seis, cada una con un documento\nrelevante. Los datos están completos en este enunciado: no hace falta descargar nada.\nCorpus\nid\ntexto\nd01\nEl mecanismo de atención pondera cada token según su similitud con la consulta; la atención\nescalada divide por la raíz de la dimensión.\nd02\nLos transformadores apilan capas de autoatención y redes feed-forward, con conexiones residuales y\nnormalización.\nd03\nLa recuperación aumentada con generación busca fragmentos relevantes y los añade al prompt del\nmodelo.\nd04\nBM25 es una función de ranking léxica que pondera la frecuencia de términos y la longitud del\ndocumento.\nd05\nLos embeddings densos representan textos como vectores; la similitud coseno compara su\norientación.\nd06\nUn agente con herramientas decide en cada paso qué función llamar y observa el resultado.\nd07\nReAct intercala razonamiento y acciones; Reflexion añade una autocrítica verbal entre intentos.\nd08\nEl ajuste fino con LoRA entrena matrices de bajo rango y congela los pesos originales.\nd09\nLa temperatura reescala los logits antes del softmax; valores bajos concentran la probabilidad.\nd10\nLa cuantización reduce la precisión de los pesos a 8 o 4 bits para ahorrar memoria.\nConsultas y juicios de relevancia\nid\nconsulta\nrelevante\nq1\n¿Qué función de ranking léxica pondera la frecuencia de términos?\nd04\nq2\n¿Cómo se añaden fragmentos recuperados al prompt?\nd03\nq3\n¿Qué técnica entrena matrices de bajo rango?\nd08\nq4\n¿Cómo se compara la orientación de dos vectores de texto?\nd05\nq5\n¿Qué hace que el modelo sea más determinista al elegir la siguiente\npalabra?\nd09\nq6\n¿Qué arquitectura combina autoatención con capas feed-forward?\nd02\nParte 1 — Línea base léxica\nImplementa la recuperación con TF-IDF (TfidfVectorizer de scikit-learn con sus parámetros por\ndefecto) y similitud coseno. Para cada consulta, ordena los diez documentos. Reporta Hit@1,\nHit@3 y MRR sobre las seis consultas.\nParte 2 — Semántica latente\nCon las mismas consultas y los mismos juicios, proyecta la matriz TF-IDF a 4 dimensiones con\nTruncatedSVD(n_components=4, random_state=0) (LSA) y repite la evaluación. Reporta las\ntres métricas de los dos métodos en una sola tabla.\nParte 3 — Análisis por consulta\nIdentifica en qué consultas falla cada método (el relevante fuera del top 3) y explica por qué,\nmirando qué términos comparten la consulta y su documento relevante.\nParte 4 — Pregunta conceptual\n¿Por qué un recuperador denso (embeddings de un modelo entrenado) resolvería la consulta q5\nmejor que los dos métodos de esta tarea? ¿Qué costo tiene frente a TF-IDF?\nEl reporte\nEn PDF, dos páginas como máximo, con las secciones Objetivo, Método, Resultados (la tabla de\nla Parte 2 y la de la Parte 3) y Discusión. Toda cifra sale de la ejecución.",
+ "secciones": [
+  {
+   "id": "S0",
+   "titulo": "Tarea C — Recuperación léxica contra semántica latente sobre un corpus mínimo",
+   "clave": "Preámbulo",
+   "trabajo": false,
+   "pagina": 1,
+   "texto": "MMIA 6013 · Tarea de práctica para el solver del Taller 03 v2 Entrega: un reporte en PDF\n(reporte.pdf) de dos páginas como máximo, con el código.\nEl corpus son diez documentos cortos y las consultas son seis, cada una con un documento\nrelevante. Los datos están completos en este enunciado: no hace falta descargar nada."
+  },
+  {
+   "id": "S1",
+   "titulo": "Corpus",
+   "clave": "Corpus",
+   "trabajo": false,
+   "pagina": 1,
+   "texto": "id\ntexto\nd01\nEl mecanismo de atención pondera cada token según su similitud con la consulta; la atención\nescalada divide por la raíz de la dimensión.\nd02\nLos transformadores apilan capas de autoatención y redes feed-forward, con conexiones residuales y\nnormalización.\nd03\nLa recuperación aumentada con generación busca fragmentos relevantes y los añade al prompt del\nmodelo.\nd04\nBM25 es una función de ranking léxica que pondera la frecuencia de términos y la longitud del\ndocumento.\nd05\nLos embeddings densos representan textos como vectores; la similitud coseno compara su\norientación.\nd06\nUn agente con herramientas decide en cada paso qué función llamar y observa el resultado.\nd07\nReAct intercala razonamiento y acciones; Reflexion añade una autocrítica verbal entre intentos.\nd08\nEl ajuste fino con LoRA entrena matrices de bajo rango y congela los pesos originales.\nd09\nLa temperatura reescala los logits antes del softmax; valores bajos concentran la probabilidad.\nd10\nLa cuantización reduce la precisión de los pesos a 8 o 4 bits para ahorrar memoria."
+  },
+  {
+   "id": "S2",
+   "titulo": "Consultas y juicios de relevancia",
+   "clave": "Consultas y juicios de relevancia",
+   "trabajo": false,
+   "pagina": 1,
+   "texto": "id\nconsulta\nrelevante\nq1\n¿Qué función de ranking léxica pondera la frecuencia de términos?\nd04\nq2\n¿Cómo se añaden fragmentos recuperados al prompt?\nd03\nq3\n¿Qué técnica entrena matrices de bajo rango?\nd08\nq4\n¿Cómo se compara la orientación de dos vectores de texto?\nd05\nq5\n¿Qué hace que el modelo sea más determinista al elegir la siguiente\npalabra?\nd09\nq6\n¿Qué arquitectura combina autoatención con capas feed-forward?\nd02"
+  },
+  {
+   "id": "S3",
+   "titulo": "Parte 1 — Línea base léxica",
+   "clave": "Parte 1",
+   "trabajo": true,
+   "pagina": 1,
+   "texto": "Implementa la recuperación con TF-IDF (TfidfVectorizer de scikit-learn con sus parámetros por\ndefecto) y similitud coseno. Para cada consulta, ordena los diez documentos. Reporta Hit@1,\nHit@3 y MRR sobre las seis consultas."
+  },
+  {
+   "id": "S4",
+   "titulo": "Parte 2 — Semántica latente",
+   "clave": "Parte 2",
+   "trabajo": true,
+   "pagina": 1,
+   "texto": "Con las mismas consultas y los mismos juicios, proyecta la matriz TF-IDF a 4 dimensiones con\nTruncatedSVD(n_components=4, random_state=0) (LSA) y repite la evaluación. Reporta las\ntres métricas de los dos métodos en una sola tabla."
+  },
+  {
+   "id": "S5",
+   "titulo": "Parte 3 — Análisis por consulta",
+   "clave": "Parte 3",
+   "trabajo": true,
+   "pagina": 2,
+   "texto": "Identifica en qué consultas falla cada método (el relevante fuera del top 3) y explica por qué,\nmirando qué términos comparten la consulta y su documento relevante."
+  },
+  {
+   "id": "S6",
+   "titulo": "Parte 4 — Pregunta conceptual",
+   "clave": "Parte 4",
+   "trabajo": true,
+   "pagina": 2,
+   "texto": "¿Por qué un recuperador denso (embeddings de un modelo entrenado) resolvería la consulta q5\nmejor que los dos métodos de esta tarea? ¿Qué costo tiene frente a TF-IDF?"
+  },
+  {
+   "id": "S7",
+   "titulo": "El reporte",
+   "clave": "El reporte",
+   "trabajo": false,
+   "pagina": 2,
+   "texto": "En PDF, dos páginas como máximo, con las secciones Objetivo, Método, Resultados (la tabla de\nla Parte 2 y la de la Parte 3) y Discusión. Toda cifra sale de la ejecución."
+  }
+ ],
+ "tablas": [
+  {
+   "pagina": 1,
+   "filas": [
+    [
+     "id",
+     "texto"
+    ],
+    [
+     "d01",
+     "El mecanismo de atención pondera cada token según su similitud con la consulta; la atención\nescalada divide por la raíz de la dimensión."
+    ],
+    [
+     "d02",
+     "Los transformadores apilan capas de autoatención y redes feed-forward, con conexiones residuales y\nnormalización."
+    ],
+    [
+     "d03",
+     "La recuperación aumentada con generación busca fragmentos relevantes y los añade al prompt del\nmodelo."
+    ],
+    [
+     "d04",
+     "BM25 es una función de ranking léxica que pondera la frecuencia de términos y la longitud del\ndocumento."
+    ],
+    [
+     "d05",
+     "Los embeddings densos representan textos como vectores; la similitud coseno compara su\norientación."
+    ],
+    [
+     "d06",
+     "Un agente con herramientas decide en cada paso qué función llamar y observa el resultado."
+    ],
+    [
+     "d07",
+     "ReAct intercala razonamiento y acciones; Reflexion añade una autocrítica verbal entre intentos."
+    ],
+    [
+     "d08",
+     "El ajuste fino con LoRA entrena matrices de bajo rango y congela los pesos originales."
+    ],
+    [
+     "d09",
+     "La temperatura reescala los logits antes del softmax; valores bajos concentran la probabilidad."
+    ],
+    [
+     "d10",
+     "La cuantización reduce la precisión de los pesos a 8 o 4 bits para ahorrar memoria."
+    ]
+   ]
+  },
+  {
+   "pagina": 1,
+   "filas": [
+    [
+     "id",
+     "consulta",
+     "relevante"
+    ],
+    [
+     "q1",
+     "¿Qué función de ranking léxica pondera la frecuencia de términos?",
+     "d04"
+    ],
+    [
+     "q2",
+     "¿Cómo se añaden fragmentos recuperados al prompt?",
+     "d03"
+    ],
+    [
+     "q3",
+     "¿Qué técnica entrena matrices de bajo rango?",
+     "d08"
+    ],
+    [
+     "q4",
+     "¿Cómo se compara la orientación de dos vectores de texto?",
+     "d05"
+    ],
+    [
+     "q5",
+     "¿Qué hace que el modelo sea más determinista al elegir la siguiente\npalabra?",
+     "d09"
+    ],
+    [
+     "q6",
+     "¿Qué arquitectura combina autoatención con capas feed-forward?",
+     "d02"
+    ]
+   ]
+  },
+  {
+   "pagina": 2,
+   "filas": [
+    [
+     "En P",
+     "DF, dos páginas como máximo, con las secciones Objetivo, Método, Resultados (la tabla de"
+    ]
+   ]
+  }
+ ],
+ "paginas_sin_texto": [],
+ "escaneado": false,
+ "datos": null,
+ "restricciones": {
+  "entregable": "reporte.pdf",
+  "formato": "pdf",
+  "palabras_max": null,
+  "paginas_max": 2,
+  "secciones": [
+   "Objetivo",
+   "Método",
+   "Resultados",
+   "Discusión"
+  ]
+ }
+}

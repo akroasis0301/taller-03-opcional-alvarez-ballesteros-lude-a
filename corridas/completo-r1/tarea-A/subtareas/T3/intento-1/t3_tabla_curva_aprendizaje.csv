@@ -1,0 +1,11 @@
+porcentaje,n_ejemplos_entrenamiento,modelo,accuracy_prueba,f1_macro_prueba
+5,19,Naive Bayes gaussiano (generativo),0.9415204678362573,0.9353056900726393
+5,19,Regresión logística (discriminativo),0.9298245614035088,0.9217271895025938
+10,39,Naive Bayes gaussiano (generativo),0.9473684210526315,0.9420055017522704
+10,39,Regresión logística (discriminativo),0.935672514619883,0.9285470085470086
+25,99,Naive Bayes gaussiano (generativo),0.9473684210526315,0.9424479264051457
+25,99,Regresión logística (discriminativo),0.9415204678362573,0.9362891207153503
+50,199,Naive Bayes gaussiano (generativo),0.935672514619883,0.9301703975943869
+50,199,Regresión logística (discriminativo),0.9766081871345029,0.97469665581533
+100,398,Naive Bayes gaussiano (generativo),0.9473684210526315,0.942866688940862
+100,398,Regresión logística (discriminativo),0.9883040935672515,0.9875146028037383

@@ -1,0 +1,9 @@
+=== T1: Carga de datos y división 70/30 estratificada ===
+Ejemplos totales: 569
+Atributos: 30
+Clases: ['malignant', 'benign']
+Casos por clase (total): {'malignant': 212, 'benign': 357}
+Entrenamiento: 398 ejemplos -> {'malignant': 148, 'benign': 250}
+Prueba:        171 ejemplos -> {'malignant': 64, 'benign': 107}
+División (random_state=42, estratificada) guardada en .npy y en resultados.json
+Archivos: resultados.json, t1_distribucion_clases.png, X_*/y_*/idx_*.npy

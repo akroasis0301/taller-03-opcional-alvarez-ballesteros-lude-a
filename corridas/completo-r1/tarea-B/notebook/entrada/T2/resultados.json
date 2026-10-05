@@ -1,0 +1,112 @@
+{
+  "p": 0.9,
+  "temperatura": 1.0,
+  "fuente_distribucion": "entrada/T1/resultados.json",
+  "tokens": [
+    "t0",
+    "t1",
+    "t2",
+    "t3",
+    "t4",
+    "t5"
+  ],
+  "logits": [
+    2.0,
+    1.0,
+    0.5,
+    0.2,
+    -1.0,
+    -3.0
+  ],
+  "distribucion_T1": [
+    0.5516226378718239,
+    0.2029306277578035,
+    0.12308364752983937,
+    0.09118260875807133,
+    0.02746367398498595,
+    0.003716804097476065
+  ],
+  "orden_descendente": [
+    "t0",
+    "t1",
+    "t2",
+    "t3",
+    "t4",
+    "t5"
+  ],
+  "probs_ordenadas_descendente": [
+    0.5516226378718239,
+    0.2029306277578035,
+    0.12308364752983937,
+    0.09118260875807133,
+    0.02746367398498595,
+    0.003716804097476065
+  ],
+  "prob_acumulada_ordenada": [
+    0.5516226378718239,
+    0.7545532656296273,
+    0.8776369131594667,
+    0.968819521917538,
+    0.9962831959025239,
+    1.0
+  ],
+  "tokens_supervivientes_top_p": [
+    "t0",
+    "t1",
+    "t2",
+    "t3"
+  ],
+  "probs_supervivientes_originales": [
+    0.5516226378718239,
+    0.2029306277578035,
+    0.12308364752983937,
+    0.09118260875807133
+  ],
+  "prob_acumulada_por_superviviente": [
+    0.5516226378718239,
+    0.7545532656296273,
+    0.8776369131594667,
+    0.968819521917538
+  ],
+  "prob_acumulada_conjunto_superviviente": 0.968819521917538,
+  "cumple_acumulada_ge_p": true,
+  "distribucion_renormalizada": [
+    0.5693760554907313,
+    0.2094617451103304,
+    0.12704497044632815,
+    0.09411722895261025
+  ],
+  "suma_distribucion_renormalizada": 1.0,
+  "tokens_descartados": [
+    "t4",
+    "t5"
+  ],
+  "masa_probabilidad_descartada": 0.031180478082462017,
+  "tabla_resumen": [
+    {
+      "token": "t0",
+      "prob_original_T1": 0.5516226378718239,
+      "prob_acumulada": 0.5516226378718239,
+      "prob_renormalizada": 0.5693760554907313
+    },
+    {
+      "token": "t1",
+      "prob_original_T1": 0.2029306277578035,
+      "prob_acumulada": 0.7545532656296273,
+      "prob_renormalizada": 0.2094617451103304
+    },
+    {
+      "token": "t2",
+      "prob_original_T1": 0.12308364752983937,
+      "prob_acumulada": 0.8776369131594667,
+      "prob_renormalizada": 0.12704497044632815
+    },
+    {
+      "token": "t3",
+      "prob_original_T1": 0.09118260875807133,
+      "prob_acumulada": 0.968819521917538,
+      "prob_renormalizada": 0.09411722895261025
+    }
+  ],
+  "verificacion_softmax_T1_max_abs_diff": 0.0
+}

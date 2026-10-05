@@ -1,0 +1,958 @@
+{
+  "subtarea": "T3",
+  "descripcion": "Análisis por consulta: con los rankings de TF-IDF (T1/T2) y LSA-4 (T2) se identifica en qué consultas falla cada método (documento relevante fuera del top 3, anotando la posición obtenida) y se extraen los términos que comparten cada consulta y su documento relevante (intersección de tokens según el vocabulario TF-IDF), documentando explícitamente el fallo de q5 en ambos métodos.",
+  "config": {
+    "n_documentos": 10,
+    "n_consultas": 6,
+    "metodos": [
+      "tfidf",
+      "lsa"
+    ],
+    "criterio_de_fallo": "posición del documento relevante > 3 (fuera del top 3)",
+    "tam_vocabulario_tfidf": 105,
+    "definicion_terminos_compartidos": "intersección de los tokens de la consulta y de su documento relevante tras el análisis de TfidfVectorizer por defecto (minúsculas, token_pattern (?u)\\b\\w\\w+\\b), restringida al vocabulario ajustado con los 10 documentos"
+  },
+  "fuentes": {
+    "rankings": {
+      "tfidf": "entrada/T2/resultados.json (tfidf)",
+      "lsa": "entrada/T2/resultados.json (lsa)"
+    },
+    "verificacion": {
+      "rankings_tfidf_coinciden_con_recalculo": true,
+      "rankings_lsa_coinciden_con_recalculo": true,
+      "tfidf_T1_coincide_con_fuente_usada": true,
+      "metricas_tfidf_coinciden_con_T2": true,
+      "metricas_lsa_coinciden_con_T2": true
+    },
+    "metricas_desde_rankings": {
+      "tfidf": {
+        "hit@1": 0.8333333333333334,
+        "hit@3": 0.8333333333333334,
+        "mrr": 0.8611111111111112
+      },
+      "lsa": {
+        "hit@1": 0.6666666666666666,
+        "hit@3": 0.8333333333333334,
+        "mrr": 0.75
+      }
+    },
+    "nota": "Los rankings se toman de los resultados oficiales de T2 (el TF-IDF de T2 reutiliza la matriz de T1); un recálculo local con la misma configuración los reproduce."
+  },
+  "rankings_usados": {
+    "tfidf": {
+      "q1": [
+        "d04",
+        "d01",
+        "d06",
+        "d10",
+        "d02",
+        "d08",
+        "d09",
+        "d05",
+        "d03",
+        "d07"
+      ],
+      "q2": [
+        "d03",
+        "d01",
+        "d02",
+        "d04",
+        "d05",
+        "d06",
+        "d07",
+        "d08",
+        "d09",
+        "d10"
+      ],
+      "q3": [
+        "d08",
+        "d06",
+        "d04",
+        "d01",
+        "d10",
+        "d02",
+        "d03",
+        "d05",
+        "d07",
+        "d09"
+      ],
+      "q4": [
+        "d05",
+        "d01",
+        "d04",
+        "d10",
+        "d02",
+        "d08",
+        "d09",
+        "d03",
+        "d06",
+        "d07"
+      ],
+      "q5": [
+        "d03",
+        "d06",
+        "d04",
+        "d01",
+        "d10",
+        "d09",
+        "d08",
+        "d05",
+        "d02",
+        "d07"
+      ],
+      "q6": [
+        "d02",
+        "d06",
+        "d03",
+        "d08",
+        "d01",
+        "d04",
+        "d05",
+        "d07",
+        "d09",
+        "d10"
+      ]
+    },
+    "lsa": {
+      "q1": [
+        "d04",
+        "d01",
+        "d06",
+        "d10",
+        "d09",
+        "d05",
+        "d03",
+        "d08",
+        "d07",
+        "d02"
+      ],
+      "q2": [
+        "d03",
+        "d07",
+        "d09",
+        "d02",
+        "d04",
+        "d10",
+        "d08",
+        "d01",
+        "d05",
+        "d06"
+      ],
+      "q3": [
+        "d08",
+        "d02",
+        "d06",
+        "d10",
+        "d01",
+        "d04",
+        "d03",
+        "d05",
+        "d07",
+        "d09"
+      ],
+      "q4": [
+        "d01",
+        "d10",
+        "d05",
+        "d09",
+        "d04",
+        "d03",
+        "d08",
+        "d02",
+        "d06",
+        "d07"
+      ],
+      "q5": [
+        "d04",
+        "d01",
+        "d03",
+        "d06",
+        "d10",
+        "d09",
+        "d07",
+        "d08",
+        "d05",
+        "d02"
+      ],
+      "q6": [
+        "d02",
+        "d08",
+        "d10",
+        "d03",
+        "d06",
+        "d01",
+        "d07",
+        "d04",
+        "d09",
+        "d05"
+      ]
+    }
+  },
+  "tabla_fallos": [
+    {
+      "metodo": "tfidf",
+      "consulta": "q1",
+      "texto_consulta": "¿Qué función de ranking léxica pondera la frecuencia de términos?",
+      "relevante": "d04",
+      "posicion_relevante": 1,
+      "en_top3": true,
+      "fallo": false,
+      "similitud_relevante": 0.6890762406943802,
+      "top3": [
+        "d04",
+        "d01",
+        "d06"
+      ],
+      "fuente_ranking": "entrada/T2/resultados.json (tfidf)"
+    },
+    {
+      "metodo": "tfidf",
+      "consulta": "q2",
+      "texto_consulta": "¿Cómo se añaden fragmentos recuperados al prompt?",
+      "relevante": "d03",
+      "posicion_relevante": 1,
+      "en_top3": true,
+      "fallo": false,
+      "similitud_relevante": 0.517438736756843,
+      "top3": [
+        "d03",
+        "d01",
+        "d02"
+      ],
+      "fuente_ranking": "entrada/T2/resultados.json (tfidf)"
+    },
+    {
+      "metodo": "tfidf",
+      "consulta": "q3",
+      "texto_consulta": "¿Qué técnica entrena matrices de bajo rango?",
+      "relevante": "d08",
+      "posicion_relevante": 1,
+      "en_top3": true,
+      "fallo": false,
+      "similitud_relevante": 0.560429272422995,
+      "top3": [
+        "d08",
+        "d06",
+        "d04"
+      ],
+      "fuente_ranking": "entrada/T2/resultados.json (tfidf)"
+    },
+    {
+      "metodo": "tfidf",
+      "consulta": "q4",
+      "texto_consulta": "¿Cómo se compara la orientación de dos vectores de texto?",
+      "relevante": "d05",
+      "posicion_relevante": 1,
+      "en_top3": true,
+      "fallo": false,
+      "similitud_relevante": 0.45692453531459537,
+      "top3": [
+        "d05",
+        "d01",
+        "d04"
+      ],
+      "fuente_ranking": "entrada/T2/resultados.json (tfidf)"
+    },
+    {
+      "metodo": "tfidf",
+      "consulta": "q5",
+      "texto_consulta": "¿Qué hace que el modelo sea más determinista al elegir la siguiente palabra?",
+      "relevante": "d09",
+      "posicion_relevante": 6,
+      "en_top3": false,
+      "fallo": true,
+      "similitud_relevante": 0.07900232923856973,
+      "top3": [
+        "d03",
+        "d06",
+        "d04"
+      ],
+      "fuente_ranking": "entrada/T2/resultados.json (tfidf)"
+    },
+    {
+      "metodo": "tfidf",
+      "consulta": "q6",
+      "texto_consulta": "¿Qué arquitectura combina autoatención con capas feed-forward?",
+      "relevante": "d02",
+      "posicion_relevante": 1,
+      "en_top3": true,
+      "fallo": false,
+      "similitud_relevante": 0.5674153888326815,
+      "top3": [
+        "d02",
+        "d06",
+        "d03"
+      ],
+      "fuente_ranking": "entrada/T2/resultados.json (tfidf)"
+    },
+    {
+      "metodo": "lsa",
+      "consulta": "q1",
+      "texto_consulta": "¿Qué función de ranking léxica pondera la frecuencia de términos?",
+      "relevante": "d04",
+      "posicion_relevante": 1,
+      "en_top3": true,
+      "fallo": false,
+      "similitud_relevante": 0.9542338764603773,
+      "top3": [
+        "d04",
+        "d01",
+        "d06"
+      ],
+      "fuente_ranking": "entrada/T2/resultados.json (lsa)"
+    },
+    {
+      "metodo": "lsa",
+      "consulta": "q2",
+      "texto_consulta": "¿Cómo se añaden fragmentos recuperados al prompt?",
+      "relevante": "d03",
+      "posicion_relevante": 1,
+      "en_top3": true,
+      "fallo": false,
+      "similitud_relevante": 0.975361619861609,
+      "top3": [
+        "d03",
+        "d07",
+        "d09"
+      ],
+      "fuente_ranking": "entrada/T2/resultados.json (lsa)"
+    },
+    {
+      "metodo": "lsa",
+      "consulta": "q3",
+      "texto_consulta": "¿Qué técnica entrena matrices de bajo rango?",
+      "relevante": "d08",
+      "posicion_relevante": 1,
+      "en_top3": true,
+      "fallo": false,
+      "similitud_relevante": 0.9746239272656921,
+      "top3": [
+        "d08",
+        "d02",
+        "d06"
+      ],
+      "fuente_ranking": "entrada/T2/resultados.json (lsa)"
+    },
+    {
+      "metodo": "lsa",
+      "consulta": "q4",
+      "texto_consulta": "¿Cómo se compara la orientación de dos vectores de texto?",
+      "relevante": "d05",
+      "posicion_relevante": 3,
+      "en_top3": true,
+      "fallo": false,
+      "similitud_relevante": 0.898421713413974,
+      "top3": [
+        "d01",
+        "d10",
+        "d05"
+      ],
+      "fuente_ranking": "entrada/T2/resultados.json (lsa)"
+    },
+    {
+      "metodo": "lsa",
+      "consulta": "q5",
+      "texto_consulta": "¿Qué hace que el modelo sea más determinista al elegir la siguiente palabra?",
+      "relevante": "d09",
+      "posicion_relevante": 6,
+      "en_top3": false,
+      "fallo": true,
+      "similitud_relevante": 0.499885516803482,
+      "top3": [
+        "d04",
+        "d01",
+        "d03"
+      ],
+      "fuente_ranking": "entrada/T2/resultados.json (lsa)"
+    },
+    {
+      "metodo": "lsa",
+      "consulta": "q6",
+      "texto_consulta": "¿Qué arquitectura combina autoatención con capas feed-forward?",
+      "relevante": "d02",
+      "posicion_relevante": 1,
+      "en_top3": true,
+      "fallo": false,
+      "similitud_relevante": 0.9530957100505457,
+      "top3": [
+        "d02",
+        "d08",
+        "d10"
+      ],
+      "fuente_ranking": "entrada/T2/resultados.json (lsa)"
+    }
+  ],
+  "fallos_por_metodo": {
+    "tfidf": [
+      "q5"
+    ],
+    "lsa": [
+      "q5"
+    ]
+  },
+  "posiciones_relevante": {
+    "tfidf": {
+      "q1": 1,
+      "q2": 1,
+      "q3": 1,
+      "q4": 1,
+      "q5": 6,
+      "q6": 1
+    },
+    "lsa": {
+      "q1": 1,
+      "q2": 1,
+      "q3": 1,
+      "q4": 3,
+      "q5": 6,
+      "q6": 1
+    }
+  },
+  "degradadas_en_lsa_vs_tfidf": [
+    "q4"
+  ],
+  "terminos_compartidos": {
+    "q1": {
+      "consulta": "¿Qué función de ranking léxica pondera la frecuencia de términos?",
+      "relevante": "d04",
+      "texto_relevante": "BM25 es una función de ranking léxica que pondera la frecuencia de términos y la longitud del documento.",
+      "n_terminos_compartidos": 8,
+      "terminos_compartidos": [
+        "de",
+        "frecuencia",
+        "función",
+        "la",
+        "léxica",
+        "pondera",
+        "ranking",
+        "términos"
+      ],
+      "df_e_idf_por_termino": {
+        "de": {
+          "df": 5,
+          "idf": 1.6061358035703155,
+          "documentos": [
+            "d01",
+            "d02",
+            "d04",
+            "d08",
+            "d10"
+          ]
+        },
+        "frecuencia": {
+          "df": 1,
+          "idf": 2.7047480922384253,
+          "documentos": [
+            "d04"
+          ]
+        },
+        "función": {
+          "df": 2,
+          "idf": 2.2992829841302607,
+          "documentos": [
+            "d04",
+            "d06"
+          ]
+        },
+        "la": {
+          "df": 6,
+          "idf": 1.4519851237430572,
+          "documentos": [
+            "d01",
+            "d03",
+            "d04",
+            "d05",
+            "d09",
+            "d10"
+          ]
+        },
+        "léxica": {
+          "df": 1,
+          "idf": 2.7047480922384253,
+          "documentos": [
+            "d04"
+          ]
+        },
+        "pondera": {
+          "df": 2,
+          "idf": 2.2992829841302607,
+          "documentos": [
+            "d01",
+            "d04"
+          ]
+        },
+        "ranking": {
+          "df": 1,
+          "idf": 2.7047480922384253,
+          "documentos": [
+            "d04"
+          ]
+        },
+        "términos": {
+          "df": 1,
+          "idf": 2.7047480922384253,
+          "documentos": [
+            "d04"
+          ]
+        }
+      },
+      "tokens_consulta_en_vocabulario": [
+        "de",
+        "frecuencia",
+        "función",
+        "la",
+        "léxica",
+        "pondera",
+        "qué",
+        "ranking",
+        "términos"
+      ],
+      "tokens_consulta_fuera_del_vocabulario": [],
+      "posicion_relevante": {
+        "tfidf": 1,
+        "lsa": 1
+      },
+      "fallo": {
+        "tfidf": false,
+        "lsa": false
+      },
+      "lectura": "q1 ↔ d04: comparten 8 término(s) del vocabulario TF-IDF: de (DF=5/10, IDF=1.606), frecuencia (DF=1/10, IDF=2.705), función (DF=2/10, IDF=2.299), la (DF=6/10, IDF=1.452), léxica (DF=1/10, IDF=2.705), pondera (DF=2/10, IDF=2.299), ranking (DF=1/10, IDF=2.705), términos (DF=1/10, IDF=2.705). Los términos con DF bajo (IDF alto) aportan más similitud; los de DF alto aportan poco. Términos exclusivos del par consulta–documento (DF=1): frecuencia, léxica, ranking, términos."
+    },
+    "q2": {
+      "consulta": "¿Cómo se añaden fragmentos recuperados al prompt?",
+      "relevante": "d03",
+      "texto_relevante": "La recuperación aumentada con generación busca fragmentos relevantes y los añade al prompt del modelo.",
+      "n_terminos_compartidos": 3,
+      "terminos_compartidos": [
+        "al",
+        "fragmentos",
+        "prompt"
+      ],
+      "df_e_idf_por_termino": {
+        "al": {
+          "df": 1,
+          "idf": 2.7047480922384253,
+          "documentos": [
+            "d03"
+          ]
+        },
+        "fragmentos": {
+          "df": 1,
+          "idf": 2.7047480922384253,
+          "documentos": [
+            "d03"
+          ]
+        },
+        "prompt": {
+          "df": 1,
+          "idf": 2.7047480922384253,
+          "documentos": [
+            "d03"
+          ]
+        }
+      },
+      "tokens_consulta_en_vocabulario": [
+        "al",
+        "fragmentos",
+        "prompt"
+      ],
+      "tokens_consulta_fuera_del_vocabulario": [
+        "añaden",
+        "cómo",
+        "recuperados",
+        "se"
+      ],
+      "posicion_relevante": {
+        "tfidf": 1,
+        "lsa": 1
+      },
+      "fallo": {
+        "tfidf": false,
+        "lsa": false
+      },
+      "lectura": "q2 ↔ d03: comparten 3 término(s) del vocabulario TF-IDF: al (DF=1/10, IDF=2.705), fragmentos (DF=1/10, IDF=2.705), prompt (DF=1/10, IDF=2.705). Los términos con DF bajo (IDF alto) aportan más similitud; los de DF alto aportan poco. Términos exclusivos del par consulta–documento (DF=1): al, fragmentos, prompt."
+    },
+    "q3": {
+      "consulta": "¿Qué técnica entrena matrices de bajo rango?",
+      "relevante": "d08",
+      "texto_relevante": "El ajuste fino con LoRA entrena matrices de bajo rango y congela los pesos originales.",
+      "n_terminos_compartidos": 5,
+      "terminos_compartidos": [
+        "bajo",
+        "de",
+        "entrena",
+        "matrices",
+        "rango"
+      ],
+      "df_e_idf_por_termino": {
+        "bajo": {
+          "df": 1,
+          "idf": 2.7047480922384253,
+          "documentos": [
+            "d08"
+          ]
+        },
+        "de": {
+          "df": 5,
+          "idf": 1.6061358035703155,
+          "documentos": [
+            "d01",
+            "d02",
+            "d04",
+            "d08",
+            "d10"
+          ]
+        },
+        "entrena": {
+          "df": 1,
+          "idf": 2.7047480922384253,
+          "documentos": [
+            "d08"
+          ]
+        },
+        "matrices": {
+          "df": 1,
+          "idf": 2.7047480922384253,
+          "documentos": [
+            "d08"
+          ]
+        },
+        "rango": {
+          "df": 1,
+          "idf": 2.7047480922384253,
+          "documentos": [
+            "d08"
+          ]
+        }
+      },
+      "tokens_consulta_en_vocabulario": [
+        "bajo",
+        "de",
+        "entrena",
+        "matrices",
+        "qué",
+        "rango"
+      ],
+      "tokens_consulta_fuera_del_vocabulario": [
+        "técnica"
+      ],
+      "posicion_relevante": {
+        "tfidf": 1,
+        "lsa": 1
+      },
+      "fallo": {
+        "tfidf": false,
+        "lsa": false
+      },
+      "lectura": "q3 ↔ d08: comparten 5 término(s) del vocabulario TF-IDF: bajo (DF=1/10, IDF=2.705), de (DF=5/10, IDF=1.606), entrena (DF=1/10, IDF=2.705), matrices (DF=1/10, IDF=2.705), rango (DF=1/10, IDF=2.705). Los términos con DF bajo (IDF alto) aportan más similitud; los de DF alto aportan poco. Términos exclusivos del par consulta–documento (DF=1): bajo, entrena, matrices, rango."
+    },
+    "q4": {
+      "consulta": "¿Cómo se compara la orientación de dos vectores de texto?",
+      "relevante": "d05",
+      "texto_relevante": "Los embeddings densos representan textos como vectores; la similitud coseno compara su orientación.",
+      "n_terminos_compartidos": 4,
+      "terminos_compartidos": [
+        "compara",
+        "la",
+        "orientación",
+        "vectores"
+      ],
+      "df_e_idf_por_termino": {
+        "compara": {
+          "df": 1,
+          "idf": 2.7047480922384253,
+          "documentos": [
+            "d05"
+          ]
+        },
+        "la": {
+          "df": 6,
+          "idf": 1.4519851237430572,
+          "documentos": [
+            "d01",
+            "d03",
+            "d04",
+            "d05",
+            "d09",
+            "d10"
+          ]
+        },
+        "orientación": {
+          "df": 1,
+          "idf": 2.7047480922384253,
+          "documentos": [
+            "d05"
+          ]
+        },
+        "vectores": {
+          "df": 1,
+          "idf": 2.7047480922384253,
+          "documentos": [
+            "d05"
+          ]
+        }
+      },
+      "tokens_consulta_en_vocabulario": [
+        "compara",
+        "de",
+        "la",
+        "orientación",
+        "vectores"
+      ],
+      "tokens_consulta_fuera_del_vocabulario": [
+        "cómo",
+        "dos",
+        "se",
+        "texto"
+      ],
+      "posicion_relevante": {
+        "tfidf": 1,
+        "lsa": 3
+      },
+      "fallo": {
+        "tfidf": false,
+        "lsa": false
+      },
+      "lectura": "q4 ↔ d05: comparten 4 término(s) del vocabulario TF-IDF: compara (DF=1/10, IDF=2.705), la (DF=6/10, IDF=1.452), orientación (DF=1/10, IDF=2.705), vectores (DF=1/10, IDF=2.705). Los términos con DF bajo (IDF alto) aportan más similitud; los de DF alto aportan poco. Términos exclusivos del par consulta–documento (DF=1): compara, orientación, vectores."
+    },
+    "q5": {
+      "consulta": "¿Qué hace que el modelo sea más determinista al elegir la siguiente palabra?",
+      "relevante": "d09",
+      "texto_relevante": "La temperatura reescala los logits antes del softmax; valores bajos concentran la probabilidad.",
+      "n_terminos_compartidos": 1,
+      "terminos_compartidos": [
+        "la"
+      ],
+      "df_e_idf_por_termino": {
+        "la": {
+          "df": 6,
+          "idf": 1.4519851237430572,
+          "documentos": [
+            "d01",
+            "d03",
+            "d04",
+            "d05",
+            "d09",
+            "d10"
+          ]
+        }
+      },
+      "tokens_consulta_en_vocabulario": [
+        "al",
+        "el",
+        "la",
+        "modelo",
+        "que",
+        "qué"
+      ],
+      "tokens_consulta_fuera_del_vocabulario": [
+        "determinista",
+        "elegir",
+        "hace",
+        "más",
+        "palabra",
+        "sea",
+        "siguiente"
+      ],
+      "posicion_relevante": {
+        "tfidf": 6,
+        "lsa": 6
+      },
+      "fallo": {
+        "tfidf": true,
+        "lsa": true
+      },
+      "lectura": "q5 ↔ d09: comparten 1 término(s) del vocabulario TF-IDF: la (DF=6/10, IDF=1.452). Los términos con DF bajo (IDF alto) aportan más similitud; los de DF alto aportan poco."
+    },
+    "q6": {
+      "consulta": "¿Qué arquitectura combina autoatención con capas feed-forward?",
+      "relevante": "d02",
+      "texto_relevante": "Los transformadores apilan capas de autoatención y redes feed-forward, con conexiones residuales y normalización.",
+      "n_terminos_compartidos": 5,
+      "terminos_compartidos": [
+        "autoatención",
+        "capas",
+        "con",
+        "feed",
+        "forward"
+      ],
+      "df_e_idf_por_termino": {
+        "autoatención": {
+          "df": 1,
+          "idf": 2.7047480922384253,
+          "documentos": [
+            "d02"
+          ]
+        },
+        "capas": {
+          "df": 1,
+          "idf": 2.7047480922384253,
+          "documentos": [
+            "d02"
+          ]
+        },
+        "con": {
+          "df": 5,
+          "idf": 1.6061358035703155,
+          "documentos": [
+            "d01",
+            "d02",
+            "d03",
+            "d06",
+            "d08"
+          ]
+        },
+        "feed": {
+          "df": 1,
+          "idf": 2.7047480922384253,
+          "documentos": [
+            "d02"
+          ]
+        },
+        "forward": {
+          "df": 1,
+          "idf": 2.7047480922384253,
+          "documentos": [
+            "d02"
+          ]
+        }
+      },
+      "tokens_consulta_en_vocabulario": [
+        "autoatención",
+        "capas",
+        "con",
+        "feed",
+        "forward",
+        "qué"
+      ],
+      "tokens_consulta_fuera_del_vocabulario": [
+        "arquitectura",
+        "combina"
+      ],
+      "posicion_relevante": {
+        "tfidf": 1,
+        "lsa": 1
+      },
+      "fallo": {
+        "tfidf": false,
+        "lsa": false
+      },
+      "lectura": "q6 ↔ d02: comparten 5 término(s) del vocabulario TF-IDF: autoatención (DF=1/10, IDF=2.705), capas (DF=1/10, IDF=2.705), con (DF=5/10, IDF=1.606), feed (DF=1/10, IDF=2.705), forward (DF=1/10, IDF=2.705). Los términos con DF bajo (IDF alto) aportan más similitud; los de DF alto aportan poco. Términos exclusivos del par consulta–documento (DF=1): autoatención, capas, feed, forward."
+    }
+  },
+  "caso_q5": {
+    "consulta": "¿Qué hace que el modelo sea más determinista al elegir la siguiente palabra?",
+    "relevante": "d09",
+    "texto_relevante": "La temperatura reescala los logits antes del softmax; valores bajos concentran la probabilidad.",
+    "posicion_relevante": {
+      "tfidf": 6,
+      "lsa": 6
+    },
+    "fallo_en_ambos_metodos": true,
+    "terminos_compartidos": [
+      "la"
+    ],
+    "df_e_idf_terminos_compartidos": {
+      "la": {
+        "df": 6,
+        "idf": 1.4519851237430572,
+        "documentos": [
+          "d01",
+          "d03",
+          "d04",
+          "d05",
+          "d09",
+          "d10"
+        ]
+      }
+    },
+    "tokens_consulta_en_vocabulario": [
+      "al",
+      "el",
+      "la",
+      "modelo",
+      "que",
+      "qué"
+    ],
+    "tokens_consulta_fuera_del_vocabulario": [
+      "determinista",
+      "elegir",
+      "hace",
+      "más",
+      "palabra",
+      "sea",
+      "siguiente"
+    ],
+    "donde_aparecen_los_demas_tokens_del_vocabulario": {
+      "al": {
+        "df": 1,
+        "idf": 2.7047480922384253,
+        "documentos": [
+          "d03"
+        ]
+      },
+      "el": {
+        "df": 3,
+        "idf": 2.01160091167848,
+        "documentos": [
+          "d01",
+          "d06",
+          "d08"
+        ]
+      },
+      "modelo": {
+        "df": 1,
+        "idf": 2.7047480922384253,
+        "documentos": [
+          "d03"
+        ]
+      },
+      "que": {
+        "df": 1,
+        "idf": 2.7047480922384253,
+        "documentos": [
+          "d04"
+        ]
+      },
+      "qué": {
+        "df": 1,
+        "idf": 2.7047480922384253,
+        "documentos": [
+          "d06"
+        ]
+      }
+    },
+    "idf_minimo_corpus": 1.4519851237430572,
+    "terminos_con_idf_minimo": [
+      "la",
+      "los"
+    ],
+    "explicacion": "q5 («¿Qué hace que el modelo sea más determinista al elegir la siguiente palabra?») tiene como relevante d09 («La temperatura reescala los logits antes del softmax; valores bajos concentran la probabilidad.»). La intersección de tokens según el vocabulario TF-IDF se reduce a un único término, 'la' (DF=6/10, IDF=1.4520, el IDF mínimo del corpus (empatado con 'los')). Los términos de contenido de la consulta están fuera del vocabulario (determinista, elegir, hace, más, palabra, sea, siguiente); los demás tokens que sí pertenecen al vocabulario aparecen en otros documentos: al → {d03}; el → {d01, d06, d08}; modelo → {d03}; que → {d04}; qué → {d06}. La evidencia léxica favorece a otros documentos (TF-IDF encabeza con d03 y d06). En consecuencia d09 queda en el puesto 6 con TF-IDF y en el puesto 6 con LSA: fuera del top 3 en ambos métodos (fallo documentado)."
+  },
+  "resumen": {
+    "consultas_que_fallan_tfidf": [
+      "q5"
+    ],
+    "consultas_que_fallan_lsa": [
+      "q5"
+    ],
+    "n_fallos_tfidf": 1,
+    "n_fallos_lsa": 1,
+    "q5_falla_en_ambos_metodos": true,
+    "posicion_q5": {
+      "tfidf": 6,
+      "lsa": 6
+    },
+    "terminos_compartidos_q5": [
+      "la"
+    ],
+    "n_terminos_compartidos_por_consulta": {
+      "q1": 8,
+      "q2": 3,
+      "q3": 5,
+      "q4": 4,
+      "q5": 1,
+      "q6": 5
+    }
+  }
+}

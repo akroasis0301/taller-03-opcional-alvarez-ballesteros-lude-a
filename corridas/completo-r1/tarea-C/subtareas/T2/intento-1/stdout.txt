@@ -1,0 +1,20 @@
+======================================================================
+T2 — TF-IDF vs LSA (TruncatedSVD n_components=4, random_state=0)
+======================================================================
+Matriz TF-IDF: 10 docs x 105 terminos -> LSA 4 dims
+Varianza explicada por las 4 componentes LSA: 0.3953
+----------------------------------------------------------------------
+Método                               Hit@1     Hit@3       MRR
+TF-IDF (línea base, Parte 1)        0.8333    0.8333    0.8611
+LSA (TruncatedSVD k=4, Parte 2)     0.6667    0.8333    0.7500
+----------------------------------------------------------------------
+Rankings LSA por consulta (posición del relevante):
+  q1 [rel=d04, pos=1, RR=1.000]: d04 > d01 > d06 > d10 > d09 > d05 > d03 > d08 > d07 > d02
+  q2 [rel=d03, pos=1, RR=1.000]: d03 > d07 > d09 > d02 > d04 > d10 > d08 > d01 > d05 > d06
+  q3 [rel=d08, pos=1, RR=1.000]: d08 > d02 > d06 > d10 > d01 > d04 > d03 > d05 > d07 > d09
+  q4 [rel=d05, pos=3, RR=0.333]: d01 > d10 > d05 > d09 > d04 > d03 > d08 > d02 > d06 > d07
+  q5 [rel=d09, pos=6, RR=0.167]: d04 > d01 > d03 > d06 > d10 > d09 > d07 > d08 > d05 > d02
+  q6 [rel=d02, pos=1, RR=1.000]: d02 > d08 > d10 > d03 > d06 > d01 > d07 > d04 > d09 > d05
+----------------------------------------------------------------------
+Verificación T1: métricas TF-IDF de T1 coincide con el recalculado.
+Salidas: resultados.json, t2_tabla_metricas.png, t2_comparativa_metricas.png, t2_lsa_proyeccion.png

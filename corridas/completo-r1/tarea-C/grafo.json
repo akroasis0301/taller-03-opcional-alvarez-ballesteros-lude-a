@@ -1,0 +1,85 @@
+{
+ "directed": true,
+ "multigraph": false,
+ "graph": {},
+ "nodes": [
+  {
+   "titulo": "Tarea C — Recuperación léxica contra semántica latente sobre un corpus mínimo",
+   "trabajo": false,
+   "id": "Preámbulo",
+   "capa": "enunciado"
+  },
+  {
+   "titulo": "Corpus",
+   "trabajo": false,
+   "id": "Corpus",
+   "capa": "enunciado"
+  },
+  {
+   "titulo": "Consultas y juicios de relevancia",
+   "trabajo": false,
+   "id": "Consultas y juicios de relevancia",
+   "capa": "enunciado"
+  },
+  {
+   "titulo": "Parte 1 — Línea base léxica",
+   "trabajo": true,
+   "id": "Parte 1",
+   "capa": "enunciado"
+  },
+  {
+   "titulo": "Parte 2 — Semántica latente",
+   "trabajo": true,
+   "id": "Parte 2",
+   "capa": "enunciado"
+  },
+  {
+   "titulo": "Parte 3 — Análisis por consulta",
+   "trabajo": true,
+   "id": "Parte 3",
+   "capa": "enunciado"
+  },
+  {
+   "titulo": "Parte 4 — Pregunta conceptual",
+   "trabajo": true,
+   "id": "Parte 4",
+   "capa": "enunciado"
+  },
+  {
+   "titulo": "El reporte",
+   "trabajo": false,
+   "id": "El reporte",
+   "capa": "enunciado"
+  }
+ ],
+ "aristas": [
+  {
+   "tipo": "depende_de",
+   "regla": "anafora",
+   "evidencia": "Con las mismas consultas y los mismos juicios, proyecta la matri",
+   "source": "Parte 2",
+   "target": "Parte 1"
+  },
+  {
+   "tipo": "depende_de",
+   "regla": "anafora",
+   "evidencia": "de un modelo entrenado) resolvería la consulta q5 mejor que los dos métodos de esta tarea? ¿Qué costo tiene frente a TF-",
+   "source": "Parte 4",
+   "target": "Parte 3"
+  },
+  {
+   "tipo": "depende_de",
+   "regla": "referencia",
+   "evidencia": "las secciones Objetivo, Método, Resultados (la tabla de la Parte 2 y la de la Parte 3) y Discusión. Toda cifra sale de",
+   "source": "El reporte",
+   "target": "Parte 2"
+  },
+  {
+   "tipo": "depende_de",
+   "regla": "referencia",
+   "evidencia": "tivo, Método, Resultados (la tabla de la Parte 2 y la de la Parte 3) y Discusión. Toda cifra sale de la ejecución.",
+   "source": "El reporte",
+   "target": "Parte 3"
+  }
+ ]
+}
