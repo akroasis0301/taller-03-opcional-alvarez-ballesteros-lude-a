@@ -1,0 +1,9 @@
+Subtarea T2 — Generativo vs. discriminativo (prueba 70/30, random_state=42)
+Ejemplos: train=398, test=171
+------------------------------------------------------------
+Modelo                                  Accuracy  F1 macro
+------------------------------------------------------------
+Naive Bayes gaussiano                     0.9474    0.9429
+Regresión logística (estand.)             0.9883    0.9875
+------------------------------------------------------------
+Resultados escritos en resultados.json

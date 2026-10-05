@@ -1,0 +1,2 @@
+fecha,puerto,modelo,latencia_s,tokens_entrada,tokens_salida,razonamiento_car,script,critico,motivo
+2026-10-04 19:52,12555,zai-org/GLM-5.3-Flash,24.1,725,1802,3547,corre,aprobado,

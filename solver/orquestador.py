@@ -244,13 +244,25 @@ class Solver:
     def _programar(self, estado: Estado) -> dict:
         s = self._subtarea(estado, estado["actual"])
         intento = s.get("intentos", 0) + 1
-        codigo = programador.programar(self.llm, s, estado["contexto"],
-                                       previo=estado.get("codigo") or None, correccion=s.get("correccion"))
+        try:
+            codigo = programador.programar(self.llm, s, estado["contexto"],
+                                           previo=estado.get("codigo") or None, correccion=s.get("correccion"))
+        except PresupuestoAgotado:
+            raise                                   # el freno de presupuesto sí detiene la corrida
+        except Exception as err:                    # timeout, vacío, red: falla ESTA subtarea, no la corrida
+            self.traza.error("programador", err, subtarea=s["id"])
+            self.traza.decision("programador", "llm_fallo", f"{type(err).__name__}: {err}",
+                                subtarea=s["id"], intento=intento)
+            return {"codigo": "", "plan": self._con(estado, s["id"], intentos=intento)}
         return {"codigo": codigo, "plan": self._con(estado, s["id"], intentos=intento)}
 
     def _ejecutar(self, estado: Estado) -> dict:
         s = self._subtarea(estado, estado["actual"])
         carpeta = self._salida(estado) / "subtareas" / s["id"] / f"intento-{s['intentos']}"
+        if not estado.get("codigo"):                # el programador no entregó script
+            return {"ejecucion": {"huella": "", "carpeta": str(carpeta), "sin_script": True,
+                                  "error": "sin script: el modelo no respondió en este intento",
+                                  "returncode": None, "archivos": [], "violaciones": []}}
         huella = ejecutor.huella(estado["codigo"])
         if huella in (estado.get("rechazadas") or {}).get(s["id"], []):      # freno: repetición
             self.traza.decision("ejecutor", "script_repetido",
@@ -276,7 +288,9 @@ class Solver:
     def _criticar(self, estado: Estado) -> dict:
         s = self._subtarea(estado, estado["actual"])
         r = estado["ejecucion"]
-        if self.cfg.usar_critico:
+        if r.get("sin_script"):                     # ni la ablación aprueba un script que no existe
+            v = {"aprobado": False, "motivos": [r["error"]], "correccion": "- " + r["error"], "resultados": None}
+        elif self.cfg.usar_critico:
             v = critico.comprobar(s, estado["codigo"], r)
         else:                                   # ablación: un intento y ninguna comprobación
             ruta = Path(r["carpeta"]) / "resultados.json"
@@ -290,7 +304,8 @@ class Solver:
             return {"plan": self._con(estado, s["id"], status="aprobada", carpeta=r["carpeta"],
                                       resultados=v["resultados"], correccion="")}
         rechazadas = {k: list(v_) for k, v_ in (estado.get("rechazadas") or {}).items()}
-        rechazadas.setdefault(s["id"], []).append(r["huella"])
+        if r.get("huella"):
+            rechazadas.setdefault(s["id"], []).append(r["huella"])
         movido = None
         if Path(r["carpeta"]).exists():        # lo rechazado no respalda cifras (procedencia)
             movido = self._salida(estado) / INTERNO / "rechazados" / s["id"] / Path(r["carpeta"]).name
@@ -339,7 +354,7 @@ class Solver:
         doc = _cargar(estado["documento"])
         plan = estado.get("plan") or []
         aprobadas = [Path(s["carpeta"]) for s in plan if s.get("status") == "aprobada" and s.get("carpeta")]
-        problemas = redactor.comprobar_forma(estado["borrador"], doc["restricciones"])
+        problemas = redactor.comprobar_forma(estado["borrador"], doc["restricciones"], self._salida(estado))
         proc = verificar_procedencia(estado["borrador"], doc["texto"], aprobadas)
         if proc["sin_origen"]:
             problemas.append("estas cifras no salen de ninguna ejecución aprobada ni del enunciado; "

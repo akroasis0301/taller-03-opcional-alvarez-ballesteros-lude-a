@@ -1,0 +1,1 @@
+{"num_examples": 569, "num_attributes": 30, "class_distribution": {"benign": 357, "malignant": 212}, "split": {"train_size": 398, "test_size": 171}}

@@ -1,0 +1,24 @@
+{
+  "n_ejemplos_train": 398,
+  "n_ejemplos_test": 171,
+  "naive_bayes_gaussiano": {
+    "accuracy": 0.9473684210526315,
+    "f1_macro": 0.942866688940862
+  },
+  "regresion_logistica_estandarizada": {
+    "accuracy": 0.9883040935672515,
+    "f1_macro": 0.9875146028037383
+  },
+  "tabla_prueba": [
+    {
+      "modelo": "naive_bayes_gaussiano",
+      "accuracy": 0.9473684210526315,
+      "f1_macro": 0.942866688940862
+    },
+    {
+      "modelo": "regresion_logistica_estandarizada",
+      "accuracy": 0.9883040935672515,
+      "f1_macro": 0.9875146028037383
+    }
+  ]
+}

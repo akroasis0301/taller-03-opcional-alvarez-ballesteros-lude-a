@@ -51,7 +51,10 @@ class Config:
     max_tokens: int = 32_768             # el modelo de la H200 razona siempre y lo cobra aquí
     max_tokens_tope: int = 65_536        # hasta dónde se duplica si vuelve vacío por longitud
     reintentos_vacio: int = 2
-    reintentos_red: int = 1
+    reintentos_red: int = 1              # solo errores de conexión; un timeout NO se reintenta
+    # Tiempo máximo de UNA llamada al LLM. h200.py usa 600 s; con el Ollama compartido,
+    # una llamada del programador pasó de 10 min (corrida del 2026-10-04).
+    timeout_llm_s: int = field(default_factory=lambda: _entero("H200_TIMEOUT_S", 900))
     # Un objeto con .modelo y .chat(...) como el de solver-v2/h200.py. None = la H200 real.
     # P3 inyecta aquí un modelo de guion para forzar los frenos sin gastar.
     llm: object | None = None

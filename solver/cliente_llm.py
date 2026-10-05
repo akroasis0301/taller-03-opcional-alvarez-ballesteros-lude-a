@@ -34,7 +34,7 @@ class LLMVacio(RuntimeError):
     """El modelo devolvió contenido vacío incluso después de los reintentos."""
 
 
-def cargar_h200():
+def cargar_h200(timeout_s: float = 600, modelo: str | None = None):
     """La H200 real. Falla con un mensaje claro si no hay VPN (lo hace h200.py).
 
     Por defecto, el modelo es el primero que devuelve /v1/models (el vLLM sirve uno solo).
@@ -45,8 +45,8 @@ def cargar_h200():
     if kit not in sys.path:
         sys.path.insert(0, kit)
     from h200 import H200  # noqa: E402  (vive en el kit, no es un paquete)
-    h = H200()
-    pedido = os.environ.get("H200_MODELO", "").strip()
+    h = H200(timeout=timeout_s)
+    pedido = (modelo or os.environ.get("H200_MODELO", "")).strip()
     if pedido:
         servidos = [m["id"] for m in h._pedir(h.PUERTO, "v1/models", timeout=8)["data"]]
         if pedido not in servidos:
@@ -54,6 +54,12 @@ def cargar_h200():
                                f"{h.HOST}:{h.PUERTO}: {servidos}")
         h.modelo = pedido
     return h
+
+
+def es_timeout(err: BaseException) -> bool:
+    """Un timeout no es una caída de red: repetir la misma llamada lenta con el mismo límite
+    solo duplica la espera (corrida del 2026-10-04: 600 s + 600 s perdidos en la T2)."""
+    return isinstance(err, TimeoutError) or "timed out" in str(err).lower()
 
 
 _PENSAMIENTO = re.compile(r"<think>.*?</think>\s*", re.S)
@@ -79,7 +85,7 @@ class ClienteLLM:
     def __init__(self, cfg: Config, traza: Traza):
         self.cfg = cfg
         self.traza = traza
-        self.llm = cfg.llm if cfg.llm is not None else cargar_h200()
+        self.llm = cfg.llm if cfg.llm is not None else cargar_h200(cfg.timeout_llm_s)
         self.modelo = getattr(self.llm, "modelo", "desconocido")
 
     # ------------------------------------------------------------------ presupuesto
@@ -117,7 +123,7 @@ class ClienteLLM:
                                    latencia_s=round(time.perf_counter() - t0, 2), fin=None,
                                    intento=intento, subtarea=subtarea,
                                    error=f"{type(err).__name__}: {err}")
-                if red < self.cfg.reintentos_red:
+                if not es_timeout(err) and red < self.cfg.reintentos_red:
                     red += 1
                     continue
                 raise

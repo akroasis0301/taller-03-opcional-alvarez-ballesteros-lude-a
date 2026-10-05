@@ -345,9 +345,54 @@ def test_sin_modelo_disponible_es_fallido_con_traza(enunciado, tmp_path, monkeyp
     from solver import cliente_llm
     from solver.orquestador import Solver
 
-    def sin_vpn():
+    def sin_vpn(*args, **kwargs):
         raise RuntimeError("Sin respuesta de la H200. ¿Está GlobalProtect conectada?")
     monkeypatch.setattr(cliente_llm, "cargar_h200", sin_vpn)
     r = Solver(Config()).solve(str(enunciado), str(tmp_path / "corrida"))
     assert r["status"] == "fallido" and "GlobalProtect" in r["error"]
     assert any(f["tipo"] == "error" for f in leer(r["trace"]))
+
+
+# ======================================================================== correcciones tras la corrida real
+def test_un_fallo_del_llm_en_una_subtarea_no_detiene_la_cola(enunciado, tmp_path):
+    """Corrida del 2026-10-04: un timeout del programador en la T2 detuvo todo. Ahora la T2
+    agota sus intentos, queda fallida, y la corrida sigue hasta el redactor."""
+    from solver.orquestador import Solver
+
+    def responder(m):
+        sistema = m[0]["content"]
+        if "planificador" in sistema:
+            return json.dumps(PLAN_BUENO)
+        if "programador" in sistema:
+            if "SUBTAREA T2" in m[1]["content"]:
+                raise TimeoutError("timed out")
+            return f"```python\n{T1}```"
+        return "## Resultados\nMedia 0.1234. La T2 no tiene resultado.\n\n## Discusión\nSin T2.\n"
+    r = Solver(Config(llm=LLMGuion([responder]))).solve(str(enunciado), str(tmp_path / "corrida"))
+    estados = {s["id"]: (s["status"], s["intentos"]) for s in r["subtareas"]}
+    assert estados["T1"] == ("aprobada", 1) and estados["T2"] == ("fallida", 3)
+    assert r["status"] == "parcial" and r["motivo_parada"] == "" and r["entregables"]
+    filas = leer(r["trace"])
+    assert sum(f.get("decision") == "llm_fallo" for f in filas) == 3
+    assert any(f.get("decision") == "tope_intentos" for f in filas)
+    # un timeout no se reintenta a ciegas: una llamada por intento
+    assert sum(f["tipo"] == "llamada" and f.get("subtarea") == "T2" for f in filas) == 3
+
+
+def test_timeout_no_se_reintenta(tmp_path):
+    from solver.cliente_llm import ClienteLLM
+    from solver.traza import Traza
+    llm = LLMGuion([TimeoutError("timed out"), "ok"])
+    c = ClienteLLM(Config(llm=llm), Traza(tmp_path / "t.jsonl"))
+    with pytest.raises(TimeoutError):
+        c.pedir("programador", [{"role": "user", "content": "x"}])
+    assert len(llm.llamadas) == 1
+
+
+def test_figura_citada_que_no_existe(tmp_path):
+    from solver.agentes.redactor import comprobar_forma
+    (tmp_path / "figuras").mkdir()
+    (tmp_path / "figuras" / "T2_a.png").write_bytes(b"png")
+    texto = "![ok](figuras/T2_a.png)\n![inventada](figuras/curvas_aprendizaje.png)"
+    problemas = comprobar_forma(texto, {}, tmp_path)
+    assert len(problemas) == 1 and "curvas_aprendizaje.png" in problemas[0]

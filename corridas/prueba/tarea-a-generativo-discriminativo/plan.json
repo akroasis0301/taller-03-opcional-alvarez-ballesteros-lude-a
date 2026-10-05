@@ -1,0 +1,59 @@
+{
+ "subtareas": [
+  {
+   "id": "T1",
+   "tipo": "calculo",
+   "secciones": [
+    "Parte 1"
+   ],
+   "depende_de": [],
+   "objetivo": "Cargar el dataset Breast Cancer Wisconsin de sklearn.datasets.load_breast_cancer; reportar número de ejemplos, número de atributos y casos por clase; crear la división entrenamiento/prueba 70/30 estratificada por clase con random_state=42 y fijarla como única división de la tarea.",
+   "criterio": "Existen cifras impresas/guardadas de: total de ejemplos, número de atributos, conteo por clase, y tamaños de los conjuntos de entrenamiento y prueba (70/30 estratificado, random_state=42). La división queda persistida o reproducible para las subtareas siguientes.",
+   "status": "pendiente",
+   "intentos": 0
+  },
+  {
+   "id": "T2",
+   "tipo": "calculo",
+   "secciones": [
+    "Parte 2"
+   ],
+   "depende_de": [
+    "T1"
+   ],
+   "objetivo": "Entrenar sobre la división de T1 un GaussianNB y una regresión logística con atributos estandarizados (StandardScaler ajustado solo con entrenamiento); evaluar ambos sobre el conjunto de prueba y producir una tabla con exactitud y F1 macro de cada modelo.",
+   "criterio": "Existe una tabla con 2 filas (Naive Bayes gaussiano, regresión logística) y columnas accuracy y F1 macro medidas sobre el conjunto de prueba de T1; el escalador se ajustó únicamente con datos de entrenamiento.",
+   "status": "pendiente",
+   "intentos": 0
+  },
+  {
+   "id": "T3",
+   "tipo": "calculo",
+   "secciones": [
+    "Parte 3"
+   ],
+   "depende_de": [
+    "T1"
+   ],
+   "objetivo": "Sobre la misma división de T1, entrenar ambos modelos con submuestras estratificadas del 5 %, 10 %, 25 %, 50 % y 100 % del entrenamiento (random_state=42), evaluar cada punto siempre sobre el mismo conjunto de prueba, graficar exactitud contra número de ejemplos de entrenamiento con una curva por modelo y guardar la figura como PNG.",
+   "criterio": "Existe un archivo PNG con la curva de aprendizaje: eje x = número de ejemplos de entrenamiento (5 %, 10 %, 25 %, 50 %, 100 %), eje y = exactitud en prueba, dos curvas (una por modelo); se dispone de los valores numéricos de exactitud por tamaño y modelo.",
+   "status": "pendiente",
+   "intentos": 0
+  },
+  {
+   "id": "T4",
+   "tipo": "conceptual",
+   "secciones": [
+    "Parte 4"
+   ],
+   "depende_de": [
+    "T2",
+    "T3"
+   ],
+   "objetivo": "Redactar la discusión usando las cifras de T2 y T3: analizar si se observa el cruce que predicen Ng y Jordan (qué modelo gana con pocos ejemplos y cuál con muchos, y en qué tamaño), y explicarlo en términos de sesgo y varianza del modelo generativo frente al discriminativo.",
+   "criterio": "Texto de discusión que cita las exactitudes concretas de T2 y los puntos de la curva de T3, identifica el tamaño de entrenamiento donde conviene cada modelo y conecta el comportamiento con sesgo/varianza de enfoques generativo y discriminativo.",
+   "status": "pendiente",
+   "intentos": 0
+  }
+ ]
+}

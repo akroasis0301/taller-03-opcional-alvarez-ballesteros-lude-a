@@ -43,8 +43,15 @@ def posicion_seccion(texto: str, seccion: str) -> int:
     return -1
 
 
-def comprobar_forma(texto: str, restricciones: dict) -> list[str]:
+IMAGEN = re.compile(r"!\[[^\]]*\]\(([^)\s]+)\)")
+
+
+def comprobar_forma(texto: str, restricciones: dict, carpeta: Path | None = None) -> list[str]:
     problemas = []
+    if carpeta is not None:                  # una figura citada que no existe es otra cifra sin origen
+        if faltan := [r for r in IMAGEN.findall(texto) if not (Path(carpeta) / r).exists()]:
+            problemas.append(f"cita figuras que no existen: {faltan}; usa solo las FIGURAS DISPONIBLES "
+                             "o di que la figura no se pudo generar")
     exigidas = restricciones.get("secciones") or []
     posiciones = [posicion_seccion(texto, s) for s in exigidas]
     if faltan := [s for s, p in zip(exigidas, posiciones) if p < 0]:
