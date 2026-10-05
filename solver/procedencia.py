@@ -9,6 +9,7 @@ ejecución APROBADA (JSON, CSV, stdout). Las de intentos rechazados no respaldan
 from __future__ import annotations
 
 import json
+import math
 import re
 from pathlib import Path
 
@@ -35,29 +36,104 @@ def numeros(texto: str) -> list[tuple[float, int, str]]:
     return salida
 
 
-def artefactos(carpetas: list[Path]) -> list[float]:
+# En los artefactos, las cifras pueden venir en notación científica (5.006898814879229e-05): la
+# regla del evaluador no las lee, y sin esto el 5.0069 que el redactor escribió por 5.0069e-05
+# (Tarea B, 2026-10-05: un error de cinco órdenes de magnitud) no tenía con qué compararse.
+CIFRA_ARTEFACTO = re.compile(r"(?<![\w.])(\d+(?:\.\d+)?(?:[eE][-+]?\d+)?)(?![\w.])")
+
+
+def valores_artefacto(texto: str) -> list[float]:
+    salida = []
+    for m in CIFRA_ARTEFACTO.finditer(texto):
+        try:
+            salida.append(float(m.group(1)))
+        except ValueError:
+            continue
+    return salida
+
+
+def _salidas_notebook(nb: Path) -> str:
+    datos = json.loads(Path(nb).read_text(encoding="utf-8"))
+    return "\n".join("".join(o.get("text", "")) + "".join(o.get("data", {}).get("text/plain", ""))
+                     for celda in datos.get("cells", []) for o in celda.get("outputs", []))
+
+
+def artefactos(carpetas: list[Path], notebooks: list[Path] | tuple = ()) -> list[float]:
+    """Lo que escribieron las ejecuciones APROBADAS. Los notebooks se pasan aparte: el entregable
+    vive en la raíz de la corrida, y pasar la raíz como carpeta haría que los intentos RECHAZADOS
+    (cache_solver/rechazados) respaldaran cifras."""
     valores: list[float] = []
     for c in carpetas:
         for ext in ("json", "csv", "txt", "log", "out"):
             for f in Path(c).rglob(f"*.{ext}"):
                 if f.stat().st_size <= 5_000_000 and ".tmp" not in f.parts:
-                    valores += [v for v, _, _ in numeros(f.read_text(encoding="utf-8", errors="replace"))]
+                    valores += valores_artefacto(f.read_text(encoding="utf-8", errors="replace"))
         for nb in Path(c).rglob("*.ipynb"):
-            datos = json.loads(nb.read_text(encoding="utf-8"))
-            for celda in datos.get("cells", []):
-                for o in celda.get("outputs", []):
-                    texto = "".join(o.get("text", "")) + "".join(o.get("data", {}).get("text/plain", ""))
-                    valores += [v for v, _, _ in numeros(texto)]
+            valores += valores_artefacto(_salidas_notebook(nb))
+    for nb in notebooks:
+        valores += valores_artefacto(_salidas_notebook(nb))
     return valores
 
 
-def verificar(entregable_texto: str, enunciado: str, carpetas_aprobadas: list[Path]) -> dict:
-    dados = {v for v, _, _ in numeros(enunciado)}
-    propias = [(v, d, t) for v, d, t in numeros(sin_codigo(entregable_texto)) if d >= 2 and v not in dados]
+def _cifras(texto: str) -> list[tuple[list[tuple[float, int]], str]]:
+    """Cada cifra del texto con sus lecturas posibles: un porcentaje vale como fracción O como
+    número. El evaluador del kit las cuenta como dos cifras distintas, y «39.53 %» siempre deja
+    una sin respaldo aunque 0.3953 esté medido; aquí basta con que una lectura tenga respaldo."""
+    salida = []
+    for m in NUM.finditer(texto):
+        crudo, pct = m.group(1).replace(",", "."), m.group(2)
+        try:
+            v = float(crudo)
+        except ValueError:
+            continue
+        dec = len(crudo.split(".")[1]) if "." in crudo else 0
+        lecturas = [(v / 100, dec + 2), (v, dec)] if pct else [(v, dec)]
+        salida.append((lecturas, m.group(0).strip()))
+    return salida
+
+
+def _coincide(a: float, v: float, d: int) -> bool:
+    return abs(a - v) <= 0.5 * 10 ** -d + 1e-9
+
+
+def sugerir(v: float, d: int, medidos: list[float]) -> str | None:
+    """Una pista concreta para el redactor: el valor medido más probable detrás de la cifra."""
+    cerca = [a for a in medidos if abs(a - v) <= 1.5 * 10 ** -d]
+    if cerca:
+        a = min(cerca, key=lambda x: abs(x - v))
+        return f"el medido es {a!r}: redondeado a {d} decimales es {round(a, d):.{d}f}"
+    for a in medidos:
+        if a > 0 and v > 0:
+            k = round(math.log10(a / v))
+            if k != 0 and _coincide(a / 10 ** k, v, d):
+                return f"el medido es {a:.6g} (¿perdiste el factor 10^{k}?)"
+    return None
+
+
+def verificar(entregable_texto: str, enunciado: str, carpetas_aprobadas: list[Path],
+              notebooks: list[Path] | tuple = ()) -> dict:
+    dados = {v for lecturas, _ in _cifras(enunciado) for v, _ in lecturas}
+    propias = [(lecturas, t) for lecturas, t in _cifras(sin_codigo(entregable_texto))
+               if any(d >= 2 for _, d in lecturas) and not any(v in dados for v, _ in lecturas)]
     if not propias:
-        return {"fraccion": 1.0, "total": 0, "sin_origen": []}
-    medidos = artefactos(carpetas_aprobadas)
-    sin_origen = sorted({t.strip() for v, d, t in propias
-                         if not any(abs(a - v) <= 0.5 * 10 ** -d + 1e-9 for a in medidos)})
-    respaldadas = sum(any(abs(a - v) <= 0.5 * 10 ** -d + 1e-9 for a in medidos) for v, d, _ in propias)
-    return {"fraccion": respaldadas / len(propias), "total": len(propias), "sin_origen": sin_origen}
+        return {"fraccion": 1.0, "total": 0, "sin_origen": [], "sugerencias": {}}
+    medidos = artefactos(carpetas_aprobadas, notebooks)
+    sin, sugerencias = [], {}
+    for lecturas, t in propias:
+        if not any(_coincide(a, v, d) for v, d in lecturas if d >= 2 for a in medidos):
+            sin.append(t)
+            v, d = next((v, d) for v, d in reversed(lecturas) if d >= 2)
+            if (s := sugerir(v, d, medidos)) and t not in sugerencias:
+                sugerencias[t] = s
+    return {"fraccion": 1 - len(sin) / len(propias), "total": len(propias),
+            "sin_origen": sorted(set(sin)), "sugerencias": sugerencias}
+
+
+MARCA = "[cifra sin respaldo]"
+
+
+def marcar(texto: str, cifras: list[str]) -> str:
+    """Reemplaza cada cifra sin respaldo por una marca visible (F4): lo que no se midió no se publica."""
+    for t in sorted(set(cifras), key=len, reverse=True):
+        texto = re.sub(rf"(?<![\w.,]){re.escape(t)}(?![\w])", MARCA, texto)
+    return texto

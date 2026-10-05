@@ -217,3 +217,14 @@ uv run python scripts/evidencia.py corridas/completo-r1/tarea-C --subtarea T3 --
 
 Scripts nuevos: `forzar_frenos.py` (Parte 3), `juez.py` (Parte 4, opción E), `diagrama_png.py`,
 `informe_pdf.py` y `corridas_2b.sh` (todas las corridas finales, en orden).
+
+## 13. Procedencia después de completo-r1 (2026-10-05)
+
+- **F3.** Las cifras de los artefactos se leen también en notación científica; un porcentaje cuenta
+  como respaldado si su fracción lo está (el evaluador del kit cuenta las dos lecturas por separado);
+  cada cifra sin respaldo va al redactor con una sugerencia («el medido es 5.0069e-05: ¿perdiste el
+  factor 10^-5?», «redondeado a 4 decimales es 0.6141»). En un notebook, solo sus salidas de celda
+  respaldan cifras (antes se pasaba la raíz de la corrida, y los intentos rechazados respaldaban).
+- **F4.** Si tras la última redacción (o con el presupuesto agotado) quedan cifras sin respaldo, se
+  reemplazan por `[cifra sin respaldo]` y el entregable se reconstruye: evento `cifras_marcadas`.
+  La tarea queda «parcial».

@@ -35,6 +35,7 @@ from solver.agentes import critico, ejecutor, indexador, investigador, lector, p
 from solver.cliente_llm import ClienteLLM, PresupuestoAgotado
 from solver.config import RAIZ, Config
 from solver.estado import Estado
+from solver.procedencia import MARCA, marcar
 from solver.procedencia import verificar as verificar_procedencia
 from solver.traza import Traza
 
@@ -433,6 +434,13 @@ class Solver:
         publicados = self._publicar_exigidos(estado, doc, plan, aprobadas)
         texto = redactor.redactar(self.llm, doc, plan, figuras, estado.get("problemas_redaccion"),
                                   estado.get("borrador"), self._notas(estado))
+        destino = self._construir(estado, doc, plan, aprobadas, texto)
+        return {"borrador": texto, "entregables": [str(destino)] + publicados,
+                "intentos_redaccion": estado.get("intentos_redaccion", 0) + 1}
+
+    def _construir(self, estado: Estado, doc: dict, plan: list[dict], aprobadas: dict[str, Path],
+                   texto: str) -> Path:
+        """El entregable en su formato (md, PDF o notebook ejecutado) a partir del texto."""
         salida, r = self._salida(estado), doc["restricciones"]
         nombre, fmt = Path(r["entregable"]).name, r.get("formato", "md")
         if fmt == "pdf":
@@ -459,8 +467,7 @@ class Solver:
         else:
             destino = salida / (nombre if nombre.endswith(".md") else Path(nombre).stem + ".md")
             destino.write_text(texto, encoding="utf-8")
-        return {"borrador": texto, "entregables": [str(destino)] + publicados,
-                "intentos_redaccion": estado.get("intentos_redaccion", 0) + 1}
+        return destino
 
     def _publicar_exigidos(self, estado: Estado, doc: dict, plan: list[dict],
                            aprobadas: dict[str, Path]) -> list[str]:
@@ -511,18 +518,41 @@ class Solver:
                 if pdf.page_count > r["paginas_max"]:
                     problemas.append(f"el PDF tiene {pdf.page_count} páginas y el máximo es {r['paginas_max']}: "
                                      "recorta texto, une párrafos o quita una figura")
+        notebooks = []
         if fmt == "ipynb":
             if errores := formatos.errores_notebook(entregable):
                 problemas.append(f"el notebook no se ejecutó limpio: {errores[:3]}")
-            aprobadas = aprobadas + [entregable.parent]      # sus salidas de celda también son ejecución
-        proc = verificar_procedencia(estado["borrador"], doc["texto"], aprobadas)
+            notebooks = [entregable]          # sus salidas de celda son ejecución; la raíz entera NO
+        proc = verificar_procedencia(estado["borrador"], doc["texto"], aprobadas, notebooks)
         if proc["sin_origen"]:
+            detalle = [f"{t} ({proc['sugerencias'][t]})" if t in proc["sugerencias"] else t
+                       for t in proc["sin_origen"]]
             problemas.append("estas cifras no salen de ninguna ejecución aprobada ni del enunciado; "
-                             f"quítalas o usa las medidas: {proc['sin_origen']}")
+                             f"corrígelas con el valor medido o quítalas: {detalle}")
+        cambios = {}
+        ultimo = (estado.get("intentos_redaccion", 0) >= MAX_REDACCIONES
+                  or estado.get("motivo_parada") == "presupuesto")
+        if proc["sin_origen"] and ultimo:
+            cambios = self._marcar_sin_respaldo(estado, doc, plan, proc)
+            problemas = [p for p in problemas if not p.startswith("estas cifras no salen")] + [
+                f"cifras sin respaldo tras {estado.get('intentos_redaccion')} redacciones, reemplazadas por "
+                f"«{MARCA}» antes de publicar: {proc['sin_origen']}"]
         self.traza.decision("procedencia", "publicable" if not problemas else "devuelto_al_redactor",
                             "; ".join(problemas), fraccion=round(proc["fraccion"], 3), total=proc["total"],
                             intento=estado.get("intentos_redaccion"))
-        return {"problemas_redaccion": problemas, "procedencia": proc}
+        return {"problemas_redaccion": problemas, "procedencia": proc, **cambios}
+
+    def _marcar_sin_respaldo(self, estado: Estado, doc: dict, plan: list[dict], proc: dict) -> dict:
+        """F4: en el último intento, lo que el redactor no corrigió no se publica. Las cifras sin
+        respaldo se reemplazan por una marca visible y el entregable se reconstruye. Tarea B
+        (2026-10-05): sin esto se publicó una KL de 5.0069 cuando la medida era 5.0069e-05."""
+        texto = marcar(estado["borrador"], proc["sin_origen"])
+        aprobadas = {s["id"]: Path(s["carpeta"]) for s in plan if s.get("status") == "aprobada" and s.get("carpeta")}
+        destino = self._construir(estado, doc, plan, aprobadas, texto)
+        self.traza.decision("procedencia", "cifras_marcadas",
+                            f"reemplazadas por «{MARCA}»: {proc['sin_origen']}", cifras=proc["sin_origen"],
+                            sugerencias=proc.get("sugerencias"))
+        return {"borrador": texto, "entregables": [str(destino)] + list(estado["entregables"][1:])}
 
     def _cerrar(self, estado: Estado) -> dict:
         plan = estado.get("plan") or []

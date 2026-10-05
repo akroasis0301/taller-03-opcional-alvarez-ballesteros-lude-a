@@ -320,14 +320,14 @@
      "id": "S103",
      "tipo": "secciones",
      "lista": [
-      "Tarea 1 - Representar las mediciones",
-      "Tarea 2 - Normalizar y calcular un indicador de carga",
-      "Tarea 3 - Identificar observaciones para revisión",
-      "Tarea 4 - Construir un resumen por servidor",
-      "Tarea 5 - Guardar y verificar el resultado"
+      "Tarea 1",
+      "Tarea 2",
+      "Tarea 3",
+      "Tarea 4",
+      "Tarea 5"
      ],
      "en_orden": true,
-     "_por_que": "«Una sección por tarea, en orden (Tarea 1 a Tarea 5)». Con los títulos completos del enunciado: el evaluador acepta un encabezado de hasta 40 caracteres más que el nombre buscado, y «Tarea 2 - Normalizar y calcular un indicador de carga» supera «Tarea 2» + 40 (falso negativo de la exploratoria del 2026-10-05).",
+     "_por_que": "«Una sección por tarea, en orden (Tarea 1 a Tarea 5)», tal como lo dice el enunciado. LIMITACIÓN conocida del evaluador del kit: acepta un encabezado de hasta 40 caracteres más que el nombre buscado, así que «## Tarea 2 - Normalizar y calcular un indicador de carga» (51) no se reconoce y «## Tarea 2» sí. Con los títulos completos pasa lo contrario: ninguna lista acepta las dos formas (exploratoria y completo-r1, 2026-10-05). Un fallo aquí se revisa a mano antes de atribuirlo al solver.",
      "juez": "¿Tiene una sección por tarea, de la Tarea 1 a la Tarea 5, en orden?"
     },
     {

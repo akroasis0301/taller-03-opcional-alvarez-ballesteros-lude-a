@@ -20,7 +20,9 @@ from solver.procedencia import sin_codigo
 SISTEMA = """Eres el redactor de un solver de tareas de una maestría en IA. Escribes el entregable
 en Markdown a partir de resultados MEDIDOS. Reglas:
 - Usa SOLO las cifras que aparecen en los resultados que se te entregan (puedes redondearlas a
-  4 decimales). Nunca inventes, estimes ni completes una cifra. Si falta un resultado, dilo.
+  4 decimales, redondeando bien: 0.61405 → 0.6141). Nunca inventes, estimes ni completes una cifra.
+  Si falta un resultado, dilo. Conserva la notación científica (5.0069e-05 no es 5.0069).
+- Escribe las proporciones como fracción (0.3953), no como porcentaje con decimales (39.53 %).
 - Usa exactamente las secciones exigidas, en ese orden, como encabezados "## Nombre".
 - Para tablas usa Markdown; para figuras, ![descripción](figuras/archivo.png) con los archivos dados.
 - Las partes conceptuales se argumentan con las cifras medidas.

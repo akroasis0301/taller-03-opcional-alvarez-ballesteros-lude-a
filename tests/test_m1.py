@@ -647,3 +647,33 @@ def test_una_url_como_argumento_es_una_descarga(codigo):
 
 def test_importlib_esta_bloqueado():
     assert revisar("import importlib\nimportlib.import_module('soc' + 'ket')").violaciones
+
+
+# ======================================================================== F3 y F4 (completo-r1, 2026-10-05)
+def test_procedencia_sugiere_el_valor_medido(tmp_path):
+    """Tarea B: el redactor escribió 5.0069 por 5.0069e-05 y 0.6140 por 0.61405 (mal redondeado)."""
+    (tmp_path / "resultados.json").write_text(json.dumps({"kl": 5.006898814879229e-05, "sim": 0.6140509840251385,
+                                                          "var": 0.3953421709086953}))
+    r = verificar("KL 5.0069, similitud 0.6140, varianza 39.53 %, bien: 0.6141 y 5.0069e-05", "", [tmp_path])
+    assert r["sin_origen"] == ["0.6140", "5.0069"]                 # 39.53 % vale por su fracción 0.3953
+    assert "10^-5" in r["sugerencias"]["5.0069"] and "0.6141" in r["sugerencias"]["0.6140"]
+
+
+def test_lo_que_el_redactor_no_corrige_no_se_publica(enunciado, tmp_path):
+    from solver.orquestador import Solver
+    from solver.procedencia import MARCA
+
+    base = guion()
+
+    def responder(m):
+        if m[0]["content"].startswith("Eres el redactor"):
+            return REPORTE_INVENTADO                        # nunca corrige el 0.4321
+        return base(m)
+    salida = tmp_path / "corrida"
+    r = Solver(Config(llm=LLMGuion([responder]))).solve(str(enunciado), str(salida))
+    reporte = (salida / "reporte.md").read_text()
+    assert "0.4321" not in reporte and MARCA in reporte and "0.8765" in reporte
+    filas = leer(r["trace"])
+    assert sum(f.get("decision") == "devuelto_al_redactor" for f in filas) == 3
+    assert next(f for f in filas if f.get("decision") == "cifras_marcadas")["cifras"] == ["0.4321"]
+    assert r["status"] == "parcial"
