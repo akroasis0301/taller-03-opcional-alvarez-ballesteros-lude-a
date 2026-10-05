@@ -1,0 +1,30 @@
+{
+ "subtareas": [
+  {
+   "id": "T1",
+   "tipo": "calculo",
+   "secciones": [
+    "Parte 1"
+   ],
+   "depende_de": [],
+   "objetivo": "cargar breast_cancer y contar ejemplos",
+   "criterio": "n_ejemplos en resultados.json",
+   "status": "pendiente",
+   "intentos": 0
+  },
+  {
+   "id": "T2",
+   "tipo": "calculo",
+   "secciones": [
+    "Parte 2"
+   ],
+   "depende_de": [
+    "T1"
+   ],
+   "objetivo": "árbol de decisión 70/30, exactitud en prueba",
+   "criterio": "accuracy en resultados.json",
+   "status": "pendiente",
+   "intentos": 0
+  }
+ ]
+}

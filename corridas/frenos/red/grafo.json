@@ -1,0 +1,40 @@
+{
+ "directed": true,
+ "multigraph": false,
+ "graph": {},
+ "nodes": [
+  {
+   "titulo": "Tarea F — los frenos del solver",
+   "trabajo": false,
+   "id": "Preámbulo",
+   "capa": "enunciado"
+  },
+  {
+   "titulo": "Parte 1 — Datos",
+   "trabajo": true,
+   "id": "Parte 1",
+   "capa": "enunciado"
+  },
+  {
+   "titulo": "Parte 2 — Modelo",
+   "trabajo": true,
+   "id": "Parte 2",
+   "capa": "enunciado"
+  },
+  {
+   "titulo": "El reporte",
+   "trabajo": false,
+   "id": "El reporte",
+   "capa": "enunciado"
+  }
+ ],
+ "aristas": [
+  {
+   "tipo": "depende_de",
+   "regla": "referencia",
+   "evidencia": "Con los datos de la Parte 1, divide 70/30 con random_state=0, entrena un árbol d",
+   "source": "Parte 2",
+   "target": "Parte 1"
+  }
+ ]
+}

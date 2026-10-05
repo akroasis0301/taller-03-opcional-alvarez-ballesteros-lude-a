@@ -143,7 +143,7 @@ def evidencia(filas: list[dict], claves: list[str]) -> list[str]:
                           f"{str(f.get('motivo', ''))[:220]}")
         if f["tipo"] == "llamada" and f["agente"] == "redactor":
             usuario = (f.get("entrada") or [{}])[-1].get("content", "")
-            nota = usuario.split("DEBES DECLARAR EN EL DOCUMENTO:")[1].strip()[:200] if "DEBES DECLARAR" in usuario else ""
+            nota = usuario.split("DEBES DECLARAR EN EL DOCUMENTO:")[1].strip()[:300].replace("\n", " ") if "DEBES DECLARAR" in usuario else ""
             salida.append(f"- `#{f['seq']}` redactor redacta ({f['tokens_entrada']}+{f['tokens_salida']} tokens)"
                           + (f"; recibió la orden de declarar: «{nota}»" if nota else ""))
         if f["tipo"] == "ejecucion" and f.get("error"):

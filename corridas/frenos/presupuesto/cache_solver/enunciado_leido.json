@@ -1,0 +1,54 @@
+{
+ "fuente": "/Users/miguelestebanalvarez/Posgrado Maestría Inteligencia Artificial/1er Semestre/IA Generativa y Agentes/Talleres/Taller 03/taller-03-opcional-alvarez-ballesteros-ludeña/corridas/frenos/_enunciado",
+ "texto": "# Tarea F — los frenos del solver\n**Entrega:** un reporte en Markdown (`reporte.md`).\n## Parte 1 — Datos\nCarga el conjunto breast_cancer de scikit-learn y reporta cuántos ejemplos tiene.\n## Parte 2 — Modelo\nCon los datos de la Parte 1, divide 70/30 con random_state=0, entrena un árbol de decisión\ny reporta su exactitud sobre el conjunto de prueba.\n## El reporte\nUn reporte.md con estas secciones, en este orden: Resultados y Discusión. Máximo 300 palabras.",
+ "secciones": [
+  {
+   "id": "S0",
+   "titulo": "Tarea F — los frenos del solver",
+   "clave": "Preámbulo",
+   "trabajo": false,
+   "pagina": 1,
+   "texto": "**Entrega:** un reporte en Markdown (`reporte.md`)."
+  },
+  {
+   "id": "S1",
+   "titulo": "Parte 1 — Datos",
+   "clave": "Parte 1",
+   "trabajo": true,
+   "pagina": 1,
+   "texto": "Carga el conjunto breast_cancer de scikit-learn y reporta cuántos ejemplos tiene."
+  },
+  {
+   "id": "S2",
+   "titulo": "Parte 2 — Modelo",
+   "clave": "Parte 2",
+   "trabajo": true,
+   "pagina": 1,
+   "texto": "Con los datos de la Parte 1, divide 70/30 con random_state=0, entrena un árbol de decisión\ny reporta su exactitud sobre el conjunto de prueba."
+  },
+  {
+   "id": "S3",
+   "titulo": "El reporte",
+   "clave": "El reporte",
+   "trabajo": false,
+   "pagina": 1,
+   "texto": "Un reporte.md con estas secciones, en este orden: Resultados y Discusión. Máximo 300 palabras."
+  }
+ ],
+ "tablas": [],
+ "paginas_sin_texto": [],
+ "escaneado": false,
+ "datos": "/Users/miguelestebanalvarez/Posgrado Maestría Inteligencia Artificial/1er Semestre/IA Generativa y Agentes/Talleres/Taller 03/taller-03-opcional-alvarez-ballesteros-ludeña/corridas/frenos/_enunciado",
+ "restricciones": {
+  "entregable": "reporte.md",
+  "formato": "md",
+  "palabras_max": 300,
+  "paginas_max": null,
+  "secciones": [
+   "Resultados",
+   "Discusión"
+  ],
+  "limites_parciales": [],
+  "archivos": []
+ }
+}
