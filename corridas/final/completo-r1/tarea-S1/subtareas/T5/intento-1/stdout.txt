@@ -1,0 +1,11 @@
+Round trip verificado: output/server_analysis.parquet
+Filas: True
+Columnas: True
+Esquema: True
+Valores: True
+-------------------------------------------------------
+DataFrame analizado: 300 filas x 9 columnas
+Parquet: output/server_analysis.parquet (17629 bytes) | indice guardado: False
+Max. diferencia absoluta en floats tras el round trip: 0.0
+Filas con requires_review=True: 49
+Criterio de exito cumplido: True

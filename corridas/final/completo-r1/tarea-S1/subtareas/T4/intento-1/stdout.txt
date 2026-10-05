@@ -1,0 +1,14 @@
+T4 — Tabla resumen por servidor
+Fuente de datos: reconstruido desde data/server_measurements.csv (parámetros: entrada/T3/resultados.json)
+   server  observations  mean_power_w  max_temperature_c  mean_load  review_count
+AI-SRV-01            50      363.4598              86.50  -0.614527             2
+AI-SRV-02            50      390.4990              76.47  -0.417730             1
+AI-SRV-03            50      416.6088              86.50  -0.085884             2
+AI-SRV-04            50      434.8684              80.86  -0.003041             5
+AI-SRV-05            50      471.1808              86.50   0.453583            12
+AI-SRV-06            50      495.7276              88.01   0.667600            27
+Filas: 6 | Columnas: ['server', 'observations', 'mean_power_w', 'max_temperature_c', 'mean_load', 'review_count']
+Totales: observations=300, review_count=49
+Verificación AI-SRV-01: {"servidor_presente": true, "observations": 50, "observations_ok": true, "mean_power_w": 363.45980000000003, "mean_power_w_redondeado_4": 363.4598, "mean_power_w_ok": true, "max_temperature_c": 86.5, "max_temperature_c_redondeado_2": 86.5, "max_temperature_c_ok": true, "mean_load": -0.6145273545959999, "mean_load_redondeado_6": -0.614527, "mean_load_ok": true, "review_count": 2, "review_count_ok": true}
+Criterio de éxito cumplido: True
+resultados.json escrito.

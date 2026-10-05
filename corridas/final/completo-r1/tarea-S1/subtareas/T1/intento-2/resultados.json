@@ -1,0 +1,21 @@
+{
+  "repr": "ServerMeasurements(shape=(300, 3), features=('gpu_utilization', 'cpu_utilization', 'memory_gb'))",
+  "forma": [
+    300,
+    3
+  ],
+  "n_filas": 300,
+  "n_columnas": 3,
+  "feature_names": [
+    "gpu_utilization",
+    "cpu_utilization",
+    "memory_gb"
+  ],
+  "dtype_values": "float64",
+  "validaciones_valueerror": {
+    "matriz_no_bidimensional_lanza_valueerror": true,
+    "columnas_vs_nombres_lanza_valueerror": true,
+    "datos_no_numericos_lanza_valueerror": true
+  },
+  "todas_las_validaciones_lanzan_valueerror": true
+}

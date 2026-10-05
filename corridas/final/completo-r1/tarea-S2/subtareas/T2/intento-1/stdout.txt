@@ -1,0 +1,13 @@
+================================================================
+T2 · Auditoría de datos y construcción de pares
+================================================================
+CSV leído (solo lectura): data/model_errors.csv | sha256: cdd1af7ad3a6...
+Validación OK: columnas exactas ['store_id', 'error_a', 'error_b']; store_id único y no nulo;
+               errores numéricos, finitos y no negativos.
+Pares verificados por store_id: 16
+Favorecen a A (6): ['S04', 'S06', 'S09', 'S11', 'S13', 'S16']
+Favorecen a B (10): ['S01', 'S02', 'S03', 'S05', 'S07', 'S08', 'S10', 'S12', 'S14', 'S15']
+Empates (0): []
+Mayor diferencia que favorece a B: S08 (+2.1000)
+Mayor diferencia que favorece a A: S09 (-1.8000)
+Archivos escritos: output/store_differences.csv, output/store_differences.png, store_differences.png, resultados.json

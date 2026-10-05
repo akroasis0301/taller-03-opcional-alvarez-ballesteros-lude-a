@@ -1,0 +1,213 @@
+{
+  "subtarea": "T4_efecto_e_incertidumbre_diferencias_pareadas",
+  "datos": {
+    "csv": "data/model_errors.csv",
+    "n_filas": 16,
+    "columnas": [
+      "store_id",
+      "error_a",
+      "error_b"
+    ]
+  },
+  "store_ids": [
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05",
+    "S06",
+    "S07",
+    "S08",
+    "S09",
+    "S10",
+    "S11",
+    "S12",
+    "S13",
+    "S14",
+    "S15",
+    "S16"
+  ],
+  "n": 16,
+  "mean": 0.4187499999999997,
+  "sample_sd": 1.2533787669070087,
+  "standard_error": 0.31334469172675217,
+  "se_formula": "sd / sqrt(n)",
+  "se_check_scipy_sem": 0.31334469172675217,
+  "se_consistente": true,
+  "unidades": "unidades vendidas (difference = error_a − error_b)",
+  "t_test": {
+    "prueba": "t de una muestra bilateral sobre el vector de diferencias (equivalente a t pareada)",
+    "null_mean": 0.0,
+    "alternative": "two-sided",
+    "df": 15,
+    "statistic": 1.3363877259014323,
+    "p_value": 0.20134214922904944,
+    "p_value_check_2_sf": 0.20134214922904944,
+    "alpha": 0.05,
+    "decision": "no_rechazar_H0"
+  },
+  "ci95": {
+    "confidence_level": 0.95,
+    "tipo": "t bilateral para la media de las diferencias pareadas",
+    "df": 15,
+    "t_critical": 2.131449545559776,
+    "lower": -0.24912840078455428,
+    "upper": 1.0866284007845537,
+    "margin_of_error": 0.667878400784554,
+    "contiene_cero": true
+  },
+  "p13": {
+    "n_tiendas": 16,
+    "mean": 0.4187499999999997,
+    "sample_sd": 1.2533787669070087,
+    "standard_error": 0.31334469172675217,
+    "signo": "positivo",
+    "diferencia_min": -1.8000000000000007,
+    "diferencia_max": 2.0999999999999996,
+    "interpretacion_media": "La diferencia media es +0.418750 unidades por tienda (signo positivo). Leída en unidades vendidas, la modalidad A vende en promedio ≈0.42 unidades más que la B por tienda (difference = error_a − error_b > 0); con la convención de la T2 sobre errores (menor error, mejor), ese mismo signo positivo favorece a B. La magnitud (0.42 unidades) es modesta frente a la dispersión entre tiendas: las diferencias individuales van de -1.8 a +2.1 unidades.",
+    "interpretacion_dispersion_vs_ee": "sample_sd = 1.253379 unidades: dispersión típica ENTRE tiendas (cuánto se aleja una tienda cualquiera de la media); no disminuye al acumular más tiendas de la misma población. standard_error = sd/√n = 1.253379/√16 = 0.313345 unidades: incertidumbre de la MEDIA muestral como estimación del efecto poblacional; es √n = 4 veces menor que la sd y sí se reduce al aumentar n. Confundirlos llevaría a sobrestimar la precisión de tiendas individuales o a subestimar la variabilidad real del efecto entre tiendas."
+  },
+  "p14": {
+    "intervalo_t_95": [
+      -0.24912840078455428,
+      1.0866284007845537
+    ],
+    "lower": -0.24912840078455428,
+    "upper": 1.0866284007845537,
+    "t_critical": 2.131449545559776,
+    "df": 15,
+    "margin_of_error": 0.667878400784554,
+    "interpretacion": "Bajo el modelo t (n=16 diferencias i.i.d. con media μ y aproximación normal), los valores del efecto compatibles con los datos al 95 % son μ ∈ [-0.249128, 1.086628] unidades. Interpretación frecuentista: el procedimiento t bilateral con 15 grados de libertad contiene al verdadero μ en el 95 % de las muestras repetidas; NO es una probabilidad posterior sobre μ (μ es fija, el intervalo es el aleatorio). Como el intervalo contiene 0, un efecto nulo sigue siendo compatible con los datos; efectos hasta ≈1.09 unidades no quedan descartados por los datos."
+  },
+  "p15": {
+    "statistic": 1.3363877259014323,
+    "df": 15,
+    "p_value": 0.20134214922904944,
+    "conclusion": "t(15) = 1.336388, p bilateral = 0.201342 > α = 0.05: no_rechazar_H0; la media de las diferencias no es estadísticamente distinguible de 0 al 5 %, coherente con el IC t 95 % que contiene al 0."
+  },
+  "diferencias_por_tienda": [
+    {
+      "store_id": "S01",
+      "error_a": 12.4,
+      "error_b": 10.6,
+      "difference": 1.8000000000000007,
+      "favors": "B"
+    },
+    {
+      "store_id": "S02",
+      "error_a": 9.8,
+      "error_b": 9.1,
+      "difference": 0.7000000000000011,
+      "favors": "B"
+    },
+    {
+      "store_id": "S03",
+      "error_a": 15.1,
+      "error_b": 13.9,
+      "difference": 1.1999999999999993,
+      "favors": "B"
+    },
+    {
+      "store_id": "S04",
+      "error_a": 11.0,
+      "error_b": 12.4,
+      "difference": -1.4000000000000004,
+      "favors": "A"
+    },
+    {
+      "store_id": "S05",
+      "error_a": 8.7,
+      "error_b": 7.2,
+      "difference": 1.4999999999999991,
+      "favors": "B"
+    },
+    {
+      "store_id": "S06",
+      "error_a": 13.6,
+      "error_b": 13.9,
+      "difference": -0.3000000000000007,
+      "favors": "A"
+    },
+    {
+      "store_id": "S07",
+      "error_a": 10.2,
+      "error_b": 9.3,
+      "difference": 0.8999999999999986,
+      "favors": "B"
+    },
+    {
+      "store_id": "S08",
+      "error_a": 14.9,
+      "error_b": 12.8,
+      "difference": 2.0999999999999996,
+      "favors": "B"
+    },
+    {
+      "store_id": "S09",
+      "error_a": 7.5,
+      "error_b": 9.3,
+      "difference": -1.8000000000000007,
+      "favors": "A"
+    },
+    {
+      "store_id": "S10",
+      "error_a": 16.0,
+      "error_b": 15.0,
+      "difference": 1.0,
+      "favors": "B"
+    },
+    {
+      "store_id": "S11",
+      "error_a": 9.3,
+      "error_b": 9.8,
+      "difference": -0.5,
+      "favors": "A"
+    },
+    {
+      "store_id": "S12",
+      "error_a": 12.8,
+      "error_b": 11.1,
+      "difference": 1.700000000000001,
+      "favors": "B"
+    },
+    {
+      "store_id": "S13",
+      "error_a": 11.7,
+      "error_b": 12.9,
+      "difference": -1.200000000000001,
+      "favors": "A"
+    },
+    {
+      "store_id": "S14",
+      "error_a": 8.9,
+      "error_b": 8.3,
+      "difference": 0.5999999999999996,
+      "favors": "B"
+    },
+    {
+      "store_id": "S15",
+      "error_a": 13.2,
+      "error_b": 11.9,
+      "difference": 1.299999999999999,
+      "favors": "B"
+    },
+    {
+      "store_id": "S16",
+      "error_a": 10.6,
+      "error_b": 11.5,
+      "difference": -0.9000000000000004,
+      "favors": "A"
+    }
+  ],
+  "consistencia_con_T2": {
+    "archivo": "entrada/T2/resultados.json",
+    "n_pares_t2": null,
+    "max_abs_dif_differences": 0.0,
+    "coincide": true
+  },
+  "archivos_generados": {
+    "resultados": "resultados.json",
+    "csv": "output/store_differences.csv",
+    "figura": "output/store_differences.png"
+  }
+}

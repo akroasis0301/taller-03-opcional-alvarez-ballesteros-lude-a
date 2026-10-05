@@ -1,0 +1,12 @@
+=== T1: Carga y división 70/30 estratificada ===
+Dataset: Breast Cancer Wisconsin (Diagnostic)
+Total de ejemplos: 569
+Número de atributos: 30
+Casos por clase: {'malignant': 212, 'benign': 357}
+Train: 398 ejemplos (0.6995) | Test: 171 ejemplos (0.3005)
+Conteos train: {'malignant': 148, 'benign': 250}
+Conteos test:  {'malignant': 64, 'benign': 107}
+Proporciones train: {'malignant': 0.37185929648241206, 'benign': 0.628140703517588}
+Proporciones test:  {'malignant': 0.3742690058479532, 'benign': 0.6257309941520468}
+Verificación 70/30: False | Estratificación preservada: True (max dif. proporciones = 0.002410)
+Archivos guardados: t1_split_breast_cancer.npz, t1_X_train.npy, t1_X_test.npy, t1_y_train.npy, t1_y_test.npy, t1_distribucion_clases.png

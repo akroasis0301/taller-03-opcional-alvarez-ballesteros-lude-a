@@ -1,0 +1,127 @@
+{
+ "subtareas": [
+  {
+   "id": "T1",
+   "tipo": "conceptual",
+   "secciones": [
+    "Tarea 1"
+   ],
+   "depende_de": [],
+   "objetivo": "Redactar el contrato de análisis previo (preguntas 1 a 10 de la Parte 1 del informe) antes de cualquier cálculo: modelos A y B comparados, población o proceso objetivo propuesto y qué impide afirmar que los datos sintéticos lo representan, métrica (error absoluto, menor es mejor), unidad de análisis (tienda pareada), razón del emparejamiento y su verificación por store_id, estimando Δ=E(d_i) con d_i=e_A-e_B y significado de diferencia positiva (favorece a B), hipótesis H0: Δ=0 y H1: Δ≠0 bilateral, procedimiento principal (prueba t de una muestra sobre las diferencias) y sus supuestos, resultados que acompañarán al p-value, y afirmaciones que el diseño no permite.",
+   "criterio": "Texto con las 10 preguntas respondidas en orden y sin cifras calculadas; incluye d_i=e_A-e_B, H0: Δ=0 y H1: Δ≠0, el procedimiento principal t bilateral sobre las diferencias, los resultados que se reportarán junto al p-value (efecto, SE, IC, evidencia por tienda, referencias alternativas) y las limitaciones del diseño sintético.",
+   "status": "pendiente",
+   "intentos": 0
+  },
+  {
+   "id": "T2",
+   "tipo": "calculo",
+   "secciones": [
+    "Tarea 2",
+    "Parte 2"
+   ],
+   "depende_de": [
+    "T1"
+   ],
+   "objetivo": "Cargar data/model_errors.csv validando que existan exactamente las columnas store_id, error_a, error_b; que cada store_id sea único y no nulo (ValueError que mencione el identificador si no) y que los errores sean numéricos, finitos y no negativos (ValueError si no), sin modificar el CSV original. Construir la tabla pareada conservando las tres columnas y añadiendo difference=error_a-error_b y favors ('B' si difference>0, 'A' si difference<0), verificando el emparejamiento mediante store_id. Contar cuántas tiendas favorecen a A y a B, detectar empates e identificar las diferencias de mayor magnitud en cada dirección con su store_id.",
+   "criterio": "Tabla de 16 filas con store_id, error_a, error_b, difference y favors; validaciones ejecutadas incluyendo el cruce de pares por store_id (no solo longitudes iguales); cifras disponibles para las preguntas 11 y 12: número de tiendas que favorecen a A, número que favorecen a B, existencia de empates y diferencias extremas positiva y negativa con sus identificadores.",
+   "status": "pendiente",
+   "intentos": 0
+  },
+  {
+   "id": "T3",
+   "tipo": "calculo",
+   "secciones": [
+    "Tarea 3"
+   ],
+   "depende_de": [
+    "T2"
+   ],
+   "objetivo": "Crear una figura con una observación por tienda que muestre el signo y la magnitud de difference y una línea de referencia visible en cero, distinguiendo visualmente las diferencias que favorecen a A y a B, y guardarla en output/store_differences.png.",
+   "criterio": "Existe output/store_differences.png con las 16 tiendas, los valores de difference con signo distinguible (color o dirección) y la referencia en cero claramente visible.",
+   "status": "pendiente",
+   "intentos": 0
+  },
+  {
+   "id": "T4",
+   "tipo": "calculo",
+   "secciones": [
+    "Tarea 4",
+    "Parte 3"
+   ],
+   "depende_de": [
+    "T2"
+   ],
+   "objetivo": "Sobre el vector de diferencias pareadas, reportar exactamente n, mean, sample_sd (desviación muestral, ddof=1) y standard_error=sd/√n, interpretando la diferencia media en unidades vendidas y distinguiendo dispersión entre tiendas del error estándar. Con scipy.stats calcular la prueba t de una muestra bilateral sobre las diferencias y el intervalo t bilateral del 95 % para la media pareada, conservando grados de libertad, estadístico, p-value e intervalo.",
+   "criterio": "Reporta n=16, mean, sample_sd y standard_error con SE=sd/√n, más grados de libertad (15), estadístico t, p-value bilateral e IC t del 95 %; cifras disponibles para las preguntas 13, 14 y 15.",
+   "status": "pendiente",
+   "intentos": 0
+  },
+  {
+   "id": "T5",
+   "tipo": "calculo",
+   "secciones": [
+    "Tarea 5",
+    "Parte 4"
+   ],
+   "depende_de": [
+    "T4"
+   ],
+   "objetivo": "Ejecutar la referencia nula exacta por cambios de signo: enumerar las 2^16=65536 configuraciones de signos de las diferencias, calcular la media de cada configuración y contar cuántas tienen magnitud al menos tan extrema como la media observada; reportar el total de configuraciones, el conteo de extremas y el p-value (conteo/total), en contraste con el p-value t de T4.",
+   "criterio": "Reporta total=65536 configuraciones, el conteo de configuraciones extremas y el p-value exacto por cambios de signo, comparable con el p-value t de la T4.",
+   "status": "pendiente",
+   "intentos": 0
+  },
+  {
+   "id": "T6",
+   "tipo": "calculo",
+   "secciones": [
+    "Tarea 6",
+    "Parte 4"
+   ],
+   "depende_de": [
+    "T2"
+   ],
+   "objetivo": "Realizar el bootstrap pareado con np.random.default_rng(SEED=20260829) y BOOTSTRAP_RESAMPLES=10000: remuestrear tiendas completas mediante el vector de diferencias (nunca error_a y error_b por separado) y reportar el intervalo percentil del 95 % como análisis de sensibilidad aproximado.",
+   "criterio": "Reporta el intervalo percentil del 95 %, la semilla 20260829 y las 10000 remuestras; dos ejecuciones con la misma semilla producen exactamente el mismo intervalo.",
+   "status": "pendiente",
+   "intentos": 0
+  },
+  {
+   "id": "T7",
+   "tipo": "calculo",
+   "secciones": [
+    "Tarea 7"
+   ],
+   "depende_de": [
+    "T2",
+    "T3",
+    "T4",
+    "T5",
+    "T6"
+   ],
+   "objetivo": "Ejecutar el pipeline completo de extremo a extremo en una sola corrida: guardar output/store_differences.csv (tabla pareada de T2) y output/store_differences.png (figura de T3), y mostrar en consola el resumen descriptivo, la prueba t, la referencia por cambios de signo y el intervalo bootstrap.",
+   "criterio": "Una ejecución genera output/store_differences.csv y output/store_differences.png e imprime los cuatro bloques (resumen, prueba t, cambios de signo, bootstrap) con cifras idénticas a las de T2, T4, T5 y T6.",
+   "status": "pendiente",
+   "intentos": 0
+  },
+  {
+   "id": "T8",
+   "tipo": "conceptual",
+   "secciones": [
+    "Parte 5"
+   ],
+   "depende_de": [
+    "T2",
+    "T3",
+    "T4",
+    "T5",
+    "T6",
+    "T7"
+   ],
+   "objetivo": "Redactar el informe ejecutivo de la pregunta 18 (máximo 150 palabras) integrando: unidad de análisis (tiendas pareadas), procedencia sintética y determinista de los datos, métrica y dirección, emparejamiento por store_id, efecto en unidades vendidas, incertidumbre (SE e IC t del 95 %), procedimiento principal (t pareada bilateral), p-value, sensibilidad bootstrap, al menos dos limitaciones y una frase explícita sobre lo que no puede concluirse.",
+   "criterio": "Texto de ≤150 palabras que cita cifras producidas por el código (efecto, IC t, p-values t y por cambios de signo, IC bootstrap), menciona la procedencia sintética, incluye al menos dos limitaciones y una afirmación explícita de lo que el diseño no permite concluir.",
+   "status": "pendiente",
+   "intentos": 0
+  }
+ ]
+}

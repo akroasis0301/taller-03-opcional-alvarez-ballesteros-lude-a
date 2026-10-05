@@ -1,0 +1,269 @@
+{
+  "subtarea": "T2_auditar_datos_y_construir_pares",
+  "csv_entrada": "data/model_errors.csv",
+  "csv_sha256": "cdd1af7ad3a6ee8f49a14f48ea2d8347591e85388a222b2a83b9d661ae95d7a2",
+  "csv_original_no_modificado": true,
+  "validacion": {
+    "columnas_exactas": true,
+    "columnas_encontradas": [
+      "store_id",
+      "error_a",
+      "error_b"
+    ],
+    "n_filas_csv": 16,
+    "store_id_nulos": [],
+    "store_id_duplicados": [],
+    "error_a_no_numerico": [],
+    "error_b_no_numerico": [],
+    "error_a_no_finito": [],
+    "error_b_no_finito": [],
+    "error_a_negativos": [],
+    "error_b_negativos": []
+  },
+  "emparejamiento": {
+    "validado_por_store_id": true,
+    "metodo": "error_a y error_b se indexaron por store_id; se comprobó que ambos índices contienen exactamente las mismas tiendas (sin duplicados ni nulos) y difference se calculó sobre claves alineadas por store_id, no por posición",
+    "mismas_tiendas_en_ambas_columnas": true,
+    "n_pares": 16,
+    "store_ids": [
+      "S01",
+      "S02",
+      "S03",
+      "S04",
+      "S05",
+      "S06",
+      "S07",
+      "S08",
+      "S09",
+      "S10",
+      "S11",
+      "S12",
+      "S13",
+      "S14",
+      "S15",
+      "S16"
+    ],
+    "difference_recalculada_ok": true
+  },
+  "p11": {
+    "pares_validados_por_store_id": true,
+    "n_pares_validados": 16,
+    "explicacion_por_que_longitud_no_basta": "Los 16 pares fueron validados cruzando por store_id: error_a y error_b se indexaron por store_id, se comprobó que ambos índices contienen exactamente las mismas tiendas sin duplicados ni nulos, y difference se calculó sobre claves alineadas por store_id. Comprobar únicamente que ambas columnas tienen la misma longitud (16 == 16) es insuficiente porque solo verifica la cantidad de valores: no detecta que un valor de error_b pueda pertenecer a otra tienda (orden distinto, desplazamiento, fila omitida o duplicada). En 'demo_longitud_insuficiente' se muestra que permutar error_b mantiene 16==16 pero cambia el emparejamiento y las conclusiones por tienda."
+  },
+  "p12": {
+    "tiendas_que_favorecen_A": 6,
+    "tiendas_que_favorecen_B": 10,
+    "store_ids_que_favorecen_A": [
+      "S04",
+      "S06",
+      "S09",
+      "S11",
+      "S13",
+      "S16"
+    ],
+    "store_ids_que_favorecen_B": [
+      "S01",
+      "S02",
+      "S03",
+      "S05",
+      "S07",
+      "S08",
+      "S10",
+      "S12",
+      "S14",
+      "S15"
+    ],
+    "empates": 0,
+    "hay_empates": false,
+    "store_ids_empate": [],
+    "diferencia_maxima_positiva_favorece_B": {
+      "store_id": "S08",
+      "difference": 2.0999999999999996,
+      "magnitud": 2.0999999999999996,
+      "error_a": 14.9,
+      "error_b": 12.8,
+      "favors": "B",
+      "direccion": "positiva"
+    },
+    "diferencia_maxima_negativa_favorece_A": {
+      "store_id": "S09",
+      "difference": -1.8000000000000007,
+      "magnitud": 1.8000000000000007,
+      "error_a": 7.5,
+      "error_b": 9.3,
+      "favors": "A",
+      "direccion": "negativa"
+    }
+  },
+  "n_favors_A": 6,
+  "n_favors_B": 10,
+  "n_ties": 0,
+  "hay_empates": false,
+  "max_positive_difference": {
+    "store_id": "S08",
+    "difference": 2.0999999999999996,
+    "magnitud": 2.0999999999999996,
+    "error_a": 14.9,
+    "error_b": 12.8,
+    "favors": "B",
+    "direccion": "positiva"
+  },
+  "max_negative_difference": {
+    "store_id": "S09",
+    "difference": -1.8000000000000007,
+    "magnitud": 1.8000000000000007,
+    "error_a": 7.5,
+    "error_b": 9.3,
+    "favors": "A",
+    "direccion": "negativa"
+  },
+  "columnas_tabla_pareada": [
+    "store_id",
+    "error_a",
+    "error_b",
+    "difference",
+    "favors"
+  ],
+  "tabla_pareada": [
+    {
+      "store_id": "S01",
+      "error_a": 12.4,
+      "error_b": 10.6,
+      "difference": 1.8000000000000007,
+      "favors": "B"
+    },
+    {
+      "store_id": "S02",
+      "error_a": 9.8,
+      "error_b": 9.1,
+      "difference": 0.7000000000000011,
+      "favors": "B"
+    },
+    {
+      "store_id": "S03",
+      "error_a": 15.1,
+      "error_b": 13.9,
+      "difference": 1.1999999999999993,
+      "favors": "B"
+    },
+    {
+      "store_id": "S04",
+      "error_a": 11.0,
+      "error_b": 12.4,
+      "difference": -1.4000000000000004,
+      "favors": "A"
+    },
+    {
+      "store_id": "S05",
+      "error_a": 8.7,
+      "error_b": 7.2,
+      "difference": 1.4999999999999991,
+      "favors": "B"
+    },
+    {
+      "store_id": "S06",
+      "error_a": 13.6,
+      "error_b": 13.9,
+      "difference": -0.3000000000000007,
+      "favors": "A"
+    },
+    {
+      "store_id": "S07",
+      "error_a": 10.2,
+      "error_b": 9.3,
+      "difference": 0.8999999999999986,
+      "favors": "B"
+    },
+    {
+      "store_id": "S08",
+      "error_a": 14.9,
+      "error_b": 12.8,
+      "difference": 2.0999999999999996,
+      "favors": "B"
+    },
+    {
+      "store_id": "S09",
+      "error_a": 7.5,
+      "error_b": 9.3,
+      "difference": -1.8000000000000007,
+      "favors": "A"
+    },
+    {
+      "store_id": "S10",
+      "error_a": 16.0,
+      "error_b": 15.0,
+      "difference": 1.0,
+      "favors": "B"
+    },
+    {
+      "store_id": "S11",
+      "error_a": 9.3,
+      "error_b": 9.8,
+      "difference": -0.5,
+      "favors": "A"
+    },
+    {
+      "store_id": "S12",
+      "error_a": 12.8,
+      "error_b": 11.1,
+      "difference": 1.700000000000001,
+      "favors": "B"
+    },
+    {
+      "store_id": "S13",
+      "error_a": 11.7,
+      "error_b": 12.9,
+      "difference": -1.200000000000001,
+      "favors": "A"
+    },
+    {
+      "store_id": "S14",
+      "error_a": 8.9,
+      "error_b": 8.3,
+      "difference": 0.5999999999999996,
+      "favors": "B"
+    },
+    {
+      "store_id": "S15",
+      "error_a": 13.2,
+      "error_b": 11.9,
+      "difference": 1.299999999999999,
+      "favors": "B"
+    },
+    {
+      "store_id": "S16",
+      "error_a": 10.6,
+      "error_b": 11.5,
+      "difference": -0.9000000000000004,
+      "favors": "A"
+    }
+  ],
+  "estadisticas": {
+    "n_filas": 16,
+    "media_difference": 0.4187499999999997,
+    "suma_difference": 6.699999999999995,
+    "min_difference": -1.8000000000000007,
+    "max_difference": 2.0999999999999996
+  },
+  "demo_longitud_insuficiente": {
+    "descripcion": "Comprobar solo que len(error_a) == len(error_b) no valida el emparejamiento: al permutar error_b (semilla 0) las longitudes siguen siendo iguales pero cada tienda quedaría comparada con el error_b de OTRA tienda. La garantía la da el cruce por store_id.",
+    "longitudes_iguales_tras_permutar": true,
+    "posiciones_con_error_b_distinto_tras_permutar": 15,
+    "cuentas_con_emparejamiento_por_posicion": {
+      "favorecen_A": 8,
+      "favorecen_B": 7,
+      "empates": 1
+    },
+    "cuentas_correctas_cruzando_por_store_id": {
+      "favorecen_A": 6,
+      "favorecen_B": 10,
+      "empates": 0
+    }
+  },
+  "archivos_generados": [
+    "output/store_differences.csv",
+    "output/store_differences.png",
+    "store_differences.png",
+    "resultados.json"
+  ]
+}

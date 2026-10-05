@@ -1,0 +1,171 @@
+{
+  "fuente_parametros_T2": "entrada/T2/resultados.json",
+  "means_usados": [
+    57.993133333333326,
+    50.54163333333333,
+    29.455333333333336
+  ],
+  "stds_usados": [
+    14.43011728465465,
+    12.69846348968602,
+    6.536801834400537
+  ],
+  "pesos_usados": [
+    0.5,
+    0.3,
+    0.2
+  ],
+  "forma_original": [
+    300,
+    7
+  ],
+  "forma_copia": [
+    300,
+    9
+  ],
+  "columnas_originales": [
+    "server",
+    "timestamp",
+    "gpu_utilization",
+    "cpu_utilization",
+    "memory_gb",
+    "power_w",
+    "temperature_c"
+  ],
+  "columnas_finales": [
+    "server",
+    "timestamp",
+    "gpu_utilization",
+    "cpu_utilization",
+    "memory_gb",
+    "power_w",
+    "temperature_c",
+    "load_score",
+    "requires_review"
+  ],
+  "columnas_agregadas": [
+    "load_score",
+    "requires_review"
+  ],
+  "load_score_dtype": "float64",
+  "requires_review_dtype": "bool",
+  "requires_review_es_bool": true,
+  "fila_23": {
+    "server": "AI-SRV-01",
+    "timestamp": "2026-08-24 09:55:00",
+    "gpu_utilization": 97.0,
+    "cpu_utilization": 93.0,
+    "memory_gb": 55.0,
+    "power_w": 590.0,
+    "temperature_c": 66.97,
+    "load_score": 3.136217861183744,
+    "requires_review": true
+  },
+  "fila_23_esperada": {
+    "server": "AI-SRV-01",
+    "timestamp": "2026-08-24 09:55:00",
+    "load_score": 3.136218,
+    "temperature_c": 66.97,
+    "requires_review": true
+  },
+  "verificacion_fila_23": {
+    "server": "AI-SRV-01",
+    "server_ok": true,
+    "timestamp": "2026-08-24 09:55:00",
+    "timestamp_ok": true,
+    "load_score": 3.136217861183744,
+    "load_score_ok": true,
+    "temperature_c": 66.97,
+    "temperature_c_ok": true,
+    "requires_review": true,
+    "requires_review_ok": true
+  },
+  "load_score_resumen": {
+    "media": 2.6053233644537007e-16,
+    "desviacion_estandar": 0.8024072918435488,
+    "minimo": -1.955649651274497,
+    "maximo": 3.136217861183744
+  },
+  "max_load_score_coincide_T2": true,
+  "conteos": {
+    "n_filas": 300,
+    "n_requires_review_true": 49,
+    "n_requires_review_false": 251,
+    "proporcion_requires_review_true": 0.16333333333333333,
+    "n_load_score_mayor_1_5": 9,
+    "n_temperature_mayor_80": 42,
+    "n_ambas_condiciones": 2,
+    "n_solo_load_score": 7,
+    "n_solo_temperature": 40
+  },
+  "indices_requires_review_true": [
+    23,
+    42,
+    78,
+    121,
+    146,
+    162,
+    171,
+    176,
+    189,
+    192,
+    201,
+    211,
+    212,
+    213,
+    219,
+    223,
+    225,
+    240,
+    241,
+    246,
+    247,
+    249,
+    251,
+    252,
+    253,
+    254,
+    256,
+    259,
+    260,
+    261,
+    263,
+    264,
+    266,
+    268,
+    269,
+    273,
+    274,
+    276,
+    278,
+    281,
+    282,
+    283,
+    287,
+    288,
+    290,
+    292,
+    293,
+    295,
+    298
+  ],
+  "original_intacto": true,
+  "copia_coincide_con_original_en_columnas_originales": true,
+  "forma_copia_correcta": true,
+  "regla_review_verificada_vectorizada": true,
+  "parquet_escrito": "output/server_analysis.parquet",
+  "parquet_n_filas": 300,
+  "parquet_columnas": [
+    "server",
+    "timestamp",
+    "gpu_utilization",
+    "cpu_utilization",
+    "memory_gb",
+    "power_w",
+    "temperature_c",
+    "load_score",
+    "requires_review"
+  ],
+  "parquet_verificado": true,
+  "criterio_exito_cumplido": true
+}

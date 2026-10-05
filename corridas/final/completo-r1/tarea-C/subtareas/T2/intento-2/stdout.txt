@@ -1,0 +1,13 @@
+================================================================
+T2 — LSA (TruncatedSVD k=4, random_state=0) vs TF-IDF
+================================================================
+| Método | Hit@1 | Hit@3 | MRR |
+|---|---|---|---|
+| TF-IDF (línea base T1) | 0.8333333333333334 | 0.8333333333333334 | 0.8611111111111112 |
+| LSA (TruncatedSVD k=4) | 0.6666666666666666 | 0.8333333333333334 | 0.75 |
+----------------------------------------------------------------
+Rank del documento relevante por consulta (LSA): q1:1, q2:1, q3:1, q4:3, q5:6, q6:1
+Rank del documento relevante por consulta (TF-IDF): q1:1, q2:1, q3:1, q4:1, q5:6, q6:1
+Varianza explicada acumulada (4 componentes): 0.3953
+Verificación contra T1 (línea base TF-IDF reproducida): OK
+Archivos escritos: resultados.json, t2_metricas_comparativas.png, t2_heatmap_similitud_lsa.png

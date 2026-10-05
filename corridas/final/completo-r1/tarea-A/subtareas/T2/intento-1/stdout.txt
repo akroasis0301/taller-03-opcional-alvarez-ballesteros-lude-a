@@ -1,0 +1,11 @@
+=== T2: dos clasificadores sobre la división 70/30 de T1 ===
+Origen del split: archivos .npy de T1
+Train: 398 ejemplos | Test: 171 ejemplos | Atributos: 30
+Escalador: StandardScaler ajustado SOLO con el entrenamiento.
+
+Tabla de métricas (conjunto de prueba):
+                            modelo  accuracy  f1_macro
+Naive Bayes gaussiano (GaussianNB)  0.935673  0.930654
+               Regresión logística  0.988304  0.987515
+
+Archivos guardados: resultados.json, t2_tabla_metricas.csv, t2_tabla_metricas.png, t2_tabla_metricas.md

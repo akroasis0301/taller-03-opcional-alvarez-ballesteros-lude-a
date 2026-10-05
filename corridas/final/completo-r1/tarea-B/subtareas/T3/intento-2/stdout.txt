@@ -1,0 +1,19 @@
+================================================================
+T3 — Comprobación empírica (top-p p=0.9, T=1)
+================================================================
+Generador: numpy.random.default_rng(0) | Muestras: 10000
+Distribución teórica: entrada/T2/resultados.json (distribucion_renormalizada de la Parte 2)
+Tokens del núcleo: ['t0', 't1', 't2', 't3']
+----------------------------------------------------------------
+Token      Teórica   Observada    Conteo      |diff|
+t0        0.569376    0.568200      5682    0.001176
+t1        0.209462    0.209300      2093    0.000162
+t2        0.127045    0.129600      1296    0.002555
+t3        0.094117    0.092900       929    0.001217
+t4        0.000000    0.000000         0    0.000000
+t5        0.000000    0.000000         0    0.000000
+----------------------------------------------------------------
+Divergencia KL(empírica || teórica) = 0.000050 bits
+Entropía empírica = 1.636160 bits
+Figura guardada: T3_comparacion_frecuencias.png
+Resultados escritos en resultados.json

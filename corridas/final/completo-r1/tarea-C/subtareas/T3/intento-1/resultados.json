@@ -1,0 +1,1411 @@
+{
+  "subtarea": "T3",
+  "titulo": "Análisis por consulta: consultas falladas por TF-IDF y por LSA (relevante fuera del top-3) y términos compartidos que explican los fallos",
+  "config": {
+    "vectorizador": "TfidfVectorizer (scikit-learn, parámetros por defecto), ajustado solo con los 10 documentos (idéntico a T1/T2)",
+    "lsa": "TruncatedSVD(n_components=4, random_state=0) sobre la matriz TF-IDF de los 10 documentos (idéntico a T2)",
+    "proyeccion_consultas": "svd.transform sobre la matriz TF-IDF de las consultas (misma base latente)",
+    "similitud": "coseno (espacio TF-IDF y espacio latente)",
+    "criterio_de_fallo": "el documento relevante queda fuera del top-3 (posición > 3)",
+    "documentos_mal_posicionados": "documentos que ocupan posiciones por encima del relevante en el ranking de cada método",
+    "tokenizador_del_analisis": "build_analyzer() del TfidfVectorizer (minúsculas, tokens de >= 2 caracteres, sin stopwords ni stemming)",
+    "etiquetado_funcional": "lista mínima fija de palabras gramaticales, solo para etiquetar; no afecta al modelo",
+    "n_documentos": 10,
+    "n_consultas": 6,
+    "n_terminos_vocabulario": 105,
+    "varianza_explicada_lsa": 0.3953421709086953,
+    "nada_ajustado_con_las_consultas": true
+  },
+  "metricas_contexto": {
+    "TF-IDF": {
+      "hit@1": 0.8333333333333334,
+      "hit@3": 0.8333333333333334,
+      "mrr": 0.8611111111111112
+    },
+    "LSA": {
+      "hit@1": 0.6666666666666666,
+      "hit@3": 0.8333333333333334,
+      "mrr": 0.75
+    }
+  },
+  "ranks_del_documento_relevante": {
+    "TF-IDF": {
+      "q1": 1,
+      "q2": 1,
+      "q3": 1,
+      "q4": 1,
+      "q5": 6,
+      "q6": 1
+    },
+    "LSA": {
+      "q1": 1,
+      "q2": 1,
+      "q3": 1,
+      "q4": 3,
+      "q5": 6,
+      "q6": 1
+    }
+  },
+  "fallos_por_metodo": {
+    "TF-IDF": [
+      {
+        "consulta_id": "q5",
+        "consulta": "¿Qué hace que el modelo sea más determinista al elegir la siguiente palabra?",
+        "documento_relevante": "d09",
+        "posicion_del_relevante": 6,
+        "top3_del_metodo": [
+          "d03",
+          "d06",
+          "d04"
+        ],
+        "terminos_compartidos_con_relevante": [
+          "la"
+        ],
+        "n_terminos_compartidos_con_relevante": 1,
+        "terminos_contenido_compartidos_con_relevante": [],
+        "terminos_funcionales_compartidos_con_relevante": [
+          "la"
+        ],
+        "documentos_mal_posicionados_sobre_el_relevante": [
+          {
+            "posicion": 1,
+            "documento": "d03",
+            "similitud": 0.3106758887220715,
+            "terminos_compartidos_con_consulta": [
+              "al",
+              "la",
+              "modelo"
+            ],
+            "terminos_contenido": [
+              "modelo"
+            ],
+            "terminos_funcionales": [
+              "al",
+              "la"
+            ],
+            "detalle_idf": [
+              {
+                "termino": "al",
+                "idf": 2.7047480922384253,
+                "tipo": "funcional"
+              },
+              {
+                "termino": "la",
+                "idf": 1.4519851237430572,
+                "tipo": "funcional"
+              },
+              {
+                "termino": "modelo",
+                "idf": 2.7047480922384253,
+                "tipo": "contenido"
+              }
+            ]
+          },
+          {
+            "posicion": 2,
+            "documento": "d06",
+            "similitud": 0.2008513459062183,
+            "terminos_compartidos_con_consulta": [
+              "el",
+              "qué"
+            ],
+            "terminos_contenido": [],
+            "terminos_funcionales": [
+              "el",
+              "qué"
+            ],
+            "detalle_idf": [
+              {
+                "termino": "el",
+                "idf": 2.01160091167848,
+                "tipo": "funcional"
+              },
+              {
+                "termino": "qué",
+                "idf": 2.7047480922384253,
+                "tipo": "funcional"
+              }
+            ]
+          },
+          {
+            "posicion": 3,
+            "documento": "d04",
+            "similitud": 0.18955976285205217,
+            "terminos_compartidos_con_consulta": [
+              "la",
+              "que"
+            ],
+            "terminos_contenido": [],
+            "terminos_funcionales": [
+              "la",
+              "que"
+            ],
+            "detalle_idf": [
+              {
+                "termino": "la",
+                "idf": 1.4519851237430572,
+                "tipo": "funcional"
+              },
+              {
+                "termino": "que",
+                "idf": 2.7047480922384253,
+                "tipo": "funcional"
+              }
+            ]
+          },
+          {
+            "posicion": 4,
+            "documento": "d01",
+            "similitud": 0.16230333908296432,
+            "terminos_compartidos_con_consulta": [
+              "el",
+              "la"
+            ],
+            "terminos_contenido": [],
+            "terminos_funcionales": [
+              "el",
+              "la"
+            ],
+            "detalle_idf": [
+              {
+                "termino": "el",
+                "idf": 2.01160091167848,
+                "tipo": "funcional"
+              },
+              {
+                "termino": "la",
+                "idf": 1.4519851237430572,
+                "tipo": "funcional"
+              }
+            ]
+          },
+          {
+            "posicion": 5,
+            "documento": "d10",
+            "similitud": 0.08491551831191195,
+            "terminos_compartidos_con_consulta": [
+              "la"
+            ],
+            "terminos_contenido": [],
+            "terminos_funcionales": [
+              "la"
+            ],
+            "detalle_idf": [
+              {
+                "termino": "la",
+                "idf": 1.4519851237430572,
+                "tipo": "funcional"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "LSA": [
+      {
+        "consulta_id": "q5",
+        "consulta": "¿Qué hace que el modelo sea más determinista al elegir la siguiente palabra?",
+        "documento_relevante": "d09",
+        "posicion_del_relevante": 6,
+        "top3_del_metodo": [
+          "d04",
+          "d01",
+          "d03"
+        ],
+        "terminos_compartidos_con_relevante": [
+          "la"
+        ],
+        "n_terminos_compartidos_con_relevante": 1,
+        "terminos_contenido_compartidos_con_relevante": [],
+        "terminos_funcionales_compartidos_con_relevante": [
+          "la"
+        ],
+        "documentos_mal_posicionados_sobre_el_relevante": [
+          {
+            "posicion": 1,
+            "documento": "d04",
+            "similitud": 0.9427359534682048,
+            "terminos_compartidos_con_consulta": [
+              "la",
+              "que"
+            ],
+            "terminos_contenido": [],
+            "terminos_funcionales": [
+              "la",
+              "que"
+            ],
+            "detalle_idf": [
+              {
+                "termino": "la",
+                "idf": 1.4519851237430572,
+                "tipo": "funcional"
+              },
+              {
+                "termino": "que",
+                "idf": 2.7047480922384253,
+                "tipo": "funcional"
+              }
+            ]
+          },
+          {
+            "posicion": 2,
+            "documento": "d01",
+            "similitud": 0.8066012329018133,
+            "terminos_compartidos_con_consulta": [
+              "el",
+              "la"
+            ],
+            "terminos_contenido": [],
+            "terminos_funcionales": [
+              "el",
+              "la"
+            ],
+            "detalle_idf": [
+              {
+                "termino": "el",
+                "idf": 2.01160091167848,
+                "tipo": "funcional"
+              },
+              {
+                "termino": "la",
+                "idf": 1.4519851237430572,
+                "tipo": "funcional"
+              }
+            ]
+          },
+          {
+            "posicion": 3,
+            "documento": "d03",
+            "similitud": 0.6140509840251385,
+            "terminos_compartidos_con_consulta": [
+              "al",
+              "la",
+              "modelo"
+            ],
+            "terminos_contenido": [
+              "modelo"
+            ],
+            "terminos_funcionales": [
+              "al",
+              "la"
+            ],
+            "detalle_idf": [
+              {
+                "termino": "al",
+                "idf": 2.7047480922384253,
+                "tipo": "funcional"
+              },
+              {
+                "termino": "la",
+                "idf": 1.4519851237430572,
+                "tipo": "funcional"
+              },
+              {
+                "termino": "modelo",
+                "idf": 2.7047480922384253,
+                "tipo": "contenido"
+              }
+            ]
+          },
+          {
+            "posicion": 4,
+            "documento": "d06",
+            "similitud": 0.5655795641519002,
+            "terminos_compartidos_con_consulta": [
+              "el",
+              "qué"
+            ],
+            "terminos_contenido": [],
+            "terminos_funcionales": [
+              "el",
+              "qué"
+            ],
+            "detalle_idf": [
+              {
+                "termino": "el",
+                "idf": 2.01160091167848,
+                "tipo": "funcional"
+              },
+              {
+                "termino": "qué",
+                "idf": 2.7047480922384253,
+                "tipo": "funcional"
+              }
+            ]
+          },
+          {
+            "posicion": 5,
+            "documento": "d10",
+            "similitud": 0.5629897534965775,
+            "terminos_compartidos_con_consulta": [
+              "la"
+            ],
+            "terminos_contenido": [],
+            "terminos_funcionales": [
+              "la"
+            ],
+            "detalle_idf": [
+              {
+                "termino": "la",
+                "idf": 1.4519851237430572,
+                "tipo": "funcional"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "resumen_fallos": {
+    "consultas_falladas_tfidf": [
+      "q5"
+    ],
+    "posicion_del_relevante_tfidf": {
+      "q5": 6
+    },
+    "consultas_falladas_lsa": [
+      "q5"
+    ],
+    "posicion_del_relevante_lsa": {
+      "q5": 6
+    },
+    "n_fallos_tfidf": 1,
+    "n_fallos_lsa": 1,
+    "fallo_comun_a_ambos": [
+      "q5"
+    ],
+    "solo_falla_tfidf": [],
+    "solo_falla_lsa": []
+  },
+  "degradaciones_sin_fallo": [
+    {
+      "consulta_id": "q4",
+      "rank_tfidf": 1,
+      "rank_lsa": 3,
+      "nota": "el relevante sigue dentro del top-3 (no es fallo), pero LSA empeora su posición"
+    }
+  ],
+  "top3_por_metodo": {
+    "TF-IDF": {
+      "q1": [
+        "d04",
+        "d01",
+        "d06"
+      ],
+      "q2": [
+        "d03",
+        "d01",
+        "d02"
+      ],
+      "q3": [
+        "d08",
+        "d06",
+        "d04"
+      ],
+      "q4": [
+        "d05",
+        "d01",
+        "d04"
+      ],
+      "q5": [
+        "d03",
+        "d06",
+        "d04"
+      ],
+      "q6": [
+        "d02",
+        "d06",
+        "d03"
+      ]
+    },
+    "LSA": {
+      "q1": [
+        "d04",
+        "d01",
+        "d06"
+      ],
+      "q2": [
+        "d03",
+        "d07",
+        "d09"
+      ],
+      "q3": [
+        "d08",
+        "d02",
+        "d06"
+      ],
+      "q4": [
+        "d01",
+        "d10",
+        "d05"
+      ],
+      "q5": [
+        "d04",
+        "d01",
+        "d03"
+      ],
+      "q6": [
+        "d02",
+        "d08",
+        "d10"
+      ]
+    }
+  },
+  "rankings_completos": {
+    "TF-IDF": {
+      "q1": [
+        "d04",
+        "d01",
+        "d06",
+        "d10",
+        "d02",
+        "d08",
+        "d09",
+        "d05",
+        "d03",
+        "d07"
+      ],
+      "q2": [
+        "d03",
+        "d01",
+        "d02",
+        "d04",
+        "d05",
+        "d06",
+        "d07",
+        "d08",
+        "d09",
+        "d10"
+      ],
+      "q3": [
+        "d08",
+        "d06",
+        "d04",
+        "d01",
+        "d10",
+        "d02",
+        "d03",
+        "d05",
+        "d07",
+        "d09"
+      ],
+      "q4": [
+        "d05",
+        "d01",
+        "d04",
+        "d10",
+        "d02",
+        "d08",
+        "d09",
+        "d03",
+        "d06",
+        "d07"
+      ],
+      "q5": [
+        "d03",
+        "d06",
+        "d04",
+        "d01",
+        "d10",
+        "d09",
+        "d08",
+        "d05",
+        "d02",
+        "d07"
+      ],
+      "q6": [
+        "d02",
+        "d06",
+        "d03",
+        "d08",
+        "d01",
+        "d04",
+        "d05",
+        "d07",
+        "d09",
+        "d10"
+      ]
+    },
+    "LSA": {
+      "q1": [
+        "d04",
+        "d01",
+        "d06",
+        "d10",
+        "d09",
+        "d05",
+        "d03",
+        "d08",
+        "d07",
+        "d02"
+      ],
+      "q2": [
+        "d03",
+        "d07",
+        "d09",
+        "d02",
+        "d04",
+        "d10",
+        "d08",
+        "d01",
+        "d05",
+        "d06"
+      ],
+      "q3": [
+        "d08",
+        "d02",
+        "d06",
+        "d10",
+        "d01",
+        "d04",
+        "d03",
+        "d05",
+        "d07",
+        "d09"
+      ],
+      "q4": [
+        "d01",
+        "d10",
+        "d05",
+        "d09",
+        "d04",
+        "d03",
+        "d08",
+        "d02",
+        "d06",
+        "d07"
+      ],
+      "q5": [
+        "d04",
+        "d01",
+        "d03",
+        "d06",
+        "d10",
+        "d09",
+        "d07",
+        "d08",
+        "d05",
+        "d02"
+      ],
+      "q6": [
+        "d02",
+        "d08",
+        "d10",
+        "d03",
+        "d06",
+        "d01",
+        "d07",
+        "d04",
+        "d09",
+        "d05"
+      ]
+    }
+  },
+  "analisis_terminos_por_consulta": {
+    "q1": {
+      "consulta": "¿Qué función de ranking léxica pondera la frecuencia de términos?",
+      "documento_relevante": "d04",
+      "tokens_consulta": [
+        "qué",
+        "función",
+        "de",
+        "ranking",
+        "léxica",
+        "pondera",
+        "la",
+        "frecuencia",
+        "de",
+        "términos"
+      ],
+      "tokens_documento_relevante": [
+        "bm25",
+        "es",
+        "una",
+        "función",
+        "de",
+        "ranking",
+        "léxica",
+        "que",
+        "pondera",
+        "la",
+        "frecuencia",
+        "de",
+        "términos",
+        "la",
+        "longitud",
+        "del",
+        "documento"
+      ],
+      "tokens_consulta_fuera_del_vocabulario": [],
+      "terminos_compartidos_con_relevante": [
+        "de",
+        "frecuencia",
+        "función",
+        "la",
+        "léxica",
+        "pondera",
+        "ranking",
+        "términos"
+      ],
+      "n_terminos_compartidos_con_relevante": 8,
+      "terminos_contenido_compartidos": [
+        "frecuencia",
+        "función",
+        "léxica",
+        "pondera",
+        "ranking",
+        "términos"
+      ],
+      "n_terminos_contenido_compartidos": 6,
+      "terminos_funcionales_compartidos": [
+        "de",
+        "la"
+      ],
+      "n_terminos_funcionales_compartidos": 2,
+      "terminos_contenido_del_relevante_ausentes_en_la_consulta": [
+        "bm25",
+        "longitud",
+        "documento"
+      ],
+      "rank_tfidf": 1,
+      "rank_lsa": 1,
+      "fallo_tfidf": false,
+      "fallo_lsa": false,
+      "similitud_tfidf_del_relevante": 0.6890762406943802,
+      "similitud_lsa_del_relevante": 0.9542338764603773,
+      "diagnostico": "sin fallo (relevante dentro del top-3 en ambos métodos)",
+      "documentos_mal_posicionados": {
+        "TF-IDF": [],
+        "LSA": []
+      }
+    },
+    "q2": {
+      "consulta": "¿Cómo se añaden fragmentos recuperados al prompt?",
+      "documento_relevante": "d03",
+      "tokens_consulta": [
+        "cómo",
+        "se",
+        "añaden",
+        "fragmentos",
+        "recuperados",
+        "al",
+        "prompt"
+      ],
+      "tokens_documento_relevante": [
+        "la",
+        "recuperación",
+        "aumentada",
+        "con",
+        "generación",
+        "busca",
+        "fragmentos",
+        "relevantes",
+        "los",
+        "añade",
+        "al",
+        "prompt",
+        "del",
+        "modelo"
+      ],
+      "tokens_consulta_fuera_del_vocabulario": [
+        "añaden",
+        "cómo",
+        "recuperados",
+        "se"
+      ],
+      "terminos_compartidos_con_relevante": [
+        "al",
+        "fragmentos",
+        "prompt"
+      ],
+      "n_terminos_compartidos_con_relevante": 3,
+      "terminos_contenido_compartidos": [
+        "fragmentos",
+        "prompt"
+      ],
+      "n_terminos_contenido_compartidos": 2,
+      "terminos_funcionales_compartidos": [
+        "al"
+      ],
+      "n_terminos_funcionales_compartidos": 1,
+      "terminos_contenido_del_relevante_ausentes_en_la_consulta": [
+        "recuperación",
+        "aumentada",
+        "generación",
+        "busca",
+        "relevantes",
+        "añade",
+        "modelo"
+      ],
+      "rank_tfidf": 1,
+      "rank_lsa": 1,
+      "fallo_tfidf": false,
+      "fallo_lsa": false,
+      "similitud_tfidf_del_relevante": 0.517438736756843,
+      "similitud_lsa_del_relevante": 0.975361619861609,
+      "diagnostico": "sin fallo (relevante dentro del top-3 en ambos métodos)",
+      "documentos_mal_posicionados": {
+        "TF-IDF": [],
+        "LSA": []
+      }
+    },
+    "q3": {
+      "consulta": "¿Qué técnica entrena matrices de bajo rango?",
+      "documento_relevante": "d08",
+      "tokens_consulta": [
+        "qué",
+        "técnica",
+        "entrena",
+        "matrices",
+        "de",
+        "bajo",
+        "rango"
+      ],
+      "tokens_documento_relevante": [
+        "el",
+        "ajuste",
+        "fino",
+        "con",
+        "lora",
+        "entrena",
+        "matrices",
+        "de",
+        "bajo",
+        "rango",
+        "congela",
+        "los",
+        "pesos",
+        "originales"
+      ],
+      "tokens_consulta_fuera_del_vocabulario": [
+        "técnica"
+      ],
+      "terminos_compartidos_con_relevante": [
+        "bajo",
+        "de",
+        "entrena",
+        "matrices",
+        "rango"
+      ],
+      "n_terminos_compartidos_con_relevante": 5,
+      "terminos_contenido_compartidos": [
+        "bajo",
+        "entrena",
+        "matrices",
+        "rango"
+      ],
+      "n_terminos_contenido_compartidos": 4,
+      "terminos_funcionales_compartidos": [
+        "de"
+      ],
+      "n_terminos_funcionales_compartidos": 1,
+      "terminos_contenido_del_relevante_ausentes_en_la_consulta": [
+        "ajuste",
+        "fino",
+        "lora",
+        "congela",
+        "pesos",
+        "originales"
+      ],
+      "rank_tfidf": 1,
+      "rank_lsa": 1,
+      "fallo_tfidf": false,
+      "fallo_lsa": false,
+      "similitud_tfidf_del_relevante": 0.560429272422995,
+      "similitud_lsa_del_relevante": 0.9746239272656921,
+      "diagnostico": "sin fallo (relevante dentro del top-3 en ambos métodos)",
+      "documentos_mal_posicionados": {
+        "TF-IDF": [],
+        "LSA": []
+      }
+    },
+    "q4": {
+      "consulta": "¿Cómo se compara la orientación de dos vectores de texto?",
+      "documento_relevante": "d05",
+      "tokens_consulta": [
+        "cómo",
+        "se",
+        "compara",
+        "la",
+        "orientación",
+        "de",
+        "dos",
+        "vectores",
+        "de",
+        "texto"
+      ],
+      "tokens_documento_relevante": [
+        "los",
+        "embeddings",
+        "densos",
+        "representan",
+        "textos",
+        "como",
+        "vectores",
+        "la",
+        "similitud",
+        "coseno",
+        "compara",
+        "su",
+        "orientación"
+      ],
+      "tokens_consulta_fuera_del_vocabulario": [
+        "cómo",
+        "dos",
+        "se",
+        "texto"
+      ],
+      "terminos_compartidos_con_relevante": [
+        "compara",
+        "la",
+        "orientación",
+        "vectores"
+      ],
+      "n_terminos_compartidos_con_relevante": 4,
+      "terminos_contenido_compartidos": [
+        "compara",
+        "orientación",
+        "vectores"
+      ],
+      "n_terminos_contenido_compartidos": 3,
+      "terminos_funcionales_compartidos": [
+        "la"
+      ],
+      "n_terminos_funcionales_compartidos": 1,
+      "terminos_contenido_del_relevante_ausentes_en_la_consulta": [
+        "embeddings",
+        "densos",
+        "representan",
+        "textos",
+        "similitud",
+        "coseno"
+      ],
+      "rank_tfidf": 1,
+      "rank_lsa": 3,
+      "fallo_tfidf": false,
+      "fallo_lsa": false,
+      "similitud_tfidf_del_relevante": 0.45692453531459537,
+      "similitud_lsa_del_relevante": 0.898421713413974,
+      "diagnostico": "sin fallo (relevante dentro del top-3 en ambos métodos)",
+      "documentos_mal_posicionados": {
+        "TF-IDF": [],
+        "LSA": [
+          {
+            "posicion": 1,
+            "documento": "d01",
+            "similitud": 0.9219618094000102,
+            "terminos_compartidos_con_consulta": [
+              "de",
+              "la"
+            ],
+            "terminos_contenido": [],
+            "terminos_funcionales": [
+              "de",
+              "la"
+            ],
+            "detalle_idf": [
+              {
+                "termino": "de",
+                "idf": 1.6061358035703155,
+                "tipo": "funcional"
+              },
+              {
+                "termino": "la",
+                "idf": 1.4519851237430572,
+                "tipo": "funcional"
+              }
+            ]
+          },
+          {
+            "posicion": 2,
+            "documento": "d10",
+            "similitud": 0.9205569108925596,
+            "terminos_compartidos_con_consulta": [
+              "de",
+              "la"
+            ],
+            "terminos_contenido": [],
+            "terminos_funcionales": [
+              "de",
+              "la"
+            ],
+            "detalle_idf": [
+              {
+                "termino": "de",
+                "idf": 1.6061358035703155,
+                "tipo": "funcional"
+              },
+              {
+                "termino": "la",
+                "idf": 1.4519851237430572,
+                "tipo": "funcional"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "q5": {
+      "consulta": "¿Qué hace que el modelo sea más determinista al elegir la siguiente palabra?",
+      "documento_relevante": "d09",
+      "tokens_consulta": [
+        "qué",
+        "hace",
+        "que",
+        "el",
+        "modelo",
+        "sea",
+        "más",
+        "determinista",
+        "al",
+        "elegir",
+        "la",
+        "siguiente",
+        "palabra"
+      ],
+      "tokens_documento_relevante": [
+        "la",
+        "temperatura",
+        "reescala",
+        "los",
+        "logits",
+        "antes",
+        "del",
+        "softmax",
+        "valores",
+        "bajos",
+        "concentran",
+        "la",
+        "probabilidad"
+      ],
+      "tokens_consulta_fuera_del_vocabulario": [
+        "determinista",
+        "elegir",
+        "hace",
+        "más",
+        "palabra",
+        "sea",
+        "siguiente"
+      ],
+      "terminos_compartidos_con_relevante": [
+        "la"
+      ],
+      "n_terminos_compartidos_con_relevante": 1,
+      "terminos_contenido_compartidos": [],
+      "n_terminos_contenido_compartidos": 0,
+      "terminos_funcionales_compartidos": [
+        "la"
+      ],
+      "n_terminos_funcionales_compartidos": 1,
+      "terminos_contenido_del_relevante_ausentes_en_la_consulta": [
+        "temperatura",
+        "reescala",
+        "logits",
+        "softmax",
+        "valores",
+        "bajos",
+        "concentran",
+        "probabilidad"
+      ],
+      "rank_tfidf": 6,
+      "rank_lsa": 6,
+      "fallo_tfidf": true,
+      "fallo_lsa": true,
+      "similitud_tfidf_del_relevante": 0.07900232923856973,
+      "similitud_lsa_del_relevante": 0.499885516803482,
+      "diagnostico": "fallo en AMBOS métodos",
+      "documentos_mal_posicionados": {
+        "TF-IDF": [
+          {
+            "posicion": 1,
+            "documento": "d03",
+            "similitud": 0.3106758887220715,
+            "terminos_compartidos_con_consulta": [
+              "al",
+              "la",
+              "modelo"
+            ],
+            "terminos_contenido": [
+              "modelo"
+            ],
+            "terminos_funcionales": [
+              "al",
+              "la"
+            ],
+            "detalle_idf": [
+              {
+                "termino": "al",
+                "idf": 2.7047480922384253,
+                "tipo": "funcional"
+              },
+              {
+                "termino": "la",
+                "idf": 1.4519851237430572,
+                "tipo": "funcional"
+              },
+              {
+                "termino": "modelo",
+                "idf": 2.7047480922384253,
+                "tipo": "contenido"
+              }
+            ]
+          },
+          {
+            "posicion": 2,
+            "documento": "d06",
+            "similitud": 0.2008513459062183,
+            "terminos_compartidos_con_consulta": [
+              "el",
+              "qué"
+            ],
+            "terminos_contenido": [],
+            "terminos_funcionales": [
+              "el",
+              "qué"
+            ],
+            "detalle_idf": [
+              {
+                "termino": "el",
+                "idf": 2.01160091167848,
+                "tipo": "funcional"
+              },
+              {
+                "termino": "qué",
+                "idf": 2.7047480922384253,
+                "tipo": "funcional"
+              }
+            ]
+          },
+          {
+            "posicion": 3,
+            "documento": "d04",
+            "similitud": 0.18955976285205217,
+            "terminos_compartidos_con_consulta": [
+              "la",
+              "que"
+            ],
+            "terminos_contenido": [],
+            "terminos_funcionales": [
+              "la",
+              "que"
+            ],
+            "detalle_idf": [
+              {
+                "termino": "la",
+                "idf": 1.4519851237430572,
+                "tipo": "funcional"
+              },
+              {
+                "termino": "que",
+                "idf": 2.7047480922384253,
+                "tipo": "funcional"
+              }
+            ]
+          },
+          {
+            "posicion": 4,
+            "documento": "d01",
+            "similitud": 0.16230333908296432,
+            "terminos_compartidos_con_consulta": [
+              "el",
+              "la"
+            ],
+            "terminos_contenido": [],
+            "terminos_funcionales": [
+              "el",
+              "la"
+            ],
+            "detalle_idf": [
+              {
+                "termino": "el",
+                "idf": 2.01160091167848,
+                "tipo": "funcional"
+              },
+              {
+                "termino": "la",
+                "idf": 1.4519851237430572,
+                "tipo": "funcional"
+              }
+            ]
+          },
+          {
+            "posicion": 5,
+            "documento": "d10",
+            "similitud": 0.08491551831191195,
+            "terminos_compartidos_con_consulta": [
+              "la"
+            ],
+            "terminos_contenido": [],
+            "terminos_funcionales": [
+              "la"
+            ],
+            "detalle_idf": [
+              {
+                "termino": "la",
+                "idf": 1.4519851237430572,
+                "tipo": "funcional"
+              }
+            ]
+          }
+        ],
+        "LSA": [
+          {
+            "posicion": 1,
+            "documento": "d04",
+            "similitud": 0.9427359534682048,
+            "terminos_compartidos_con_consulta": [
+              "la",
+              "que"
+            ],
+            "terminos_contenido": [],
+            "terminos_funcionales": [
+              "la",
+              "que"
+            ],
+            "detalle_idf": [
+              {
+                "termino": "la",
+                "idf": 1.4519851237430572,
+                "tipo": "funcional"
+              },
+              {
+                "termino": "que",
+                "idf": 2.7047480922384253,
+                "tipo": "funcional"
+              }
+            ]
+          },
+          {
+            "posicion": 2,
+            "documento": "d01",
+            "similitud": 0.8066012329018133,
+            "terminos_compartidos_con_consulta": [
+              "el",
+              "la"
+            ],
+            "terminos_contenido": [],
+            "terminos_funcionales": [
+              "el",
+              "la"
+            ],
+            "detalle_idf": [
+              {
+                "termino": "el",
+                "idf": 2.01160091167848,
+                "tipo": "funcional"
+              },
+              {
+                "termino": "la",
+                "idf": 1.4519851237430572,
+                "tipo": "funcional"
+              }
+            ]
+          },
+          {
+            "posicion": 3,
+            "documento": "d03",
+            "similitud": 0.6140509840251385,
+            "terminos_compartidos_con_consulta": [
+              "al",
+              "la",
+              "modelo"
+            ],
+            "terminos_contenido": [
+              "modelo"
+            ],
+            "terminos_funcionales": [
+              "al",
+              "la"
+            ],
+            "detalle_idf": [
+              {
+                "termino": "al",
+                "idf": 2.7047480922384253,
+                "tipo": "funcional"
+              },
+              {
+                "termino": "la",
+                "idf": 1.4519851237430572,
+                "tipo": "funcional"
+              },
+              {
+                "termino": "modelo",
+                "idf": 2.7047480922384253,
+                "tipo": "contenido"
+              }
+            ]
+          },
+          {
+            "posicion": 4,
+            "documento": "d06",
+            "similitud": 0.5655795641519002,
+            "terminos_compartidos_con_consulta": [
+              "el",
+              "qué"
+            ],
+            "terminos_contenido": [],
+            "terminos_funcionales": [
+              "el",
+              "qué"
+            ],
+            "detalle_idf": [
+              {
+                "termino": "el",
+                "idf": 2.01160091167848,
+                "tipo": "funcional"
+              },
+              {
+                "termino": "qué",
+                "idf": 2.7047480922384253,
+                "tipo": "funcional"
+              }
+            ]
+          },
+          {
+            "posicion": 5,
+            "documento": "d10",
+            "similitud": 0.5629897534965775,
+            "terminos_compartidos_con_consulta": [
+              "la"
+            ],
+            "terminos_contenido": [],
+            "terminos_funcionales": [
+              "la"
+            ],
+            "detalle_idf": [
+              {
+                "termino": "la",
+                "idf": 1.4519851237430572,
+                "tipo": "funcional"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "q6": {
+      "consulta": "¿Qué arquitectura combina autoatención con capas feed-forward?",
+      "documento_relevante": "d02",
+      "tokens_consulta": [
+        "qué",
+        "arquitectura",
+        "combina",
+        "autoatención",
+        "con",
+        "capas",
+        "feed",
+        "forward"
+      ],
+      "tokens_documento_relevante": [
+        "los",
+        "transformadores",
+        "apilan",
+        "capas",
+        "de",
+        "autoatención",
+        "redes",
+        "feed",
+        "forward",
+        "con",
+        "conexiones",
+        "residuales",
+        "normalización"
+      ],
+      "tokens_consulta_fuera_del_vocabulario": [
+        "arquitectura",
+        "combina"
+      ],
+      "terminos_compartidos_con_relevante": [
+        "autoatención",
+        "capas",
+        "con",
+        "feed",
+        "forward"
+      ],
+      "n_terminos_compartidos_con_relevante": 5,
+      "terminos_contenido_compartidos": [
+        "autoatención",
+        "capas",
+        "feed",
+        "forward"
+      ],
+      "n_terminos_contenido_compartidos": 4,
+      "terminos_funcionales_compartidos": [
+        "con"
+      ],
+      "n_terminos_funcionales_compartidos": 1,
+      "terminos_contenido_del_relevante_ausentes_en_la_consulta": [
+        "transformadores",
+        "apilan",
+        "redes",
+        "conexiones",
+        "residuales",
+        "normalización"
+      ],
+      "rank_tfidf": 1,
+      "rank_lsa": 1,
+      "fallo_tfidf": false,
+      "fallo_lsa": false,
+      "similitud_tfidf_del_relevante": 0.5674153888326815,
+      "similitud_lsa_del_relevante": 0.9530957100505457,
+      "diagnostico": "sin fallo (relevante dentro del top-3 en ambos métodos)",
+      "documentos_mal_posicionados": {
+        "TF-IDF": [],
+        "LSA": []
+      }
+    }
+  },
+  "explicaciones": {
+    "general": "Términos de contenido compartidos consulta–relevante por consulta (q1: 6, q2: 2, q3: 4, q4: 3, q5: 0, q6: 4). Las cinco consultas con solape de contenido (q1, q2, q3, q4, q6) se resuelven bien: TF-IDF las coloca 1.ª y LSA también, salvo q4 que baja al puesto 3 sin salirse del top-3. El único fallo, común a los dos métodos, es q5: consulta y relevante no comparten NINGÚN término de contenido (solo el artículo 'la'), un hueco léxico que ni TF-IDF ni un LSA k=4 ajustado con 10 documentos puede salvar; un recuperador denso entrenado sí podría ('determinista' ↔ 'temperatura baja/softmax').",
+    "q5_TF-IDF": "Fallo por desajuste de vocabulario. q5 y su relevante d09 comparten un único término, 'la' (funcional; idf=1.452): 5 de los 6 términos de contenido de la consulta ('hace', 'modelo', 'determinista', 'elegir', 'siguiente', 'palabra') no aparecen en d09 —y 'hace', 'determinista', 'elegir', 'siguiente', 'palabra' no aparecen en NINGÚN documento del corpus—, mientras que los 8 términos de contenido de d09 ('temperatura', 'reescala', 'logits', 'softmax', 'valores', 'bajos', 'concentran', 'probabilidad') no aparecen en la consulta. La única palabra de contenido de la consulta que existe en el corpus es 'modelo' y pertenece a d03, no a d09: por eso d03 encabeza el ranking. Los documentos mal posicionados solo coinciden con la consulta en funcionales o en una coincidencia incidental: d03 (pos 1; contenido: 'modelo'); d06 (pos 2; solo funcionales: 'el', 'qué'); d04 (pos 3; solo funcionales: 'la', 'que'); d01 (pos 4; solo funcionales: 'el', 'la'); d10 (pos 5; solo funcionales: 'la'). Esas pocas coincidencias tienen IDF alto por ser raras ('modelo', 'qué' y 'que' aparecen en un solo documento, idf=2.705) y bastan para dejar a d09 (similitud=0.079, que solo recibe el aporte de 'la') en el puesto 6.",
+    "q5_LSA": "LSA tampoco corrige el fallo: d09 queda en el puesto 6 (similitud latente 0.500). Con k=4 y solo 39.5% de la varianza explicada, el espacio latente solo codifica coocurrencias presentes en 10 documentos; como los términos de d09 ('temperatura', 'reescala', 'logits', 'softmax', 'valores', 'bajos', 'concentran', 'probabilidad') nunca coocurren con los de la consulta ('hace', 'modelo', 'determinista', 'elegir', 'siguiente', 'palabra'), no existe término puente que los acerque. Documentos que superan a d09 en LSA: d04 (pos 1; solo funcionales: 'la', 'que'); d01 (pos 2; solo funcionales: 'el', 'la'); d03 (pos 3; contenido: 'modelo'); d06 (pos 4; solo funcionales: 'el', 'qué'); d10 (pos 5; solo funcionales: 'la'). La semántica latente no crea sinonimia donde el corpus no aporta señal.",
+    "q4_LSA_degradacion": "Degradación sin fallo técnico: q4 pasa del puesto 1 (TF-IDF) al 3 (LSA), sigue dentro del top-3. d01 y d10, que con la consulta solo comparten funcionales ('de', 'la' y 'de', 'la'; ningún término de contenido), se colocan por encima de d05 en el espacio latente, que agrupa documentos por coocurrencia global (d01: 'similitud', 'consulta'; d10: 'pesos', 'precisión') y no por coincidencia literal. Es la suavización semántica de LSA con k=4 (39.5% de varianza): difumina la señal léxica fuerte ('compara', 'orientación', 'vectores') que en TF-IDF colocaba a d05 primero."
+  },
+  "idf_terminos_clave": {
+    "al": 2.7047480922384253,
+    "autoatención": 2.7047480922384253,
+    "bajo": 2.7047480922384253,
+    "bajos": 2.7047480922384253,
+    "capas": 2.7047480922384253,
+    "compara": 2.7047480922384253,
+    "con": 1.6061358035703155,
+    "concentran": 2.7047480922384253,
+    "de": 1.6061358035703155,
+    "el": 2.01160091167848,
+    "entrena": 2.7047480922384253,
+    "feed": 2.7047480922384253,
+    "forward": 2.7047480922384253,
+    "fragmentos": 2.7047480922384253,
+    "frecuencia": 2.7047480922384253,
+    "función": 2.2992829841302607,
+    "la": 1.4519851237430572,
+    "logits": 2.7047480922384253,
+    "léxica": 2.7047480922384253,
+    "matrices": 2.7047480922384253,
+    "modelo": 2.7047480922384253,
+    "orientación": 2.7047480922384253,
+    "pondera": 2.2992829841302607,
+    "probabilidad": 2.7047480922384253,
+    "prompt": 2.7047480922384253,
+    "que": 2.7047480922384253,
+    "qué": 2.7047480922384253,
+    "rango": 2.7047480922384253,
+    "ranking": 2.7047480922384253,
+    "reescala": 2.7047480922384253,
+    "softmax": 2.7047480922384253,
+    "temperatura": 2.7047480922384253,
+    "términos": 2.7047480922384253,
+    "valores": 2.7047480922384253,
+    "vectores": 2.7047480922384253
+  },
+  "tabla_por_consulta_md": "| consulta | relevante | rank TF-IDF | rank LSA | fallo TF-IDF | fallo LSA | contenido compartido con el relevante |\n|---|---|---|---|---|---|---|\n| q1 | d04 | 1 | 1 | no | no | frecuencia, función, léxica, pondera, ranking, términos |\n| q2 | d03 | 1 | 1 | no | no | fragmentos, prompt |\n| q3 | d08 | 1 | 1 | no | no | bajo, entrena, matrices, rango |\n| q4 | d05 | 1 | 3 | no | no | compara, orientación, vectores |\n| q5 | d09 | 6 | 6 | SÍ | SÍ | — |\n| q6 | d02 | 1 | 1 | no | no | autoatención, capas, feed, forward |",
+  "verificacion_con_subtareas_previas": {
+    "T1_ranks_coinciden": true,
+    "T2_ranks_coinciden": true,
+    "detalle": ""
+  },
+  "figuras": [
+    "t3_posicion_del_relevante.png",
+    "t3_terminos_compartidos.png"
+  ]
+}

@@ -1,0 +1,11 @@
+========================================================================
+T6 — Bootstrap pareado (análisis de sensibilidad aproximado)
+  Semilla: 20260829 | Remuestras: 10000 | Tiendas: 16
+  Media observada de la diferencia (A - B): 0.418750
+  IC 95 % percentil: [-0.193750, 1.006250]
+  SE bootstrap: 0.305594 | sesgo: 0.002218
+  Remuestras > 0: 91.19 % | Remuestras < 0: 8.81 %
+  Reproducibilidad (2 ejecuciones, misma semilla): intervalo idéntico = True
+  Pareo preservado (remuestreo conjunto de filas ≡ diferencias): True (max dif = 3.94e-15)
+  Archivos: output/store_differences.csv, output/store_differences.png, bootstrap_percentil_95.png, resultados.json
+========================================================================

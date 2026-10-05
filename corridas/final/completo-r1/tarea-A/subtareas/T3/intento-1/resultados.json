@@ -1,0 +1,292 @@
+{
+  "subtarea": "T3",
+  "descripcion": "Curva de aprendizaje: los dos modelos de T2 (Naive Bayes gaussiano y regresión logística con atributos estandarizados) reentrenados con submuestras estratificadas del 5 %, 10 %, 25 %, 50 % y 100 % del entrenamiento de T1 (random_state=42) y evaluados siempre sobre el mismo conjunto de prueba fijo de T1.",
+  "division_usada": {
+    "origen": "archivos .npy de T1 (entrada/T1/)",
+    "split": "70/30 estratificada por clase, random_state=42 (creada en T1)",
+    "tam_train": 398,
+    "tam_test": 171
+  },
+  "protocolo": {
+    "fracciones_train": [
+      0.05,
+      0.1,
+      0.25,
+      0.5,
+      1.0
+    ],
+    "submuestreo": "train_test_split(train_size=fraccion, stratify=y_train, random_state=42) sobre el entrenamiento de T1; el 100 % usa el entrenamiento completo",
+    "escalador": "StandardScaler ajustado únicamente con la submuestra de entrenamiento de cada corrida (nunca con el conjunto de prueba); con el 100 % coincide con el escalador de T2",
+    "evaluacion": "accuracy (y F1 macro) sobre el test fijo de T1 en todos los tamaños",
+    "modelos": {
+      "Naive Bayes gaussiano (GaussianNB)": "GaussianNB()",
+      "Regresión logística": "LogisticRegression(max_iter=1000)"
+    },
+    "random_state": 42
+  },
+  "tamanos_train": [
+    19,
+    39,
+    99,
+    199,
+    398
+  ],
+  "curva_aprendizaje": {
+    "Naive Bayes gaussiano (GaussianNB)": {
+      "fracciones": [
+        0.05,
+        0.1,
+        0.25,
+        0.5,
+        1.0
+      ],
+      "n_train": [
+        19,
+        39,
+        99,
+        199,
+        398
+      ],
+      "accuracy": [
+        0.9415204678362573,
+        0.9473684210526315,
+        0.935672514619883,
+        0.9239766081871345,
+        0.935672514619883
+      ],
+      "f1_macro": [
+        0.9353056900726393,
+        0.9420055017522704,
+        0.9301703975943869,
+        0.9180460829493088,
+        0.9306543778801843
+      ]
+    },
+    "Regresión logística": {
+      "fracciones": [
+        0.05,
+        0.1,
+        0.25,
+        0.5,
+        1.0
+      ],
+      "n_train": [
+        19,
+        39,
+        99,
+        199,
+        398
+      ],
+      "accuracy": [
+        0.9298245614035088,
+        0.935672514619883,
+        0.9415204678362573,
+        0.9766081871345029,
+        0.9883040935672515
+      ],
+      "f1_macro": [
+        0.9217271895025938,
+        0.9285470085470086,
+        0.9362891207153503,
+        0.97469665581533,
+        0.9875146028037383
+      ]
+    }
+  },
+  "accuracy_por_tamano": {
+    "5%": {
+      "n_train": 19,
+      "Naive Bayes gaussiano (GaussianNB)": 0.9415204678362573,
+      "Regresión logística": 0.9298245614035088
+    },
+    "10%": {
+      "n_train": 39,
+      "Naive Bayes gaussiano (GaussianNB)": 0.9473684210526315,
+      "Regresión logística": 0.935672514619883
+    },
+    "25%": {
+      "n_train": 99,
+      "Naive Bayes gaussiano (GaussianNB)": 0.935672514619883,
+      "Regresión logística": 0.9415204678362573
+    },
+    "50%": {
+      "n_train": 199,
+      "Naive Bayes gaussiano (GaussianNB)": 0.9239766081871345,
+      "Regresión logística": 0.9766081871345029
+    },
+    "100%": {
+      "n_train": 398,
+      "Naive Bayes gaussiano (GaussianNB)": 0.935672514619883,
+      "Regresión logística": 0.9883040935672515
+    }
+  },
+  "f1_macro_por_tamano": {
+    "5%": {
+      "n_train": 19,
+      "Naive Bayes gaussiano (GaussianNB)": 0.9353056900726393,
+      "Regresión logística": 0.9217271895025938
+    },
+    "10%": {
+      "n_train": 39,
+      "Naive Bayes gaussiano (GaussianNB)": 0.9420055017522704,
+      "Regresión logística": 0.9285470085470086
+    },
+    "25%": {
+      "n_train": 99,
+      "Naive Bayes gaussiano (GaussianNB)": 0.9301703975943869,
+      "Regresión logística": 0.9362891207153503
+    },
+    "50%": {
+      "n_train": 199,
+      "Naive Bayes gaussiano (GaussianNB)": 0.9180460829493088,
+      "Regresión logística": 0.97469665581533
+    },
+    "100%": {
+      "n_train": 398,
+      "Naive Bayes gaussiano (GaussianNB)": 0.9306543778801843,
+      "Regresión logística": 0.9875146028037383
+    }
+  },
+  "tabla": [
+    {
+      "modelo": "Naive Bayes gaussiano (GaussianNB)",
+      "fraccion_train": 0.05,
+      "porcentaje_train": "5%",
+      "n_ejemplos_train": 19,
+      "accuracy_test": 0.9415204678362573,
+      "f1_macro_test": 0.9353056900726393
+    },
+    {
+      "modelo": "Regresión logística",
+      "fraccion_train": 0.05,
+      "porcentaje_train": "5%",
+      "n_ejemplos_train": 19,
+      "accuracy_test": 0.9298245614035088,
+      "f1_macro_test": 0.9217271895025938
+    },
+    {
+      "modelo": "Naive Bayes gaussiano (GaussianNB)",
+      "fraccion_train": 0.1,
+      "porcentaje_train": "10%",
+      "n_ejemplos_train": 39,
+      "accuracy_test": 0.9473684210526315,
+      "f1_macro_test": 0.9420055017522704
+    },
+    {
+      "modelo": "Regresión logística",
+      "fraccion_train": 0.1,
+      "porcentaje_train": "10%",
+      "n_ejemplos_train": 39,
+      "accuracy_test": 0.935672514619883,
+      "f1_macro_test": 0.9285470085470086
+    },
+    {
+      "modelo": "Naive Bayes gaussiano (GaussianNB)",
+      "fraccion_train": 0.25,
+      "porcentaje_train": "25%",
+      "n_ejemplos_train": 99,
+      "accuracy_test": 0.935672514619883,
+      "f1_macro_test": 0.9301703975943869
+    },
+    {
+      "modelo": "Regresión logística",
+      "fraccion_train": 0.25,
+      "porcentaje_train": "25%",
+      "n_ejemplos_train": 99,
+      "accuracy_test": 0.9415204678362573,
+      "f1_macro_test": 0.9362891207153503
+    },
+    {
+      "modelo": "Naive Bayes gaussiano (GaussianNB)",
+      "fraccion_train": 0.5,
+      "porcentaje_train": "50%",
+      "n_ejemplos_train": 199,
+      "accuracy_test": 0.9239766081871345,
+      "f1_macro_test": 0.9180460829493088
+    },
+    {
+      "modelo": "Regresión logística",
+      "fraccion_train": 0.5,
+      "porcentaje_train": "50%",
+      "n_ejemplos_train": 199,
+      "accuracy_test": 0.9766081871345029,
+      "f1_macro_test": 0.97469665581533
+    },
+    {
+      "modelo": "Naive Bayes gaussiano (GaussianNB)",
+      "fraccion_train": 1.0,
+      "porcentaje_train": "100%",
+      "n_ejemplos_train": 398,
+      "accuracy_test": 0.935672514619883,
+      "f1_macro_test": 0.9306543778801843
+    },
+    {
+      "modelo": "Regresión logística",
+      "fraccion_train": 1.0,
+      "porcentaje_train": "100%",
+      "n_ejemplos_train": 398,
+      "accuracy_test": 0.9883040935672515,
+      "f1_macro_test": 0.9875146028037383
+    }
+  ],
+  "detalle_submuestras": [
+    {
+      "fraccion": 0.05,
+      "n_train": 19,
+      "conteos_clase_submuestra": {
+        "0 (malignant)": 7,
+        "1 (benign)": 12
+      }
+    },
+    {
+      "fraccion": 0.1,
+      "n_train": 39,
+      "conteos_clase_submuestra": {
+        "0 (malignant)": 15,
+        "1 (benign)": 24
+      }
+    },
+    {
+      "fraccion": 0.25,
+      "n_train": 99,
+      "conteos_clase_submuestra": {
+        "0 (malignant)": 37,
+        "1 (benign)": 62
+      }
+    },
+    {
+      "fraccion": 0.5,
+      "n_train": 199,
+      "conteos_clase_submuestra": {
+        "0 (malignant)": 74,
+        "1 (benign)": 125
+      }
+    },
+    {
+      "fraccion": 1.0,
+      "n_train": 398,
+      "conteos_clase_submuestra": {
+        "0 (malignant)": 148,
+        "1 (benign)": 250
+      }
+    }
+  ],
+  "verificacion_contra_T2_100pct": {
+    "Naive Bayes gaussiano (GaussianNB)": {
+      "accuracy_100pct_T3": 0.935672514619883,
+      "accuracy_T2": 0.935672514619883,
+      "diferencia_abs": 0.0
+    },
+    "Regresión logística": {
+      "accuracy_100pct_T3": 0.9883040935672515,
+      "accuracy_T2": 0.9883040935672515,
+      "diferencia_abs": 0.0
+    }
+  },
+  "figura": "t3_curva_aprendizaje.png",
+  "archivos_guardados": [
+    "t3_curva_aprendizaje.png",
+    "t3_tabla_curva_aprendizaje.csv",
+    "resultados.json"
+  ]
+}

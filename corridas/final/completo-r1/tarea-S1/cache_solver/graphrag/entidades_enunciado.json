@@ -1,0 +1,1022 @@
+{
+ "Tarea 1": [
+  {
+   "clave": "servermeasurement",
+   "nombre": "ServerMeasurements",
+   "tipo": "metodo",
+   "alias": [],
+   "descripciones": [
+    "Clase que almacena una matriz NumPy bidimensional (values) y una tupla con los nombres de las características (feature_names)."
+   ],
+   "citas": [
+    "Tarea 1"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 0
+  },
+  {
+   "clave": "value",
+   "nombre": "Value",
+   "tipo": "metodo",
+   "alias": [
+    "V",
+    "values",
+    "matriz NumPy"
+   ],
+   "descripciones": [
+    "En la analogía de búsqueda documental, es el contenido de los documentos que se pondera según la relevancia.",
+    "Matriz NumPy bidimensional que almacena los valores de las mediciones."
+   ],
+   "citas": [
+    "s1-transformers-y-foundation-models § 3. Arquitectura Transformer (90 min) … 3.4 Estructura completa de un bloque transformer",
+    "Tarea 1"
+   ],
+   "origen": [
+    "notas",
+    "enunciado"
+   ],
+   "fragmentos": [
+    "s1-transformers-y-foundation-models#5"
+   ],
+   "comunidad": 0
+  },
+  {
+   "clave": "feature name",
+   "nombre": "feature_names",
+   "tipo": "metodo",
+   "alias": [
+    "features"
+   ],
+   "descripciones": [
+    "Tupla con los nombres de las características almacenada en ServerMeasurements."
+   ],
+   "citas": [
+    "Tarea 1"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 0
+  },
+  {
+   "clave": "valueerror",
+   "nombre": "ValueError",
+   "tipo": "metodo",
+   "alias": [],
+   "descripciones": [
+    "Excepción que debe lanzar ServerMeasurements cuando la matriz, las columnas o los datos no cumplen los requisitos."
+   ],
+   "citas": [
+    "Tarea 1"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 0
+  },
+  {
+   "clave": "repr",
+   "nombre": "__repr__",
+   "tipo": "metodo",
+   "alias": [],
+   "descripciones": [
+    "Método de ServerMeasurements que muestra la forma y los nombres."
+   ],
+   "citas": [
+    "Tarea 1"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 0
+  },
+  {
+   "clave": "build measurement",
+   "nombre": "build_measurements",
+   "tipo": "metodo",
+   "alias": [],
+   "descripciones": [
+    "Función que selecciona las tres características, las convierte a una matriz NumPy de tipo flotante y retorna un objeto ServerMeasurements."
+   ],
+   "citas": [
+    "Tarea 1"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 0
+  },
+  {
+   "clave": "df",
+   "nombre": "df",
+   "tipo": "dataset",
+   "alias": [
+    "DataFrame"
+   ],
+   "descripciones": [
+    "DataFrame de entrada que recibe build_measurements."
+   ],
+   "citas": [
+    "Tarea 1"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 0
+  },
+  {
+   "clave": "gpu utilization",
+   "nombre": "gpu_utilization",
+   "tipo": "dataset",
+   "alias": [],
+   "descripciones": [
+    "Característica de utilización de GPU incluida en las mediciones."
+   ],
+   "citas": [
+    "Tarea 1"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 0
+  },
+  {
+   "clave": "cpu utilization",
+   "nombre": "cpu_utilization",
+   "tipo": "dataset",
+   "alias": [],
+   "descripciones": [
+    "Característica de utilización de CPU incluida en las mediciones."
+   ],
+   "citas": [
+    "Tarea 1"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 0
+  },
+  {
+   "clave": "memory gb",
+   "nombre": "memory_gb",
+   "tipo": "dataset",
+   "alias": [],
+   "descripciones": [
+    "Característica de memoria en GB incluida en las mediciones."
+   ],
+   "citas": [
+    "Tarea 1"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 0
+  },
+  {
+   "clave": "matriz bidimensional",
+   "nombre": "matriz bidimensional",
+   "tipo": "restriccion",
+   "alias": [
+    "bidimensional"
+   ],
+   "descripciones": [
+    "La matriz debe ser bidimensional; si no, se lanza ValueError."
+   ],
+   "citas": [
+    "Tarea 1"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 0
+  },
+  {
+   "clave": "coincidencia columna nombr",
+   "nombre": "coincidencia columnas-nombres",
+   "tipo": "restriccion",
+   "alias": [],
+   "descripciones": [
+    "El número de columnas debe coincidir con la cantidad de nombres; si no, se lanza ValueError."
+   ],
+   "citas": [
+    "Tarea 1"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 0
+  },
+  {
+   "clave": "dato numerico",
+   "nombre": "datos numéricos",
+   "tipo": "restriccion",
+   "alias": [],
+   "descripciones": [
+    "Los datos deben ser numéricos; si no, se lanza ValueError."
+   ],
+   "citas": [
+    "Tarea 1"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 0
+  },
+  {
+   "clave": "tipo flotante",
+   "nombre": "tipo flotante",
+   "tipo": "restriccion",
+   "alias": [],
+   "descripciones": [
+    "Las características seleccionadas se convierten a una matriz NumPy de tipo flotante."
+   ],
+   "citas": [
+    "Tarea 1"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 0
+  },
+  {
+   "clave": "forma 300 3",
+   "nombre": "forma (300, 3)",
+   "tipo": "restriccion",
+   "alias": [
+    "shape=(300, 3)",
+    "forma (300,)"
+   ],
+   "descripciones": [
+    "Resultado esperado: ServerMeasurements con forma (300, 3) y las tres características indicadas.",
+    "Dimensión esperada de la matriz zscores.",
+    "Dimensión esperada del vector load_score."
+   ],
+   "citas": [
+    "Tarea 1",
+    "Tarea 2"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 0
+  }
+ ],
+ "Tarea 2": [
+  {
+   "clave": "z score",
+   "nombre": "Z-score",
+   "tipo": "metodo",
+   "alias": [
+    "puntuación Z"
+   ],
+   "descripciones": [
+    "Técnica de normalización con la que se deben normalizar las tres características."
+   ],
+   "citas": [
+    "Tarea 2"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": []
+  },
+  {
+   "clave": "load score",
+   "nombre": "load_score",
+   "tipo": "metrica",
+   "alias": [],
+   "descripciones": [
+    "Indicador de carga calculado como combinación ponderada de los zscores con los pesos (0.50, 0.30, 0.20).",
+    "Columna agregada al nuevo DataFrame que puntúa la carga de cada observación."
+   ],
+   "citas": [
+    "Tarea 2",
+    "Tarea 3"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 0
+  },
+  {
+   "clave": "media",
+   "nombre": "media",
+   "tipo": "metrica",
+   "alias": [],
+   "descripciones": [
+    "Medida estadística que se calcula por columna junto con la desviación estándar."
+   ],
+   "citas": [
+    "Tarea 2"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": []
+  },
+  {
+   "clave": "desviacion estandar",
+   "nombre": "desviación estándar",
+   "tipo": "metrica",
+   "alias": [],
+   "descripciones": [
+    "Medida estadística calculada por columna; si es cero, hay que evitar la división por cero."
+   ],
+   "citas": [
+    "Tarea 2"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": []
+  },
+  {
+   "clave": "operacion vectorizada",
+   "nombre": "operaciones vectorizadas",
+   "tipo": "metodo",
+   "alias": [],
+   "descripciones": [
+    "Forma requerida de realizar los cálculos para obtener load_score."
+   ],
+   "citas": [
+    "Tarea 2"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 0
+  },
+  {
+   "clave": "zscor",
+   "nombre": "zscores",
+   "tipo": "dataset",
+   "alias": [],
+   "descripciones": [
+    "Matriz resultado de la normalización Z-score, de forma (300, 3)."
+   ],
+   "citas": [
+    "Tarea 2"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 0
+  },
+  {
+   "clave": "mean",
+   "nombre": "means",
+   "tipo": "dataset",
+   "alias": [],
+   "descripciones": [
+    "Vector de medias por columna cuyo valor esperado es [57.99313333 50.54163333 29.45533333]."
+   ],
+   "citas": [
+    "Tarea 2"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": []
+  },
+  {
+   "clave": "peso 0 50 0 30 0 20",
+   "nombre": "pesos (0.50, 0.30, 0.20)",
+   "tipo": "restriccion",
+   "alias": [
+    "0.50, 0.30, 0.20"
+   ],
+   "descripciones": [
+    "Pesos fijos con los que se debe calcular load_score."
+   ],
+   "citas": [
+    "Tarea 2"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 0
+  },
+  {
+   "clave": "evitar division por cero",
+   "nombre": "evitar división por cero",
+   "tipo": "restriccion",
+   "alias": [],
+   "descripciones": [
+    "Regla que se debe aplicar cuando una desviación estándar es cero."
+   ],
+   "citas": [
+    "Tarea 2"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": []
+  },
+  {
+   "clave": "media 0 y desviacion 1",
+   "nombre": "media 0 y desviación 1",
+   "tipo": "restriccion",
+   "alias": [
+    "media 0",
+    "desviación 1"
+   ],
+   "descripciones": [
+    "Condición que debe cumplir cada columna de zscores tras la normalización."
+   ],
+   "citas": [
+    "Tarea 2"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 0
+  },
+  {
+   "clave": "tolerancia 1e 10",
+   "nombre": "tolerancia 1e-10",
+   "tipo": "restriccion",
+   "alias": [],
+   "descripciones": [
+    "Tolerancia permitida al comprobar que cada columna de zscores tiene media 0 y desviación 1."
+   ],
+   "citas": [
+    "Tarea 2"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 0
+  },
+  {
+   "clave": "forma 300 3",
+   "nombre": "forma (300, 3)",
+   "tipo": "restriccion",
+   "alias": [
+    "shape=(300, 3)",
+    "forma (300,)"
+   ],
+   "descripciones": [
+    "Resultado esperado: ServerMeasurements con forma (300, 3) y las tres características indicadas.",
+    "Dimensión esperada de la matriz zscores.",
+    "Dimensión esperada del vector load_score."
+   ],
+   "citas": [
+    "Tarea 1",
+    "Tarea 2"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 0
+  },
+  {
+   "clave": "forma 300 3",
+   "nombre": "forma (300, 3)",
+   "tipo": "restriccion",
+   "alias": [
+    "shape=(300, 3)",
+    "forma (300,)"
+   ],
+   "descripciones": [
+    "Resultado esperado: ServerMeasurements con forma (300, 3) y las tres características indicadas.",
+    "Dimensión esperada de la matriz zscores.",
+    "Dimensión esperada del vector load_score."
+   ],
+   "citas": [
+    "Tarea 1",
+    "Tarea 2"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 0
+  }
+ ],
+ "Tarea 3": [
+  {
+   "clave": "dataframe original",
+   "nombre": "DataFrame original",
+   "tipo": "dataset",
+   "alias": [],
+   "descripciones": [
+    "Conjunto de datos original a partir del cual se crea el nuevo DataFrame."
+   ],
+   "citas": [
+    "Tarea 3"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": []
+  },
+  {
+   "clave": "nuevo dataframe",
+   "nombre": "nuevo DataFrame",
+   "tipo": "dataset",
+   "alias": [],
+   "descripciones": [
+    "DataFrame creado a partir del original con las columnas load_score y requires_review."
+   ],
+   "citas": [
+    "Tarea 3"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 0
+  },
+  {
+   "clave": "load score",
+   "nombre": "load_score",
+   "tipo": "metrica",
+   "alias": [],
+   "descripciones": [
+    "Indicador de carga calculado como combinación ponderada de los zscores con los pesos (0.50, 0.30, 0.20).",
+    "Columna agregada al nuevo DataFrame que puntúa la carga de cada observación."
+   ],
+   "citas": [
+    "Tarea 2",
+    "Tarea 3"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 0
+  },
+  {
+   "clave": "temperature c",
+   "nombre": "temperature_c",
+   "tipo": "metrica",
+   "alias": [],
+   "descripciones": [
+    "Columna de temperatura en grados Celsius usada para decidir si una fila requiere revisión."
+   ],
+   "citas": [
+    "Tarea 3"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": []
+  },
+  {
+   "clave": "requir review",
+   "nombre": "requires_review",
+   "tipo": "metrica",
+   "alias": [],
+   "descripciones": [
+    "Columna booleana agregada que indica si una fila requiere revisión."
+   ],
+   "citas": [
+    "Tarea 3"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 0
+  },
+  {
+   "clave": "load score 1 5",
+   "nombre": "load_score > 1.5",
+   "tipo": "restriccion",
+   "alias": [],
+   "descripciones": [
+    "Condición que marca una fila para revisión cuando load_score supera 1.5."
+   ],
+   "citas": [
+    "Tarea 3"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 0
+  },
+  {
+   "clave": "temperature c 80",
+   "nombre": "temperature_c > 80",
+   "tipo": "restriccion",
+   "alias": [],
+   "descripciones": [
+    "Condición que marca una fila para revisión cuando temperature_c supera 80."
+   ],
+   "citas": [
+    "Tarea 3"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 0
+  },
+  {
+   "clave": "tipo bool",
+   "nombre": "tipo bool",
+   "tipo": "restriccion",
+   "alias": [
+    "bool"
+   ],
+   "descripciones": [
+    "La columna requires_review debe ser de tipo booleano."
+   ],
+   "citas": [
+    "Tarea 3"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 0
+  },
+  {
+   "clave": "revision de observacion",
+   "nombre": "revisión de observaciones",
+   "tipo": "concepto",
+   "alias": [],
+   "descripciones": [
+    "Objetivo de la tarea: identificar las observaciones que requieren revisión."
+   ],
+   "citas": [
+    "Tarea 3"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 0
+  }
+ ],
+ "Tarea 4": [
+  {
+   "clave": "resumen por servidor",
+   "nombre": "resumen por servidor",
+   "tipo": "metodo",
+   "alias": [
+    "tabla por servidor"
+   ],
+   "descripciones": [
+    "Construir una tabla agrupando por server con una fila por servidor."
+   ],
+   "citas": [
+    "Tarea 4"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 10
+  },
+  {
+   "clave": "server",
+   "nombre": "server",
+   "tipo": "dataset",
+   "alias": [
+    "servidor"
+   ],
+   "descripciones": [
+    "Columna clave por la cual se agrupan los datos."
+   ],
+   "citas": [
+    "Tarea 4"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 10
+  },
+  {
+   "clave": "ai srv 01",
+   "nombre": "AI-SRV-01",
+   "tipo": "dataset",
+   "alias": [],
+   "descripciones": [
+    "Servidor de la fila de resultado esperado con 50 observaciones."
+   ],
+   "citas": [
+    "Tarea 4"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 10
+  },
+  {
+   "clave": "observation",
+   "nombre": "Observation",
+   "tipo": "metrica",
+   "alias": [
+    "observación",
+    "observations"
+   ],
+   "descripciones": [
+    "Resultado que el agente observa tras ejecutar una acción en ReAct.",
+    "Número de observaciones por servidor."
+   ],
+   "citas": [
+    "s3-agentes § 3. Patrones de Agentes … 3.3 Reflexion",
+    "Tarea 4"
+   ],
+   "origen": [
+    "notas",
+    "enunciado"
+   ],
+   "fragmentos": [
+    "s3-agentes#3"
+   ],
+   "comunidad": 10
+  },
+  {
+   "clave": "mean power w",
+   "nombre": "mean_power_w",
+   "tipo": "metrica",
+   "alias": [],
+   "descripciones": [
+    "Potencia media en vatios por servidor."
+   ],
+   "citas": [
+    "Tarea 4"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 10
+  },
+  {
+   "clave": "max temperature c",
+   "nombre": "max_temperature_c",
+   "tipo": "metrica",
+   "alias": [],
+   "descripciones": [
+    "Temperatura máxima en grados Celsius por servidor."
+   ],
+   "citas": [
+    "Tarea 4"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 10
+  },
+  {
+   "clave": "mean load",
+   "nombre": "mean_load",
+   "tipo": "metrica",
+   "alias": [],
+   "descripciones": [
+    "Carga media por servidor."
+   ],
+   "citas": [
+    "Tarea 4"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 10
+  },
+  {
+   "clave": "review count",
+   "nombre": "review_count",
+   "tipo": "metrica",
+   "alias": [],
+   "descripciones": [
+    "Cuenta de las observaciones del servidor con requires_review=True."
+   ],
+   "citas": [
+    "Tarea 4"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 10
+  },
+  {
+   "clave": "requir review true",
+   "nombre": "requires_review=True",
+   "tipo": "restriccion",
+   "alias": [],
+   "descripciones": [
+    "Condición que deben cumplir las observaciones contadas en review_count."
+   ],
+   "citas": [
+    "Tarea 4"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 10
+  },
+  {
+   "clave": "orden de columna",
+   "nombre": "orden de columnas",
+   "tipo": "restriccion",
+   "alias": [],
+   "descripciones": [
+    "La tabla debe tener exactamente las columnas server, observations, mean_power_w, max_temperature_c, mean_load, review_count en ese orden."
+   ],
+   "citas": [
+    "Tarea 4"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 10
+  }
+ ],
+ "Tarea 5": [
+  {
+   "clave": "dataframe analizado",
+   "nombre": "DataFrame analizado",
+   "tipo": "dataset",
+   "alias": [
+    "DataFrame de la Tarea 3"
+   ],
+   "descripciones": [
+    "DataFrame resultante de la Tarea 3 que debe guardarse en formato parquet."
+   ],
+   "citas": [
+    "Tarea 5"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": []
+  },
+  {
+   "clave": "output server analysi parquet",
+   "nombre": "output/server_analysis.parquet",
+   "tipo": "dataset",
+   "alias": [
+    "server_analysis.parquet"
+   ],
+   "descripciones": [
+    "Archivo parquet de salida donde se guarda el DataFrame analizado y que luego se vuelve a leer para verificar."
+   ],
+   "citas": [
+    "Tarea 5"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": []
+  },
+  {
+   "clave": "pyarrow",
+   "nombre": "PyArrow",
+   "tipo": "metodo",
+   "alias": [],
+   "descripciones": [
+    "Biblioteca empleada para guardar el DataFrame en el archivo parquet."
+   ],
+   "citas": [
+    "Tarea 5"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": []
+  },
+  {
+   "clave": "round trip",
+   "nombre": "round trip",
+   "tipo": "concepto",
+   "alias": [
+    "verificación de round trip"
+   ],
+   "descripciones": [
+    "Verificación que consiste en volver a leer el archivo guardado y comparar los datos antes y después."
+   ],
+   "citas": [
+    "Tarea 5"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": []
+  },
+  {
+   "clave": "igualdad de fila",
+   "nombre": "igualdad de filas",
+   "tipo": "metrica",
+   "alias": [
+    "filas antes == filas después"
+   ],
+   "descripciones": [
+    "Comprobación mínima de que el número de filas es el mismo antes y después del round trip."
+   ],
+   "citas": [
+    "Tarea 5"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": []
+  },
+  {
+   "clave": "igualdad de columna",
+   "nombre": "igualdad de columnas",
+   "tipo": "metrica",
+   "alias": [
+    "columnas antes == columnas después"
+   ],
+   "descripciones": [
+    "Comprobación mínima de que las columnas son las mismas antes y después del round trip."
+   ],
+   "citas": [
+    "Tarea 5"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": []
+  },
+  {
+   "clave": "igualdad de esquema",
+   "nombre": "igualdad de esquema",
+   "tipo": "metrica",
+   "alias": [
+    "esquema antes == esquema después"
+   ],
+   "descripciones": [
+    "Comprobación mínima de que el esquema es el mismo antes y después del round trip."
+   ],
+   "citas": [
+    "Tarea 5"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": []
+  },
+  {
+   "clave": "igualdad de valor",
+   "nombre": "igualdad de valores",
+   "tipo": "metrica",
+   "alias": [
+    "valores iguales"
+   ],
+   "descripciones": [
+    "Comprobación mínima de que los valores son iguales antes y después del round trip."
+   ],
+   "citas": [
+    "Tarea 5"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": []
+  },
+  {
+   "clave": "guardar sin indice",
+   "nombre": "guardar sin índice",
+   "tipo": "restriccion",
+   "alias": [
+    "sin el índice"
+   ],
+   "descripciones": [
+    "Regla de guardar el DataFrame en parquet sin incluir el índice."
+   ],
+   "citas": [
+    "Tarea 5"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": []
+  }
+ ]
+}

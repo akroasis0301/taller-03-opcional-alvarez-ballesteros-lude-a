@@ -1,0 +1,20 @@
+==============================================================================
+T3 · Análisis por consulta — fallos (relevante fuera del top-3) y términos compartidos
+Vocabulario: 105 términos | varianza explicada LSA (k=4): 0.3953
+Métricas recomputadas -> TF-IDF: {'hit@1': 0.8333333333333334, 'hit@3': 0.8333333333333334, 'mrr': 0.8611111111111112}
+                         LSA   : {'hit@1': 0.6666666666666666, 'hit@3': 0.8333333333333334, 'mrr': 0.75}
+Fallos TF-IDF: ['q5'] -> posiciones {'q5': 6}
+Fallos LSA   : ['q5'] -> posiciones {'q5': 6}
+Degradaciones sin fallo (LSA): [('q4', 1, '->', 3)]
+------------------------------------------------------------------------------
+Términos compartidos consulta ↔ documento relevante:
+  q1 (rel d04 | rank TF-IDF 1 | rank LSA 1): total 8 ['de', 'frecuencia', 'función', 'la', 'léxica', 'pondera', 'ranking', 'términos'] | contenido ['frecuencia', 'función', 'léxica', 'pondera', 'ranking', 'términos']
+  q2 (rel d03 | rank TF-IDF 1 | rank LSA 1): total 3 ['al', 'fragmentos', 'prompt'] | contenido ['fragmentos', 'prompt']
+  q3 (rel d08 | rank TF-IDF 1 | rank LSA 1): total 5 ['bajo', 'de', 'entrena', 'matrices', 'rango'] | contenido ['bajo', 'entrena', 'matrices', 'rango']
+  q4 (rel d05 | rank TF-IDF 1 | rank LSA 3): total 4 ['compara', 'la', 'orientación', 'vectores'] | contenido ['compara', 'orientación', 'vectores']
+  q5 (rel d09 | rank TF-IDF 6 | rank LSA 6): total 1 ['la'] | contenido []
+  q6 (rel d02 | rank TF-IDF 1 | rank LSA 1): total 5 ['autoatención', 'capas', 'con', 'feed', 'forward'] | contenido ['autoatención', 'capas', 'feed', 'forward']
+------------------------------------------------------------------------------
+Conclusión: Términos de contenido compartidos consulta–relevante por consulta (q1: 6, q2: 2, q3: 4, q4: 3, q5: 0, q6: 4). Las cinco consultas con solape de contenido (q1, q2, q3, q4, q6) se resuelven bien: TF-IDF las coloca 1.ª y LSA también, salvo q4 que baja al puesto 3 sin salirse del top-3. El único fallo, común a los dos métodos, es q5: consulta y relevante no comparten NINGÚN término de contenido (solo el artículo 'la'), un hueco léxico que ni TF-IDF ni un LSA k=4 ajustado con 10 documentos puede salvar; un recuperador denso entrenado sí podría ('determinista' ↔ 'temperatura baja/softmax').
+Verificación con T1/T2: {'T1_ranks_coinciden': True, 'T2_ranks_coinciden': True, 'detalle': ''}
+Archivos escritos: resultados.json, t3_posicion_del_relevante.png, t3_terminos_compartidos.png

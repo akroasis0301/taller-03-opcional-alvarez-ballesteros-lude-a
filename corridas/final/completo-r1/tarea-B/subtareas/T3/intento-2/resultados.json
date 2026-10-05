@@ -1,0 +1,80 @@
+{
+  "subtarea": "T3 — Comprobación empírica: 10,000 muestras de la distribución renormalizada de la Parte 2 (top-p p=0.9, T=1), comparación observado vs teórico y divergencia KL en bits",
+  "fuente_distribucion": "entrada/T2/resultados.json (distribucion_renormalizada de la Parte 2)",
+  "generador": "numpy.random.default_rng(0)",
+  "semilla": 0,
+  "n_muestras": 10000,
+  "tokens": [
+    "t0",
+    "t1",
+    "t2",
+    "t3",
+    "t4",
+    "t5"
+  ],
+  "tokens_sobrevivientes_top_p": [
+    "t0",
+    "t1",
+    "t2",
+    "t3"
+  ],
+  "probabilidades_teoricas": {
+    "t0": 0.5693760554907313,
+    "t1": 0.2094617451103304,
+    "t2": 0.12704497044632815,
+    "t3": 0.09411722895261025,
+    "t4": 0.0,
+    "t5": 0.0
+  },
+  "conteos_observados": {
+    "t0": 5682,
+    "t1": 2093,
+    "t2": 1296,
+    "t3": 929,
+    "t4": 0,
+    "t5": 0
+  },
+  "frecuencias_observadas": {
+    "t0": 0.5682,
+    "t1": 0.2093,
+    "t2": 0.1296,
+    "t3": 0.0929,
+    "t4": 0.0,
+    "t5": 0.0
+  },
+  "diferencia_absoluta_obs_teo": {
+    "t0": 0.0011760554907312981,
+    "t1": 0.00016174511033037464,
+    "t2": 0.002555029553671845,
+    "t3": 0.0012172289526102553,
+    "t4": 0.0,
+    "t5": 0.0
+  },
+  "divergencia_KL_bits": 5.006898814879229e-05,
+  "kl_bits_empirica_respecto_teorica": 5.006898814879229e-05,
+  "entropia_bits_empirica": 1.6361596553054363,
+  "primeras_10_muestras": [
+    "t1",
+    "t0",
+    "t0",
+    "t0",
+    "t2",
+    "t3",
+    "t1",
+    "t1",
+    "t0",
+    "t3"
+  ],
+  "figura": "T3_comparacion_frecuencias.png",
+  "verificacion": {
+    "total_muestras": 10000,
+    "suma_frecuencias_observadas": 1.0,
+    "suma_probabilidades_teoricas": 1.0,
+    "consistente_con_T2": true,
+    "kl_pequena_cercana_a_cero": true,
+    "tokens_sin_muestras": [
+      "t4",
+      "t5"
+    ]
+  }
+}

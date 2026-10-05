@@ -1,0 +1,17 @@
+Matriz de T1: ServerMeasurements(shape=(300, 3), features=('gpu_utilization', 'cpu_utilization', 'memory_gb'))
+means: [57.99313333 50.54163333 29.45533333]
+stds : [14.43011728 12.69846349  6.53680183]
+zscores.shape: (300, 3) | load_score.shape: (300,)
+Verificación del criterio de éxito:
+  means_coinciden_esperados: True
+  zscores_shape: [300, 3]
+  load_score_shape: [300]
+  zscores_medias_cero_tol_1e-10: True
+  zscores_stds_uno_tol_1e-10: True
+  load_score_igual_a_zscores_por_pesos: True
+  max_abs_media_zscores: 5.684341886080802e-16
+  max_abs_std_menos_uno: 0.0
+  max_abs_dif_load_score: 0.0
+  sin_nans: True
+Criterio de éxito cumplido: True
+Parquet escrito en output/server_analysis.parquet (300 filas, 11 columnas)

@@ -1,0 +1,223 @@
+{
+  "subtarea": "T5_referencia_nula_exacta_cambios_de_signo",
+  "datos": {
+    "csv": "data/model_errors.csv",
+    "n_filas": 16,
+    "columnas": [
+      "store_id",
+      "error_a",
+      "error_b"
+    ]
+  },
+  "diferencias_pareadas": [
+    {
+      "store_id": "S01",
+      "error_a": 12.4,
+      "error_b": 10.6,
+      "difference": 1.8000000000000007,
+      "difference_decimas": 18,
+      "signo": "positivo"
+    },
+    {
+      "store_id": "S02",
+      "error_a": 9.8,
+      "error_b": 9.1,
+      "difference": 0.7000000000000011,
+      "difference_decimas": 7,
+      "signo": "positivo"
+    },
+    {
+      "store_id": "S03",
+      "error_a": 15.1,
+      "error_b": 13.9,
+      "difference": 1.1999999999999993,
+      "difference_decimas": 12,
+      "signo": "positivo"
+    },
+    {
+      "store_id": "S04",
+      "error_a": 11.0,
+      "error_b": 12.4,
+      "difference": -1.4000000000000004,
+      "difference_decimas": -14,
+      "signo": "negativo"
+    },
+    {
+      "store_id": "S05",
+      "error_a": 8.7,
+      "error_b": 7.2,
+      "difference": 1.4999999999999991,
+      "difference_decimas": 15,
+      "signo": "positivo"
+    },
+    {
+      "store_id": "S06",
+      "error_a": 13.6,
+      "error_b": 13.9,
+      "difference": -0.3000000000000007,
+      "difference_decimas": -3,
+      "signo": "negativo"
+    },
+    {
+      "store_id": "S07",
+      "error_a": 10.2,
+      "error_b": 9.3,
+      "difference": 0.8999999999999986,
+      "difference_decimas": 9,
+      "signo": "positivo"
+    },
+    {
+      "store_id": "S08",
+      "error_a": 14.9,
+      "error_b": 12.8,
+      "difference": 2.0999999999999996,
+      "difference_decimas": 21,
+      "signo": "positivo"
+    },
+    {
+      "store_id": "S09",
+      "error_a": 7.5,
+      "error_b": 9.3,
+      "difference": -1.8000000000000007,
+      "difference_decimas": -18,
+      "signo": "negativo"
+    },
+    {
+      "store_id": "S10",
+      "error_a": 16.0,
+      "error_b": 15.0,
+      "difference": 1.0,
+      "difference_decimas": 10,
+      "signo": "positivo"
+    },
+    {
+      "store_id": "S11",
+      "error_a": 9.3,
+      "error_b": 9.8,
+      "difference": -0.5,
+      "difference_decimas": -5,
+      "signo": "negativo"
+    },
+    {
+      "store_id": "S12",
+      "error_a": 12.8,
+      "error_b": 11.1,
+      "difference": 1.700000000000001,
+      "difference_decimas": 17,
+      "signo": "positivo"
+    },
+    {
+      "store_id": "S13",
+      "error_a": 11.7,
+      "error_b": 12.9,
+      "difference": -1.200000000000001,
+      "difference_decimas": -12,
+      "signo": "negativo"
+    },
+    {
+      "store_id": "S14",
+      "error_a": 8.9,
+      "error_b": 8.3,
+      "difference": 0.5999999999999996,
+      "difference_decimas": 6,
+      "signo": "positivo"
+    },
+    {
+      "store_id": "S15",
+      "error_a": 13.2,
+      "error_b": 11.9,
+      "difference": 1.299999999999999,
+      "difference_decimas": 13,
+      "signo": "positivo"
+    },
+    {
+      "store_id": "S16",
+      "error_a": 10.6,
+      "error_b": 11.5,
+      "difference": -0.9000000000000004,
+      "difference_decimas": -9,
+      "signo": "negativo"
+    }
+  ],
+  "n": 16,
+  "media_observada": 0.4187499999999997,
+  "media_observada_exacta": 0.41875,
+  "suma_observada_decimas": 67,
+  "prueba_exacta_cambios_de_signo": {
+    "metodo": "enumeración exhaustiva de las 2^16 configuraciones de signos de las 16 diferencias pareadas; se calcula la media de cada configuración y se compara su magnitud con la de la media observada (bilateral)",
+    "estadistico_de_prueba": "media de las diferencias con signos aleatorizados",
+    "estadistico_observado": 0.41875,
+    "criterio_extremidad": "|media nula| >= |media observada| (comparación exacta en décimas: |suma| >= 67)",
+    "total_configuraciones": 65536,
+    "total_configuraciones_check_2_elevado_16": true,
+    "conteo_extremas": 13372,
+    "conteo_extremas_cola_positiva": 6686,
+    "conteo_extremas_cola_negativa": 6686,
+    "p_value": 0.20404052734375,
+    "p_value_formula": "conteo_extremas / total_configuraciones",
+    "incluye_configuracion_observada_y_espejo": true,
+    "enumeracion": "exacta (no Monte Carlo); se evalúan las 65536/65536 configuraciones",
+    "alpha": 0.05,
+    "decision": "no_rechazar_H0"
+  },
+  "distribucion_nula_cambios_de_signo": {
+    "n_valores": 65536,
+    "media": -6.938893903907228e-18,
+    "sd_ddof0": 0.3209483019116942,
+    "sd_teorica_sqrt_sum_d2_sobre_n2": 0.3209483019116942,
+    "min": -1.18125,
+    "max": 1.18125,
+    "q_025": -0.61875,
+    "q_975": 0.61875,
+    "n_sumas_distintas": 184,
+    "nota": "distribución simétrica alrededor de 0; todas las sumas nulas son impares en décimas porque la suma observada (67) es impar y cada cambio de signo la altera en una cantidad par"
+  },
+  "contraste_con_prueba_t_T4": {
+    "fuente_p_value_t": "entrada/T4/resultados.json",
+    "t_statistic": 1.3363877259014323,
+    "t_df": 15,
+    "t_p_value": 0.20134214922904944,
+    "t_p_value_recalculado_scipy": 0.20134214922904944,
+    "t_p_value_coincide_con_T4": true,
+    "signflip_p_value": 0.20404052734375,
+    "diferencia_absoluta_p": 0.002698378114700556,
+    "razon_p_signflip_entre_p_t": 1.0134019534659424,
+    "decision_t_alpha_0_05": "no_rechazar_H0",
+    "misma_decision_alpha_0_05": true,
+    "comentario": "p-values cercanos y misma decisión al 5% (no rechazar H0), pero provienen de referencias nulas y supuestos distintos (ver explicaciones)"
+  },
+  "p16": {
+    "p_value_cambios_de_signo": 0.20404052734375,
+    "total_configuraciones": 65536,
+    "conteo_extremas": 13372,
+    "que_representa_el_p_value": "El p-value se define de forma condicional a la hipótesis nula: es la probabilidad, CALCULADA SUPONIENDO H0 VERDADERA, de obtener una estadística al menos tan extrema como la observada. En esta referencia nula H0 dice que, para cada tienda, el signo de la diferencia pareada es aleatorio (+d_i o −d_i con probabilidad 1/2, independiente entre tiendas), de modo que las 2^16 = 65536 configuraciones de signos son igualmente probables bajo H0. El p-value = conteo/65536 es la proporción de esos mundos nulos con |media| >= |media observada| = 0.41875. NO es la probabilidad de que H0 sea verdadera ni la probabilidad de que el efecto 'sea puro azar'.",
+    "diseno_y_referencia": "Diseño pareado dentro de tienda: cada tienda recibe ambas modalidades y la unidad de análisis es la diferencia d_i = error_a − error_b. La referencia por cambios de signo fija las magnitudes observadas y aleatoriza únicamente los signos; la estadística es la media de las diferencias y la referencia se construye por enumeración exhaustiva (prueba exacta, sin Monte Carlo). Supone simetría de cada diferencia alrededor de 0 bajo H0 e independencia entre tiendas; no supone normalidad.",
+    "por_que_supuestos_no_identicos_a_t": "Supuestos distintos: la prueba t (T4) modela las 16 diferencias como i.i.d. de una población con media μ y distribución aproximadamente normal, estima la sd muestral (1.253379) y calibra con la distribución t de Student con 15 grados de libertad; su H0 es μ = 0. La referencia por cambios de signo no asume ninguna forma distribucional: su H0 es la simetría de signos de las diferencias observadas (intercambiabilidad de la modalidad dentro de cada tienda) y su calibración es la enumeración discreta exacta de las 65536 medias."
+  },
+  "explicaciones": {
+    "p_value_condicional_a_H0": "El p-value se define de forma condicional a la hipótesis nula: es la probabilidad, CALCULADA SUPONIENDO H0 VERDADERA, de obtener una estadística al menos tan extrema como la observada. En esta referencia nula H0 dice que, para cada tienda, el signo de la diferencia pareada es aleatorio (+d_i o −d_i con probabilidad 1/2, independiente entre tiendas), de modo que las 2^16 = 65536 configuraciones de signos son igualmente probables bajo H0. El p-value = conteo/65536 es la proporción de esos mundos nulos con |media| >= |media observada| = 0.41875. NO es la probabilidad de que H0 sea verdadera ni la probabilidad de que el efecto 'sea puro azar'.",
+    "diseno_y_supuestos_cambios_de_signo": "Diseño pareado dentro de tienda: cada tienda recibe ambas modalidades y la unidad de análisis es la diferencia d_i = error_a − error_b. La referencia por cambios de signo fija las magnitudes observadas y aleatoriza únicamente los signos; la estadística es la media de las diferencias y la referencia se construye por enumeración exhaustiva (prueba exacta, sin Monte Carlo). Supone simetría de cada diferencia alrededor de 0 bajo H0 e independencia entre tiendas; no supone normalidad.",
+    "supuestos_prueba_t": "Supuestos distintos: la prueba t (T4) modela las 16 diferencias como i.i.d. de una población con media μ y distribución aproximadamente normal, estima la sd muestral (1.253379) y calibra con la distribución t de Student con 15 grados de libertad; su H0 es μ = 0. La referencia por cambios de signo no asume ninguna forma distribucional: su H0 es la simetría de signos de las diferencias observadas (intercambiabilidad de la modalidad dentro de cada tienda) y su calibración es la enumeración discreta exacta de las 65536 medias.",
+    "no_intercambiabilidad_t_vs_cambios_de_signo": "Aunque los p-values sean numéricamente cercanos (t: 0.201342; cambios de signo: 0.204041), los procedimientos NO son intercambiables: (1) contrastan hipótesis nulas distintas (media poblacional 0 bajo normalidad frente a simetría de signos); (2) usan supuestos distintos (normalidad e i.i.d. con varianza estimada frente a aleatorización de signos sin supuesto de forma); (3) sus referencias nulas son distintas (distribución t continua con 15 gl frente a enumeración discreta exacta de 65536 medias); y (4) por tanto pueden divergir cuando los supuestos fallan (colas pesadas, n pequeño, dependencia entre tiendas). Aquí coinciden porque con n=16, diferencias sin colas pesadas y un efecto moderado, la aproximación t y la referencia exacta dan calibraciones muy similares; la coincidencia numérica no los vuelve equivalentes."
+  },
+  "verificaciones": {
+    "config_todos_mas_reproduce_suma_observada": true,
+    "config_todos_menos_reproduce_suma_negada": true,
+    "simetria_cola_positiva_igual_cola_negativa": true,
+    "media_nula_practicamente_cero": true,
+    "sd_empirica_coincide_teorica": true,
+    "comparacion_en_enteros_decimas": "la extremidad se decide con sumas enteras en décimas (|suma| >= 67), inmune a errores de punto flotante"
+  },
+  "archivos_escritos": [
+    "resultados.json",
+    "output/store_differences.png",
+    "output/store_differences.csv",
+    "store_differences.png",
+    "signflip_null_distribution.png"
+  ],
+  "figuras": {
+    "output/store_differences.png": "barras de las diferencias pareadas por tienda con la media observada marcada (exigido por el enunciado)",
+    "store_differences.png": "copia de la figura anterior en la carpeta actual",
+    "signflip_null_distribution.png": "histograma de las 65536 medias nulas por cambios de signo, región extrema sombreada y referencia t(15) superpuesta"
+  }
+}

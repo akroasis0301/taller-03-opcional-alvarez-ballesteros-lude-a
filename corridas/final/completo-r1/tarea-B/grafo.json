@@ -1,0 +1,992 @@
+{
+ "directed": true,
+ "multigraph": false,
+ "graph": {},
+ "nodes": [
+  {
+   "titulo": "Tarea B — Temperatura, top-p y entropía de la distribución de salida",
+   "trabajo": false,
+   "id": "Preámbulo",
+   "capa": "enunciado"
+  },
+  {
+   "titulo": "Parte 1 — Softmax con temperatura",
+   "trabajo": true,
+   "id": "Parte 1",
+   "capa": "enunciado"
+  },
+  {
+   "titulo": "Parte 2 — Muestreo de núcleo (top-p)",
+   "trabajo": true,
+   "id": "Parte 2",
+   "capa": "enunciado"
+  },
+  {
+   "titulo": "Parte 3 — Comprobación empírica",
+   "trabajo": true,
+   "id": "Parte 3",
+   "capa": "enunciado"
+  },
+  {
+   "titulo": "Parte 4 — Pregunta conceptual",
+   "trabajo": true,
+   "id": "Parte 4",
+   "capa": "enunciado"
+  },
+  {
+   "titulo": "Formato",
+   "trabajo": false,
+   "id": "Formato",
+   "capa": "enunciado"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "estabilidad numérica",
+   "tipo": "restriccion",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 1"
+   ],
+   "comunidad": 0,
+   "id": "ent:estabilidad numerica"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "decodificación voraz",
+   "tipo": "metodo",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 4"
+   ],
+   "comunidad": null,
+   "id": "ent:decodificacion voraz"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "entropía",
+   "tipo": "metrica",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 1",
+    "Parte 4"
+   ],
+   "comunidad": 2,
+   "id": "ent:entropia"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "10 000 muestras",
+   "tipo": "restriccion",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 3"
+   ],
+   "comunidad": 2,
+   "id": "ent:10 000 muestra"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "probabilidad acumulada",
+   "tipo": "concepto",
+   "origen": [
+    "notas",
+    "enunciado"
+   ],
+   "citas": [
+    "s1-transformers-y-foundation-models § 4.6 Inference: temperatura y sampling",
+    "Parte 2"
+   ],
+   "comunidad": 2,
+   "id": "ent:probabilidad acumulada"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "KL",
+   "tipo": "metrica",
+   "origen": [
+    "notas",
+    "enunciado"
+   ],
+   "citas": [
+    "s1-transformers-y-foundation-models § 2.6 Variational Autoencoder — el puente al espacio latente continuo … 2.7 Del VAE al LLM autorregresivo",
+    "Parte 3"
+   ],
+   "comunidad": 0,
+   "id": "ent:kl"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "distribución empírica",
+   "tipo": "concepto",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 3"
+   ],
+   "comunidad": 0,
+   "id": "ent:distribucion empirica"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "Score de similitud query·key",
+   "tipo": "metrica",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s1-transformers-y-foundation-models § 3. Arquitectura Transformer (90 min) … 3.4 Estructura completa de un bloque transformer"
+   ],
+   "comunidad": 0,
+   "id": "ent:score de similitud query key"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "semilla 0",
+   "tipo": "restriccion",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 3"
+   ],
+   "comunidad": 0,
+   "id": "ent:semilla 0"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "top-p",
+   "tipo": "metodo",
+   "origen": [
+    "notas",
+    "enunciado"
+   ],
+   "citas": [
+    "s1-transformers-y-foundation-models § 4.6 Inference: temperatura y sampling",
+    "Parte 2"
+   ],
+   "comunidad": 2,
+   "id": "ent:top p"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "token",
+   "tipo": "metrica",
+   "origen": [
+    "notas",
+    "enunciado"
+   ],
+   "citas": [
+    "s1-transformers-y-foundation-models § 4.6 Inference: temperatura y sampling",
+    "s4-llmops-y-finetuning § 1. Por qué LLMOps es diferente a MLOps",
+    "s4-llmops-y-finetuning § 3. Observabilidad … 3.4 Prompt Versioning",
+    "Parte 2"
+   ],
+   "comunidad": 2,
+   "id": "ent:token"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "gráfico de barras",
+   "tipo": "metodo",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 3"
+   ],
+   "comunidad": null,
+   "id": "ent:grafico de barra"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "temperatura",
+   "tipo": "metodo",
+   "origen": [
+    "notas",
+    "enunciado"
+   ],
+   "citas": [
+    "s1-transformers-y-foundation-models § 4.6 Inference: temperatura y sampling",
+    "Parte 1",
+    "Parte 4"
+   ],
+   "comunidad": 2,
+   "id": "ent:temperatura"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "distribución de probabilidad",
+   "tipo": "concepto",
+   "origen": [
+    "notas",
+    "enunciado"
+   ],
+   "citas": [
+    "s1-transformers-y-foundation-models § 4.6 Inference: temperatura y sampling",
+    "Parte 1",
+    "Parte 4"
+   ],
+   "comunidad": 2,
+   "id": "ent:distribucion de probabilidad"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "renormalización",
+   "tipo": "metodo",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 2",
+    "Parte 3"
+   ],
+   "comunidad": 2,
+   "id": "ent:renormalizacion"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "T → ∞",
+   "tipo": "concepto",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 4"
+   ],
+   "comunidad": null,
+   "id": "ent:temperatura infinita"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "Langfuse",
+   "tipo": "metodo",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s4-llmops-y-finetuning § 3. Observabilidad … 3.4 Prompt Versioning"
+   ],
+   "comunidad": 2,
+   "id": "ent:langfuse"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "logits",
+   "tipo": "concepto",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s1-transformers-y-foundation-models § 4.6 Inference: temperatura y sampling"
+   ],
+   "comunidad": 2,
+   "id": "ent:logit"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "generación creativa",
+   "tipo": "concepto",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s1-transformers-y-foundation-models § 4.6 Inference: temperatura y sampling"
+   ],
+   "comunidad": 2,
+   "id": "ent:generacion creativa"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "cuatro decimales",
+   "tipo": "restriccion",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 1"
+   ],
+   "comunidad": null,
+   "id": "ent:cuatro decimal"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "ELBO",
+   "tipo": "metrica",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s1-transformers-y-foundation-models § 2.6 Variational Autoencoder — el puente al espacio latente continuo … 2.7 Del VAE al LLM autorregresivo"
+   ],
+   "comunidad": 0,
+   "id": "ent:elbo"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "Parte 1",
+   "tipo": "dataset",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 4"
+   ],
+   "comunidad": 2,
+   "id": "ent:parte 1"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "NumPy",
+   "tipo": "metodo",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 1",
+    "Parte 3"
+   ],
+   "comunidad": 0,
+   "id": "ent:numpy"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "top-k",
+   "tipo": "metodo",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s1-transformers-y-foundation-models § 4.6 Inference: temperatura y sampling"
+   ],
+   "comunidad": 2,
+   "id": "ent:top k"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "span",
+   "tipo": "concepto",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s4-llmops-y-finetuning § 3. Observabilidad … 3.4 Prompt Versioning"
+   ],
+   "comunidad": 2,
+   "id": "ent:span"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "probabilidades teóricas",
+   "tipo": "concepto",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 3"
+   ],
+   "comunidad": 0,
+   "id": "ent:probabilidad teorica"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "costo por token",
+   "tipo": "concepto",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s4-llmops-y-finetuning § 1. Por qué LLMOps es diferente a MLOps"
+   ],
+   "comunidad": 9,
+   "id": "ent:costo por token"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "p = 0.9",
+   "tipo": "restriccion",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 2"
+   ],
+   "comunidad": 2,
+   "id": "ent:p 0 9"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "temperatura = 1",
+   "tipo": "restriccion",
+   "origen": [
+    "notas",
+    "enunciado"
+   ],
+   "citas": [
+    "s1-transformers-y-foundation-models § 4.6 Inference: temperatura y sampling",
+    "Parte 2"
+   ],
+   "comunidad": 2,
+   "id": "ent:temperatura 1"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "frecuencias observadas",
+   "tipo": "metrica",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 3"
+   ],
+   "comunidad": null,
+   "id": "ent:frecuencia observada"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "valores de temperatura",
+   "tipo": "restriccion",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 1"
+   ],
+   "comunidad": 0,
+   "id": "ent:valor de temperatura"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "Softmax",
+   "tipo": "metodo",
+   "origen": [
+    "notas",
+    "enunciado"
+   ],
+   "citas": [
+    "s1-transformers-y-foundation-models § 3. Arquitectura Transformer (90 min) … 3.4 Estructura completa de un bloque transformer",
+    "Parte 1"
+   ],
+   "comunidad": 0,
+   "id": "ent:softmax"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "T → 0",
+   "tipo": "concepto",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 4"
+   ],
+   "comunidad": 2,
+   "id": "ent:t 0"
+  }
+ ],
+ "aristas": [
+  {
+   "tipo": "menciona",
+   "source": "Parte 1",
+   "target": "ent:softmax"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 1",
+   "target": "ent:numpy"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 1",
+   "target": "ent:temperatura"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 1",
+   "target": "ent:distribucion de probabilidad"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 1",
+   "target": "ent:entropia"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 1",
+   "target": "ent:estabilidad numerica"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 1",
+   "target": "ent:valor de temperatura"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 1",
+   "target": "ent:cuatro decimal"
+  },
+  {
+   "tipo": "depende_de",
+   "regla": "referencia",
+   "evidencia": "Con la distribución de T = 1 de la Parte 1, aplica top-p con p = 0.9: ordena los tokens por pro",
+   "source": "Parte 2",
+   "target": "Parte 1"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 2",
+   "target": "ent:top p"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 2",
+   "target": "ent:p 0 9"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 2",
+   "target": "ent:temperatura 1"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 2",
+   "target": "ent:token"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 2",
+   "target": "ent:probabilidad acumulada"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 2",
+   "target": "ent:renormalizacion"
+  },
+  {
+   "tipo": "depende_de",
+   "regla": "referencia",
+   "evidencia": "Toma 10 000 muestras de la distribución renormalizada de la Parte 2 con numpy.random.default_rng(0). Compara las frecuen",
+   "source": "Parte 3",
+   "target": "Parte 2"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 3",
+   "target": "ent:renormalizacion"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 3",
+   "target": "ent:numpy"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 3",
+   "target": "ent:10 000 muestra"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 3",
+   "target": "ent:semilla 0"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 3",
+   "target": "ent:grafico de barra"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 3",
+   "target": "ent:kl"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 3",
+   "target": "ent:frecuencia observada"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 3",
+   "target": "ent:probabilidad teorica"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 3",
+   "target": "ent:distribucion empirica"
+  },
+  {
+   "tipo": "depende_de",
+   "regla": "referencia",
+   "evidencia": "a la decodificación voraz (greedy). Usa las entropías de la Parte 1 como evidencia.",
+   "source": "Parte 4",
+   "target": "Parte 1"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 4",
+   "target": "ent:temperatura"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 4",
+   "target": "ent:distribucion de probabilidad"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 4",
+   "target": "ent:decodificacion voraz"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 4",
+   "target": "ent:entropia"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 4",
+   "target": "ent:t 0"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 4",
+   "target": "ent:temperatura infinita"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 4",
+   "target": "ent:parte 1"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "evidencia",
+   "citas": [
+    "Parte 4"
+   ],
+   "source": "ent:entropia",
+   "target": "ent:t 0"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "se_extraen_de",
+   "citas": [
+    "Parte 3"
+   ],
+   "source": "ent:10 000 muestra",
+   "target": "ent:renormalizacion"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "se_calcula_de",
+   "citas": [
+    "Parte 3"
+   ],
+   "source": "ent:kl",
+   "target": "ent:distribucion empirica"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "respecto_de",
+   "citas": [
+    "Parte 3"
+   ],
+   "source": "ent:kl",
+   "target": "ent:probabilidad teorica"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "se_construye_de",
+   "citas": [
+    "Parte 3"
+   ],
+   "source": "ent:distribucion empirica",
+   "target": "ent:10 000 muestra"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "se_compara_con",
+   "citas": [
+    "Parte 3"
+   ],
+   "source": "ent:distribucion empirica",
+   "target": "ent:probabilidad teorica"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "configura",
+   "citas": [
+    "Parte 3"
+   ],
+   "source": "ent:semilla 0",
+   "target": "ent:numpy"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "conserva_hasta",
+   "citas": [
+    "Parte 2"
+   ],
+   "source": "ent:top p",
+   "target": "ent:probabilidad acumulada"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "ordena",
+   "citas": [
+    "Parte 2"
+   ],
+   "source": "ent:top p",
+   "target": "ent:token"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "usa",
+   "citas": [
+    "Parte 2"
+   ],
+   "source": "ent:top p",
+   "target": "ent:p 0 9"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "se_aplica_sobre",
+   "citas": [
+    "Parte 2"
+   ],
+   "source": "ent:top p",
+   "target": "ent:temperatura 1"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "aplica",
+   "citas": [
+    "Parte 2"
+   ],
+   "source": "ent:top p",
+   "target": "ent:renormalizacion"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "compara",
+   "citas": [
+    "Parte 3"
+   ],
+   "source": "ent:grafico de barra",
+   "target": "ent:frecuencia observada"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "compara",
+   "citas": [
+    "Parte 3"
+   ],
+   "source": "ent:grafico de barra",
+   "target": "ent:probabilidad teorica"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "ajusta",
+   "citas": [
+    "s1-transformers-y-foundation-models § 4.6 Inference: temperatura y sampling"
+   ],
+   "source": "ent:temperatura",
+   "target": "ent:logit"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "modifica",
+   "citas": [
+    "Parte 4"
+   ],
+   "source": "ent:temperatura",
+   "target": "ent:distribucion de probabilidad"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "se_evalua_con",
+   "citas": [
+    "Parte 1"
+   ],
+   "source": "ent:distribucion de probabilidad",
+   "target": "ent:entropia"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "ajusta",
+   "citas": [
+    "Parte 2"
+   ],
+   "source": "ent:renormalizacion",
+   "target": "ent:token"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "registra",
+   "citas": [
+    "s4-llmops-y-finetuning § 3. Observabilidad … 3.4 Prompt Versioning"
+   ],
+   "source": "ent:langfuse",
+   "target": "ent:token"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "determina",
+   "citas": [
+    "s1-transformers-y-foundation-models § 4.6 Inference: temperatura y sampling"
+   ],
+   "source": "ent:logit",
+   "target": "ent:token"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "incluye",
+   "citas": [
+    "s1-transformers-y-foundation-models § 2.6 Variational Autoencoder — el puente al espacio latente continuo … 2.7 Del VAE al LLM autorregresivo"
+   ],
+   "source": "ent:elbo",
+   "target": "ent:kl"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "contiene",
+   "citas": [
+    "Parte 4"
+   ],
+   "source": "ent:parte 1",
+   "target": "ent:entropia"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "muestrea",
+   "citas": [
+    "Parte 3"
+   ],
+   "source": "ent:numpy",
+   "target": "ent:renormalizacion"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "filtra",
+   "citas": [
+    "s1-transformers-y-foundation-models § 4.6 Inference: temperatura y sampling"
+   ],
+   "source": "ent:top k",
+   "target": "ent:token"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "registra",
+   "citas": [
+    "s4-llmops-y-finetuning § 3. Observabilidad … 3.4 Prompt Versioning"
+   ],
+   "source": "ent:span",
+   "target": "ent:token"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "se_calcula_por",
+   "citas": [
+    "s4-llmops-y-finetuning § 1. Por qué LLMOps es diferente a MLOps"
+   ],
+   "source": "ent:costo por token",
+   "target": "ent:token"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "conserva",
+   "citas": [
+    "s1-transformers-y-foundation-models § 4.6 Inference: temperatura y sampling"
+   ],
+   "source": "ent:temperatura 1",
+   "target": "ent:distribucion de probabilidad"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "favorece",
+   "citas": [
+    "s1-transformers-y-foundation-models § 4.6 Inference: temperatura y sampling"
+   ],
+   "source": "ent:temperatura 1",
+   "target": "ent:generacion creativa"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "parametriza",
+   "citas": [
+    "Parte 1"
+   ],
+   "source": "ent:valor de temperatura",
+   "target": "ent:softmax"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "normaliza",
+   "citas": [
+    "s1-transformers-y-foundation-models § 3. Arquitectura Transformer (90 min) … 3.4 Estructura completa de un bloque transformer"
+   ],
+   "source": "ent:softmax",
+   "target": "ent:score de similitud query key"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "implementa_en",
+   "citas": [
+    "Parte 1"
+   ],
+   "source": "ent:softmax",
+   "target": "ent:numpy"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "usa",
+   "citas": [
+    "Parte 1"
+   ],
+   "source": "ent:softmax",
+   "target": "ent:temperatura"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "produce",
+   "citas": [
+    "Parte 1"
+   ],
+   "source": "ent:softmax",
+   "target": "ent:distribucion de probabilidad"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "requiere",
+   "citas": [
+    "Parte 1"
+   ],
+   "source": "ent:softmax",
+   "target": "ent:estabilidad numerica"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "equivale_a",
+   "citas": [
+    "Parte 4"
+   ],
+   "source": "ent:t 0",
+   "target": "ent:decodificacion voraz"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "es_limite_de",
+   "citas": [
+    "Parte 4"
+   ],
+   "source": "ent:t 0",
+   "target": "ent:temperatura"
+  }
+ ]
+}

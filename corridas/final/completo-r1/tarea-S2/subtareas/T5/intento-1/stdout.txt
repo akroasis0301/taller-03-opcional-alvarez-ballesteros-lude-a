@@ -1,0 +1,13 @@
+==========================================================================
+T5 — Referencia nula exacta por cambios de signo (enumeración 2^16)
+==========================================================================
+n diferencias pareadas          : 16
+media observada                 : 0.418750 (suma 67 décimas / 160)
+configuraciones enumeradas      : 65536  (= 2^16: True)
+configuraciones extremas        : 13372  (|media| >= 0.41875)
+p-value exacto (conteo/total)   : 13372/65536 = 0.204041
+p-value t (T4)                  : 0.201342  [fuente: entrada/T4/resultados.json]
+diferencia |p_signflip - p_t|   : 0.002698
+decisión al 5%                  : cambios de signo -> no_rechazar_H0 | t -> no_rechazar_H0
+archivos: resultados.json, output/store_differences.png, output/store_differences.csv,
+          store_differences.png, signflip_null_distribution.png

@@ -1,0 +1,79 @@
+{
+  "means": [
+    57.993133333333326,
+    50.54163333333333,
+    29.455333333333336
+  ],
+  "stds": [
+    14.43011728465465,
+    12.69846348968602,
+    6.536801834400537
+  ],
+  "stds_ddof1": [
+    14.4542277731216,
+    12.719680653169622,
+    6.547723816677608
+  ],
+  "pesos": [
+    0.5,
+    0.3,
+    0.2
+  ],
+  "zscores_shape": [
+    300,
+    3
+  ],
+  "load_score_shape": [
+    300
+  ],
+  "zscores_medias_por_columna": [
+    5.684341886080802e-16,
+    2.3684757858670006e-16,
+    -3.315866100213801e-16
+  ],
+  "zscores_stds_por_columna": [
+    1.0,
+    1.0,
+    1.0
+  ],
+  "load_score_resumen": {
+    "media": 2.6053233644537007e-16,
+    "desviacion_estandar": 0.8024072918435488,
+    "minimo": -1.955649651274497,
+    "maximo": 3.136217861183744
+  },
+  "n_columnas_std_cero": 0,
+  "verificacion_criterio_exito": {
+    "means_coinciden_esperados": true,
+    "zscores_shape": [
+      300,
+      3
+    ],
+    "load_score_shape": [
+      300
+    ],
+    "zscores_medias_cero_tol_1e-10": true,
+    "zscores_stds_uno_tol_1e-10": true,
+    "load_score_igual_a_zscores_por_pesos": true,
+    "max_abs_media_zscores": 5.684341886080802e-16,
+    "max_abs_std_menos_uno": 0.0,
+    "max_abs_dif_load_score": 0.0,
+    "sin_nans": true
+  },
+  "criterio_exito_cumplido": true,
+  "parquet_escrito": "output/server_analysis.parquet",
+  "n_filas_parquet": 300,
+  "columnas_parquet": [
+    "server",
+    "timestamp",
+    "gpu_utilization",
+    "cpu_utilization",
+    "memory_gb",
+    "power_w",
+    "temperature_c",
+    "gpu_utilization_z",
+    "cpu_utilization_z",
+    "memory_gb_z",
+    "load_score"
+  ]
+}

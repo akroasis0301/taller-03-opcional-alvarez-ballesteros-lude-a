@@ -1,0 +1,21 @@
+==============================================================================
+T3 — Curva de aprendizaje (test fijo de T1: 171 ejemplos)
+------------------------------------------------------------------------------
+                            modelo  fraccion_train porcentaje_train  n_ejemplos_train  accuracy_test  f1_macro_test
+Naive Bayes gaussiano (GaussianNB)            0.05               5%                19       0.941520       0.935306
+               Regresión logística            0.05               5%                19       0.929825       0.921727
+Naive Bayes gaussiano (GaussianNB)            0.10              10%                39       0.947368       0.942006
+               Regresión logística            0.10              10%                39       0.935673       0.928547
+Naive Bayes gaussiano (GaussianNB)            0.25              25%                99       0.935673       0.930170
+               Regresión logística            0.25              25%                99       0.941520       0.936289
+Naive Bayes gaussiano (GaussianNB)            0.50              50%               199       0.923977       0.918046
+               Regresión logística            0.50              50%               199       0.976608       0.974697
+Naive Bayes gaussiano (GaussianNB)            1.00             100%               398       0.935673       0.930654
+               Regresión logística            1.00             100%               398       0.988304       0.987515
+------------------------------------------------------------------------------
+100 % vs T2 | Naive Bayes gaussiano (GaussianNB): T3=0.935673 T2=0.935673 (|diff|=0.00e+00)
+100 % vs T2 | Regresión logística: T3=0.988304 T2=0.988304 (|diff|=0.00e+00)
+------------------------------------------------------------------------------
+Figura guardada: t3_curva_aprendizaje.png
+Tabla guardada:  t3_tabla_curva_aprendizaje.csv
+Resultados guardados: resultados.json

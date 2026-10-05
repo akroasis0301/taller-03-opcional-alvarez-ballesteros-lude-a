@@ -1,0 +1,9 @@
+T3 completada.
+Figura guardada en: output/store_differences.png (16 tiendas, una observación por tienda)
+CSV guardado en:    output/store_differences.csv
+Tiendas que favorecen a A (6): ['S04', 'S06', 'S09', 'S11', 'S13', 'S16']
+Tiendas que favorecen a B (10): ['S01', 'S02', 'S03', 'S05', 'S07', 'S08', 'S10', 'S12', 'S14', 'S15']
+Empates: 0
+Mayor diferencia a favor de B: S08 (difference = +2.10)
+Mayor diferencia a favor de A: S09 (difference = -1.80)
+Consistencia con T2: True

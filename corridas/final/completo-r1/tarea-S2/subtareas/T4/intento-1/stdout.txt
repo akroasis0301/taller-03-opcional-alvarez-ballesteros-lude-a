@@ -1,0 +1,9 @@
+T4 — Efecto e incertidumbre (diferencias pareadas error_a − error_b)
+  n                = 16
+  mean             = 0.418750 unidades
+  sample_sd(ddof=1)= 1.253379 unidades (dispersión entre tiendas)
+  standard_error   = sd/√n = 0.313345 unidades (incertidumbre de la media)
+  Prueba t bilateral: t(15) = 1.336388, p = 0.201342 -> no_rechazar_H0 (α=0.05)
+  IC t 95 % = [-0.249128, 1.086628] (t_crit = 2.131450, margen = 0.667878)
+  Consistencia con T2: {'archivo': 'entrada/T2/resultados.json', 'n_pares_t2': None, 'max_abs_dif_differences': 0.0, 'coincide': True}
+  Archivos: resultados.json, output/store_differences.csv, output/store_differences.png

@@ -1,0 +1,9 @@
+ServerMeasurements(shape=(300, 3), features=('gpu_utilization', 'cpu_utilization', 'memory_gb'))
+Resumen T1:
+  Forma de values: (300, 3)
+  Características: ('gpu_utilization', 'cpu_utilization', 'memory_gb')
+  dtype de values: float64
+  matriz_no_bidimensional_lanza_valueerror: OK (lanza ValueError)
+  columnas_vs_nombres_lanza_valueerror: OK (lanza ValueError)
+  datos_no_numericos_lanza_valueerror: OK (lanza ValueError)
+  Resultados guardados en entrada/T1/resultados.json y ./resultados.json

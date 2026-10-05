@@ -1,0 +1,193 @@
+{
+  "subtarea": "T3_figura_diferencias_por_tienda",
+  "figura_png": "output/store_differences.png",
+  "csv_salida": "output/store_differences.csv",
+  "n_tiendas": 16,
+  "store_ids": [
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05",
+    "S06",
+    "S07",
+    "S08",
+    "S09",
+    "S10",
+    "S11",
+    "S12",
+    "S13",
+    "S14",
+    "S15",
+    "S16"
+  ],
+  "n_favors_A": 6,
+  "n_favors_B": 10,
+  "n_empates": 0,
+  "store_ids_favors_A": [
+    "S04",
+    "S06",
+    "S09",
+    "S11",
+    "S13",
+    "S16"
+  ],
+  "store_ids_favors_B": [
+    "S01",
+    "S02",
+    "S03",
+    "S05",
+    "S07",
+    "S08",
+    "S10",
+    "S12",
+    "S14",
+    "S15"
+  ],
+  "store_ids_empate": [],
+  "diferencia_de_mayor_magnitud_favorece_B": {
+    "store_id": "S08",
+    "difference": 2.0999999999999996,
+    "error_a": 14.9,
+    "error_b": 12.8,
+    "favors": "B",
+    "direccion": "positiva"
+  },
+  "diferencia_de_mayor_magnitud_favorece_A": {
+    "store_id": "S09",
+    "difference": -1.8000000000000007,
+    "error_a": 7.5,
+    "error_b": 9.3,
+    "favors": "A",
+    "direccion": "negativa"
+  },
+  "difference_min": -1.8000000000000007,
+  "difference_max": 2.0999999999999996,
+  "difference_media": 0.4187499999999997,
+  "tabla": [
+    {
+      "store_id": "S01",
+      "error_a": 12.4,
+      "error_b": 10.6,
+      "difference": 1.8000000000000007,
+      "favors": "B"
+    },
+    {
+      "store_id": "S02",
+      "error_a": 9.8,
+      "error_b": 9.1,
+      "difference": 0.7000000000000011,
+      "favors": "B"
+    },
+    {
+      "store_id": "S03",
+      "error_a": 15.1,
+      "error_b": 13.9,
+      "difference": 1.1999999999999993,
+      "favors": "B"
+    },
+    {
+      "store_id": "S04",
+      "error_a": 11.0,
+      "error_b": 12.4,
+      "difference": -1.4000000000000004,
+      "favors": "A"
+    },
+    {
+      "store_id": "S05",
+      "error_a": 8.7,
+      "error_b": 7.2,
+      "difference": 1.4999999999999991,
+      "favors": "B"
+    },
+    {
+      "store_id": "S06",
+      "error_a": 13.6,
+      "error_b": 13.9,
+      "difference": -0.3000000000000007,
+      "favors": "A"
+    },
+    {
+      "store_id": "S07",
+      "error_a": 10.2,
+      "error_b": 9.3,
+      "difference": 0.8999999999999986,
+      "favors": "B"
+    },
+    {
+      "store_id": "S08",
+      "error_a": 14.9,
+      "error_b": 12.8,
+      "difference": 2.0999999999999996,
+      "favors": "B"
+    },
+    {
+      "store_id": "S09",
+      "error_a": 7.5,
+      "error_b": 9.3,
+      "difference": -1.8000000000000007,
+      "favors": "A"
+    },
+    {
+      "store_id": "S10",
+      "error_a": 16.0,
+      "error_b": 15.0,
+      "difference": 1.0,
+      "favors": "B"
+    },
+    {
+      "store_id": "S11",
+      "error_a": 9.3,
+      "error_b": 9.8,
+      "difference": -0.5,
+      "favors": "A"
+    },
+    {
+      "store_id": "S12",
+      "error_a": 12.8,
+      "error_b": 11.1,
+      "difference": 1.700000000000001,
+      "favors": "B"
+    },
+    {
+      "store_id": "S13",
+      "error_a": 11.7,
+      "error_b": 12.9,
+      "difference": -1.200000000000001,
+      "favors": "A"
+    },
+    {
+      "store_id": "S14",
+      "error_a": 8.9,
+      "error_b": 8.3,
+      "difference": 0.5999999999999996,
+      "favors": "B"
+    },
+    {
+      "store_id": "S15",
+      "error_a": 13.2,
+      "error_b": 11.9,
+      "difference": 1.299999999999999,
+      "favors": "B"
+    },
+    {
+      "store_id": "S16",
+      "error_a": 10.6,
+      "error_b": 11.5,
+      "difference": -0.9000000000000004,
+      "favors": "A"
+    }
+  ],
+  "consistencia_con_T2": {
+    "archivo_consultado": "entrada/T2/resultados.json",
+    "disponible": true,
+    "mismas_tiendas": true,
+    "difference_coincide": true,
+    "favors_coincide": true,
+    "coincide": true
+  },
+  "notas": {
+    "signo": "difference = error_a − error_b; positivo favorece a B, negativo favorece a A",
+    "figura": "barras horizontales, una por tienda; dirección y color codifican el signo, la longitud la magnitud; línea negra vertical en 0 como referencia"
+  }
+}

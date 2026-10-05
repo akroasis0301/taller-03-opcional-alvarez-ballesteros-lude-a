@@ -1,0 +1,141 @@
+{
+  "subtarea": "T5 - Guardar y verificar el resultado (round trip Parquet con PyArrow)",
+  "parquet_escrito": "output/server_analysis.parquet",
+  "parquet_existe": true,
+  "tamano_bytes": 17629,
+  "metodo_guardado": "pyarrow: pa.Table.from_pandas(df, preserve_index=False) + pq.write_table",
+  "indice_no_guardado": true,
+  "fuente_dataframe": {
+    "modo": "reconstruido_desde_data/server_measurements.csv_con_parametros_de_T3",
+    "medias_usadas": [
+      57.993133333333326,
+      50.54163333333333,
+      29.455333333333336
+    ],
+    "desviaciones_usadas": [
+      14.43011728465465,
+      12.69846348968602,
+      6.536801834400537
+    ],
+    "pesos_usados": [
+      0.5,
+      0.3,
+      0.2
+    ]
+  },
+  "parametros_T3_cargados": true,
+  "forma_antes": [
+    300,
+    9
+  ],
+  "forma_despues": [
+    300,
+    9
+  ],
+  "n_filas_antes": 300,
+  "n_filas_despues": 300,
+  "n_columnas_antes": 9,
+  "n_columnas_despues": 9,
+  "columnas_antes": [
+    "server",
+    "timestamp",
+    "gpu_utilization",
+    "cpu_utilization",
+    "memory_gb",
+    "power_w",
+    "temperature_c",
+    "load_score",
+    "requires_review"
+  ],
+  "columnas_despues": [
+    "server",
+    "timestamp",
+    "gpu_utilization",
+    "cpu_utilization",
+    "memory_gb",
+    "power_w",
+    "temperature_c",
+    "load_score",
+    "requires_review"
+  ],
+  "dtypes_antes": {
+    "server": "str",
+    "timestamp": "datetime64[us]",
+    "gpu_utilization": "float64",
+    "cpu_utilization": "float64",
+    "memory_gb": "float64",
+    "power_w": "float64",
+    "temperature_c": "float64",
+    "load_score": "float64",
+    "requires_review": "bool"
+  },
+  "dtypes_despues": {
+    "server": "str",
+    "timestamp": "datetime64[us]",
+    "gpu_utilization": "float64",
+    "cpu_utilization": "float64",
+    "memory_gb": "float64",
+    "power_w": "float64",
+    "temperature_c": "float64",
+    "load_score": "float64",
+    "requires_review": "bool"
+  },
+  "esquema_antes": "server: large_string\ntimestamp: timestamp[us]\ngpu_utilization: double\ncpu_utilization: double\nmemory_gb: double\npower_w: double\ntemperature_c: double\nload_score: double\nrequires_review: bool\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 1197",
+  "esquema_despues": "server: large_string\ntimestamp: timestamp[us]\ngpu_utilization: double\ncpu_utilization: double\nmemory_gb: double\npower_w: double\ntemperature_c: double\nload_score: double\nrequires_review: bool\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 1197",
+  "esquema_arrow_igual": true,
+  "dtypes_iguales": true,
+  "campos_schema_despues": [
+    "server",
+    "timestamp",
+    "gpu_utilization",
+    "cpu_utilization",
+    "memory_gb",
+    "power_w",
+    "temperature_c",
+    "load_score",
+    "requires_review"
+  ],
+  "max_diferencia_absoluta_floats": 0.0,
+  "valores_iguales_pandas_equals": true,
+  "tablas_pyarrow_iguales": true,
+  "columna_con_valores_divergentes": null,
+  "lectura_pd_read_parquet_coincide": true,
+  "fila_23_antes": {
+    "server": "AI-SRV-01",
+    "timestamp": "2026-08-24 09:55:00",
+    "gpu_utilization": 97.0,
+    "cpu_utilization": 93.0,
+    "memory_gb": 55.0,
+    "power_w": 590.0,
+    "temperature_c": 66.97,
+    "load_score": 3.136217861183744,
+    "requires_review": true
+  },
+  "fila_23_despues": {
+    "server": "AI-SRV-01",
+    "timestamp": "2026-08-24 09:55:00",
+    "gpu_utilization": 97.0,
+    "cpu_utilization": 93.0,
+    "memory_gb": 55.0,
+    "power_w": 590.0,
+    "temperature_c": 66.97,
+    "load_score": 3.136217861183744,
+    "requires_review": true
+  },
+  "coincide_con_T3_fila_23": true,
+  "n_requires_review_true": 49,
+  "coincide_con_T3_conteo_requires_review": true,
+  "coincide_forma_con_T3": true,
+  "verificaciones_round_trip": {
+    "Filas": true,
+    "Columnas": true,
+    "Esquema": true,
+    "Valores": true
+  },
+  "filas_iguales": true,
+  "columnas_iguales": true,
+  "esquema_igual": true,
+  "valores_iguales": true,
+  "round_trip_ok": true,
+  "criterio_exito_cumplido": true
+}

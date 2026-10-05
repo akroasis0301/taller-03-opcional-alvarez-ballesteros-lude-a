@@ -1,0 +1,133 @@
+{
+  "subtarea": "T2 — top-p (nucleus sampling) con p = 0.9 sobre la distribución de T = 1",
+  "fuente_distribucion": "entrada/T1/resultados.json",
+  "p": 0.9,
+  "temperatura": 1.0,
+  "tokens": [
+    "t0",
+    "t1",
+    "t2",
+    "t3",
+    "t4",
+    "t5"
+  ],
+  "logits": [
+    2.0,
+    1.0,
+    0.5,
+    0.2,
+    -1.0,
+    -3.0
+  ],
+  "distribucion_T1": {
+    "t0": 0.5516226378718239,
+    "t1": 0.2029306277578035,
+    "t2": 0.12308364752983937,
+    "t3": 0.09118260875807133,
+    "t4": 0.02746367398498595,
+    "t5": 0.003716804097476065
+  },
+  "tokens_ordenados_desc": [
+    "t0",
+    "t1",
+    "t2",
+    "t3",
+    "t4",
+    "t5"
+  ],
+  "probs_ordenadas_desc": [
+    0.5516226378718239,
+    0.2029306277578035,
+    0.12308364752983937,
+    0.09118260875807133,
+    0.02746367398498595,
+    0.003716804097476065
+  ],
+  "prob_acumulada_ordenada": {
+    "t0": 0.5516226378718239,
+    "t1": 0.7545532656296273,
+    "t2": 0.8776369131594667,
+    "t3": 0.968819521917538,
+    "t4": 0.9962831959025239,
+    "t5": 1.0
+  },
+  "num_tokens_nucleo": 4,
+  "tokens_sobrevivientes": [
+    "t0",
+    "t1",
+    "t2",
+    "t3"
+  ],
+  "tokens_eliminados": [
+    "t4",
+    "t5"
+  ],
+  "masa_prob_nucleo": 0.968819521917538,
+  "distribucion_renormalizada": {
+    "t0": 0.5693760554907313,
+    "t1": 0.2094617451103304,
+    "t2": 0.12704497044632815,
+    "t3": 0.09411722895261025,
+    "t4": 0.0,
+    "t5": 0.0
+  },
+  "distribucion_renormalizada_solo_nucleo": {
+    "t0": 0.5693760554907313,
+    "t1": 0.2094617451103304,
+    "t2": 0.12704497044632815,
+    "t3": 0.09411722895261025
+  },
+  "entropia_bits_renormalizada": 1.6340748427749392,
+  "verificacion": {
+    "softmax_T1_consistente_con_T1": true,
+    "suma_renormalizada_total": 1.0,
+    "suma_renormalizada_solo_nucleo": 1.0,
+    "prob_fuera_nucleo_cero": true,
+    "acumulada_nucleo_alcanza_p": true,
+    "acumulada_sin_ultimo_token_no_alcanza_p": true
+  },
+  "tabla_4_decimales": [
+    {
+      "token": "t0",
+      "prob_T1": "0.5516",
+      "prob_acumulada": "0.5516",
+      "en_nucleo": true,
+      "prob_renormalizada": "0.5694"
+    },
+    {
+      "token": "t1",
+      "prob_T1": "0.2029",
+      "prob_acumulada": "0.7546",
+      "en_nucleo": true,
+      "prob_renormalizada": "0.2095"
+    },
+    {
+      "token": "t2",
+      "prob_T1": "0.1231",
+      "prob_acumulada": "0.8776",
+      "en_nucleo": true,
+      "prob_renormalizada": "0.1270"
+    },
+    {
+      "token": "t3",
+      "prob_T1": "0.0912",
+      "prob_acumulada": "0.9688",
+      "en_nucleo": true,
+      "prob_renormalizada": "0.0941"
+    },
+    {
+      "token": "t4",
+      "prob_T1": "0.0275",
+      "prob_acumulada": "0.9963",
+      "en_nucleo": false,
+      "prob_renormalizada": "0.0000"
+    },
+    {
+      "token": "t5",
+      "prob_T1": "0.0037",
+      "prob_acumulada": "1.0000",
+      "en_nucleo": false,
+      "prob_renormalizada": "0.0000"
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+ "subtareas": [
+  {
+   "id": "T1",
+   "tipo": "calculo",
+   "secciones": [
+    "Parte 1"
+   ],
+   "depende_de": [],
+   "objetivo": "Cargar load_breast_cancer de scikit-learn, reportar número de ejemplos, número de atributos y casos por clase, y crear la única división train/test 70/30 estratificada por clase con random_state=42, dejando el conjunto de prueba reservado para toda la tarea.",
+   "criterio": "Existen cifras reportadas de: total de ejemplos, número de atributos y conteo de cada clase; existe la división 70/30 estratificada con random_state=42 guardada/reutilizable (X_train, X_test, y_train, y_test) con tamaños verificados (70%/30% y proporciones de clase preservadas).",
+   "status": "pendiente",
+   "intentos": 0
+  },
+  {
+   "id": "T2",
+   "tipo": "calculo",
+   "secciones": [
+    "Parte 2"
+   ],
+   "depende_de": [
+    "T1"
+   ],
+   "objetivo": "Entrenar sobre la división de T1 un Naive Bayes gaussiano y una regresión logística con atributos estandarizados (StandardScaler ajustado solo con el entrenamiento), y medir accuracy y F1 macro de cada modelo sobre el conjunto de prueba, presentadas en una tabla.",
+   "criterio": "Existe una tabla con accuracy y F1 macro en prueba para los dos modelos (GNB y regresión logística), calculados con la división de T1 y el escalador ajustado únicamente con datos de entrenamiento.",
+   "status": "pendiente",
+   "intentos": 0
+  },
+  {
+   "id": "T3",
+   "tipo": "calculo",
+   "secciones": [
+    "Parte 3"
+   ],
+   "depende_de": [
+    "T1",
+    "T2"
+   ],
+   "objetivo": "Sobre la misma división de la Parte 1, entrenar ambos modelos de T2 con submuestras estratificadas del 5%, 10%, 25%, 50% y 100% del entrenamiento (random_state=42), evaluar cada tamaño siempre sobre el mismo conjunto de prueba, y graficar exactitud contra número de ejemplos de entrenamiento con una curva por modelo, guardando la figura como PNG.",
+   "criterio": "Existe una figura PNG con la curva de exactitud vs. número de ejemplos de entrenamiento (dos curvas, una por modelo) para los cinco tamaños 5/10/25/50/100%, más los valores numéricos de exactitud por tamaño y modelo, todos evaluados sobre el test fijo de T1.",
+   "status": "pendiente",
+   "intentos": 0
+  },
+  {
+   "id": "T4",
+   "tipo": "conceptual",
+   "secciones": [
+    "Parte 4"
+   ],
+   "depende_de": [
+    "T2",
+    "T3"
+   ],
+   "objetivo": "Redactar la discusión explicando, con las cifras obtenidas en T2 y T3, si se observa el cruce que predicen Ng y Jordan: en qué tamaño de entrenamiento conviene cada modelo y por qué, relacionándolo con el sesgo y la varianza de un modelo generativo frente a uno discriminativo.",
+   "criterio": "Texto de discusión que cita las exactitudes reales de la tabla de T2 y de la curva de T3, identifica el/los tamaños de entrenamiento donde cada modelo supera al otro (o ausencia de cruce) y lo explica en términos de sesgo y varianza generativo vs. discriminativo.",
+   "status": "pendiente",
+   "intentos": 0
+  }
+ ]
+}

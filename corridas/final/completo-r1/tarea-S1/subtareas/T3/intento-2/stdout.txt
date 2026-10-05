@@ -1,0 +1,7 @@
+=== T3: copia del DataFrame con load_score y requires_review ===
+Original: 300 filas x 7 cols | intacto: True
+Copia:    300 filas x 9 cols | agregadas: load_score, requires_review
+Fila 23 -> server=AI-SRV-01, timestamp=2026-08-24 09:55:00, load_score=3.136218, temperature_c=66.97, requires_review=True
+requires_review=True: 49/300 (load>1.5: 9, temp>80: 42, ambas: 2)
+Parquet: output/server_analysis.parquet (filas=300, verificado=True)
+Criterio de éxito cumplido: True

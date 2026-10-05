@@ -1,0 +1,735 @@
+{
+ "Parte 1": [
+  {
+   "clave": "breast cancer wisconsin diagnostic",
+   "nombre": "Breast Cancer Wisconsin (Diagnostic)",
+   "tipo": "dataset",
+   "alias": [
+    "breast_cancer"
+   ],
+   "descripciones": [
+    "Conjunto de datos que se debe cargar para la tarea."
+   ],
+   "citas": [
+    "Parte 1"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": []
+  },
+  {
+   "clave": "sklearn dataset load breast cancer",
+   "nombre": "sklearn.datasets.load_breast_cancer",
+   "tipo": "metodo",
+   "alias": [
+    "load_breast_cancer"
+   ],
+   "descripciones": [
+    "Función de scikit-learn indicada para cargar el conjunto Breast Cancer Wisconsin (Diagnostic)."
+   ],
+   "citas": [
+    "Parte 1"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": []
+  },
+  {
+   "clave": "scikit learn",
+   "nombre": "scikit-learn",
+   "tipo": "metodo",
+   "alias": [
+    "sklearn"
+   ],
+   "descripciones": [
+    "Librería de la que proviene el conjunto de datos y su función de carga."
+   ],
+   "citas": [
+    "Parte 1"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": []
+  },
+  {
+   "clave": "division 70 30",
+   "nombre": "división 70/30",
+   "tipo": "restriccion",
+   "alias": [
+    "70 % entrenamiento y 30 % prueba"
+   ],
+   "descripciones": [
+    "División única de los datos en entrenamiento (70 %) y prueba (30 %) que se usa en toda la tarea."
+   ],
+   "citas": [
+    "Parte 1"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": []
+  },
+  {
+   "clave": "estratificacion por clase",
+   "nombre": "estratificación por clase",
+   "tipo": "restriccion",
+   "alias": [
+    "estratificar por la clase"
+   ],
+   "descripciones": [
+    "La división de los datos debe hacerse estratificando por la clase."
+   ],
+   "citas": [
+    "Parte 1"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": []
+  },
+  {
+   "clave": "random state 42",
+   "nombre": "random_state=42",
+   "tipo": "restriccion",
+   "alias": [
+    "semilla 42"
+   ],
+   "descripciones": [
+    "Semilla fijada para la división de los datos.",
+    "Semilla fija que debe usarse al generar las submuestras estratificadas."
+   ],
+   "citas": [
+    "Parte 1",
+    "Parte 3"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": []
+  },
+  {
+   "clave": "no tocar el conjunto de prueba",
+   "nombre": "no tocar el conjunto de prueba",
+   "tipo": "restriccion",
+   "alias": [],
+   "descripciones": [
+    "El conjunto de prueba no se toca para ajustar nada en toda la tarea."
+   ],
+   "citas": [
+    "Parte 1"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": []
+  },
+  {
+   "clave": "conjunto de prueba",
+   "nombre": "conjunto de prueba",
+   "tipo": "dataset",
+   "alias": [
+    "test"
+   ],
+   "descripciones": [
+    "Partición (30 %) de los datos reservada que no se usa para ajustar.",
+    "Partición sobre la que se reportan las métricas de ambos clasificadores.",
+    "Conjunto sobre el que se evalúa siempre cada modelo entrenado."
+   ],
+   "citas": [
+    "Parte 1",
+    "Parte 2",
+    "Parte 3"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 0
+  },
+  {
+   "clave": "conjunto de entrenamiento",
+   "nombre": "conjunto de entrenamiento",
+   "tipo": "dataset",
+   "alias": [
+    "train",
+    "entrenamiento"
+   ],
+   "descripciones": [
+    "Partición (70 %) de los datos sobre la que se trabaja.",
+    "Partición con la que únicamente se ajusta el escalador."
+   ],
+   "citas": [
+    "Parte 1",
+    "Parte 2"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": []
+  },
+  {
+   "clave": "numero de ejemplo",
+   "nombre": "número de ejemplos",
+   "tipo": "metrica",
+   "alias": [],
+   "descripciones": [
+    "Cantidad de ejemplos del conjunto que se debe reportar."
+   ],
+   "citas": [
+    "Parte 1"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": []
+  },
+  {
+   "clave": "numero de atributo",
+   "nombre": "número de atributos",
+   "tipo": "metrica",
+   "alias": [],
+   "descripciones": [
+    "Cantidad de atributos del conjunto que se debe reportar."
+   ],
+   "citas": [
+    "Parte 1"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": []
+  },
+  {
+   "clave": "caso por clase",
+   "nombre": "casos por clase",
+   "tipo": "metrica",
+   "alias": [
+    "casos de cada clase"
+   ],
+   "descripciones": [
+    "Cantidad de casos de cada clase que se debe reportar."
+   ],
+   "citas": [
+    "Parte 1"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": []
+  }
+ ],
+ "Parte 2": [
+  {
+   "clave": "naive baye gaussiano",
+   "nombre": "Naive Bayes gaussiano",
+   "tipo": "metodo",
+   "alias": [
+    "GaussianNB"
+   ],
+   "descripciones": [
+    "Clasificador que se debe entrenar en la parte 2."
+   ],
+   "citas": [
+    "Parte 2"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 7
+  },
+  {
+   "clave": "regresion logistica",
+   "nombre": "regresión logística",
+   "tipo": "metodo",
+   "alias": [],
+   "descripciones": [
+    "Ejemplo de modelo discriminativo citado en el texto.",
+    "Clasificador que se debe entrenar en la parte 2 con atributos estandarizados."
+   ],
+   "citas": [
+    "s1-transformers-y-foundation-models § 2. Modelos Generativos Bayesianos: puente conceptual (90 min total) … 2.3 Naive Bayes — el modelo generativo mínimo",
+    "Parte 2"
+   ],
+   "origen": [
+    "notas",
+    "enunciado"
+   ],
+   "fragmentos": [
+    "s1-transformers-y-foundation-models#2"
+   ],
+   "comunidad": 0
+  },
+  {
+   "clave": "accuracy",
+   "nombre": "accuracy",
+   "tipo": "metrica",
+   "alias": [
+    "exactitud"
+   ],
+   "descripciones": [
+    "Métrica de evaluación clara usada en el ML clásico.",
+    "Criterio del juez (1-5): si la respuesta es factualmente correcta.",
+    "Métrica a reportar de cada clasificador sobre el conjunto de prueba.",
+    "Medida que se dibuja en el eje vertical de la curva de aprendizaje."
+   ],
+   "citas": [
+    "s4-llmops-y-finetuning § 1. Por qué LLMOps es diferente a MLOps",
+    "s4-llmops-y-finetuning § 2. Evaluación Sistemática … 2.2 LLM-as-Judge",
+    "Parte 2",
+    "Parte 3"
+   ],
+   "origen": [
+    "notas",
+    "enunciado"
+   ],
+   "fragmentos": [
+    "s4-llmops-y-finetuning#1",
+    "s4-llmops-y-finetuning#2"
+   ],
+   "comunidad": 7
+  },
+  {
+   "clave": "f1 macro",
+   "nombre": "F1 macro",
+   "tipo": "metrica",
+   "alias": [],
+   "descripciones": [
+    "Métrica a reportar de cada clasificador sobre el conjunto de prueba."
+   ],
+   "citas": [
+    "Parte 2"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 7
+  },
+  {
+   "clave": "conjunto de prueba",
+   "nombre": "conjunto de prueba",
+   "tipo": "dataset",
+   "alias": [
+    "test"
+   ],
+   "descripciones": [
+    "Partición (30 %) de los datos reservada que no se usa para ajustar.",
+    "Partición sobre la que se reportan las métricas de ambos clasificadores.",
+    "Conjunto sobre el que se evalúa siempre cada modelo entrenado."
+   ],
+   "citas": [
+    "Parte 1",
+    "Parte 2",
+    "Parte 3"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 0
+  },
+  {
+   "clave": "conjunto de entrenamiento",
+   "nombre": "conjunto de entrenamiento",
+   "tipo": "dataset",
+   "alias": [
+    "train",
+    "entrenamiento"
+   ],
+   "descripciones": [
+    "Partición (70 %) de los datos sobre la que se trabaja.",
+    "Partición con la que únicamente se ajusta el escalador."
+   ],
+   "citas": [
+    "Parte 1",
+    "Parte 2"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": []
+  },
+  {
+   "clave": "estandarizacion de atributo",
+   "nombre": "estandarización de atributos",
+   "tipo": "concepto",
+   "alias": [
+    "atributos estandarizados",
+    "escalado"
+   ],
+   "descripciones": [
+    "Los atributos se usan estandarizados para entrenar los clasificadores."
+   ],
+   "citas": [
+    "Parte 2"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 0
+  },
+  {
+   "clave": "escalador ajustado solo con entrenamiento",
+   "nombre": "escalador ajustado solo con entrenamiento",
+   "tipo": "restriccion",
+   "alias": [],
+   "descripciones": [
+    "Regla de que el escalador se ajusta solo con los datos de entrenamiento."
+   ],
+   "citas": [
+    "Parte 2"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 0
+  }
+ ],
+ "Parte 3": [
+  {
+   "clave": "curva de aprendizaje",
+   "nombre": "curva de aprendizaje",
+   "tipo": "concepto",
+   "alias": [
+    "learning curve"
+   ],
+   "descripciones": [
+    "Gráfica de la exactitud contra el número de ejemplos de entrenamiento, con una curva por modelo."
+   ],
+   "citas": [
+    "Parte 3"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 7
+  },
+  {
+   "clave": "dos modelo",
+   "nombre": "los dos modelos",
+   "tipo": "metodo",
+   "alias": [
+    "modelos"
+   ],
+   "descripciones": [
+    "Los dos modelos de las partes anteriores que se reentrenan con distintos porcentajes del conjunto de entrenamiento."
+   ],
+   "citas": [
+    "Parte 3"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 0
+  },
+  {
+   "clave": "submuestreo estratificado",
+   "nombre": "submuestreo estratificado",
+   "tipo": "metodo",
+   "alias": [
+    "submuestras estratificadas"
+   ],
+   "descripciones": [
+    "Forma de tomar los porcentajes del entrenamiento (5 %, 10 %, 25 %, 50 % y 100 %) manteniendo la estratificación."
+   ],
+   "citas": [
+    "Parte 3"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 7
+  },
+  {
+   "clave": "porcentaj de entrenamiento 5 100",
+   "nombre": "porcentajes de entrenamiento 5–100 %",
+   "tipo": "restriccion",
+   "alias": [
+    "5 %, 10 %, 25 %, 50 %, 100 %"
+   ],
+   "descripciones": [
+    "Tamaños de submuestra del entrenamiento con los que se entrena cada modelo."
+   ],
+   "citas": [
+    "Parte 3"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 7
+  },
+  {
+   "clave": "random state 42",
+   "nombre": "random_state=42",
+   "tipo": "restriccion",
+   "alias": [
+    "semilla 42"
+   ],
+   "descripciones": [
+    "Semilla fijada para la división de los datos.",
+    "Semilla fija que debe usarse al generar las submuestras estratificadas."
+   ],
+   "citas": [
+    "Parte 1",
+    "Parte 3"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": []
+  },
+  {
+   "clave": "misma division de la parte 1",
+   "nombre": "misma división de la Parte 1",
+   "tipo": "restriccion",
+   "alias": [
+    "división de la Parte 1"
+   ],
+   "descripciones": [
+    "La curva de aprendizaje debe realizarse sobre la misma división de datos definida en la Parte 1."
+   ],
+   "citas": [
+    "Parte 3"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 7
+  },
+  {
+   "clave": "conjunto de prueba",
+   "nombre": "conjunto de prueba",
+   "tipo": "dataset",
+   "alias": [
+    "test"
+   ],
+   "descripciones": [
+    "Partición (30 %) de los datos reservada que no se usa para ajustar.",
+    "Partición sobre la que se reportan las métricas de ambos clasificadores.",
+    "Conjunto sobre el que se evalúa siempre cada modelo entrenado."
+   ],
+   "citas": [
+    "Parte 1",
+    "Parte 2",
+    "Parte 3"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 0
+  },
+  {
+   "clave": "accuracy",
+   "nombre": "accuracy",
+   "tipo": "metrica",
+   "alias": [
+    "exactitud"
+   ],
+   "descripciones": [
+    "Métrica de evaluación clara usada en el ML clásico.",
+    "Criterio del juez (1-5): si la respuesta es factualmente correcta.",
+    "Métrica a reportar de cada clasificador sobre el conjunto de prueba.",
+    "Medida que se dibuja en el eje vertical de la curva de aprendizaje."
+   ],
+   "citas": [
+    "s4-llmops-y-finetuning § 1. Por qué LLMOps es diferente a MLOps",
+    "s4-llmops-y-finetuning § 2. Evaluación Sistemática … 2.2 LLM-as-Judge",
+    "Parte 2",
+    "Parte 3"
+   ],
+   "origen": [
+    "notas",
+    "enunciado"
+   ],
+   "fragmentos": [
+    "s4-llmops-y-finetuning#1",
+    "s4-llmops-y-finetuning#2"
+   ],
+   "comunidad": 7
+  },
+  {
+   "clave": "numero de ejemplo de entrenamiento",
+   "nombre": "número de ejemplos de entrenamiento",
+   "tipo": "metrica",
+   "alias": [
+    "tamaño del entrenamiento"
+   ],
+   "descripciones": [
+    "Cantidad de ejemplos de entrenamiento usados, representada en el eje horizontal de la curva."
+   ],
+   "citas": [
+    "Parte 3"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 7
+  },
+  {
+   "clave": "figura png",
+   "nombre": "figura PNG",
+   "tipo": "dataset",
+   "alias": [
+    "PNG"
+   ],
+   "descripciones": [
+    "Figura con las curvas de aprendizaje que debe guardarse en formato PNG."
+   ],
+   "citas": [
+    "Parte 3"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 7
+  }
+ ],
+ "Parte 4": [
+  {
+   "clave": "prediccion de ng y jordan",
+   "nombre": "predicción de Ng y Jordan",
+   "tipo": "concepto",
+   "alias": [
+    "Ng y Jordan"
+   ],
+   "descripciones": [
+    "Predicción teórica citada en el texto sobre un cruce entre modelos en función del tamaño de entrenamiento."
+   ],
+   "citas": [
+    "Parte 4"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": []
+  },
+  {
+   "clave": "cruce generativo discriminativo",
+   "nombre": "cruce generativo-discriminativo",
+   "tipo": "concepto",
+   "alias": [
+    "cruce"
+   ],
+   "descripciones": [
+    "Punto que debe verificarse con las cifras obtenidas, indicando en qué tamaño de entrenamiento conviene cada modelo."
+   ],
+   "citas": [
+    "Parte 4"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 0
+  },
+  {
+   "clave": "modelo generativo",
+   "nombre": "modelo generativo",
+   "tipo": "metodo",
+   "alias": [],
+   "descripciones": [
+    "Modelo que aprende P(X) o P(X,Y) y puede generar nuevas muestras.",
+    "Tipo de modelo cuyo desempeño frente al discriminativo debe discutirse en la parte de discusión."
+   ],
+   "citas": [
+    "s1-transformers-y-foundation-models § 2. Modelos Generativos Bayesianos: puente conceptual (90 min total) … 2.3 Naive Bayes — el modelo generativo mínimo",
+    "Parte 4"
+   ],
+   "origen": [
+    "notas",
+    "enunciado"
+   ],
+   "fragmentos": [
+    "s1-transformers-y-foundation-models#2"
+   ],
+   "comunidad": 0
+  },
+  {
+   "clave": "modelo discriminativo",
+   "nombre": "modelo discriminativo",
+   "tipo": "metodo",
+   "alias": [],
+   "descripciones": [
+    "Modelo que aprende P(Y|X) para responder, dado X, cuál es Y.",
+    "Tipo de modelo que se compara con el generativo según el tamaño de entrenamiento."
+   ],
+   "citas": [
+    "s1-transformers-y-foundation-models § 2. Modelos Generativos Bayesianos: puente conceptual (90 min total) … 2.3 Naive Bayes — el modelo generativo mínimo",
+    "Parte 4"
+   ],
+   "origen": [
+    "notas",
+    "enunciado"
+   ],
+   "fragmentos": [
+    "s1-transformers-y-foundation-models#2"
+   ],
+   "comunidad": 0
+  },
+  {
+   "clave": "tamano de entrenamiento",
+   "nombre": "tamaño de entrenamiento",
+   "tipo": "concepto",
+   "alias": [],
+   "descripciones": [
+    "Cantidad de datos de entrenamiento en la que se evalúa qué modelo conviene y por qué."
+   ],
+   "citas": [
+    "Parte 4"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 0
+  },
+  {
+   "clave": "sesgo",
+   "nombre": "sesgo",
+   "tipo": "concepto",
+   "alias": [],
+   "descripciones": [
+    "Propiedad del modelo con la que debe relacionarse la comparación entre generativo y discriminativo."
+   ],
+   "citas": [
+    "Parte 4"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 0
+  },
+  {
+   "clave": "varianza",
+   "nombre": "varianza",
+   "tipo": "concepto",
+   "alias": [],
+   "descripciones": [
+    "Propiedad del modelo con la que debe relacionarse la comparación entre generativo y discriminativo."
+   ],
+   "citas": [
+    "Parte 4"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 0
+  }
+ ]
+}
