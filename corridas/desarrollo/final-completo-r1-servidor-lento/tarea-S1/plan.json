@@ -1,0 +1,72 @@
+{
+ "subtareas": [
+  {
+   "id": "T1",
+   "tipo": "calculo",
+   "secciones": [
+    "Tarea 1"
+   ],
+   "depende_de": [],
+   "objetivo": "Cargar data/server_measurements.csv (parse_dates en timestamp), implementar la clase ServerMeasurements (valida bidimensionalidad, coincidencia columnas/nombres y tipo numérico, con __repr__ de forma y nombres) y la función build_measurements(df) que selecciona gpu_utilization, cpu_utilization, memory_gb en ese orden y retorna el objeto con matriz NumPy flotante; imprimir el repr.",
+   "criterio": "El repr impreso es exactamente ServerMeasurements(shape=(300, 3), features=('gpu_utilization', 'cpu_utilization', 'memory_gb')) y las validaciones lanzan ValueError en los casos inválidos.",
+   "status": "pendiente",
+   "intentos": 0
+  },
+  {
+   "id": "T2",
+   "tipo": "calculo",
+   "secciones": [
+    "Tarea 2"
+   ],
+   "depende_de": [
+    "T1"
+   ],
+   "objetivo": "Sobre la matriz de T1, calcular media y desviación estándar por columna, normalizar con Z-score de forma vectorizada (protegiendo división por cero si std=0) y calcular load_score = zscores @ [0.50, 0.30, 0.20]; imprimir medias, formas y verificaciones de media 0 / desviación 1.",
+   "criterio": "means coincide con [57.99313333 50.54163333 29.45533333], zscores.shape es (300, 3) con media 0 y desviación 1 por columna (tolerancia 1e-10), y load_score.shape es (300,) igual a zscores @ [0.50, 0.30, 0.20].",
+   "status": "pendiente",
+   "intentos": 0
+  },
+  {
+   "id": "T3",
+   "tipo": "calculo",
+   "secciones": [
+    "Tarea 3"
+   ],
+   "depende_de": [
+    "T2"
+   ],
+   "objetivo": "Crear una copia del DataFrame original (sin modificarlo) agregando load_score (de T2) y requires_review (bool, True si load_score > 1.5 o temperature_c > 80) de forma vectorizada; imprimir la fila 23 con server, timestamp, load_score, temperature_c y requires_review.",
+   "criterio": "La fila 23 impresa coincide con: AI-SRV-01, 2026-08-24 09:55:00, load_score 3.136218, temperature_c 66.97, requires_review True, y es la única fila con requires_review=True.",
+   "status": "pendiente",
+   "intentos": 0
+  },
+  {
+   "id": "T4",
+   "tipo": "calculo",
+   "secciones": [
+    "Tarea 4"
+   ],
+   "depende_de": [
+    "T3"
+   ],
+   "objetivo": "Agrupar el DataFrame de T3 por server y construir la tabla resumen con exactamente las columnas server, observations, mean_power_w, max_temperature_c, mean_load, review_count en ese orden (review_count cuenta requires_review=True); imprimir la tabla completa de los seis servidores.",
+   "criterio": "La tabla tiene una fila por servidor (6 filas) con las columnas en el orden exigido, y la fila de AI-SRV-01 coincide con: observations 50, mean_power_w 363.4598, max_temperature_c 86.50, mean_load -0.614527, review_count 2.",
+   "status": "pendiente",
+   "intentos": 0
+  },
+  {
+   "id": "T5",
+   "tipo": "calculo",
+   "secciones": [
+    "Tarea 5"
+   ],
+   "depende_de": [
+    "T3"
+   ],
+   "objetivo": "Guardar el DataFrame analizado de T3 en output/server_analysis.parquet con PyArrow sin índice, volver a leerlo y verificar el round trip comparando filas, columnas, esquema y valores; imprimir las cuatro verificaciones.",
+   "criterio": "Se genera output/server_analysis.parquet y la salida muestra 'Round trip verificado' con Filas: True, Columnas: True, Esquema: True, Valores: True.",
+   "status": "pendiente",
+   "intentos": 0
+  }
+ ]
+}

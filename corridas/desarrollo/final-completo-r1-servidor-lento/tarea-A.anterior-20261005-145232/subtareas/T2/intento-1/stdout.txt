@@ -1,0 +1,11 @@
+================================================================
+T2 — Comparación generativo vs discriminativo (conjunto de prueba)
+================================================================
+               modelo  accuracy_prueba  f1_macro_prueba
+Naive Bayes gaussiano         0.935673         0.930654
+  Regresión logística         0.988304         0.987515
+----------------------------------------------------------------
+Naive Bayes gaussiano: accuracy=0.9357 | F1 macro=0.9307
+Regresión logística: accuracy=0.9883 | F1 macro=0.9875
+División usada: 398 train / 171 test (de T1, random_state=42)
+Archivos generados: resultados.json, tabla_comparativa_T2.csv, comparativa_modelos_T2.png

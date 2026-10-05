@@ -1,0 +1,21 @@
+T2 — Top-p (nucleus sampling) con p=0.9 sobre la distribución de T=1
+----------------------------------------------------------------------
+token     probabilidad     acumulada   sobrevive
+t0        0.5516226379      0.551623        True
+t1        0.2029306278      0.754553        True
+t2        0.1230836475      0.877637        True
+t3        0.0911826088      0.968820        True
+t4        0.0274636740      0.996283       False
+t5        0.0037168041      1.000000       False
+----------------------------------------------------------------------
+Supervivientes (conjunto mínimo con acumulada >= 0.9): ['t0', 't1', 't2', 't3']
+Masa de probabilidad de los supervivientes: 0.9688195219
+Tokens descartados: ['t4', 't5'] (masa descartada 0.0311804781)
+Distribución renormalizada:
+  t0: 0.5693760555
+  t1: 0.2094617451
+  t2: 0.1270449704
+  t3: 0.0941172290
+Suma de la distribución renormalizada: 1.000000000000
+Figura guardada: T2_top_p_renormalizacion.png
+Resultados escritos en resultados.json

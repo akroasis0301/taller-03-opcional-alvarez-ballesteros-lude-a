@@ -1,0 +1,14 @@
+==========================================================================
+T3 — Curva de aprendizaje (conjunto de prueba fijo: n_test = 171)
+==========================================================================
+ % ent.  n_train   Acc NB (gen.)   Acc RL (disc.)
+-------------------------------------------------
+     5%       19          0.9415           0.9298
+    10%       39          0.9474           0.9357
+    25%       99          0.9474           0.9415
+    50%      199          0.9357           0.9766
+   100%      398          0.9474           0.9883
+-------------------------------------------------
+Figura guardada en : curvas_aprendizaje.png
+Tabla de accuracy (10 cifras) escrita en resultados.json
+Verificación 100 % vs T2: {'naive_bayes_gaussiano': True, 'regresion_logistica': True}

@@ -1,0 +1,24 @@
+========================================================================
+T1 · Línea base léxica: TF-IDF (por defecto) + similitud coseno
+========================================================================
+Vocabulario TF-IDF: 105 términos
+
+Ranking por consulta (top-3) y posición del documento relevante:
+  q1  relevante=d04  rank= 1  RR=1.0000  | top-3: d04 > d01 > d06
+  q2  relevante=d03  rank= 1  RR=1.0000  | top-3: d03 > d01 > d02
+  q3  relevante=d08  rank= 1  RR=1.0000  | top-3: d08 > d06 > d04
+  q4  relevante=d05  rank= 1  RR=1.0000  | top-3: d05 > d01 > d04
+  q5  relevante=d09  rank= 6  RR=0.1667  | top-3: d03 > d06 > d04
+  q6  relevante=d02  rank= 1  RR=1.0000  | top-3: d02 > d06 > d03
+
+Tabla agregada (6 consultas):
+consulta relevante  rank_del_relevante  reciprocal_rank  hit@1  hit@3
+      q1       d04                   1         1.000000      1      1
+      q2       d03                   1         1.000000      1      1
+      q3       d08                   1         1.000000      1      1
+      q4       d05                   1         1.000000      1      1
+      q5       d09                   6         0.166667      0      0
+      q6       d02                   1         1.000000      1      1
+------------------------------------------------------------------------
+Hit@1 = 0.833333   Hit@3 = 0.833333   MRR = 0.861111
+Salidas: resultados.json, figura_t1_similitud_coseno.png, figura_t1_metricas.png, figura_t1_rr_por_consulta.png

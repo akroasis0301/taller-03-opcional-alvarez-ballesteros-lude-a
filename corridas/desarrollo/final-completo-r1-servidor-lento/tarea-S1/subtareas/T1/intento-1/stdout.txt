@@ -1,0 +1,8 @@
+ServerMeasurements(shape=(300, 3), features=('gpu_utilization', 'cpu_utilization', 'memory_gb'))
+Resumen T1:
+  Filas cargadas: 300
+  Objeto: ServerMeasurements(shape=(300, 3), features=('gpu_utilization', 'cpu_utilization', 'memory_gb'))
+  dtype de values: float64
+  dtype de timestamp: datetime64[us]
+  Validaciones (True = ValueError lanzado): {'no_bidimensional_lanza_valueerror': True, 'columnas_vs_nombres_lanza_valueerror': True, 'no_numerico_lanza_valueerror': True}
+  resultados.json escrito.

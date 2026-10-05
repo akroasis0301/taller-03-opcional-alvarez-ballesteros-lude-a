@@ -1,0 +1,15 @@
+Round trip verificado: output/server_analysis.parquet
+Filas: True
+Columnas: True
+Esquema: True
+Valores: True
+
+Resumen T5
+  Parquet        : output/server_analysis.parquet (14920 bytes, PyArrow, sin indice)
+  DataFrame      : 300 filas x 9 columnas
+  load_score     : zscores(gpu_utilization, cpu_utilization, memory_gb) @ [0.50, 0.30, 0.20], ddof=1, validado fila 23 = False
+  Fila 23        : server=AI-SRV-01, load_score=0.0, temperature_c=66.97, requires_review=False -> coincide=False
+  Revision       : 42 filas (load_score>1.5: 0, temperature_c>80: 42)
+  Verificacion   : filas=True, columnas=True, esquema=True, valores=True
+  Round trip     : VERIFICADO
+  resultados.json escrito.

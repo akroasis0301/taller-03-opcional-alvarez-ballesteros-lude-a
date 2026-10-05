@@ -1,0 +1,19 @@
+T1 — Softmax con temperatura (implementación NumPy estable)
+Logits: [2.0, 1.0, 0.5, 0.2, -1.0, -3.0]
+
+Tabla (4 decimales):
+                  T=0.5   T=1.0   T=2.0
+t0               0.8231  0.5516  0.3583
+t1               0.1114  0.2029  0.2173
+t2               0.0410  0.1231  0.1693
+t3               0.0225  0.0912  0.1457
+t4               0.0020  0.0275  0.0800
+t5               0.0000  0.0037  0.0294
+Entropía (bits)  0.9147  1.7998  2.2888
+
+T=0.5: suma de la distribución = 1.000000 (ok=True), entropía = 0.9147 bits
+T=1.0: suma de la distribución = 1.000000 (ok=True), entropía = 1.7998 bits
+T=2.0: suma de la distribución = 1.000000 (ok=True), entropía = 2.2888 bits
+
+Figura guardada: t1_softmax_temperatura.png
+Resultados guardados: resultados.json

@@ -1,0 +1,69 @@
+{
+  "subtarea": "T1_representar_las_mediciones",
+  "repr_capturado": "ServerMeasurements(shape=(300, 3), features=('gpu_utilization', 'cpu_utilization', 'memory_gb'))",
+  "repr_esperado": "ServerMeasurements(shape=(300, 3), features=('gpu_utilization', 'cpu_utilization', 'memory_gb'))",
+  "repr_coincide": true,
+  "shape": [
+    300,
+    3
+  ],
+  "feature_names": [
+    "gpu_utilization",
+    "cpu_utilization",
+    "memory_gb"
+  ],
+  "values_dtype": "float64",
+  "n_filas_csv": 300,
+  "columnas_csv": [
+    "server",
+    "timestamp",
+    "gpu_utilization",
+    "cpu_utilization",
+    "memory_gb",
+    "power_w",
+    "temperature_c"
+  ],
+  "dtypes_csv": {
+    "server": "str",
+    "timestamp": "datetime64[us]",
+    "gpu_utilization": "float64",
+    "cpu_utilization": "float64",
+    "memory_gb": "float64",
+    "power_w": "float64",
+    "temperature_c": "float64"
+  },
+  "timestamp_es_datetime": true,
+  "validaciones_valueerror_implementadas": {
+    "no_bidimensional": true,
+    "columnas_vs_nombres": true,
+    "datos_no_numericos": true
+  },
+  "todas_las_validaciones_ok": true,
+  "primeras_5_filas_values": [
+    [
+      59.61,
+      59.61,
+      24.87
+    ],
+    [
+      49.49,
+      52.64,
+      27.73
+    ],
+    [
+      65.62,
+      47.06,
+      26.34
+    ],
+    [
+      26.19,
+      63.44,
+      17.71
+    ],
+    [
+      53.98,
+      21.25,
+      24.66
+    ]
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "subtarea": "T2",
+  "descripcion": "Naive Bayes gaussiano y regresión logística entrenados sobre la división 70/30 estratificada (random_state=42) de T1; atributos estandarizados con StandardScaler ajustado solo con el entrenamiento; accuracy y F1 macro medidos sobre el conjunto de prueba.",
+  "division_usada": {
+    "fuente": "entrada/T1/resultados.json",
+    "random_state": 42,
+    "test_size": 0.3,
+    "n_train": 398,
+    "n_test": 171,
+    "conteo_por_clase_train": {
+      "malignant": 148,
+      "benign": 250
+    },
+    "conteo_por_clase_test": {
+      "malignant": 64,
+      "benign": 107
+    }
+  },
+  "verificacion_division_vs_T1": {
+    "n_train_coincide_con_T1": true,
+    "n_test_coincide_con_T1": true,
+    "conteo_por_clase_train_coincide": true,
+    "conteo_por_clase_test_coincide": true
+  },
+  "preprocesamiento": {
+    "escalador": "StandardScaler",
+    "ajustado_solo_con_entrenamiento": true,
+    "aplicado_a": [
+      "naive_bayes_gaussiano",
+      "regresion_logistica"
+    ],
+    "nota": "Para el NB gaussiano la estandarización es invariante de escala y no altera sus predicciones; se aplica por consistencia con el enunciado."
+  },
+  "hiperparametros": {
+    "GaussianNB": "valores por defecto (var_smoothing=1e-9)",
+    "LogisticRegression": "solver=lbfgs, C=1.0, max_iter=5000, random_state=42"
+  },
+  "metricas_prueba": {
+    "naive_bayes_gaussiano": {
+      "modelo": "Naive Bayes gaussiano",
+      "accuracy_prueba": 0.935672514619883,
+      "f1_macro_prueba": 0.9306543778801843,
+      "matriz_confusion_prueba": [
+        [
+          57,
+          7
+        ],
+        [
+          4,
+          103
+        ]
+      ]
+    },
+    "regresion_logistica": {
+      "modelo": "Regresión logística",
+      "accuracy_prueba": 0.9883040935672515,
+      "f1_macro_prueba": 0.9875146028037383,
+      "matriz_confusion_prueba": [
+        [
+          63,
+          1
+        ],
+        [
+          1,
+          106
+        ]
+      ]
+    }
+  },
+  "tabla_comparativa": [
+    {
+      "modelo": "Naive Bayes gaussiano",
+      "accuracy_prueba": 0.935672514619883,
+      "f1_macro_prueba": 0.9306543778801843
+    },
+    {
+      "modelo": "Regresión logística",
+      "accuracy_prueba": 0.9883040935672515,
+      "f1_macro_prueba": 0.9875146028037383
+    }
+  ],
+  "archivos_generados": [
+    "tabla_comparativa_T2.csv",
+    "comparativa_modelos_T2.png"
+  ]
+}

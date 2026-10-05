@@ -1,0 +1,16 @@
+======================================================================
+T3 - Parte 3: Análisis por consulta (fallo = relevante fuera del top 3)
+======================================================================
+Vocabulario TF-IDF: 105 términos | Verificación T1: True | LSA coincide con T2: True
+----------------------------------------------------------------------
+q1 -> d04 | TF-IDF pos 1 | LSA pos 1 | compartidos (8): de, la, léxica, ranking, términos, frecuencia, pondera, función
+q2 -> d03 | TF-IDF pos 1 | LSA pos 1 | compartidos (3): al, fragmentos, prompt
+q3 -> d08 | TF-IDF pos 1 | LSA pos 1 | compartidos (5): bajo, entrena, matrices, rango, de
+q4 -> d05 | TF-IDF pos 1 | LSA pos 3 | compartidos (4): vectores, compara, orientación, la
+q5 -> d09 | TF-IDF pos 6 (FALLA) | LSA pos 6 (FALLA) | compartidos (1): la
+q6 -> d02 | TF-IDF pos 1 | LSA pos 1 | compartidos (5): autoatención, feed, forward, capas, con
+----------------------------------------------------------------------
+Fallan en TF-IDF: ['q5']
+Fallan en LSA:    ['q5']
+Fallan en ambos:  ['q5']
+Salidas: resultados.json, T3_posicion_relevante.png, T3_solapamiento_terminos.png

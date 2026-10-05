@@ -1,0 +1,15 @@
+========================================================================
+T3 — Curva de aprendizaje: GNB vs. regresión logística
+========================================================================
+División de T1: 398 entrenamiento / 171 prueba (random_state=42)
+ fracción | n_train |  acc GNB |   acc LR
+--------------------------------------------
+      5% |      19 |   0.9415 |   0.9298
+     10% |      39 |   0.9474 |   0.9357
+     25% |      99 |   0.9357 |   0.9415
+     50% |     199 |   0.9240 |   0.9766
+    100% |     398 |   0.9357 |   0.9883
+Verificación 100 % vs T2 -> GNB coincide: True | LR coincide: True
+Figura PNG: curva_aprendizaje_T3.png
+Tabla CSV:  tabla_curva_aprendizaje_T3.csv
+Cifras completas escritas en resultados.json

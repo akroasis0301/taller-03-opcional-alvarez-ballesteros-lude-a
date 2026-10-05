@@ -1,0 +1,13 @@
+T2 — Top-p (muestreo de núcleo) con p=0.9 sobre la distribución de T=1
+Fuente de la distribución T=1: entrada/T1/resultados.json
+Orden descendente : t0=0.5516, t1=0.2029, t2=0.1231, t3=0.0912, t4=0.0275, t5=0.0037
+Acumulada         : 0.5516, 0.7546, 0.8776, 0.9688, 0.9963, 1.0000
+Núcleo (conjunto mínimo con acumulada >= 0.9): ['t0', 't1', 't2', 't3']  (masa = 0.9688)
+Tokens excluidos  : ['t4', 't5']  (masa descartada = 0.0312)
+Distribución renormalizada (suma = 1.000000000000):
+  t0: renorm = 0.569376   (original T=1 = 0.551623, razón = 1.032184)
+  t1: renorm = 0.209462   (original T=1 = 0.202931, razón = 1.032184)
+  t2: renorm = 0.127045   (original T=1 = 0.123084, razón = 1.032184)
+  t3: renorm = 0.094117   (original T=1 = 0.091183, razón = 1.032184)
+Verificaciones: suma=1 -> True | razón constante 1/masa -> True | coherente con T1 -> True
+Resultados escritos en 'resultados.json' y figura en 'T2_top_p_nucleo.png'.

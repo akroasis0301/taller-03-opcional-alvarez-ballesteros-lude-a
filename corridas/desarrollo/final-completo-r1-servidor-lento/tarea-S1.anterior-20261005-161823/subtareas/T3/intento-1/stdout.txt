@@ -1,0 +1,17 @@
+=== T3: copia del DataFrame con load_score y requires_review ===
+Nuevo DataFrame: 300 filas x 9 columnas
+Columnas: ['server', 'timestamp', 'gpu_utilization', 'cpu_utilization', 'memory_gb', 'power_w', 'temperature_c', 'load_score', 'requires_review']
+dtypes nuevos: load_score=float64 | requires_review=bool
+Observaciones a revisar: 49 de 300
+load_score obtenido de: entrada/T2/resultados.json (coincide con recálculo: True)
+
+Fila 23 (columnas del resultado esperado):
+server                       AI-SRV-01
+timestamp          2026-08-24 09:55:00
+load_score                    3.136218
+temperature_c                    66.97
+requires_review                   True
+
+DataFrame original sin cambios: True
+Criterio de éxito cumplido: True
+Parquet escrito en: output/server_analysis.parquet

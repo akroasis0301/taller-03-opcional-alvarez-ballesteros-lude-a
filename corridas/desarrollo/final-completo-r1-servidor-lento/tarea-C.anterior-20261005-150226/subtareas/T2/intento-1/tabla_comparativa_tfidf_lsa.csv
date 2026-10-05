@@ -1,0 +1,3 @@
+metodo,hit@1,hit@3,mrr
+TF-IDF (línea base léxica),0.8333333333333334,0.8333333333333334,0.8611111111111112
+"LSA (TruncatedSVD, 4 dimensiones, random_state=0)",0.6666666666666666,0.8333333333333334,0.75

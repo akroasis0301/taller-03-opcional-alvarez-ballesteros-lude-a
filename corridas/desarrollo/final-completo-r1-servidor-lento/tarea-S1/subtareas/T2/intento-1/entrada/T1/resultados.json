@@ -1,0 +1,41 @@
+{
+  "repr": "ServerMeasurements(shape=(300, 3), features=('gpu_utilization', 'cpu_utilization', 'memory_gb'))",
+  "repr_coincide_con_esperado": true,
+  "shape": [
+    300,
+    3
+  ],
+  "feature_names": [
+    "gpu_utilization",
+    "cpu_utilization",
+    "memory_gb"
+  ],
+  "dtype_values": "float64",
+  "timestamp_dtype": "datetime64[us]",
+  "n_filas_csv": 300,
+  "validaciones": {
+    "no_bidimensional_lanza_valueerror": true,
+    "columnas_vs_nombres_lanza_valueerror": true,
+    "no_numerico_lanza_valueerror": true
+  },
+  "estadisticas_por_caracteristica": {
+    "gpu_utilization": {
+      "mean": 57.993133333333326,
+      "std": 14.43011728465465,
+      "min": 22.31,
+      "max": 97.82
+    },
+    "cpu_utilization": {
+      "mean": 50.54163333333333,
+      "std": 12.69846348968602,
+      "min": 19.09,
+      "max": 93.0
+    },
+    "memory_gb": {
+      "mean": 29.455333333333336,
+      "std": 6.536801834400537,
+      "min": 13.59,
+      "max": 55.0
+    }
+  }
+}

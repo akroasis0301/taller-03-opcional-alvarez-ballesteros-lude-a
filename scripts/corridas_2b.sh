@@ -14,7 +14,10 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 GOLDEN=golden/golden_tareas.json
-TAREAS="A B C S1 S2"
+# Las tareas: por defecto las cinco del golden. Para la 2.b con las de práctica:
+#   TAREAS="A B C" bash scripts/corridas_2b.sh completo 1
+TAREAS="${TAREAS:-A B C S1 S2}"
+export PYTHONUNBUFFERED=1   # la salida llega al archivo de tee en tiempo real
 mkdir -p resultados/final corridas/final
 
 corrida() {  # variante clase repeticion

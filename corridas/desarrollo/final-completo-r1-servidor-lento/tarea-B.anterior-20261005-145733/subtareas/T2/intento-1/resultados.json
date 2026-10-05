@@ -1,0 +1,112 @@
+{
+  "subtarea": "T2",
+  "descripcion": "Muestreo de núcleo (top-p) con p=0.9 sobre la distribución de T=1",
+  "parametros": {
+    "p": 0.9,
+    "temperatura": 1.0
+  },
+  "fuente_distribucion": "entrada/T1/resultados.json",
+  "distribucion_T1_original": {
+    "t0": 0.5516226378718239,
+    "t1": 0.2029306277578035,
+    "t2": 0.12308364752983937,
+    "t3": 0.09118260875807133,
+    "t4": 0.02746367398498595,
+    "t5": 0.003716804097476065
+  },
+  "orden_descendente": {
+    "tokens": [
+      "t0",
+      "t1",
+      "t2",
+      "t3",
+      "t4",
+      "t5"
+    ],
+    "probabilidades": [
+      0.5516226378718239,
+      0.2029306277578035,
+      0.12308364752983937,
+      0.09118260875807133,
+      0.02746367398498595,
+      0.003716804097476065
+    ],
+    "probabilidades_acumuladas": [
+      0.5516226378718239,
+      0.7545532656296273,
+      0.8776369131594667,
+      0.968819521917538,
+      0.9962831959025239,
+      1.0
+    ]
+  },
+  "tabla_ordenada": [
+    {
+      "token": "t0",
+      "probabilidad": 0.5516226378718239,
+      "acumulada": 0.5516226378718239,
+      "sobrevive": true
+    },
+    {
+      "token": "t1",
+      "probabilidad": 0.2029306277578035,
+      "acumulada": 0.7545532656296273,
+      "sobrevive": true
+    },
+    {
+      "token": "t2",
+      "probabilidad": 0.12308364752983937,
+      "acumulada": 0.8776369131594667,
+      "sobrevive": true
+    },
+    {
+      "token": "t3",
+      "probabilidad": 0.09118260875807133,
+      "acumulada": 0.968819521917538,
+      "sobrevive": true
+    },
+    {
+      "token": "t4",
+      "probabilidad": 0.02746367398498595,
+      "acumulada": 0.9962831959025239,
+      "sobrevive": false
+    },
+    {
+      "token": "t5",
+      "probabilidad": 0.003716804097476065,
+      "acumulada": 1.0,
+      "sobrevive": false
+    }
+  ],
+  "corte_top_p": {
+    "p": 0.9,
+    "indice_corte": 3,
+    "num_supervivientes": 4,
+    "tokens_supervivientes": [
+      "t0",
+      "t1",
+      "t2",
+      "t3"
+    ],
+    "tokens_descartados": [
+      "t4",
+      "t5"
+    ],
+    "masa_probabilidad_supervivientes": 0.968819521917538,
+    "masa_descartada": 0.03118047808246205
+  },
+  "distribucion_renormalizada": {
+    "t0": 0.5693760554907313,
+    "t1": 0.2094617451103304,
+    "t2": 0.12704497044632815,
+    "t3": 0.09411722895261025
+  },
+  "suma_distribucion_renormalizada": 1.0,
+  "verificacion": {
+    "coincide_con_softmax_recalculada": true,
+    "suma_renormalizada_es_1": true,
+    "acumulada_ultimo_superviviente_alcanza_p": true,
+    "acumulada_anterior_menor_que_p": true,
+    "conjunto_es_minimo": true
+  }
+}

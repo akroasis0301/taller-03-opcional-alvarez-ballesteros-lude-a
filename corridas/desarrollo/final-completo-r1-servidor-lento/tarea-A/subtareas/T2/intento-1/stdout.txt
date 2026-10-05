@@ -1,0 +1,6 @@
+=== T2 — Parte 2: dos clasificadores (métricas en PRUEBA) ===
+               modelo  accuracy_prueba  f1_macro_prueba
+Naive Bayes gaussiano         0.947368         0.942867
+  Regresión logística         0.988304         0.987515
+
+Archivos escritos: resultados.json, tabla_parte2.png

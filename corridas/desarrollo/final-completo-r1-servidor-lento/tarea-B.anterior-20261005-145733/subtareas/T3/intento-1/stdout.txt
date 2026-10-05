@@ -1,0 +1,12 @@
+=== Subtarea T3 — Comprobación empírica ===
+Fuente de la distribución: entrada/T2/resultados.json
+Muestras: 10000 con numpy.random.default_rng(0)
+Tokens supervivientes (top-p p=0.9): ['t0', 't1', 't2', 't3']
+Token | frecuencia observada | prob. teórica | diferencia
+  t0  |  0.568200  |  0.569376  |  -0.001176
+  t1  |  0.209300  |  0.209462  |  -0.000162
+  t2  |  0.129600  |  0.127045  |  +0.002555
+  t3  |  0.092900  |  0.094117  |  -0.001217
+Divergencia KL (empírica || teórica) en bits: 0.00005007
+Figura guardada: parte3_frecuencias_vs_teoricas.png
+Resultados escritos en resultados.json

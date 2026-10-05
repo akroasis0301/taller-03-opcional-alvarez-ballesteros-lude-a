@@ -1,0 +1,13 @@
+Round trip verificado: output/server_analysis.parquet
+Filas: True
+Columnas: True
+Esquema: True
+Valores: True
+
+Resumen T5
+  Parquet      : output/server_analysis.parquet (17591 bytes, PyArrow, sin indice)
+  DataFrame    : 300 filas x 9 columnas
+  Fuente       : formula reconstruida: gpu/100 + cpu/100 + mem/16 (por defecto, sin validacion)
+  Verificacion : filas=True, columnas=True, esquema=True, valores=True
+  Round trip   : VERIFICADO
+  resultados.json escrito.

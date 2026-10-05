@@ -1,0 +1,6 @@
+=== T1 completada ===
+Ejemplos totales: 569
+Atributos: 30
+Clases: {'malignant': 212, 'benign': 357}
+División 70/30 estratificada (random_state=42): train=398 {'malignant': 148, 'benign': 250} | test=171 {'malignant': 64, 'benign': 107}
+Archivos escritos: resultados.json, X_entrenamiento.parquet, X_prueba.parquet, y_entrenamiento.parquet, y_prueba.parquet, distribucion_clases.png

@@ -1,0 +1,11 @@
+==============================================================
+T1 — Breast Cancer Wisconsin (Diagnostic)
+  Ejemplos: 569 | Atributos: 30
+  Clase 'malignant': 212 casos (37.26 % del total)
+  Clase 'benign': 357 casos (62.74 % del total)
+  División 70/30 estratificada (random_state=42):
+    Train: 398 ejemplos (69.95 %) -> {'malignant': 148, 'benign': 250}
+    Test : 171 ejemplos (30.05 %) -> {'malignant': 64, 'benign': 107}
+  Estratificación correcta: True (máx. desviación de proporciones = 0.001686)
+  División guardada en split_T1.npz / split_T1.json (y en entrada/T1/).
+==============================================================

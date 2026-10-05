@@ -1,0 +1,798 @@
+{
+  "subtarea": "T3_analisis_por_consulta",
+  "descripcion": "Parte 3: identificación de las consultas en las que falla cada método (documento relevante fuera del top 3, con su posición) y solapamiento léxico consulta-documento relevante sobre el vocabulario TF-IDF, como base de la explicación de los fallos.",
+  "configuracion": {
+    "n_documentos": 10,
+    "n_consultas": 6,
+    "top_k": 3,
+    "criterio_de_fallo": "el documento relevante queda fuera del top 3 del ranking del método",
+    "vectorizador": "TfidfVectorizer (parámetros por defecto), ajustado solo con los 10 documentos",
+    "tam_vocabulario": 105,
+    "lsa": {
+      "modelo": "TruncatedSVD",
+      "n_componentes": 4,
+      "random_state": 0,
+      "fuente_coordenadas": "coordenadas latentes oficiales leidas de entrada/T2/resultados.json"
+    },
+    "desempate_ranking": "argsort estable descendente (empates por orden del corpus d01..d10)"
+  },
+  "verificacion_con_previas": {
+    "T1": {
+      "archivo": "entrada/T1/resultados.json",
+      "matriz_similitud_tfidf_coincide": true,
+      "rankings_completos_coinciden": true,
+      "ranks_del_relevante_coinciden": true
+    },
+    "T2": {
+      "archivo": "entrada/T2/resultados.json",
+      "similitud_lsa_coincide_con_recalculo": true,
+      "max_dif_similitud_lsa": 0.0
+    }
+  },
+  "rankings": {
+    "tfidf": {
+      "q1": {
+        "ranking_completo": [
+          "d04",
+          "d01",
+          "d06",
+          "d10",
+          "d02",
+          "d08",
+          "d09",
+          "d05",
+          "d03",
+          "d07"
+        ],
+        "relevante": "d04",
+        "posicion_del_relevante": 1
+      },
+      "q2": {
+        "ranking_completo": [
+          "d03",
+          "d01",
+          "d02",
+          "d04",
+          "d05",
+          "d06",
+          "d07",
+          "d08",
+          "d09",
+          "d10"
+        ],
+        "relevante": "d03",
+        "posicion_del_relevante": 1
+      },
+      "q3": {
+        "ranking_completo": [
+          "d08",
+          "d06",
+          "d04",
+          "d01",
+          "d10",
+          "d02",
+          "d03",
+          "d05",
+          "d07",
+          "d09"
+        ],
+        "relevante": "d08",
+        "posicion_del_relevante": 1
+      },
+      "q4": {
+        "ranking_completo": [
+          "d05",
+          "d01",
+          "d04",
+          "d10",
+          "d02",
+          "d08",
+          "d09",
+          "d03",
+          "d06",
+          "d07"
+        ],
+        "relevante": "d05",
+        "posicion_del_relevante": 1
+      },
+      "q5": {
+        "ranking_completo": [
+          "d03",
+          "d06",
+          "d04",
+          "d01",
+          "d10",
+          "d09",
+          "d08",
+          "d05",
+          "d02",
+          "d07"
+        ],
+        "relevante": "d09",
+        "posicion_del_relevante": 6
+      },
+      "q6": {
+        "ranking_completo": [
+          "d02",
+          "d06",
+          "d03",
+          "d08",
+          "d01",
+          "d04",
+          "d05",
+          "d07",
+          "d09",
+          "d10"
+        ],
+        "relevante": "d02",
+        "posicion_del_relevante": 1
+      }
+    },
+    "lsa": {
+      "q1": {
+        "ranking_completo": [
+          "d04",
+          "d01",
+          "d06",
+          "d10",
+          "d09",
+          "d05",
+          "d03",
+          "d08",
+          "d07",
+          "d02"
+        ],
+        "relevante": "d04",
+        "posicion_del_relevante": 1
+      },
+      "q2": {
+        "ranking_completo": [
+          "d03",
+          "d07",
+          "d09",
+          "d02",
+          "d04",
+          "d10",
+          "d08",
+          "d01",
+          "d05",
+          "d06"
+        ],
+        "relevante": "d03",
+        "posicion_del_relevante": 1
+      },
+      "q3": {
+        "ranking_completo": [
+          "d08",
+          "d02",
+          "d06",
+          "d10",
+          "d01",
+          "d04",
+          "d03",
+          "d05",
+          "d07",
+          "d09"
+        ],
+        "relevante": "d08",
+        "posicion_del_relevante": 1
+      },
+      "q4": {
+        "ranking_completo": [
+          "d01",
+          "d10",
+          "d05",
+          "d09",
+          "d04",
+          "d03",
+          "d08",
+          "d02",
+          "d06",
+          "d07"
+        ],
+        "relevante": "d05",
+        "posicion_del_relevante": 3
+      },
+      "q5": {
+        "ranking_completo": [
+          "d04",
+          "d01",
+          "d03",
+          "d06",
+          "d10",
+          "d09",
+          "d07",
+          "d08",
+          "d05",
+          "d02"
+        ],
+        "relevante": "d09",
+        "posicion_del_relevante": 6
+      },
+      "q6": {
+        "ranking_completo": [
+          "d02",
+          "d08",
+          "d10",
+          "d03",
+          "d06",
+          "d01",
+          "d07",
+          "d04",
+          "d09",
+          "d05"
+        ],
+        "relevante": "d02",
+        "posicion_del_relevante": 1
+      }
+    }
+  },
+  "consultas_falladas": {
+    "tfidf": [
+      {
+        "metodo": "tfidf",
+        "consulta": "q5",
+        "texto_consulta": "¿Qué hace que el modelo sea más determinista al elegir la siguiente palabra?",
+        "relevante": "d09",
+        "posicion_del_relevante": 6,
+        "top3_del_metodo": [
+          "d03",
+          "d06",
+          "d04"
+        ],
+        "sim_coseno_top1": 0.3106758887220715,
+        "sim_coseno_relevante": 0.07900232923856973
+      }
+    ],
+    "lsa": [
+      {
+        "metodo": "lsa",
+        "consulta": "q5",
+        "texto_consulta": "¿Qué hace que el modelo sea más determinista al elegir la siguiente palabra?",
+        "relevante": "d09",
+        "posicion_del_relevante": 6,
+        "top3_del_metodo": [
+          "d04",
+          "d01",
+          "d03"
+        ],
+        "sim_coseno_top1": 0.9427359534682048,
+        "sim_coseno_relevante": 0.499885516803482
+      }
+    ],
+    "ambos_metodos": [
+      "q5"
+    ],
+    "resumen": {
+      "n_fallos_tfidf": 1,
+      "n_fallos_lsa": 1,
+      "lista_falladas_tfidf": [
+        "q5"
+      ],
+      "lista_falladas_lsa": [
+        "q5"
+      ],
+      "lista_falladas_ambos": [
+        "q5"
+      ]
+    }
+  },
+  "solapamiento_lexico_consulta_relevante": {
+    "q1": {
+      "consulta": "q1",
+      "texto_consulta": "¿Qué función de ranking léxica pondera la frecuencia de términos?",
+      "relevante": "d04",
+      "texto_relevante": "BM25 es una función de ranking léxica que pondera la frecuencia de términos y la longitud del documento.",
+      "terminos_consulta_en_vocabulario": [
+        "de",
+        "frecuencia",
+        "función",
+        "la",
+        "léxica",
+        "pondera",
+        "qué",
+        "ranking",
+        "términos"
+      ],
+      "terminos_documento_en_vocabulario": [
+        "bm25",
+        "de",
+        "del",
+        "documento",
+        "es",
+        "frecuencia",
+        "función",
+        "la",
+        "longitud",
+        "léxica",
+        "pondera",
+        "que",
+        "ranking",
+        "términos",
+        "una"
+      ],
+      "terminos_consulta_fuera_del_vocabulario": [],
+      "terminos_compartidos": [
+        "de",
+        "la",
+        "léxica",
+        "ranking",
+        "términos",
+        "frecuencia",
+        "pondera",
+        "función"
+      ],
+      "detalle_por_termino": [
+        {
+          "termino": "de",
+          "tipo": "funcional",
+          "peso_tfidf_en_consulta": 0.41616626604586404,
+          "peso_tfidf_en_documento": 0.31423567671878266
+        },
+        {
+          "termino": "la",
+          "tipo": "funcional",
+          "peso_tfidf_en_consulta": 0.1881121216397302,
+          "peso_tfidf_en_documento": 0.2840765562480844
+        },
+        {
+          "termino": "léxica",
+          "tipo": "contenido",
+          "peso_tfidf_en_consulta": 0.3504139910334365,
+          "peso_tfidf_en_documento": 0.2645879461839569
+        },
+        {
+          "termino": "ranking",
+          "tipo": "contenido",
+          "peso_tfidf_en_consulta": 0.3504139910334365,
+          "peso_tfidf_en_documento": 0.2645879461839569
+        },
+        {
+          "termino": "términos",
+          "tipo": "contenido",
+          "peso_tfidf_en_consulta": 0.3504139910334365,
+          "peso_tfidf_en_documento": 0.2645879461839569
+        },
+        {
+          "termino": "frecuencia",
+          "tipo": "contenido",
+          "peso_tfidf_en_consulta": 0.3504139910334365,
+          "peso_tfidf_en_documento": 0.2645879461839569
+        },
+        {
+          "termino": "pondera",
+          "tipo": "contenido",
+          "peso_tfidf_en_consulta": 0.29788390619311367,
+          "peso_tfidf_en_documento": 0.22492392700544242
+        },
+        {
+          "termino": "función",
+          "tipo": "contenido",
+          "peso_tfidf_en_consulta": 0.29788390619311367,
+          "peso_tfidf_en_documento": 0.22492392700544242
+        }
+      ],
+      "n_compartidos": 8,
+      "n_compartidos_contenido": 6,
+      "n_compartidos_funcionales": 2,
+      "terminos_contenido_compartidos": [
+        "léxica",
+        "ranking",
+        "términos",
+        "frecuencia",
+        "pondera",
+        "función"
+      ],
+      "terminos_funcionales_compartidos": [
+        "de",
+        "la"
+      ],
+      "jaccard_vocabulario": 0.5,
+      "posicion_relevante_tfidf": 1,
+      "posicion_relevante_lsa": 1,
+      "falla_tfidf": false,
+      "falla_lsa": false
+    },
+    "q2": {
+      "consulta": "q2",
+      "texto_consulta": "¿Cómo se añaden fragmentos recuperados al prompt?",
+      "relevante": "d03",
+      "texto_relevante": "La recuperación aumentada con generación busca fragmentos relevantes y los añade al prompt del modelo.",
+      "terminos_consulta_en_vocabulario": [
+        "al",
+        "fragmentos",
+        "prompt"
+      ],
+      "terminos_documento_en_vocabulario": [
+        "al",
+        "aumentada",
+        "añade",
+        "busca",
+        "con",
+        "del",
+        "fragmentos",
+        "generación",
+        "la",
+        "los",
+        "modelo",
+        "prompt",
+        "recuperación",
+        "relevantes"
+      ],
+      "terminos_consulta_fuera_del_vocabulario": [
+        "añaden",
+        "cómo",
+        "recuperados",
+        "se"
+      ],
+      "terminos_compartidos": [
+        "al",
+        "fragmentos",
+        "prompt"
+      ],
+      "detalle_por_termino": [
+        {
+          "termino": "al",
+          "tipo": "funcional",
+          "peso_tfidf_en_consulta": 0.5773502691896257,
+          "peso_tfidf_en_documento": 0.29874339395570315
+        },
+        {
+          "termino": "fragmentos",
+          "tipo": "contenido",
+          "peso_tfidf_en_consulta": 0.5773502691896257,
+          "peso_tfidf_en_documento": 0.29874339395570315
+        },
+        {
+          "termino": "prompt",
+          "tipo": "contenido",
+          "peso_tfidf_en_consulta": 0.5773502691896257,
+          "peso_tfidf_en_documento": 0.29874339395570315
+        }
+      ],
+      "n_compartidos": 3,
+      "n_compartidos_contenido": 2,
+      "n_compartidos_funcionales": 1,
+      "terminos_contenido_compartidos": [
+        "fragmentos",
+        "prompt"
+      ],
+      "terminos_funcionales_compartidos": [
+        "al"
+      ],
+      "jaccard_vocabulario": 0.21428571428571427,
+      "posicion_relevante_tfidf": 1,
+      "posicion_relevante_lsa": 1,
+      "falla_tfidf": false,
+      "falla_lsa": false
+    },
+    "q3": {
+      "consulta": "q3",
+      "texto_consulta": "¿Qué técnica entrena matrices de bajo rango?",
+      "relevante": "d08",
+      "texto_relevante": "El ajuste fino con LoRA entrena matrices de bajo rango y congela los pesos originales.",
+      "terminos_consulta_en_vocabulario": [
+        "bajo",
+        "de",
+        "entrena",
+        "matrices",
+        "qué",
+        "rango"
+      ],
+      "terminos_documento_en_vocabulario": [
+        "ajuste",
+        "bajo",
+        "con",
+        "congela",
+        "de",
+        "el",
+        "entrena",
+        "fino",
+        "lora",
+        "los",
+        "matrices",
+        "originales",
+        "pesos",
+        "rango"
+      ],
+      "terminos_consulta_fuera_del_vocabulario": [
+        "técnica"
+      ],
+      "terminos_compartidos": [
+        "bajo",
+        "entrena",
+        "matrices",
+        "rango",
+        "de"
+      ],
+      "detalle_por_termino": [
+        {
+          "termino": "bajo",
+          "tipo": "contenido",
+          "peso_tfidf_en_consulta": 0.43223174876056586,
+          "peso_tfidf_en_documento": 0.29788804547336384
+        },
+        {
+          "termino": "entrena",
+          "tipo": "contenido",
+          "peso_tfidf_en_consulta": 0.43223174876056586,
+          "peso_tfidf_en_documento": 0.29788804547336384
+        },
+        {
+          "termino": "matrices",
+          "tipo": "contenido",
+          "peso_tfidf_en_consulta": 0.43223174876056586,
+          "peso_tfidf_en_documento": 0.29788804547336384
+        },
+        {
+          "termino": "rango",
+          "tipo": "contenido",
+          "peso_tfidf_en_consulta": 0.43223174876056586,
+          "peso_tfidf_en_documento": 0.29788804547336384
+        },
+        {
+          "termino": "de",
+          "tipo": "funcional",
+          "peso_tfidf_en_consulta": 0.2566682232316953,
+          "peso_tfidf_en_documento": 0.17689213153095973
+        }
+      ],
+      "n_compartidos": 5,
+      "n_compartidos_contenido": 4,
+      "n_compartidos_funcionales": 1,
+      "terminos_contenido_compartidos": [
+        "bajo",
+        "entrena",
+        "matrices",
+        "rango"
+      ],
+      "terminos_funcionales_compartidos": [
+        "de"
+      ],
+      "jaccard_vocabulario": 0.3333333333333333,
+      "posicion_relevante_tfidf": 1,
+      "posicion_relevante_lsa": 1,
+      "falla_tfidf": false,
+      "falla_lsa": false
+    },
+    "q4": {
+      "consulta": "q4",
+      "texto_consulta": "¿Cómo se compara la orientación de dos vectores de texto?",
+      "relevante": "d05",
+      "texto_relevante": "Los embeddings densos representan textos como vectores; la similitud coseno compara su orientación.",
+      "terminos_consulta_en_vocabulario": [
+        "compara",
+        "de",
+        "la",
+        "orientación",
+        "vectores"
+      ],
+      "terminos_documento_en_vocabulario": [
+        "como",
+        "compara",
+        "coseno",
+        "densos",
+        "embeddings",
+        "la",
+        "los",
+        "orientación",
+        "representan",
+        "similitud",
+        "su",
+        "textos",
+        "vectores"
+      ],
+      "terminos_consulta_fuera_del_vocabulario": [
+        "cómo",
+        "dos",
+        "se",
+        "texto"
+      ],
+      "terminos_compartidos": [
+        "vectores",
+        "compara",
+        "orientación",
+        "la"
+      ],
+      "detalle_por_termino": [
+        {
+          "termino": "vectores",
+          "tipo": "contenido",
+          "peso_tfidf_en_consulta": 0.4613305217177221,
+          "peso_tfidf_en_documento": 0.30121466100132
+        },
+        {
+          "termino": "compara",
+          "tipo": "contenido",
+          "peso_tfidf_en_consulta": 0.4613305217177221,
+          "peso_tfidf_en_documento": 0.30121466100132
+        },
+        {
+          "termino": "orientación",
+          "tipo": "contenido",
+          "peso_tfidf_en_consulta": 0.4613305217177221,
+          "peso_tfidf_en_documento": 0.30121466100132
+        },
+        {
+          "termino": "la",
+          "tipo": "funcional",
+          "peso_tfidf_en_consulta": 0.24765524618908155,
+          "peso_tfidf_en_documento": 0.161700532512538
+        }
+      ],
+      "n_compartidos": 4,
+      "n_compartidos_contenido": 3,
+      "n_compartidos_funcionales": 1,
+      "terminos_contenido_compartidos": [
+        "vectores",
+        "compara",
+        "orientación"
+      ],
+      "terminos_funcionales_compartidos": [
+        "la"
+      ],
+      "jaccard_vocabulario": 0.2857142857142857,
+      "posicion_relevante_tfidf": 1,
+      "posicion_relevante_lsa": 3,
+      "falla_tfidf": false,
+      "falla_lsa": false
+    },
+    "q5": {
+      "consulta": "q5",
+      "texto_consulta": "¿Qué hace que el modelo sea más determinista al elegir la siguiente palabra?",
+      "relevante": "d09",
+      "texto_relevante": "La temperatura reescala los logits antes del softmax; valores bajos concentran la probabilidad.",
+      "terminos_consulta_en_vocabulario": [
+        "al",
+        "el",
+        "la",
+        "modelo",
+        "que",
+        "qué"
+      ],
+      "terminos_documento_en_vocabulario": [
+        "antes",
+        "bajos",
+        "concentran",
+        "del",
+        "la",
+        "logits",
+        "los",
+        "probabilidad",
+        "reescala",
+        "softmax",
+        "temperatura",
+        "valores"
+      ],
+      "terminos_consulta_fuera_del_vocabulario": [
+        "determinista",
+        "elegir",
+        "hace",
+        "más",
+        "palabra",
+        "sea",
+        "siguiente"
+      ],
+      "terminos_compartidos": [
+        "la"
+      ],
+      "detalle_por_termino": [
+        {
+          "termino": "la",
+          "tipo": "funcional",
+          "peso_tfidf_en_consulta": 0.24397961091537643,
+          "peso_tfidf_en_documento": 0.32380709577396377
+        }
+      ],
+      "n_compartidos": 1,
+      "n_compartidos_contenido": 0,
+      "n_compartidos_funcionales": 1,
+      "terminos_contenido_compartidos": [],
+      "terminos_funcionales_compartidos": [
+        "la"
+      ],
+      "jaccard_vocabulario": 0.058823529411764705,
+      "posicion_relevante_tfidf": 6,
+      "posicion_relevante_lsa": 6,
+      "falla_tfidf": true,
+      "falla_lsa": true
+    },
+    "q6": {
+      "consulta": "q6",
+      "texto_consulta": "¿Qué arquitectura combina autoatención con capas feed-forward?",
+      "relevante": "d02",
+      "texto_relevante": "Los transformadores apilan capas de autoatención y redes feed-forward, con conexiones residuales y normalización.",
+      "terminos_consulta_en_vocabulario": [
+        "autoatención",
+        "capas",
+        "con",
+        "feed",
+        "forward",
+        "qué"
+      ],
+      "terminos_documento_en_vocabulario": [
+        "apilan",
+        "autoatención",
+        "capas",
+        "con",
+        "conexiones",
+        "de",
+        "feed",
+        "forward",
+        "los",
+        "normalización",
+        "redes",
+        "residuales",
+        "transformadores"
+      ],
+      "terminos_consulta_fuera_del_vocabulario": [
+        "arquitectura",
+        "combina"
+      ],
+      "terminos_compartidos": [
+        "autoatención",
+        "feed",
+        "forward",
+        "capas",
+        "con"
+      ],
+      "detalle_por_termino": [
+        {
+          "termino": "autoatención",
+          "tipo": "contenido",
+          "peso_tfidf_en_consulta": 0.43223174876056586,
+          "peso_tfidf_en_documento": 0.30160141425178877
+        },
+        {
+          "termino": "feed",
+          "tipo": "contenido",
+          "peso_tfidf_en_consulta": 0.43223174876056586,
+          "peso_tfidf_en_documento": 0.30160141425178877
+        },
+        {
+          "termino": "forward",
+          "tipo": "contenido",
+          "peso_tfidf_en_consulta": 0.43223174876056586,
+          "peso_tfidf_en_documento": 0.30160141425178877
+        },
+        {
+          "termino": "capas",
+          "tipo": "contenido",
+          "peso_tfidf_en_consulta": 0.43223174876056586,
+          "peso_tfidf_en_documento": 0.30160141425178877
+        },
+        {
+          "termino": "con",
+          "tipo": "funcional",
+          "peso_tfidf_en_consulta": 0.2566682232316953,
+          "peso_tfidf_en_documento": 0.1790972073248953
+        }
+      ],
+      "n_compartidos": 5,
+      "n_compartidos_contenido": 4,
+      "n_compartidos_funcionales": 1,
+      "terminos_contenido_compartidos": [
+        "autoatención",
+        "feed",
+        "forward",
+        "capas"
+      ],
+      "terminos_funcionales_compartidos": [
+        "con"
+      ],
+      "jaccard_vocabulario": 0.35714285714285715,
+      "posicion_relevante_tfidf": 1,
+      "posicion_relevante_lsa": 1,
+      "falla_tfidf": false,
+      "falla_lsa": false
+    }
+  },
+  "explicaciones_por_consulta": {
+    "q1": "q1 vs d04: comparten 8 termino(s) del vocabulario TF-IDF (6 de contenido: léxica, ranking, términos, frecuencia, pondera, función; 2 funcionales). Sin fallos: el relevante queda en el top 3 en ambos metodos (TF-IDF pos 1, LSA pos 1), apoyado en 6 termino(s) de contenido compartido(s).",
+    "q2": "q2 vs d03: comparten 3 termino(s) del vocabulario TF-IDF (2 de contenido: fragmentos, prompt; 1 funcionales). Terminos clave de la consulta ausentes del vocabulario del corpus: añaden, cómo, recuperados, se. Sin fallos: el relevante queda en el top 3 en ambos metodos (TF-IDF pos 1, LSA pos 1), apoyado en 2 termino(s) de contenido compartido(s).",
+    "q3": "q3 vs d08: comparten 5 termino(s) del vocabulario TF-IDF (4 de contenido: bajo, entrena, matrices, rango; 1 funcionales). Terminos clave de la consulta ausentes del vocabulario del corpus: técnica. Sin fallos: el relevante queda en el top 3 en ambos metodos (TF-IDF pos 1, LSA pos 1), apoyado en 4 termino(s) de contenido compartido(s).",
+    "q4": "q4 vs d05: comparten 4 termino(s) del vocabulario TF-IDF (3 de contenido: vectores, compara, orientación; 1 funcionales). Terminos clave de la consulta ausentes del vocabulario del corpus: cómo, dos, se, texto. Sin fallos: el relevante queda en el top 3 en ambos metodos (TF-IDF pos 1, LSA pos 3), apoyado en 3 termino(s) de contenido compartido(s).",
+    "q5": "q5 vs d09: comparten 1 termino(s) del vocabulario TF-IDF (0 de contenido: (ninguno); 1 funcionales). Terminos clave de la consulta ausentes del vocabulario del corpus: determinista, elegir, hace, más, palabra, sea, siguiente. FALLO en ambos metodos (posicion 6 en TF-IDF y 6 en LSA): consulta y relevante no comparten NINGUN termino de contenido del vocabulario, solo palabras funcionales, de modo que ni la coincidencia literal ni la estructura latente elevan el relevante al top 3.",
+    "q6": "q6 vs d02: comparten 5 termino(s) del vocabulario TF-IDF (4 de contenido: autoatención, feed, forward, capas; 1 funcionales). Terminos clave de la consulta ausentes del vocabulario del corpus: arquitectura, combina. Sin fallos: el relevante queda en el top 3 en ambos metodos (TF-IDF pos 1, LSA pos 1), apoyado en 4 termino(s) de contenido compartido(s)."
+  }
+}

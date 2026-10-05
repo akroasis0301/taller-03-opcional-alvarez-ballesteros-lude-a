@@ -1,0 +1,91 @@
+{
+ "fuente": "/Users/miguelestebanalvarez/Posgrado Maestría Inteligencia Artificial/1er Semestre/IA Generativa y Agentes/Talleres/Taller 03/taller-03-opcional-alvarez-ballesteros-ludeña/solver-v2/enunciados/tarea-b-temperatura-top-p.pdf",
+ "texto": "Tarea B — Temperatura, top-p y entropía de la\ndistribución de salida\nMMIA 6013 · Tarea de práctica para el solver del Taller 03 v2 Entrega: un notebook de Jupyter\n(.ipynb) ejecutado, con las salidas visibles.\nUn modelo de lenguaje produce, para el siguiente token, un vector de logits. Considera un\nvocabulario de seis tokens, t0 a t5, con estos logits:\nToken\nt0\nt1\nt2\nt3\nt4\nt5\nLogit\n2.0\n1.0\n0.5\n0.2\n-1.0\n-3.0\nParte 1 — Softmax con temperatura\nImplementa en NumPy la función softmax con temperatura p_i = exp(z_i/T) / Σ_j exp(z_j/T),\nnuméricamente estable. Calcula la distribución para T = 0.5, T = 1 y T = 2, y la entropía en bits de\ncada una. Presenta las tres distribuciones y las tres entropías en una tabla, con cuatro decimales.\nParte 2 — Muestreo de núcleo (top-p)\nCon la distribución de T = 1 de la Parte 1, aplica top-p con p = 0.9: ordena los tokens por\nprobabilidad, conserva el conjunto mínimo cuya probabilidad acumulada alcanza 0.9 y renormaliza.\nReporta qué tokens sobreviven y la distribución renormalizada.\nParte 3 — Comprobación empírica\nToma\n10\n000\nmuestras\nde\nla\ndistribución\nrenormalizada\nde\nla\nParte\n2\ncon\nnumpy.random.default_rng(0). Compara las frecuencias observadas con las probabilidades\nteóricas en un gráfico de barras y calcula la divergencia KL (en bits) de la distribución empírica\nrespecto de la teórica.\nParte 4 — Pregunta conceptual\nExplica qué le pasa a la distribución cuando T → 0 y cuando T → ∞, y por qué T → 0 equivale a la\ndecodificación voraz (greedy). Usa las entropías de la Parte 1 como evidencia.\nFormato\nUn solo notebook, ejecutado de principio a fin sin errores, con una celda de Markdown que\nencabece cada parte. Las cifras se calculan en el notebook, no se escriben a mano.",
+ "secciones": [
+  {
+   "id": "S0",
+   "titulo": "Tarea B — Temperatura, top-p y entropía de la distribución de salida",
+   "clave": "Preámbulo",
+   "trabajo": false,
+   "pagina": 1,
+   "texto": "MMIA 6013 · Tarea de práctica para el solver del Taller 03 v2 Entrega: un notebook de Jupyter\n(.ipynb) ejecutado, con las salidas visibles.\nUn modelo de lenguaje produce, para el siguiente token, un vector de logits. Considera un\nvocabulario de seis tokens, t0 a t5, con estos logits:\nToken\nt0\nt1\nt2\nt3\nt4\nt5\nLogit\n2.0\n1.0\n0.5\n0.2\n-1.0\n-3.0"
+  },
+  {
+   "id": "S1",
+   "titulo": "Parte 1 — Softmax con temperatura",
+   "clave": "Parte 1",
+   "trabajo": true,
+   "pagina": 1,
+   "texto": "Implementa en NumPy la función softmax con temperatura p_i = exp(z_i/T) / Σ_j exp(z_j/T),\nnuméricamente estable. Calcula la distribución para T = 0.5, T = 1 y T = 2, y la entropía en bits de\ncada una. Presenta las tres distribuciones y las tres entropías en una tabla, con cuatro decimales."
+  },
+  {
+   "id": "S2",
+   "titulo": "Parte 2 — Muestreo de núcleo (top-p)",
+   "clave": "Parte 2",
+   "trabajo": true,
+   "pagina": 1,
+   "texto": "Con la distribución de T = 1 de la Parte 1, aplica top-p con p = 0.9: ordena los tokens por\nprobabilidad, conserva el conjunto mínimo cuya probabilidad acumulada alcanza 0.9 y renormaliza.\nReporta qué tokens sobreviven y la distribución renormalizada."
+  },
+  {
+   "id": "S3",
+   "titulo": "Parte 3 — Comprobación empírica",
+   "clave": "Parte 3",
+   "trabajo": true,
+   "pagina": 1,
+   "texto": "Toma\n10\n000\nmuestras\nde\nla\ndistribución\nrenormalizada\nde\nla\nParte\n2\ncon\nnumpy.random.default_rng(0). Compara las frecuencias observadas con las probabilidades\nteóricas en un gráfico de barras y calcula la divergencia KL (en bits) de la distribución empírica\nrespecto de la teórica."
+  },
+  {
+   "id": "S4",
+   "titulo": "Parte 4 — Pregunta conceptual",
+   "clave": "Parte 4",
+   "trabajo": true,
+   "pagina": 1,
+   "texto": "Explica qué le pasa a la distribución cuando T → 0 y cuando T → ∞, y por qué T → 0 equivale a la\ndecodificación voraz (greedy). Usa las entropías de la Parte 1 como evidencia."
+  },
+  {
+   "id": "S5",
+   "titulo": "Formato",
+   "clave": "Formato",
+   "trabajo": false,
+   "pagina": 1,
+   "texto": "Un solo notebook, ejecutado de principio a fin sin errores, con una celda de Markdown que\nencabece cada parte. Las cifras se calculan en el notebook, no se escriben a mano."
+  }
+ ],
+ "tablas": [
+  {
+   "pagina": 1,
+   "filas": [
+    [
+     "Token",
+     "t0",
+     "t1",
+     "t2",
+     "t3",
+     "t4",
+     "t5"
+    ],
+    [
+     "Logit",
+     "2.0",
+     "1.0",
+     "0.5",
+     "0.2",
+     "-1.0",
+     "-3.0"
+    ]
+   ]
+  }
+ ],
+ "paginas_sin_texto": [],
+ "escaneado": false,
+ "datos": null,
+ "restricciones": {
+  "entregable": "solucion.ipynb",
+  "formato": "ipynb",
+  "palabras_max": null,
+  "paginas_max": null,
+  "secciones": [],
+  "limites_parciales": [],
+  "archivos": []
+ }
+}

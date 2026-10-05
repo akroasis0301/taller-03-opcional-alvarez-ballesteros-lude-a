@@ -1,0 +1,15 @@
+=== T2: Z-score y load_score ===
+Características (orden T1): ['gpu_utilization', 'cpu_utilization', 'memory_gb']
+Matriz de entrada X.shape : (300, 3)
+Medias por columna        : [57.99313333 50.54163333 29.45533333]
+Desv. estándar por columna: [14.43011728 12.69846349  6.53680183]
+zscores.shape             : (300, 3)
+load_score.shape          : (300,)
+Media de zscores (por col): [ 5.68434189e-16  2.36847579e-16 -3.31586610e-16] -> media 0 ok: True
+Std de zscores   (por col): [1. 1. 1.] -> std 1 ok  : True
+load_score == zscores @ w : True
+means coincide con lo esperado: True
+load_score resumen        : {'mean': 2.6053233644537007e-16, 'min': -1.955649651274497, 'max': 3.136217861183744}
+Resultados en             : resultados.json
+Parquet escrito en        : output/server_analysis.parquet
+Figura guardada en        : t2_zscores_load_score.png

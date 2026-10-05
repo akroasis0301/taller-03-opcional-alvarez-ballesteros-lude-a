@@ -1,0 +1,150 @@
+{
+  "subtarea": "T2 - Muestreo de núcleo (top-p) con p=0.9 sobre la distribución de T=1",
+  "p": 0.9,
+  "temperatura": 1.0,
+  "fuente_distribucion_T1": "entrada/T1/resultados.json",
+  "tokens": [
+    "t0",
+    "t1",
+    "t2",
+    "t3",
+    "t4",
+    "t5"
+  ],
+  "logits": [
+    2.0,
+    1.0,
+    0.5,
+    0.2,
+    -1.0,
+    -3.0
+  ],
+  "distribucion_T1_original": {
+    "t0": 0.5516226378718239,
+    "t1": 0.2029306277578035,
+    "t2": 0.12308364752983937,
+    "t3": 0.09118260875807133,
+    "t4": 0.02746367398498595,
+    "t5": 0.003716804097476065
+  },
+  "orden_descendente_probabilidad": [
+    "t0",
+    "t1",
+    "t2",
+    "t3",
+    "t4",
+    "t5"
+  ],
+  "probs_orden_descendente": [
+    0.5516226378718239,
+    0.2029306277578035,
+    0.12308364752983937,
+    0.09118260875807133,
+    0.02746367398498595,
+    0.003716804097476065
+  ],
+  "prob_acumulada_orden_descendente": [
+    0.5516226378718239,
+    0.7545532656296273,
+    0.8776369131594667,
+    0.968819521917538,
+    0.9962831959025239,
+    1.0
+  ],
+  "tokens_supervivientes": [
+    "t0",
+    "t1",
+    "t2",
+    "t3"
+  ],
+  "num_tokens_nucleo": 4,
+  "masa_probabilidad_nucleo": 0.968819521917538,
+  "probabilidades_originales_supervivientes": {
+    "t0": 0.5516226378718239,
+    "t1": 0.2029306277578035,
+    "t2": 0.12308364752983937,
+    "t3": 0.09118260875807133
+  },
+  "distribucion_renormalizada": {
+    "t0": 0.5693760554907313,
+    "t1": 0.2094617451103304,
+    "t2": 0.12704497044632815,
+    "t3": 0.09411722895261025
+  },
+  "distribucion_renormalizada_4dec": {
+    "t0": "0.5694",
+    "t1": "0.2095",
+    "t2": "0.1270",
+    "t3": "0.0941"
+  },
+  "tokens_excluidos": [
+    "t4",
+    "t5"
+  ],
+  "masa_descartada": 0.031180478082462017,
+  "suma_distribucion_renormalizada": 1.0,
+  "verificaciones": {
+    "suma_renormalizada_es_1": true,
+    "error_absoluto_suma": 0.0,
+    "razon_renormalizada_original_por_token": {
+      "t0": 1.0321839902861867,
+      "t1": 1.0321839902861867,
+      "t2": 1.0321839902861867,
+      "t3": 1.0321839902861867
+    },
+    "razon_esperada_1_sobre_masa_nucleo": 1.0321839902861867,
+    "razon_constante_entre_tokens": true,
+    "renormalizada_por_masa_recupera_prob_T1": true,
+    "max_abs_diff_distribucion_T1_vs_softmax_recalculada": 0.0
+  },
+  "tabla_ordenada_top_p": [
+    {
+      "token": "t0",
+      "prob_T1": 0.5516226378718239,
+      "prob_T1_4dec": "0.5516",
+      "acumulada": 0.5516226378718239,
+      "acumulada_4dec": "0.5516",
+      "en_nucleo": true
+    },
+    {
+      "token": "t1",
+      "prob_T1": 0.2029306277578035,
+      "prob_T1_4dec": "0.2029",
+      "acumulada": 0.7545532656296273,
+      "acumulada_4dec": "0.7546",
+      "en_nucleo": true
+    },
+    {
+      "token": "t2",
+      "prob_T1": 0.12308364752983937,
+      "prob_T1_4dec": "0.1231",
+      "acumulada": 0.8776369131594667,
+      "acumulada_4dec": "0.8776",
+      "en_nucleo": true
+    },
+    {
+      "token": "t3",
+      "prob_T1": 0.09118260875807133,
+      "prob_T1_4dec": "0.0912",
+      "acumulada": 0.968819521917538,
+      "acumulada_4dec": "0.9688",
+      "en_nucleo": true
+    },
+    {
+      "token": "t4",
+      "prob_T1": 0.02746367398498595,
+      "prob_T1_4dec": "0.0275",
+      "acumulada": 0.9962831959025239,
+      "acumulada_4dec": "0.9963",
+      "en_nucleo": false
+    },
+    {
+      "token": "t5",
+      "prob_T1": 0.003716804097476065,
+      "prob_T1_4dec": "0.0037",
+      "acumulada": 1.0,
+      "acumulada_4dec": "1.0000",
+      "en_nucleo": false
+    }
+  ]
+}

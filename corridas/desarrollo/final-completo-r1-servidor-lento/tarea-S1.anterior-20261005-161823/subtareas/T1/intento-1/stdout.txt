@@ -1,0 +1,4 @@
+repr -> ServerMeasurements(shape=(300, 3), features=('gpu_utilization', 'cpu_utilization', 'memory_gb'))
+Validaciones ValueError: {'no_bidimensional': True, 'columnas_vs_nombres': True, 'datos_no_numericos': True}
+¿repr coincide con el esperado? True
+Resultados escritos en resultados.json

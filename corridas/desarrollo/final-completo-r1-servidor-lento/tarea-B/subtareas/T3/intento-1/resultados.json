@@ -1,0 +1,95 @@
+{
+  "subtarea": "T3 - Comprobación empírica: 10,000 muestras de la distribución renormalizada (top-p p=0.9, T=1), gráfico de barras y divergencia KL en bits",
+  "fuente_distribucion_renormalizada": "entrada/T2/resultados.json",
+  "temperatura": 1.0,
+  "p_top": 0.9,
+  "generador": "numpy.random.default_rng(0)",
+  "semilla": 0,
+  "n_muestras": 10000,
+  "tokens_nucleo": [
+    "t0",
+    "t1",
+    "t2",
+    "t3"
+  ],
+  "probabilidades_teoricas": {
+    "t0": 0.5693760554907313,
+    "t1": 0.2094617451103304,
+    "t2": 0.12704497044632815,
+    "t3": 0.09411722895261025
+  },
+  "conteos_observados": {
+    "t0": 5682,
+    "t1": 2093,
+    "t2": 1296,
+    "t3": 929
+  },
+  "frecuencias_observadas": {
+    "t0": 0.5682,
+    "t1": 0.2093,
+    "t2": 0.1296,
+    "t3": 0.0929
+  },
+  "frecuencias_observadas_4dec": {
+    "t0": "0.5682",
+    "t1": "0.2093",
+    "t2": "0.1296",
+    "t3": "0.0929"
+  },
+  "probabilidades_teoricas_4dec": {
+    "t0": "0.5694",
+    "t1": "0.2095",
+    "t2": "0.1270",
+    "t3": "0.0941"
+  },
+  "divergencia_KL_bits": 5.006898814879229e-05,
+  "divergencia_KL_bits_6dec": "0.000050",
+  "divergencia_KL_nats": 3.470517796882468e-05,
+  "tabla_comparativa": [
+    {
+      "token": "t0",
+      "prob_teorica": 0.5693760554907313,
+      "prob_teorica_4dec": "0.5694",
+      "conteo_observado": 5682,
+      "frecuencia_observada": 0.5682,
+      "frecuencia_observada_4dec": "0.5682",
+      "diferencia_obs_menos_teo": -0.0011760554907312981
+    },
+    {
+      "token": "t1",
+      "prob_teorica": 0.2094617451103304,
+      "prob_teorica_4dec": "0.2095",
+      "conteo_observado": 2093,
+      "frecuencia_observada": 0.2093,
+      "frecuencia_observada_4dec": "0.2093",
+      "diferencia_obs_menos_teo": -0.00016174511033037464
+    },
+    {
+      "token": "t2",
+      "prob_teorica": 0.12704497044632815,
+      "prob_teorica_4dec": "0.1270",
+      "conteo_observado": 1296,
+      "frecuencia_observada": 0.1296,
+      "frecuencia_observada_4dec": "0.1296",
+      "diferencia_obs_menos_teo": 0.002555029553671845
+    },
+    {
+      "token": "t3",
+      "prob_teorica": 0.09411722895261025,
+      "prob_teorica_4dec": "0.0941",
+      "conteo_observado": 929,
+      "frecuencia_observada": 0.0929,
+      "frecuencia_observada_4dec": "0.0929",
+      "diferencia_obs_menos_teo": -0.0012172289526102553
+    }
+  ],
+  "figura": "T3_frecuencias_observadas_vs_teoricas.png",
+  "verificaciones": {
+    "suma_probabilidades_teoricas": 1.0,
+    "suma_frecuencias_observadas": 1.0,
+    "total_conteos": 10000,
+    "max_abs_diff_T2_vs_recalculo_softmax_topp": 0.0,
+    "tokens_con_conteo_cero": [],
+    "formula_KL": "D_KL(empirica || teorica) = sum_i q_i * log2(q_i / p_i)"
+  }
+}

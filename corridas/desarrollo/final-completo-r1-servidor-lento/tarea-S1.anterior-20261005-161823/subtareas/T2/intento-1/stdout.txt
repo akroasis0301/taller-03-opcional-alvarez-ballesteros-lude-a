@@ -1,0 +1,11 @@
+Matriz de T1: ServerMeasurements(shape=(300, 3), features=('gpu_utilization', 'cpu_utilization', 'memory_gb'))
+Medias: [57.99313333 50.54163333 29.45533333]
+Desviaciones estandar: [14.43011728 12.69846349  6.53680183]
+zscores.shape    -> (300, 3)
+load_score.shape -> (300,)
+Media de columnas de zscores: [ 5.68434189e-16  2.36847579e-16 -3.31586610e-16]
+Desv. de columnas de zscores: [1. 1. 1.]
+load_score (primeros 5): [ 0.12997047 -0.29784606  0.08669904 -1.15660826 -0.97778418]
+Verificaciones: means_coinciden=True shapes_ok=True media_cero_ok=True std_uno_ok=True load_score_ok=True
+Parquet escrito en: output/server_analysis.parquet
+EXITO: True

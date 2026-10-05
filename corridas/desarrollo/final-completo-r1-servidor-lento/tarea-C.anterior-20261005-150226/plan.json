@@ -1,0 +1,59 @@
+{
+ "subtareas": [
+  {
+   "id": "T1",
+   "tipo": "calculo",
+   "secciones": [
+    "Parte 1"
+   ],
+   "depende_de": [],
+   "objetivo": "Construir el corpus de 10 documentos y las 6 consultas con sus juicios de relevancia, vectorizar con TfidfVectorizer de scikit-learn (parámetros por defecto), calcular similitud coseno consulta-documento, ordenar los 10 documentos por consulta y evaluar Hit@1, Hit@3 y MRR sobre las 6 consultas.",
+   "criterio": "Ranking completo de los 10 documentos para cada una de las 6 consultas y tabla con Hit@1, Hit@3 y MRR agregados de la línea base TF-IDF, todos obtenidos de la ejecución.",
+   "status": "pendiente",
+   "intentos": 0
+  },
+  {
+   "id": "T2",
+   "tipo": "calculo",
+   "secciones": [
+    "Parte 2"
+   ],
+   "depende_de": [
+    "T1"
+   ],
+   "objetivo": "Usando la misma matriz TF-IDF, consultas y juicios de la Parte 1, proyectar a 4 dimensiones con TruncatedSVD(n_components=4, random_state=0) (LSA), calcular similitud coseno en el espacio latente, repetir la evaluación y construir una sola tabla con las tres métricas de los dos métodos.",
+   "criterio": "Rankings LSA por consulta y una única tabla comparativa con Hit@1, Hit@3 y MRR de TF-IDF y de LSA (2 métodos × 3 métricas), generada por código.",
+   "status": "pendiente",
+   "intentos": 0
+  },
+  {
+   "id": "T3",
+   "tipo": "calculo",
+   "secciones": [
+    "Parte 3"
+   ],
+   "depende_de": [
+    "T1",
+    "T2"
+   ],
+   "objetivo": "A partir de los rankings de ambos métodos, identificar en qué consultas falla cada uno (documento relevante fuera del top 3) y calcular, para cada consulta, qué términos comparten la consulta con su documento relevante (solapamiento léxico sobre el vocabulario TF-IDF).",
+   "criterio": "Lista de consultas falladas por cada método (con posición del relevante) y tabla o listado del solapamiento de términos consulta-documento relevante por consulta, producidos por código.",
+   "status": "pendiente",
+   "intentos": 0
+  },
+  {
+   "id": "T4",
+   "tipo": "conceptual",
+   "secciones": [
+    "Parte 4"
+   ],
+   "depende_de": [
+    "T3"
+   ],
+   "objetivo": "Redactar la discusión conceptual: por qué un recuperador denso con embeddings de un modelo entrenado resolvería q5 mejor que TF-IDF y LSA (apoyándose en el fallo de q5 y el análisis de términos de la Parte 3), y qué costos tiene frente a TF-IDF (modelo, cómputo, memoria, latencia, interpretabilidad).",
+   "criterio": "Texto que responde ambas preguntas citando el resultado empírico de q5 de las subtareas previas y enumerando al menos un costo concreto del recuperador denso frente a TF-IDF.",
+   "status": "pendiente",
+   "intentos": 0
+  }
+ ]
+}
