@@ -1,0 +1,12 @@
+=== T3: Comprobacion empirica ===
+Muestras: 10000 con numpy.random.default_rng(0)
+token     conteo   observada     teorica
+t0          5682    0.568200    0.569376
+t1          2093    0.209300    0.209462
+t2          1296    0.129600    0.127045
+t3           929    0.092900    0.094117
+t4             0    0.000000    0.000000
+t5             0    0.000000    0.000000
+Divergencia KL (empirica || teorica) = 0.000050 bits (0.000035 nats)
+Figura guardada: T3_frecuencias_vs_teoricas.png
+Resultados guardados en resultados.json

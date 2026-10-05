@@ -1,0 +1,3700 @@
+{
+ "directed": true,
+ "multigraph": false,
+ "graph": {},
+ "nodes": [
+  {
+   "titulo": "Tarea C — Recuperación léxica contra semántica latente sobre un corpus mínimo",
+   "trabajo": false,
+   "id": "Preámbulo",
+   "capa": "enunciado"
+  },
+  {
+   "titulo": "Corpus",
+   "trabajo": false,
+   "id": "Corpus",
+   "capa": "enunciado"
+  },
+  {
+   "titulo": "Consultas y juicios de relevancia",
+   "trabajo": false,
+   "id": "Consultas y juicios de relevancia",
+   "capa": "enunciado"
+  },
+  {
+   "titulo": "Parte 1 — Línea base léxica",
+   "trabajo": true,
+   "id": "Parte 1",
+   "capa": "enunciado"
+  },
+  {
+   "titulo": "Parte 2 — Semántica latente",
+   "trabajo": true,
+   "id": "Parte 2",
+   "capa": "enunciado"
+  },
+  {
+   "titulo": "Parte 3 — Análisis por consulta",
+   "trabajo": true,
+   "id": "Parte 3",
+   "capa": "enunciado"
+  },
+  {
+   "titulo": "Parte 4 — Pregunta conceptual",
+   "trabajo": true,
+   "id": "Parte 4",
+   "capa": "enunciado"
+  },
+  {
+   "titulo": "El reporte",
+   "trabajo": false,
+   "id": "El reporte",
+   "capa": "enunciado"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "ranking léxico",
+   "tipo": "metodo",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Consultas y juicios de relevancia"
+   ],
+   "comunidad": null,
+   "id": "ent:ranking lexico"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "sección Discusión",
+   "tipo": "concepto",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "El reporte"
+   ],
+   "comunidad": 1,
+   "id": "ent:seccion discusion"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "modelos propietarios",
+   "tipo": "metodo",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s1-transformers-y-foundation-models § 6. Notas del Lab 01"
+   ],
+   "comunidad": 5,
+   "id": "ent:modelo propietario"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "q1",
+   "tipo": "dataset",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Consultas y juicios de relevancia"
+   ],
+   "comunidad": null,
+   "id": "ent:q1"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "embeddings densos",
+   "tipo": "metodo",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Corpus"
+   ],
+   "comunidad": 1,
+   "id": "ent:embedding denso"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "TruncatedSVD",
+   "tipo": "metodo",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 2"
+   ],
+   "comunidad": 1,
+   "id": "ent:truncatedsvd"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "Crítica auto-generada",
+   "tipo": "concepto",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s3-agentes § 3. Patrones de Agentes … 3.3 Reflexion"
+   ],
+   "comunidad": 10,
+   "id": "ent:critica auto generada"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "BAAI/bge-m3",
+   "tipo": "metodo",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s2-rag-y-vector-search § 2. Embeddings … 2.3 Similitud semántica"
+   ],
+   "comunidad": 1,
+   "id": "ent:baai bge m3"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "scikit-learn",
+   "tipo": "metodo",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 1"
+   ],
+   "comunidad": 1,
+   "id": "ent:scikit learn"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "matriz TF-IDF",
+   "tipo": "dataset",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 2"
+   ],
+   "comunidad": null,
+   "id": "ent:matriz tf idf"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "cutoff date",
+   "tipo": "concepto",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s2-rag-y-vector-search § 1. Por qué RAG existe"
+   ],
+   "comunidad": 4,
+   "id": "ent:cutoff date"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "text-embedding-3-small",
+   "tipo": "metodo",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s2-rag-y-vector-search § 2. Embeddings … 2.3 Similitud semántica"
+   ],
+   "comunidad": 1,
+   "id": "ent:text embedding 3 small"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "similitud coseno",
+   "tipo": "metrica",
+   "origen": [
+    "notas",
+    "enunciado"
+   ],
+   "citas": [
+    "s2-rag-y-vector-search § 2. Embeddings … 2.3 Similitud semántica",
+    "s2-rag-y-vector-search § 5. Retrieval: Sparse, Dense, Hybrid … 5.4 Reranking",
+    "Corpus",
+    "Parte 1"
+   ],
+   "comunidad": 1,
+   "id": "ent:similitud coseno"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "máximo dos páginas",
+   "tipo": "restriccion",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Preámbulo",
+    "El reporte"
+   ],
+   "comunidad": 1,
+   "id": "ent:maximo dos pagina"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "GPT-3",
+   "tipo": "metodo",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s1-transformers-y-foundation-models § 1. Sesión histórica: IA antes de los LLMs (20 min) … Conexión con el curso anterior",
+    "s1-transformers-y-foundation-models § 4. Ciclo de vida de un Foundation Model (60 min) … 4.5 Constitutional AI (Anthropic)"
+   ],
+   "comunidad": 3,
+   "id": "ent:gpt 3"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "distancia euclidiana",
+   "tipo": "metrica",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s2-rag-y-vector-search § 2. Embeddings … 2.3 Similitud semántica"
+   ],
+   "comunidad": 1,
+   "id": "ent:distancia euclidiana"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "full fine-tuning",
+   "tipo": "metodo",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s4-llmops-y-finetuning § 5. Fine-Tuning Ligero … 5.3 QLoRA — Quantization + LoRA"
+   ],
+   "comunidad": 4,
+   "id": "ent:full fine tuning"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "modelo discriminativo",
+   "tipo": "metodo",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s1-transformers-y-foundation-models § 2. Modelos Generativos Bayesianos: puente conceptual (90 min total) … 2.3 Naive Bayes — el modelo generativo mínimo"
+   ],
+   "comunidad": 0,
+   "id": "ent:modelo discriminativo"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "LLM",
+   "tipo": "metodo",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s1-transformers-y-foundation-models § 2. Modelos Generativos Bayesianos: puente conceptual (90 min total) … 2.3 Naive Bayes — el modelo generativo mínimo",
+    "s1-transformers-y-foundation-models § 2.4 Gaussian Mixture Models — variables latentes … 2.5 Hidden Markov Models — generación secuencial",
+    "s1-transformers-y-foundation-models § 2.6 Variational Autoencoder — el puente al espacio latente continuo … 2.7 Del VAE al LLM autorregresivo",
+    "s2-rag-y-vector-search § 1. Por qué RAG existe",
+    "s2-rag-y-vector-search § 4. Chunking Strategies … 4.3 Regla práctica",
+    "s2-rag-y-vector-search § 6. Evaluación de RAG … 6.3 GraphRAG",
+    "s2-rag-y-vector-search § 7. Notas del Lab 02",
+    "s3-agentes § 1. Puente con la teoría clásica de agentes … 1.2 El agente LLM en la taxonomía clásica",
+    "s3-agentes § 2. Tool Use / Function Calling … 2.3 Model Context Protocol (MCP)",
+    "s3-agentes § 3. Patrones de Agentes … 3.3 Reflexion",
+    "s4-llmops-y-finetuning § 1. Por qué LLMOps es diferente a MLOps",
+    "s4-llmops-y-finetuning § 2.3 RAGAS para RAG",
+    "s4-llmops-y-finetuning § 4. Guardrails … 4.3 Costo y latencia",
+    "s4-llmops-y-finetuning § 6. Monitoreo en Producción … 6.2 Drift de calidad"
+   ],
+   "comunidad": 9,
+   "id": "ent:llm"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "documentos",
+   "tipo": "dataset",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 1"
+   ],
+   "comunidad": 1,
+   "id": "ent:documento"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "top-20",
+   "tipo": "restriccion",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s2-rag-y-vector-search § 5. Retrieval: Sparse, Dense, Hybrid … 5.4 Reranking"
+   ],
+   "comunidad": 1,
+   "id": "ent:top 20"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "RAG baseline",
+   "tipo": "metodo",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s2-rag-y-vector-search § 7. Notas del Lab 02"
+   ],
+   "comunidad": 1,
+   "id": "ent:rag baseline"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "PEFT",
+   "tipo": "metodo",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s4-llmops-y-finetuning § 5. Fine-Tuning Ligero … 5.3 QLoRA — Quantization + LoRA"
+   ],
+   "comunidad": 4,
+   "id": "ent:peft"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "Thought",
+   "tipo": "concepto",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s3-agentes § 3. Patrones de Agentes … 3.3 Reflexion"
+   ],
+   "comunidad": 10,
+   "id": "ent:thought"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "q2",
+   "tipo": "dataset",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Consultas y juicios de relevancia"
+   ],
+   "comunidad": null,
+   "id": "ent:q2"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "ALiBi",
+   "tipo": "metodo",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s1-transformers-y-foundation-models § 3.5 Positional encoding … 3.6 Encoder vs. Decoder"
+   ],
+   "comunidad": 0,
+   "id": "ent:alibi"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "prompt",
+   "tipo": "concepto",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s1-transformers-y-foundation-models § 5. In-context Learning y Prompting (60 min) … 5.3 Structured outputs",
+    "s2-rag-y-vector-search § 1. Por qué RAG existe",
+    "s3-agentes § 2. Tool Use / Function Calling … 2.3 Model Context Protocol (MCP)",
+    "s4-llmops-y-finetuning § 1. Por qué LLMOps es diferente a MLOps"
+   ],
+   "comunidad": 3,
+   "id": "ent:prompt"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "Mamba",
+   "tipo": "metodo",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s1-transformers-y-foundation-models § 2.6 Variational Autoencoder — el puente al espacio latente continuo … 2.7 Del VAE al LLM autorregresivo"
+   ],
+   "comunidad": 0,
+   "id": "ent:mamba"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "r (rango)",
+   "tipo": "restriccion",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s4-llmops-y-finetuning § 5. Fine-Tuning Ligero … 5.3 QLoRA — Quantization + LoRA"
+   ],
+   "comunidad": 4,
+   "id": "ent:r rango"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "mecanismo de atención",
+   "tipo": "metodo",
+   "origen": [
+    "notas",
+    "enunciado"
+   ],
+   "citas": [
+    "s1-transformers-y-foundation-models § 2.4 Gaussian Mixture Models — variables latentes … 2.5 Hidden Markov Models — generación secuencial",
+    "s1-transformers-y-foundation-models § 2.6 Variational Autoencoder — el puente al espacio latente continuo … 2.7 Del VAE al LLM autorregresivo",
+    "s1-transformers-y-foundation-models § 3. Arquitectura Transformer (90 min) … 3.4 Estructura completa de un bloque transformer",
+    "s1-transformers-y-foundation-models § 3.5 Positional encoding … 3.6 Encoder vs. Decoder",
+    "s1-transformers-y-foundation-models § 5. In-context Learning y Prompting (60 min) … 5.3 Structured outputs",
+    "Corpus"
+   ],
+   "comunidad": 0,
+   "id": "ent:mecanismo de atencion"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "producto punto",
+   "tipo": "metrica",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s2-rag-y-vector-search § 2. Embeddings … 2.3 Similitud semántica"
+   ],
+   "comunidad": 1,
+   "id": "ent:producto punto"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "agente con herramientas",
+   "tipo": "concepto",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Corpus"
+   ],
+   "comunidad": null,
+   "id": "ent:agente con herramienta"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "dilución del embedding",
+   "tipo": "concepto",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s2-rag-y-vector-search § 4. Chunking Strategies … 4.3 Regla práctica"
+   ],
+   "comunidad": 8,
+   "id": "ent:dilucion del embedding"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "BM25",
+   "tipo": "metodo",
+   "origen": [
+    "notas",
+    "enunciado"
+   ],
+   "citas": [
+    "s2-rag-y-vector-search § 5. Retrieval: Sparse, Dense, Hybrid … 5.4 Reranking",
+    "Corpus"
+   ],
+   "comunidad": 1,
+   "id": "ent:bm25"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "agente LLM",
+   "tipo": "concepto",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s3-agentes § 1. Puente con la teoría clásica de agentes … 1.2 El agente LLM en la taxonomía clásica"
+   ],
+   "comunidad": 6,
+   "id": "ent:agente llm"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "chunks",
+   "tipo": "dataset",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s2-rag-y-vector-search § 1. Por qué RAG existe",
+    "s2-rag-y-vector-search § 6. Evaluación de RAG … 6.3 GraphRAG",
+    "s4-llmops-y-finetuning § 2.3 RAGAS para RAG"
+   ],
+   "comunidad": 9,
+   "id": "ent:chunk"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "d08",
+   "tipo": "dataset",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Consultas y juicios de relevancia"
+   ],
+   "comunidad": null,
+   "id": "ent:d08"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "Corpus del RAG",
+   "tipo": "dataset",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s4-llmops-y-finetuning § 6. Monitoreo en Producción … 6.2 Drift de calidad"
+   ],
+   "comunidad": 7,
+   "id": "ent:corpu del rag"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "Action",
+   "tipo": "concepto",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s3-agentes § 3. Patrones de Agentes … 3.3 Reflexion"
+   ],
+   "comunidad": 10,
+   "id": "ent:action"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "tabla de la Parte 3",
+   "tipo": "dataset",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "El reporte"
+   ],
+   "comunidad": 1,
+   "id": "ent:tabla de la parte 3"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "d02",
+   "tipo": "dataset",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Consultas y juicios de relevancia"
+   ],
+   "comunidad": 0,
+   "id": "ent:d02"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "evaluación",
+   "tipo": "concepto",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 2"
+   ],
+   "comunidad": 1,
+   "id": "ent:evaluacion"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "random_state=0",
+   "tipo": "restriccion",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 2"
+   ],
+   "comunidad": 1,
+   "id": "ent:random state 0"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "recuperador denso",
+   "tipo": "metodo",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 4"
+   ],
+   "comunidad": 1,
+   "id": "ent:recuperador denso"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "d03",
+   "tipo": "dataset",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Consultas y juicios de relevancia"
+   ],
+   "comunidad": null,
+   "id": "ent:d03"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "modelo entrenado",
+   "tipo": "metodo",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 4"
+   ],
+   "comunidad": 1,
+   "id": "ent:modelo entrenado"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "tres métricas",
+   "tipo": "metrica",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 2"
+   ],
+   "comunidad": 1,
+   "id": "ent:tre metrica"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "n_components=4",
+   "tipo": "restriccion",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 2"
+   ],
+   "comunidad": 1,
+   "id": "ent:n component 4"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "ML estadístico",
+   "tipo": "metodo",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s1-transformers-y-foundation-models § 1. Sesión histórica: IA antes de los LLMs (20 min) … Conexión con el curso anterior",
+    "s1-transformers-y-foundation-models § 2.4 Gaussian Mixture Models — variables latentes … 2.5 Hidden Markov Models — generación secuencial",
+    "s1-transformers-y-foundation-models § 2.6 Variational Autoencoder — el puente al espacio latente continuo … 2.7 Del VAE al LLM autorregresivo"
+   ],
+   "comunidad": 0,
+   "id": "ent:ml estadistico"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "semántica latente",
+   "tipo": "metodo",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Preámbulo",
+    "Parte 2"
+   ],
+   "comunidad": 1,
+   "id": "ent:semantica latente"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "recuperación léxica",
+   "tipo": "metodo",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Preámbulo"
+   ],
+   "comunidad": 1,
+   "id": "ent:recuperacion lexica"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "tabla de la Parte 2",
+   "tipo": "dataset",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "El reporte"
+   ],
+   "comunidad": 1,
+   "id": "ent:tabla de la parte 2"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "RNN",
+   "tipo": "metodo",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s1-transformers-y-foundation-models § 3. Arquitectura Transformer (90 min) … 3.4 Estructura completa de un bloque transformer",
+    "s1-transformers-y-foundation-models § 3.5 Positional encoding … 3.6 Encoder vs. Decoder"
+   ],
+   "comunidad": 0,
+   "id": "ent:rnn"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "q3",
+   "tipo": "dataset",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Consultas y juicios de relevancia"
+   ],
+   "comunidad": null,
+   "id": "ent:q3"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "Propagación de errores",
+   "tipo": "concepto",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s3-agentes § 3. Patrones de Agentes … 3.3 Reflexion"
+   ],
+   "comunidad": 10,
+   "id": "ent:propagacion de error"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "ajuste fino",
+   "tipo": "metodo",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Corpus"
+   ],
+   "comunidad": 4,
+   "id": "ent:ajuste fino"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "sección Objetivo",
+   "tipo": "concepto",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "El reporte"
+   ],
+   "comunidad": 1,
+   "id": "ent:seccion objetivo"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "sección Método",
+   "tipo": "concepto",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "El reporte"
+   ],
+   "comunidad": 1,
+   "id": "ent:seccion metodo"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "Query",
+   "tipo": "concepto",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s1-transformers-y-foundation-models § 3. Arquitectura Transformer (90 min) … 3.4 Estructura completa de un bloque transformer"
+   ],
+   "comunidad": 0,
+   "id": "ent:query"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "fine-tuning + RAG",
+   "tipo": "metodo",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s4-llmops-y-finetuning § 5.4 Árbol de decisión: ¿cuándo usar qué?"
+   ],
+   "comunidad": 4,
+   "id": "ent:fine tuning rag"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "Observation",
+   "tipo": "concepto",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s3-agentes § 3. Patrones de Agentes … 3.3 Reflexion"
+   ],
+   "comunidad": 10,
+   "id": "ent:observation"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "dependencias de largo alcance",
+   "tipo": "concepto",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s1-transformers-y-foundation-models § 2.4 Gaussian Mixture Models — variables latentes … 2.5 Hidden Markov Models — generación secuencial"
+   ],
+   "comunidad": 0,
+   "id": "ent:dependencia de largo alcance"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "RAG",
+   "tipo": "metodo",
+   "origen": [
+    "notas",
+    "enunciado"
+   ],
+   "citas": [
+    "s2-rag-y-vector-search § 1. Por qué RAG existe",
+    "s4-llmops-y-finetuning § 2.3 RAGAS para RAG",
+    "s4-llmops-y-finetuning § 5.4 Árbol de decisión: ¿cuándo usar qué?",
+    "s4-llmops-y-finetuning § 6. Monitoreo en Producción … 6.2 Drift de calidad",
+    "Corpus"
+   ],
+   "comunidad": 4,
+   "id": "ent:rag"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "RAGAS",
+   "tipo": "metodo",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s2-rag-y-vector-search § 6. Evaluación de RAG … 6.3 GraphRAG",
+    "s2-rag-y-vector-search § 7. Notas del Lab 02",
+    "s4-llmops-y-finetuning § 2.3 RAGAS para RAG"
+   ],
+   "comunidad": 9,
+   "id": "ent:raga"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "../fuentes/modelos/modelos-2026-1.*",
+   "tipo": "dataset",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s1-transformers-y-foundation-models § 6. Notas del Lab 01"
+   ],
+   "comunidad": 5,
+   "id": "ent:fuente modelo modelo 2026 1"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "matrices de bajo rango",
+   "tipo": "metodo",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Consultas y juicios de relevancia"
+   ],
+   "comunidad": null,
+   "id": "ent:matrice de bajo rango"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "alpha (escala)",
+   "tipo": "restriccion",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s4-llmops-y-finetuning § 5. Fine-Tuning Ligero … 5.3 QLoRA — Quantization + LoRA"
+   ],
+   "comunidad": 4,
+   "id": "ent:alpha escala"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "Score de similitud query·key",
+   "tipo": "metrica",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s1-transformers-y-foundation-models § 3. Arquitectura Transformer (90 min) … 3.4 Estructura completa de un bloque transformer"
+   ],
+   "comunidad": 0,
+   "id": "ent:score de similitud query key"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "Value",
+   "tipo": "concepto",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s1-transformers-y-foundation-models § 3. Arquitectura Transformer (90 min) … 3.4 Estructura completa de un bloque transformer"
+   ],
+   "comunidad": 0,
+   "id": "ent:value"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "contrastive learning",
+   "tipo": "metodo",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s2-rag-y-vector-search § 2. Embeddings … 2.3 Similitud semántica"
+   ],
+   "comunidad": 1,
+   "id": "ent:contrastive learning"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "calidad",
+   "tipo": "metrica",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s1-transformers-y-foundation-models § 6. Notas del Lab 01"
+   ],
+   "comunidad": 5,
+   "id": "ent:calidad"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "cuantización",
+   "tipo": "metodo",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Corpus"
+   ],
+   "comunidad": null,
+   "id": "ent:cuantizacion"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "ejecución",
+   "tipo": "concepto",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "El reporte"
+   ],
+   "comunidad": null,
+   "id": "ent:ejecucion"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "embeddings",
+   "tipo": "metodo",
+   "origen": [
+    "notas",
+    "enunciado"
+   ],
+   "citas": [
+    "s1-transformers-y-foundation-models § 2.4 Gaussian Mixture Models — variables latentes … 2.5 Hidden Markov Models — generación secuencial",
+    "s2-rag-y-vector-search § 2. Embeddings … 2.3 Similitud semántica",
+    "s2-rag-y-vector-search § 4. Chunking Strategies … 4.3 Regla práctica",
+    "s2-rag-y-vector-search § 5. Retrieval: Sparse, Dense, Hybrid … 5.4 Reranking",
+    "s2-rag-y-vector-search § 7. Notas del Lab 02",
+    "s4-llmops-y-finetuning § 2.3 RAGAS para RAG",
+    "Parte 4"
+   ],
+   "comunidad": 1,
+   "id": "ent:embedding"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "recuperación",
+   "tipo": "concepto",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 1"
+   ],
+   "comunidad": 1,
+   "id": "ent:recuperacion"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "reporte.pdf",
+   "tipo": "dataset",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Preámbulo",
+    "El reporte"
+   ],
+   "comunidad": 1,
+   "id": "ent:reporte pdf"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "datos completos en el enunciado",
+   "tipo": "restriccion",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Preámbulo"
+   ],
+   "comunidad": 1,
+   "id": "ent:dato completo en el enunciado"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "alucinación",
+   "tipo": "concepto",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s2-rag-y-vector-search § 1. Por qué RAG existe"
+   ],
+   "comunidad": 4,
+   "id": "ent:alucinacion"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "regla práctica",
+   "tipo": "restriccion",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s4-llmops-y-finetuning § 5.4 Árbol de decisión: ¿cuándo usar qué?"
+   ],
+   "comunidad": 4,
+   "id": "ent:regla practica"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "Hit@1",
+   "tipo": "metrica",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 1"
+   ],
+   "comunidad": 1,
+   "id": "ent:hit 1"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "corpus",
+   "tipo": "dataset",
+   "origen": [
+    "notas",
+    "enunciado"
+   ],
+   "citas": [
+    "s2-rag-y-vector-search § 7. Notas del Lab 02",
+    "Preámbulo"
+   ],
+   "comunidad": 1,
+   "id": "ent:corpu"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "Hit@3",
+   "tipo": "metrica",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 1"
+   ],
+   "comunidad": 1,
+   "id": "ent:hit 3"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "Límite de iteraciones",
+   "tipo": "restriccion",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s3-agentes § 3. Patrones de Agentes … 3.3 Reflexion"
+   ],
+   "comunidad": 10,
+   "id": "ent:limite de iteracion"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "toda cifra sale de la ejecución",
+   "tipo": "restriccion",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "El reporte"
+   ],
+   "comunidad": 1,
+   "id": "ent:toda cifra sale de la ejecucion"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "Trace",
+   "tipo": "dataset",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s3-agentes § 3. Patrones de Agentes … 3.3 Reflexion",
+    "s3-agentes § 6. Conexión con MSDS 6020 (Ética)",
+    "s4-llmops-y-finetuning § 3. Observabilidad … 3.4 Prompt Versioning"
+   ],
+   "comunidad": 2,
+   "id": "ent:trace"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "sentence-transformers/all-MiniLM-L6-v2",
+   "tipo": "metodo",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s2-rag-y-vector-search § 2. Embeddings … 2.3 Similitud semántica"
+   ],
+   "comunidad": 1,
+   "id": "ent:sentence transformer all minilm l6 v2"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "dominio privado",
+   "tipo": "concepto",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s2-rag-y-vector-search § 1. Por qué RAG existe"
+   ],
+   "comunidad": 4,
+   "id": "ent:dominio privado"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "límite de tokens de contexto",
+   "tipo": "restriccion",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s2-rag-y-vector-search § 4. Chunking Strategies … 4.3 Regla práctica"
+   ],
+   "comunidad": 8,
+   "id": "ent:limite de token de contexto"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "Multi-head attention",
+   "tipo": "metodo",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s1-transformers-y-foundation-models § 3. Arquitectura Transformer (90 min) … 3.4 Estructura completa de un bloque transformer"
+   ],
+   "comunidad": 0,
+   "id": "ent:multi head attention"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "Tarea C",
+   "tipo": "concepto",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Preámbulo"
+   ],
+   "comunidad": 1,
+   "id": "ent:tarea c"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "Transformer",
+   "tipo": "metodo",
+   "origen": [
+    "notas",
+    "enunciado"
+   ],
+   "citas": [
+    "s1-transformers-y-foundation-models § 1. Sesión histórica: IA antes de los LLMs (20 min) … Conexión con el curso anterior",
+    "s1-transformers-y-foundation-models § 2. Modelos Generativos Bayesianos: puente conceptual (90 min total) … 2.3 Naive Bayes — el modelo generativo mínimo",
+    "s1-transformers-y-foundation-models § 2.4 Gaussian Mixture Models — variables latentes … 2.5 Hidden Markov Models — generación secuencial",
+    "s1-transformers-y-foundation-models § 3. Arquitectura Transformer (90 min) … 3.4 Estructura completa de un bloque transformer",
+    "Corpus"
+   ],
+   "comunidad": 0,
+   "id": "ent:transformer"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "semantic chunking",
+   "tipo": "metodo",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s2-rag-y-vector-search § 4. Chunking Strategies … 4.3 Regla práctica"
+   ],
+   "comunidad": 8,
+   "id": "ent:semantic chunking"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "d09",
+   "tipo": "dataset",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Consultas y juicios de relevancia"
+   ],
+   "comunidad": null,
+   "id": "ent:d09"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "Key",
+   "tipo": "concepto",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s1-transformers-y-foundation-models § 3. Arquitectura Transformer (90 min) … 3.4 Estructura completa de un bloque transformer"
+   ],
+   "comunidad": 0,
+   "id": "ent:key"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "costo",
+   "tipo": "metrica",
+   "origen": [
+    "notas",
+    "enunciado"
+   ],
+   "citas": [
+    "s1-transformers-y-foundation-models § 6. Notas del Lab 01",
+    "Parte 4"
+   ],
+   "comunidad": 5,
+   "id": "ent:costo"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "d04",
+   "tipo": "dataset",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Consultas y juicios de relevancia"
+   ],
+   "comunidad": null,
+   "id": "ent:d04"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "documento relevante",
+   "tipo": "concepto",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Preámbulo",
+    "Parte 3"
+   ],
+   "comunidad": 1,
+   "id": "ent:documento relevante"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "In-context learning",
+   "tipo": "concepto",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s1-transformers-y-foundation-models § 1. Sesión histórica: IA antes de los LLMs (20 min) … Conexión con el curso anterior",
+    "s1-transformers-y-foundation-models § 5. In-context Learning y Prompting (60 min) … 5.3 Structured outputs"
+   ],
+   "comunidad": 3,
+   "id": "ent:in context learning"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "temperatura",
+   "tipo": "metodo",
+   "origen": [
+    "notas",
+    "enunciado"
+   ],
+   "citas": [
+    "s1-transformers-y-foundation-models § 4.6 Inference: temperatura y sampling",
+    "Corpus"
+   ],
+   "comunidad": 2,
+   "id": "ent:temperatura"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "independencia condicional",
+   "tipo": "concepto",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s1-transformers-y-foundation-models § 2. Modelos Generativos Bayesianos: puente conceptual (90 min total) … 2.3 Naive Bayes — el modelo generativo mínimo"
+   ],
+   "comunidad": 0,
+   "id": "ent:independencia condicional"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "similitud semántica",
+   "tipo": "concepto",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s2-rag-y-vector-search § 2. Embeddings … 2.3 Similitud semántica"
+   ],
+   "comunidad": 1,
+   "id": "ent:similitud semantica"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "autoatención",
+   "tipo": "metodo",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Corpus",
+    "Consultas y juicios de relevancia"
+   ],
+   "comunidad": 0,
+   "id": "ent:autoatencion"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "análisis por consulta",
+   "tipo": "concepto",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 3"
+   ],
+   "comunidad": null,
+   "id": "ent:analisi por consulta"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "atención escalada",
+   "tipo": "concepto",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Corpus"
+   ],
+   "comunidad": 0,
+   "id": "ent:atencion escalada"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "TF-IDF",
+   "tipo": "metodo",
+   "origen": [
+    "notas",
+    "enunciado"
+   ],
+   "citas": [
+    "s2-rag-y-vector-search § 5. Retrieval: Sparse, Dense, Hybrid … 5.4 Reranking",
+    "Parte 1",
+    "Parte 2",
+    "Parte 4"
+   ],
+   "comunidad": 1,
+   "id": "ent:tf idf"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "capas de atención",
+   "tipo": "concepto",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s4-llmops-y-finetuning § 5. Fine-Tuning Ligero … 5.3 QLoRA — Quantization + LoRA"
+   ],
+   "comunidad": 4,
+   "id": "ent:capa de atencion"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "base de conocimiento",
+   "tipo": "concepto",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s2-rag-y-vector-search § 1. Por qué RAG existe"
+   ],
+   "comunidad": 4,
+   "id": "ent:base de conocimiento"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "Respuesta del agente",
+   "tipo": "concepto",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s3-agentes § 3. Patrones de Agentes … 3.3 Reflexion"
+   ],
+   "comunidad": 10,
+   "id": "ent:respuesta del agente"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "términos compartidos",
+   "tipo": "concepto",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 3"
+   ],
+   "comunidad": 1,
+   "id": "ent:termino compartido"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "LoRA",
+   "tipo": "metodo",
+   "origen": [
+    "notas",
+    "enunciado"
+   ],
+   "citas": [
+    "s4-llmops-y-finetuning § 5. Fine-Tuning Ligero … 5.3 QLoRA — Quantization + LoRA",
+    "s4-llmops-y-finetuning § 5.4 Árbol de decisión: ¿cuándo usar qué?",
+    "Corpus"
+   ],
+   "comunidad": 4,
+   "id": "ent:lora"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "positional encoding",
+   "tipo": "metodo",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s1-transformers-y-foundation-models § 3.5 Positional encoding … 3.6 Encoder vs. Decoder"
+   ],
+   "comunidad": 0,
+   "id": "ent:positional encoding"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "Reflexion",
+   "tipo": "metodo",
+   "origen": [
+    "notas",
+    "enunciado"
+   ],
+   "citas": [
+    "s3-agentes § 3. Patrones de Agentes … 3.3 Reflexion",
+    "Corpus"
+   ],
+   "comunidad": 10,
+   "id": "ent:reflexion"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "q6",
+   "tipo": "dataset",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Consultas y juicios de relevancia"
+   ],
+   "comunidad": 0,
+   "id": "ent:q6"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "consultas",
+   "tipo": "dataset",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Preámbulo",
+    "Parte 1",
+    "Parte 2",
+    "Parte 3"
+   ],
+   "comunidad": 1,
+   "id": "ent:consulta"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "d05",
+   "tipo": "dataset",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Consultas y juicios de relevancia"
+   ],
+   "comunidad": null,
+   "id": "ent:d05"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "Dense Retrieval",
+   "tipo": "metodo",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s2-rag-y-vector-search § 5. Retrieval: Sparse, Dense, Hybrid … 5.4 Reranking",
+    "s2-rag-y-vector-search § 6. Evaluación de RAG … 6.3 GraphRAG"
+   ],
+   "comunidad": 1,
+   "id": "ent:dense retrieval"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "conocimiento actualizado",
+   "tipo": "concepto",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s4-llmops-y-finetuning § 5.4 Árbol de decisión: ¿cuándo usar qué?"
+   ],
+   "comunidad": 4,
+   "id": "ent:conocimiento actualizado"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "q4",
+   "tipo": "dataset",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Consultas y juicios de relevancia"
+   ],
+   "comunidad": null,
+   "id": "ent:q4"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "juicios",
+   "tipo": "dataset",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 2"
+   ],
+   "comunidad": null,
+   "id": "ent:juicio"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "ReAct",
+   "tipo": "metodo",
+   "origen": [
+    "notas",
+    "enunciado"
+   ],
+   "citas": [
+    "s3-agentes § 1. Puente con la teoría clásica de agentes … 1.2 El agente LLM en la taxonomía clásica",
+    "s3-agentes § 3. Patrones de Agentes … 3.3 Reflexion",
+    "Corpus"
+   ],
+   "comunidad": 10,
+   "id": "ent:react"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "top 3",
+   "tipo": "restriccion",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 3"
+   ],
+   "comunidad": 1,
+   "id": "ent:top 3"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "q5",
+   "tipo": "dataset",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Consultas y juicios de relevancia",
+    "Parte 4"
+   ],
+   "comunidad": null,
+   "id": "ent:q5"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "parámetros por defecto",
+   "tipo": "restriccion",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 1"
+   ],
+   "comunidad": 1,
+   "id": "ent:parametro por defecto"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "sección Resultados",
+   "tipo": "concepto",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "El reporte"
+   ],
+   "comunidad": 1,
+   "id": "ent:seccion resultado"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "fine-tuning ligero",
+   "tipo": "metodo",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s4-llmops-y-finetuning § 5.4 Árbol de decisión: ¿cuándo usar qué?"
+   ],
+   "comunidad": 4,
+   "id": "ent:fine tuning ligero"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "Answer Relevancy",
+   "tipo": "metrica",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s2-rag-y-vector-search § 6. Evaluación de RAG … 6.3 GraphRAG",
+    "s4-llmops-y-finetuning § 2.3 RAGAS para RAG"
+   ],
+   "comunidad": 9,
+   "id": "ent:answer relevancy"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "MRR",
+   "tipo": "metrica",
+   "origen": [
+    "notas",
+    "enunciado"
+   ],
+   "citas": [
+    "s2-rag-y-vector-search § 6. Evaluación de RAG … 6.3 GraphRAG",
+    "Parte 1"
+   ],
+   "comunidad": 9,
+   "id": "ent:mrr"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "text-embedding-3-large",
+   "tipo": "metodo",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s2-rag-y-vector-search § 2. Embeddings … 2.3 Similitud semántica"
+   ],
+   "comunidad": 1,
+   "id": "ent:text embedding 3 large"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "árbol de decisión",
+   "tipo": "concepto",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s4-llmops-y-finetuning § 5.4 Árbol de decisión: ¿cuándo usar qué?"
+   ],
+   "comunidad": 4,
+   "id": "ent:arbol de decision"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "execute_sql",
+   "tipo": "metodo",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s3-agentes § 2. Tool Use / Function Calling … 2.3 Model Context Protocol (MCP)",
+    "s3-agentes § 3. Patrones de Agentes … 3.3 Reflexion"
+   ],
+   "comunidad": 10,
+   "id": "ent:execute sql"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "Sentence-BERT",
+   "tipo": "metodo",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s2-rag-y-vector-search § 2. Embeddings … 2.3 Similitud semántica"
+   ],
+   "comunidad": 1,
+   "id": "ent:sentence bert"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "Flash Attention",
+   "tipo": "metodo",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s1-transformers-y-foundation-models § 2.6 Variational Autoencoder — el puente al espacio latente continuo … 2.7 Del VAE al LLM autorregresivo"
+   ],
+   "comunidad": 0,
+   "id": "ent:flash attention"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "QLoRA",
+   "tipo": "metodo",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s4-llmops-y-finetuning § 5. Fine-Tuning Ligero … 5.3 QLoRA — Quantization + LoRA",
+    "s4-llmops-y-finetuning § 5.4 Árbol de decisión: ¿cuándo usar qué?"
+   ],
+   "comunidad": 4,
+   "id": "ent:qlora"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "Hybrid Search",
+   "tipo": "metodo",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s2-rag-y-vector-search § 5. Retrieval: Sparse, Dense, Hybrid … 5.4 Reranking",
+    "s2-rag-y-vector-search § 7. Notas del Lab 02"
+   ],
+   "comunidad": 1,
+   "id": "ent:hybrid search"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "logits",
+   "tipo": "concepto",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s1-transformers-y-foundation-models § 4.6 Inference: temperatura y sampling"
+   ],
+   "comunidad": 2,
+   "id": "ent:logit"
+  }
+ ],
+ "aristas": [
+  {
+   "tipo": "menciona",
+   "source": "Preámbulo",
+   "target": "ent:tarea c"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Preámbulo",
+   "target": "ent:recuperacion lexica"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Preámbulo",
+   "target": "ent:semantica latente"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Preámbulo",
+   "target": "ent:corpu"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Preámbulo",
+   "target": "ent:consulta"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Preámbulo",
+   "target": "ent:reporte pdf"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Preámbulo",
+   "target": "ent:documento relevante"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Preámbulo",
+   "target": "ent:maximo dos pagina"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Preámbulo",
+   "target": "ent:dato completo en el enunciado"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Corpus",
+   "target": "ent:mecanismo de atencion"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Corpus",
+   "target": "ent:atencion escalada"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Corpus",
+   "target": "ent:transformer"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Corpus",
+   "target": "ent:autoatencion"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Corpus",
+   "target": "ent:rag"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Corpus",
+   "target": "ent:bm25"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Corpus",
+   "target": "ent:embedding denso"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Corpus",
+   "target": "ent:similitud coseno"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Corpus",
+   "target": "ent:agente con herramienta"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Corpus",
+   "target": "ent:react"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Corpus",
+   "target": "ent:reflexion"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Corpus",
+   "target": "ent:ajuste fino"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Corpus",
+   "target": "ent:lora"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Corpus",
+   "target": "ent:temperatura"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Corpus",
+   "target": "ent:cuantizacion"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Consultas y juicios de relevancia",
+   "target": "ent:q1"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Consultas y juicios de relevancia",
+   "target": "ent:q2"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Consultas y juicios de relevancia",
+   "target": "ent:q3"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Consultas y juicios de relevancia",
+   "target": "ent:q4"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Consultas y juicios de relevancia",
+   "target": "ent:q5"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Consultas y juicios de relevancia",
+   "target": "ent:q6"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Consultas y juicios de relevancia",
+   "target": "ent:d04"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Consultas y juicios de relevancia",
+   "target": "ent:d03"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Consultas y juicios de relevancia",
+   "target": "ent:d08"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Consultas y juicios de relevancia",
+   "target": "ent:d05"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Consultas y juicios de relevancia",
+   "target": "ent:d09"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Consultas y juicios de relevancia",
+   "target": "ent:d02"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Consultas y juicios de relevancia",
+   "target": "ent:ranking lexico"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Consultas y juicios de relevancia",
+   "target": "ent:matrice de bajo rango"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Consultas y juicios de relevancia",
+   "target": "ent:autoatencion"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 1",
+   "target": "ent:tf idf"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 1",
+   "target": "ent:scikit learn"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 1",
+   "target": "ent:similitud coseno"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 1",
+   "target": "ent:recuperacion"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 1",
+   "target": "ent:hit 1"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 1",
+   "target": "ent:hit 3"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 1",
+   "target": "ent:mrr"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 1",
+   "target": "ent:consulta"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 1",
+   "target": "ent:documento"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 1",
+   "target": "ent:parametro por defecto"
+  },
+  {
+   "tipo": "depende_de",
+   "regla": "anafora",
+   "evidencia": "Con las mismas consultas y los mismos juicios, proyecta la matri",
+   "source": "Parte 2",
+   "target": "Parte 1"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 2",
+   "target": "ent:tf idf"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 2",
+   "target": "ent:matriz tf idf"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 2",
+   "target": "ent:truncatedsvd"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 2",
+   "target": "ent:semantica latente"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 2",
+   "target": "ent:consulta"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 2",
+   "target": "ent:juicio"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 2",
+   "target": "ent:evaluacion"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 2",
+   "target": "ent:n component 4"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 2",
+   "target": "ent:random state 0"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 2",
+   "target": "ent:tre metrica"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 3",
+   "target": "ent:analisi por consulta"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 3",
+   "target": "ent:consulta"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 3",
+   "target": "ent:documento relevante"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 3",
+   "target": "ent:top 3"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 3",
+   "target": "ent:termino compartido"
+  },
+  {
+   "tipo": "depende_de",
+   "regla": "anafora",
+   "evidencia": "de un modelo entrenado) resolvería la consulta q5 mejor que los dos métodos de esta tarea? ¿Qué costo tiene frente a TF-",
+   "source": "Parte 4",
+   "target": "Parte 3"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 4",
+   "target": "ent:recuperador denso"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 4",
+   "target": "ent:embedding"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 4",
+   "target": "ent:modelo entrenado"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 4",
+   "target": "ent:q5"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 4",
+   "target": "ent:tf idf"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 4",
+   "target": "ent:costo"
+  },
+  {
+   "tipo": "depende_de",
+   "regla": "referencia",
+   "evidencia": "las secciones Objetivo, Método, Resultados (la tabla de la Parte 2 y la de la Parte 3) y Discusión. Toda cifra sale de",
+   "source": "El reporte",
+   "target": "Parte 2"
+  },
+  {
+   "tipo": "depende_de",
+   "regla": "referencia",
+   "evidencia": "tivo, Método, Resultados (la tabla de la Parte 2 y la de la Parte 3) y Discusión. Toda cifra sale de la ejecución.",
+   "source": "El reporte",
+   "target": "Parte 3"
+  },
+  {
+   "tipo": "menciona",
+   "source": "El reporte",
+   "target": "ent:reporte pdf"
+  },
+  {
+   "tipo": "menciona",
+   "source": "El reporte",
+   "target": "ent:maximo dos pagina"
+  },
+  {
+   "tipo": "menciona",
+   "source": "El reporte",
+   "target": "ent:seccion objetivo"
+  },
+  {
+   "tipo": "menciona",
+   "source": "El reporte",
+   "target": "ent:seccion metodo"
+  },
+  {
+   "tipo": "menciona",
+   "source": "El reporte",
+   "target": "ent:seccion resultado"
+  },
+  {
+   "tipo": "menciona",
+   "source": "El reporte",
+   "target": "ent:seccion discusion"
+  },
+  {
+   "tipo": "menciona",
+   "source": "El reporte",
+   "target": "ent:tabla de la parte 2"
+  },
+  {
+   "tipo": "menciona",
+   "source": "El reporte",
+   "target": "ent:tabla de la parte 3"
+  },
+  {
+   "tipo": "menciona",
+   "source": "El reporte",
+   "target": "ent:ejecucion"
+  },
+  {
+   "tipo": "menciona",
+   "source": "El reporte",
+   "target": "ent:toda cifra sale de la ejecucion"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "varia_en",
+   "citas": [
+    "s1-transformers-y-foundation-models § 6. Notas del Lab 01"
+   ],
+   "source": "ent:modelo propietario",
+   "target": "ent:costo"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "relevante_para",
+   "citas": [
+    "Consultas y juicios de relevancia"
+   ],
+   "source": "ent:q1",
+   "target": "ent:d04"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "consulta_sobre",
+   "citas": [
+    "Consultas y juicios de relevancia"
+   ],
+   "source": "ent:q1",
+   "target": "ent:ranking lexico"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "proyecta",
+   "citas": [
+    "Parte 2"
+   ],
+   "source": "ent:truncatedsvd",
+   "target": "ent:matriz tf idf"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "usa",
+   "citas": [
+    "Parte 2"
+   ],
+   "source": "ent:truncatedsvd",
+   "target": "ent:n component 4"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "fija",
+   "citas": [
+    "Parte 2"
+   ],
+   "source": "ent:truncatedsvd",
+   "target": "ent:random state 0"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "implementa",
+   "citas": [
+    "Parte 2"
+   ],
+   "source": "ent:truncatedsvd",
+   "target": "ent:semantica latente"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "evalua",
+   "citas": [
+    "s3-agentes § 3. Patrones de Agentes … 3.3 Reflexion"
+   ],
+   "source": "ent:critica auto generada",
+   "target": "ent:respuesta del agente"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "genera",
+   "citas": [
+    "s2-rag-y-vector-search § 2. Embeddings … 2.3 Similitud semántica"
+   ],
+   "source": "ent:baai bge m3",
+   "target": "ent:embedding"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "genera",
+   "citas": [
+    "s2-rag-y-vector-search § 2. Embeddings … 2.3 Similitud semántica"
+   ],
+   "source": "ent:text embedding 3 small",
+   "target": "ent:embedding"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "supera_a",
+   "citas": [
+    "s2-rag-y-vector-search § 2. Embeddings … 2.3 Similitud semántica"
+   ],
+   "source": "ent:similitud coseno",
+   "target": "ent:distancia euclidiana"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "compara",
+   "citas": [
+    "Corpus"
+   ],
+   "source": "ent:similitud coseno",
+   "target": "ent:embedding denso"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "limita",
+   "citas": [
+    "Preámbulo"
+   ],
+   "source": "ent:maximo dos pagina",
+   "target": "ent:reporte pdf"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "introduce",
+   "citas": [
+    "s1-transformers-y-foundation-models § 1. Sesión histórica: IA antes de los LLMs (20 min) … Conexión con el curso anterior"
+   ],
+   "source": "ent:gpt 3",
+   "target": "ent:in context learning"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "usa",
+   "citas": [
+    "s1-transformers-y-foundation-models § 2.4 Gaussian Mixture Models — variables latentes … 2.5 Hidden Markov Models — generación secuencial"
+   ],
+   "source": "ent:llm",
+   "target": "ent:embedding"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "usa",
+   "citas": [
+    "s1-transformers-y-foundation-models § 2.6 Variational Autoencoder — el puente al espacio latente continuo … 2.7 Del VAE al LLM autorregresivo"
+   ],
+   "source": "ent:llm",
+   "target": "ent:mecanismo de atencion"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "usa",
+   "citas": [
+    "s2-rag-y-vector-search § 1. Por qué RAG existe"
+   ],
+   "source": "ent:llm",
+   "target": "ent:prompt"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "invoca",
+   "citas": [
+    "s3-agentes § 2. Tool Use / Function Calling … 2.3 Model Context Protocol (MCP)"
+   ],
+   "source": "ent:llm",
+   "target": "ent:execute sql"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "usa",
+   "citas": [
+    "s2-rag-y-vector-search § 7. Notas del Lab 02"
+   ],
+   "source": "ent:rag baseline",
+   "target": "ent:corpu"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "incluye",
+   "citas": [
+    "s2-rag-y-vector-search § 7. Notas del Lab 02"
+   ],
+   "source": "ent:rag baseline",
+   "target": "ent:embedding"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "aplica",
+   "citas": [
+    "s4-llmops-y-finetuning § 5. Fine-Tuning Ligero … 5.3 QLoRA — Quantization + LoRA"
+   ],
+   "source": "ent:peft",
+   "target": "ent:lora"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "relevante_para",
+   "citas": [
+    "Consultas y juicios de relevancia"
+   ],
+   "source": "ent:q2",
+   "target": "ent:d03"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "es_tipo_de",
+   "citas": [
+    "s1-transformers-y-foundation-models § 3.5 Positional encoding … 3.6 Encoder vs. Decoder"
+   ],
+   "source": "ent:alibi",
+   "target": "ent:positional encoding"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "sesga",
+   "citas": [
+    "s1-transformers-y-foundation-models § 3.5 Positional encoding … 3.6 Encoder vs. Decoder"
+   ],
+   "source": "ent:alibi",
+   "target": "ent:mecanismo de atencion"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "incluye",
+   "citas": [
+    "s2-rag-y-vector-search § 1. Por qué RAG existe"
+   ],
+   "source": "ent:prompt",
+   "target": "ent:chunk"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "es_independiente_de",
+   "citas": [
+    "s4-llmops-y-finetuning § 1. Por qué LLMOps es diferente a MLOps"
+   ],
+   "source": "ent:prompt",
+   "target": "ent:llm"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "mitiga",
+   "citas": [
+    "s1-transformers-y-foundation-models § 2.6 Variational Autoencoder — el puente al espacio latente continuo … 2.7 Del VAE al LLM autorregresivo"
+   ],
+   "source": "ent:mamba",
+   "target": "ent:mecanismo de atencion"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "captura",
+   "citas": [
+    "s1-transformers-y-foundation-models § 2.4 Gaussian Mixture Models — variables latentes … 2.5 Hidden Markov Models — generación secuencial"
+   ],
+   "source": "ent:mecanismo de atencion",
+   "target": "ent:dependencia de largo alcance"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "usa",
+   "citas": [
+    "s1-transformers-y-foundation-models § 3. Arquitectura Transformer (90 min) … 3.4 Estructura completa de un bloque transformer"
+   ],
+   "source": "ent:mecanismo de atencion",
+   "target": "ent:query"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "usa",
+   "citas": [
+    "s1-transformers-y-foundation-models § 3. Arquitectura Transformer (90 min) … 3.4 Estructura completa de un bloque transformer"
+   ],
+   "source": "ent:mecanismo de atencion",
+   "target": "ent:key"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "usa",
+   "citas": [
+    "s1-transformers-y-foundation-models § 3. Arquitectura Transformer (90 min) … 3.4 Estructura completa de un bloque transformer"
+   ],
+   "source": "ent:mecanismo de atencion",
+   "target": "ent:value"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "calcula",
+   "citas": [
+    "s1-transformers-y-foundation-models § 3. Arquitectura Transformer (90 min) … 3.4 Estructura completa de un bloque transformer"
+   ],
+   "source": "ent:mecanismo de atencion",
+   "target": "ent:score de similitud query key"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "difiere_de",
+   "citas": [
+    "s1-transformers-y-foundation-models § 3.5 Positional encoding … 3.6 Encoder vs. Decoder"
+   ],
+   "source": "ent:mecanismo de atencion",
+   "target": "ent:rnn"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "equivale_a",
+   "citas": [
+    "s2-rag-y-vector-search § 2. Embeddings … 2.3 Similitud semántica"
+   ],
+   "source": "ent:producto punto",
+   "target": "ent:similitud coseno"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "afecta",
+   "citas": [
+    "s2-rag-y-vector-search § 4. Chunking Strategies … 4.3 Regla práctica"
+   ],
+   "source": "ent:dilucion del embedding",
+   "target": "ent:embedding"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "evoluciona_de",
+   "citas": [
+    "s2-rag-y-vector-search § 5. Retrieval: Sparse, Dense, Hybrid … 5.4 Reranking"
+   ],
+   "source": "ent:bm25",
+   "target": "ent:tf idf"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "recupera",
+   "citas": [
+    "s2-rag-y-vector-search § 5. Retrieval: Sparse, Dense, Hybrid … 5.4 Reranking"
+   ],
+   "source": "ent:bm25",
+   "target": "ent:top 20"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "usa",
+   "citas": [
+    "s3-agentes § 1. Puente con la teoría clásica de agentes … 1.2 El agente LLM en la taxonomía clásica"
+   ],
+   "source": "ent:agente llm",
+   "target": "ent:react"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "reutiliza",
+   "citas": [
+    "Parte 2"
+   ],
+   "source": "ent:evaluacion",
+   "target": "ent:consulta"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "reutiliza",
+   "citas": [
+    "Parte 2"
+   ],
+   "source": "ent:evaluacion",
+   "target": "ent:juicio"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "evalua",
+   "citas": [
+    "Parte 2"
+   ],
+   "source": "ent:evaluacion",
+   "target": "ent:truncatedsvd"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "evalua",
+   "citas": [
+    "Parte 2"
+   ],
+   "source": "ent:evaluacion",
+   "target": "ent:tf idf"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "reporta",
+   "citas": [
+    "Parte 2"
+   ],
+   "source": "ent:evaluacion",
+   "target": "ent:tre metrica"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "usa",
+   "citas": [
+    "Parte 4"
+   ],
+   "source": "ent:recuperador denso",
+   "target": "ent:embedding"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "resuelve",
+   "citas": [
+    "Parte 4"
+   ],
+   "source": "ent:recuperador denso",
+   "target": "ent:q5"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "supera",
+   "citas": [
+    "Parte 4"
+   ],
+   "source": "ent:recuperador denso",
+   "target": "ent:tf idf"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "tiene",
+   "citas": [
+    "Parte 4"
+   ],
+   "source": "ent:recuperador denso",
+   "target": "ent:costo"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "relevante_para",
+   "citas": [
+    "Consultas y juicios de relevancia"
+   ],
+   "source": "ent:q3",
+   "target": "ent:d08"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "consulta_sobre",
+   "citas": [
+    "Consultas y juicios de relevancia"
+   ],
+   "source": "ent:q3",
+   "target": "ent:matrice de bajo rango"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "usa",
+   "citas": [
+    "Corpus"
+   ],
+   "source": "ent:ajuste fino",
+   "target": "ent:lora"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "combina",
+   "citas": [
+    "s4-llmops-y-finetuning § 5.4 Árbol de decisión: ¿cuándo usar qué?"
+   ],
+   "source": "ent:fine tuning rag",
+   "target": "ent:rag"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "resuelve",
+   "citas": [
+    "s2-rag-y-vector-search § 1. Por qué RAG existe"
+   ],
+   "source": "ent:rag",
+   "target": "ent:alucinacion"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "resuelve",
+   "citas": [
+    "s2-rag-y-vector-search § 1. Por qué RAG existe"
+   ],
+   "source": "ent:rag",
+   "target": "ent:cutoff date"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "resuelve",
+   "citas": [
+    "s2-rag-y-vector-search § 1. Por qué RAG existe"
+   ],
+   "source": "ent:rag",
+   "target": "ent:dominio privado"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "recupera",
+   "citas": [
+    "s2-rag-y-vector-search § 1. Por qué RAG existe"
+   ],
+   "source": "ent:rag",
+   "target": "ent:chunk"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "construye",
+   "citas": [
+    "s2-rag-y-vector-search § 1. Por qué RAG existe"
+   ],
+   "source": "ent:rag",
+   "target": "ent:prompt"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "implementa",
+   "citas": [
+    "s2-rag-y-vector-search § 1. Por qué RAG existe"
+   ],
+   "source": "ent:rag",
+   "target": "ent:base de conocimiento"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "aporta",
+   "citas": [
+    "s4-llmops-y-finetuning § 5.4 Árbol de decisión: ¿cuándo usar qué?"
+   ],
+   "source": "ent:rag",
+   "target": "ent:conocimiento actualizado"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "usa",
+   "citas": [
+    "s4-llmops-y-finetuning § 6. Monitoreo en Producción … 6.2 Drift de calidad"
+   ],
+   "source": "ent:rag",
+   "target": "ent:corpu del rag"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "extiende",
+   "citas": [
+    "s2-rag-y-vector-search § 7. Notas del Lab 02"
+   ],
+   "source": "ent:raga",
+   "target": "ent:rag baseline"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "requiere",
+   "citas": [
+    "s2-rag-y-vector-search § 7. Notas del Lab 02"
+   ],
+   "source": "ent:raga",
+   "target": "ent:llm"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "evalua",
+   "citas": [
+    "s4-llmops-y-finetuning § 2.3 RAGAS para RAG"
+   ],
+   "source": "ent:raga",
+   "target": "ent:rag"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "documenta",
+   "citas": [
+    "s1-transformers-y-foundation-models § 6. Notas del Lab 01"
+   ],
+   "source": "ent:fuente modelo modelo 2026 1",
+   "target": "ent:costo"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "no_proporcional_a",
+   "citas": [
+    "s1-transformers-y-foundation-models § 6. Notas del Lab 01"
+   ],
+   "source": "ent:calidad",
+   "target": "ent:costo"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "entrena_con",
+   "citas": [
+    "s2-rag-y-vector-search § 2. Embeddings … 2.3 Similitud semántica"
+   ],
+   "source": "ent:embedding",
+   "target": "ent:contrastive learning"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "tienen",
+   "citas": [
+    "s2-rag-y-vector-search § 4. Chunking Strategies … 4.3 Regla práctica"
+   ],
+   "source": "ent:embedding",
+   "target": "ent:limite de token de contexto"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "provienen_de",
+   "citas": [
+    "Parte 4"
+   ],
+   "source": "ent:embedding",
+   "target": "ent:modelo entrenado"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "usa",
+   "citas": [
+    "Parte 1"
+   ],
+   "source": "ent:recuperacion",
+   "target": "ent:tf idf"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "usa",
+   "citas": [
+    "Parte 1"
+   ],
+   "source": "ent:recuperacion",
+   "target": "ent:similitud coseno"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "procesa",
+   "citas": [
+    "Parte 1"
+   ],
+   "source": "ent:recuperacion",
+   "target": "ent:consulta"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "ordena",
+   "citas": [
+    "Parte 1"
+   ],
+   "source": "ent:recuperacion",
+   "target": "ent:documento"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "limitado_por",
+   "citas": [
+    "El reporte"
+   ],
+   "source": "ent:reporte pdf",
+   "target": "ent:maximo dos pagina"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "contiene",
+   "citas": [
+    "El reporte"
+   ],
+   "source": "ent:reporte pdf",
+   "target": "ent:seccion objetivo"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "contiene",
+   "citas": [
+    "El reporte"
+   ],
+   "source": "ent:reporte pdf",
+   "target": "ent:seccion metodo"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "contiene",
+   "citas": [
+    "El reporte"
+   ],
+   "source": "ent:reporte pdf",
+   "target": "ent:seccion resultado"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "contiene",
+   "citas": [
+    "El reporte"
+   ],
+   "source": "ent:reporte pdf",
+   "target": "ent:seccion discusion"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "sujeto_a",
+   "citas": [
+    "El reporte"
+   ],
+   "source": "ent:reporte pdf",
+   "target": "ent:toda cifra sale de la ejecucion"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "ordena_segundo",
+   "citas": [
+    "s4-llmops-y-finetuning § 5.4 Árbol de decisión: ¿cuándo usar qué?"
+   ],
+   "source": "ent:regla practica",
+   "target": "ent:rag"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "evalua",
+   "citas": [
+    "Parte 1"
+   ],
+   "source": "ent:hit 1",
+   "target": "ent:consulta"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "evalua",
+   "citas": [
+    "Parte 1"
+   ],
+   "source": "ent:hit 3",
+   "target": "ent:consulta"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "proviene_de",
+   "citas": [
+    "El reporte"
+   ],
+   "source": "ent:toda cifra sale de la ejecucion",
+   "target": "ent:ejecucion"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "genera",
+   "citas": [
+    "s2-rag-y-vector-search § 2. Embeddings … 2.3 Similitud semántica"
+   ],
+   "source": "ent:sentence transformer all minilm l6 v2",
+   "target": "ent:embedding"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "extiende",
+   "citas": [
+    "s1-transformers-y-foundation-models § 3. Arquitectura Transformer (90 min) … 3.4 Estructura completa de un bloque transformer"
+   ],
+   "source": "ent:multi head attention",
+   "target": "ent:mecanismo de atencion"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "compara",
+   "citas": [
+    "Preámbulo"
+   ],
+   "source": "ent:tarea c",
+   "target": "ent:recuperacion lexica"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "compara",
+   "citas": [
+    "Preámbulo"
+   ],
+   "source": "ent:tarea c",
+   "target": "ent:semantica latente"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "usa",
+   "citas": [
+    "Preámbulo"
+   ],
+   "source": "ent:tarea c",
+   "target": "ent:corpu"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "usa",
+   "citas": [
+    "Preámbulo"
+   ],
+   "source": "ent:tarea c",
+   "target": "ent:consulta"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "entrega",
+   "citas": [
+    "Preámbulo"
+   ],
+   "source": "ent:tarea c",
+   "target": "ent:reporte pdf"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "cumple",
+   "citas": [
+    "Preámbulo"
+   ],
+   "source": "ent:tarea c",
+   "target": "ent:dato completo en el enunciado"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "precede_a",
+   "citas": [
+    "s1-transformers-y-foundation-models § 1. Sesión histórica: IA antes de los LLMs (20 min) … Conexión con el curso anterior"
+   ],
+   "source": "ent:transformer",
+   "target": "ent:gpt 3"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "ejemplifica",
+   "citas": [
+    "s1-transformers-y-foundation-models § 2. Modelos Generativos Bayesianos: puente conceptual (90 min total) … 2.3 Naive Bayes — el modelo generativo mínimo"
+   ],
+   "source": "ent:transformer",
+   "target": "ent:modelo discriminativo"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "no_asume",
+   "citas": [
+    "s1-transformers-y-foundation-models § 2. Modelos Generativos Bayesianos: puente conceptual (90 min total) … 2.3 Naive Bayes — el modelo generativo mínimo"
+   ],
+   "source": "ent:transformer",
+   "target": "ent:independencia condicional"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "supera",
+   "citas": [
+    "s1-transformers-y-foundation-models § 2.4 Gaussian Mixture Models — variables latentes … 2.5 Hidden Markov Models — generación secuencial"
+   ],
+   "source": "ent:transformer",
+   "target": "ent:ml estadistico"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "usa",
+   "citas": [
+    "s1-transformers-y-foundation-models § 2.4 Gaussian Mixture Models — variables latentes … 2.5 Hidden Markov Models — generación secuencial",
+    "s1-transformers-y-foundation-models § 3. Arquitectura Transformer (90 min) … 3.4 Estructura completa de un bloque transformer"
+   ],
+   "source": "ent:transformer",
+   "target": "ent:mecanismo de atencion"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "reemplaza",
+   "citas": [
+    "s1-transformers-y-foundation-models § 3. Arquitectura Transformer (90 min) … 3.4 Estructura completa de un bloque transformer"
+   ],
+   "source": "ent:transformer",
+   "target": "ent:rnn"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "usa",
+   "citas": [
+    "Corpus"
+   ],
+   "source": "ent:transformer",
+   "target": "ent:autoatencion"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "compara",
+   "citas": [
+    "s2-rag-y-vector-search § 4. Chunking Strategies … 4.3 Regla práctica"
+   ],
+   "source": "ent:semantic chunking",
+   "target": "ent:embedding"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "frente_a",
+   "citas": [
+    "Parte 4"
+   ],
+   "source": "ent:costo",
+   "target": "ent:tf idf"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "fuera_de",
+   "citas": [
+    "Parte 3"
+   ],
+   "source": "ent:documento relevante",
+   "target": "ent:top 3"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "comparte",
+   "citas": [
+    "Parte 3"
+   ],
+   "source": "ent:documento relevante",
+   "target": "ent:termino compartido"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "aprovecha",
+   "citas": [
+    "s1-transformers-y-foundation-models § 5. In-context Learning y Prompting (60 min) … 5.3 Structured outputs"
+   ],
+   "source": "ent:in context learning",
+   "target": "ent:mecanismo de atencion"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "usa_ejemplos_de",
+   "citas": [
+    "s1-transformers-y-foundation-models § 5. In-context Learning y Prompting (60 min) … 5.3 Structured outputs"
+   ],
+   "source": "ent:in context learning",
+   "target": "ent:prompt"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "ajusta",
+   "citas": [
+    "s1-transformers-y-foundation-models § 4.6 Inference: temperatura y sampling"
+   ],
+   "source": "ent:temperatura",
+   "target": "ent:logit"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "usa",
+   "citas": [
+    "s2-rag-y-vector-search § 2. Embeddings … 2.3 Similitud semántica"
+   ],
+   "source": "ent:similitud semantica",
+   "target": "ent:similitud coseno"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "explica_con",
+   "citas": [
+    "Parte 3"
+   ],
+   "source": "ent:analisi por consulta",
+   "target": "ent:termino compartido"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "es_variante_de",
+   "citas": [
+    "Corpus"
+   ],
+   "source": "ent:atencion escalada",
+   "target": "ent:mecanismo de atencion"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "proviene_de",
+   "citas": [
+    "Parte 1"
+   ],
+   "source": "ent:tf idf",
+   "target": "ent:scikit learn"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "usa",
+   "citas": [
+    "Parte 1"
+   ],
+   "source": "ent:tf idf",
+   "target": "ent:parametro por defecto"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "compara_con",
+   "citas": [
+    "Parte 2"
+   ],
+   "source": "ent:tf idf",
+   "target": "ent:truncatedsvd"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "vive_fuera_de",
+   "citas": [
+    "s2-rag-y-vector-search § 1. Por qué RAG existe"
+   ],
+   "source": "ent:base de conocimiento",
+   "target": "ent:llm"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "aplica_en",
+   "citas": [
+    "s4-llmops-y-finetuning § 5. Fine-Tuning Ligero … 5.3 QLoRA — Quantization + LoRA"
+   ],
+   "source": "ent:lora",
+   "target": "ent:capa de atencion"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "usa",
+   "citas": [
+    "s4-llmops-y-finetuning § 5. Fine-Tuning Ligero … 5.3 QLoRA — Quantization + LoRA"
+   ],
+   "source": "ent:lora",
+   "target": "ent:r rango"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "usa",
+   "citas": [
+    "s4-llmops-y-finetuning § 5. Fine-Tuning Ligero … 5.3 QLoRA — Quantization + LoRA"
+   ],
+   "source": "ent:lora",
+   "target": "ent:alpha escala"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "evita",
+   "citas": [
+    "s4-llmops-y-finetuning § 5. Fine-Tuning Ligero … 5.3 QLoRA — Quantization + LoRA"
+   ],
+   "source": "ent:lora",
+   "target": "ent:full fine tuning"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "inyecta_posicion_en",
+   "citas": [
+    "s1-transformers-y-foundation-models § 3.5 Positional encoding … 3.6 Encoder vs. Decoder"
+   ],
+   "source": "ent:positional encoding",
+   "target": "ent:mecanismo de atencion"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "revisa",
+   "citas": [
+    "s3-agentes § 3. Patrones de Agentes … 3.3 Reflexion"
+   ],
+   "source": "ent:reflexion",
+   "target": "ent:respuesta del agente"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "genera",
+   "citas": [
+    "s3-agentes § 3. Patrones de Agentes … 3.3 Reflexion"
+   ],
+   "source": "ent:reflexion",
+   "target": "ent:critica auto generada"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "limitado_por",
+   "citas": [
+    "s3-agentes § 3. Patrones de Agentes … 3.3 Reflexion"
+   ],
+   "source": "ent:reflexion",
+   "target": "ent:limite de iteracion"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "extiende",
+   "citas": [
+    "Corpus"
+   ],
+   "source": "ent:reflexion",
+   "target": "ent:react"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "relevante_para",
+   "citas": [
+    "Consultas y juicios de relevancia"
+   ],
+   "source": "ent:q6",
+   "target": "ent:d02"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "consulta_sobre",
+   "citas": [
+    "Consultas y juicios de relevancia"
+   ],
+   "source": "ent:q6",
+   "target": "ent:autoatencion"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "tiene_relevante",
+   "citas": [
+    "Parte 3"
+   ],
+   "source": "ent:consulta",
+   "target": "ent:documento relevante"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "comparte",
+   "citas": [
+    "Parte 3"
+   ],
+   "source": "ent:consulta",
+   "target": "ent:termino compartido"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "usa",
+   "citas": [
+    "s2-rag-y-vector-search § 5. Retrieval: Sparse, Dense, Hybrid … 5.4 Reranking"
+   ],
+   "source": "ent:dense retrieval",
+   "target": "ent:embedding"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "usa",
+   "citas": [
+    "s2-rag-y-vector-search § 5. Retrieval: Sparse, Dense, Hybrid … 5.4 Reranking"
+   ],
+   "source": "ent:dense retrieval",
+   "target": "ent:similitud coseno"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "recupera",
+   "citas": [
+    "s2-rag-y-vector-search § 5. Retrieval: Sparse, Dense, Hybrid … 5.4 Reranking"
+   ],
+   "source": "ent:dense retrieval",
+   "target": "ent:top 20"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "relevante_para",
+   "citas": [
+    "Consultas y juicios de relevancia"
+   ],
+   "source": "ent:q4",
+   "target": "ent:d05"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "alterna",
+   "citas": [
+    "s3-agentes § 3. Patrones de Agentes … 3.3 Reflexion"
+   ],
+   "source": "ent:react",
+   "target": "ent:thought"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "alterna",
+   "citas": [
+    "s3-agentes § 3. Patrones de Agentes … 3.3 Reflexion"
+   ],
+   "source": "ent:react",
+   "target": "ent:action"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "observa",
+   "citas": [
+    "s3-agentes § 3. Patrones de Agentes … 3.3 Reflexion"
+   ],
+   "source": "ent:react",
+   "target": "ent:observation"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "produce",
+   "citas": [
+    "s3-agentes § 3. Patrones de Agentes … 3.3 Reflexion"
+   ],
+   "source": "ent:react",
+   "target": "ent:trace"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "usa",
+   "citas": [
+    "s3-agentes § 3. Patrones de Agentes … 3.3 Reflexion"
+   ],
+   "source": "ent:react",
+   "target": "ent:execute sql"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "limitado_por",
+   "citas": [
+    "s3-agentes § 3. Patrones de Agentes … 3.3 Reflexion"
+   ],
+   "source": "ent:react",
+   "target": "ent:propagacion de error"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "relevante_para",
+   "citas": [
+    "Consultas y juicios de relevancia"
+   ],
+   "source": "ent:q5",
+   "target": "ent:d09"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "incluye",
+   "citas": [
+    "El reporte"
+   ],
+   "source": "ent:seccion resultado",
+   "target": "ent:tabla de la parte 2"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "incluye",
+   "citas": [
+    "El reporte"
+   ],
+   "source": "ent:seccion resultado",
+   "target": "ent:tabla de la parte 3"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "usa",
+   "citas": [
+    "s4-llmops-y-finetuning § 5.4 Árbol de decisión: ¿cuándo usar qué?"
+   ],
+   "source": "ent:fine tuning ligero",
+   "target": "ent:lora"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "usa",
+   "citas": [
+    "s4-llmops-y-finetuning § 5.4 Árbol de decisión: ¿cuándo usar qué?"
+   ],
+   "source": "ent:fine tuning ligero",
+   "target": "ent:qlora"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "pertenece_a",
+   "citas": [
+    "s2-rag-y-vector-search § 6. Evaluación de RAG … 6.3 GraphRAG",
+    "s4-llmops-y-finetuning § 2.3 RAGAS para RAG"
+   ],
+   "source": "ent:answer relevancy",
+   "target": "ent:raga"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "usa",
+   "citas": [
+    "s4-llmops-y-finetuning § 2.3 RAGAS para RAG"
+   ],
+   "source": "ent:answer relevancy",
+   "target": "ent:embedding"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "mide",
+   "citas": [
+    "s2-rag-y-vector-search § 6. Evaluación de RAG … 6.3 GraphRAG"
+   ],
+   "source": "ent:mrr",
+   "target": "ent:chunk"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "evalua",
+   "citas": [
+    "Parte 1"
+   ],
+   "source": "ent:mrr",
+   "target": "ent:consulta"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "genera",
+   "citas": [
+    "s2-rag-y-vector-search § 2. Embeddings … 2.3 Similitud semántica"
+   ],
+   "source": "ent:text embedding 3 large",
+   "target": "ent:embedding"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "recomienda",
+   "citas": [
+    "s4-llmops-y-finetuning § 5.4 Árbol de decisión: ¿cuándo usar qué?"
+   ],
+   "source": "ent:arbol de decision",
+   "target": "ent:rag"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "recomienda",
+   "citas": [
+    "s4-llmops-y-finetuning § 5.4 Árbol de decisión: ¿cuándo usar qué?"
+   ],
+   "source": "ent:arbol de decision",
+   "target": "ent:fine tuning ligero"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "recomienda",
+   "citas": [
+    "s4-llmops-y-finetuning § 5.4 Árbol de decisión: ¿cuándo usar qué?"
+   ],
+   "source": "ent:arbol de decision",
+   "target": "ent:fine tuning rag"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "genera",
+   "citas": [
+    "s2-rag-y-vector-search § 2. Embeddings … 2.3 Similitud semántica"
+   ],
+   "source": "ent:sentence bert",
+   "target": "ent:embedding"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "mitiga",
+   "citas": [
+    "s1-transformers-y-foundation-models § 2.6 Variational Autoencoder — el puente al espacio latente continuo … 2.7 Del VAE al LLM autorregresivo"
+   ],
+   "source": "ent:flash attention",
+   "target": "ent:mecanismo de atencion"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "aplica",
+   "citas": [
+    "s4-llmops-y-finetuning § 5. Fine-Tuning Ligero … 5.3 QLoRA — Quantization + LoRA"
+   ],
+   "source": "ent:qlora",
+   "target": "ent:lora"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "combina",
+   "citas": [
+    "s2-rag-y-vector-search § 5. Retrieval: Sparse, Dense, Hybrid … 5.4 Reranking"
+   ],
+   "source": "ent:hybrid search",
+   "target": "ent:bm25"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "combina",
+   "citas": [
+    "s2-rag-y-vector-search § 5. Retrieval: Sparse, Dense, Hybrid … 5.4 Reranking"
+   ],
+   "source": "ent:hybrid search",
+   "target": "ent:dense retrieval"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "extiende",
+   "citas": [
+    "s2-rag-y-vector-search § 7. Notas del Lab 02"
+   ],
+   "source": "ent:hybrid search",
+   "target": "ent:rag baseline"
+  }
+ ]
+}

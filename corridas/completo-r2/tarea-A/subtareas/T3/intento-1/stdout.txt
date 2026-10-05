@@ -1,0 +1,13 @@
+==========================================================================
+T3 — Curva de aprendizaje (prueba fija de 171 ejemplos)
+==========================================================================
+ % entrenamiento     n   Acc GaussianNB     Acc Reg.Log.
+              5%    19         0.941520         0.929825
+             10%    39         0.947368         0.935673
+             25%    99         0.935673         0.941520
+             50%   199         0.923977         0.976608
+            100%   398         0.935673         0.988304
+
+Verificación contra T1: {'fuente_division': 'recreada de forma determinista con train_test_split(test_size=0.3, random_state=42, stratify=y): los mismos parámetros con los que T1 creó la división única', 'archivo_T1_leido': True, 'tamano_entrenamiento_coincide': True, 'tamano_prueba_coincide': True, 'conteo_clases_entrenamiento_coincide': True, 'conteo_clases_prueba_coincide': True}
+Figura guardada en: curva_aprendizaje.png
+Cifras completas escritas en: resultados.json

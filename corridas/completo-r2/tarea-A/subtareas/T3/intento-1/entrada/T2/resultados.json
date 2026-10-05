@@ -1,0 +1,149 @@
+{
+  "subtarea": "T2",
+  "descripcion": "GaussianNB y regresión logística (atributos estandarizados con StandardScaler ajustado solo con el entrenamiento), entrenados con la división 70/30 estratificada de T1 y evaluados sobre el conjunto de prueba.",
+  "dataset": "breast_cancer_wisconsin_diagnostic (sklearn.datasets.load_breast_cancer)",
+  "division_usada": {
+    "fuente": "recreada de forma determinista con train_test_split(test_size=0.3, random_state=42, stratify=y): los mismos parámetros con los que T1 creó la división única",
+    "test_size": 0.3,
+    "random_state": 42,
+    "estratificada_por_clase": true,
+    "tamano_entrenamiento": 398,
+    "tamano_prueba": 171
+  },
+  "verificacion_contra_T1": {
+    "fuente_division": "recreada de forma determinista con train_test_split(test_size=0.3, random_state=42, stratify=y): los mismos parámetros con los que T1 creó la división única",
+    "archivo_T1_leido": true,
+    "tamano_entrenamiento_coincide": true,
+    "tamano_prueba_coincide": true,
+    "conteo_clases_entrenamiento_coincide": true,
+    "conteo_clases_prueba_coincide": true
+  },
+  "preprocesamiento": {
+    "escalador": "StandardScaler",
+    "ajustado_solo_con_entrenamiento": true,
+    "atributos_estandarizados_para_regresion_logistica": true,
+    "nota_gaussian_nb": "GaussianNB es invariante a transformaciones afines por atributo, de modo que estandarizar no altera sus decisiones de forma apreciable; se usan los atributos estandarizados para ambos modelos por consistencia.",
+    "medias_scaler_entrenamiento": [
+      14.093846733668359,
+      19.34153266331657,
+      91.69894472361804,
+      650.7841708542709,
+      0.09578927135678386,
+      0.10314344221105536,
+      0.08844576809045228,
+      0.04804872864321611,
+      0.18049296482412075,
+      0.06270957286432158,
+      0.39191708542713555,
+      1.1979816582914569,
+      2.773588190954775,
+      38.21533417085426,
+      0.006981502512562813,
+      0.025361748743718573,
+      0.03218489095477385,
+      0.011531678391959803,
+      0.020681623115577894,
+      0.00380615351758794,
+      16.266560301507546,
+      25.81630653266333,
+      107.22067839195986,
+      879.6967336683425,
+      0.13225909547738682,
+      0.2571699748743719,
+      0.278709540201005,
+      0.11448460050251268,
+      0.2929376884422112,
+      0.08422922110552764
+    ],
+    "desviaciones_scaler_entrenamiento": [
+      3.4851709335853864,
+      4.494799777284616,
+      24.033630664269026,
+      339.8674076010202,
+      0.013332303375192695,
+      0.05329536400176689,
+      0.08140644002261423,
+      0.0386482490822333,
+      0.028020223327632866,
+      0.007304622929981631,
+      0.23050050776505346,
+      0.5414898979094194,
+      1.7050214017537826,
+      34.26891877403041,
+      0.003030567078589894,
+      0.018678246920342197,
+      0.033409656711966926,
+      0.006345931235707416,
+      0.008738763772124366,
+      0.00290684555554542,
+      4.8437163221206285,
+      6.320366432073852,
+      33.73161425567345,
+      564.7110732005891,
+      0.022652731965780583,
+      0.16449859680557882,
+      0.2213831041612083,
+      0.06763078182644335,
+      0.06505519061391239,
+      0.01902590971144606
+    ]
+  },
+  "modelos": {
+    "gaussian_nb": {
+      "clase": "sklearn.naive_bayes.GaussianNB",
+      "parametros": "por defecto"
+    },
+    "regresion_logistica": {
+      "clase": "sklearn.linear_model.LogisticRegression",
+      "parametros": {
+        "max_iter": 5000,
+        "random_state": 42,
+        "resto": "por defecto"
+      },
+      "iteraciones_usadas": 19
+    }
+  },
+  "tabla_metricas_prueba": [
+    {
+      "modelo": "Naive Bayes gaussiano (GaussianNB)",
+      "accuracy_prueba": 0.935672514619883,
+      "f1_macro_prueba": 0.9306543778801843
+    },
+    {
+      "modelo": "Regresión logística (atributos estandarizados)",
+      "accuracy_prueba": 0.9883040935672515,
+      "f1_macro_prueba": 0.9875146028037383
+    }
+  ],
+  "accuracy_prueba_gaussian_nb": 0.935672514619883,
+  "f1_macro_prueba_gaussian_nb": 0.9306543778801843,
+  "accuracy_prueba_regresion_logistica": 0.9883040935672515,
+  "f1_macro_prueba_regresion_logistica": 0.9875146028037383,
+  "matrices_de_confusion_prueba": {
+    "orden_etiquetas": [
+      "0 = malignant",
+      "1 = benign"
+    ],
+    "gaussian_nb": [
+      [
+        57,
+        7
+      ],
+      [
+        4,
+        103
+      ]
+    ],
+    "regresion_logistica": [
+      [
+        63,
+        1
+      ],
+      [
+        1,
+        106
+      ]
+    ]
+  },
+  "tabla_markdown": "| Modelo | Accuracy (prueba) | F1 macro (prueba) |\n|---|---|---|\n| Naive Bayes gaussiano (GaussianNB) | 0.935673 | 0.930654 |\n| Regresión logística (atributos estandarizados) | 0.988304 | 0.987515 |"
+}

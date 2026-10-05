@@ -1,0 +1,65 @@
+{
+  "subtarea": "T1",
+  "dataset": "breast_cancer_wisconsin_diagnostic (sklearn.datasets.load_breast_cancer)",
+  "random_state": 42,
+  "test_size": 0.3,
+  "estratificado_por_clase": true,
+  "total_ejemplos": 569,
+  "numero_atributos": 30,
+  "nombres_clases": [
+    "malignant",
+    "benign"
+  ],
+  "conteo_clases_total": {
+    "malignant": 212,
+    "benign": 357
+  },
+  "conteo_clases_total_por_etiqueta_numerica": {
+    "0": 212,
+    "1": 357
+  },
+  "tamano_entrenamiento": 398,
+  "tamano_prueba": 171,
+  "fraccion_entrenamiento": 0.6994727592267135,
+  "fraccion_prueba": 0.30052724077328646,
+  "conteo_clases_entrenamiento": {
+    "malignant": 148,
+    "benign": 250
+  },
+  "conteo_clases_prueba": {
+    "malignant": 64,
+    "benign": 107
+  },
+  "nombres_atributos": [
+    "mean radius",
+    "mean texture",
+    "mean perimeter",
+    "mean area",
+    "mean smoothness",
+    "mean compactness",
+    "mean concavity",
+    "mean concave points",
+    "mean symmetry",
+    "mean fractal dimension",
+    "radius error",
+    "texture error",
+    "perimeter error",
+    "area error",
+    "smoothness error",
+    "compactness error",
+    "concavity error",
+    "concave points error",
+    "symmetry error",
+    "fractal dimension error",
+    "worst radius",
+    "worst texture",
+    "worst perimeter",
+    "worst area",
+    "worst smoothness",
+    "worst compactness",
+    "worst concavity",
+    "worst concave points",
+    "worst symmetry",
+    "worst fractal dimension"
+  ]
+}

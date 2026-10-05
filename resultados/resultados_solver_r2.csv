@@ -1,0 +1,26 @@
+tarea,check,tipo,ok,detalle
+A,A01,archivo,1,1 archivo(s) con reporte.md
+A,A02,archivo,1,14 archivo(s) con **/*.png
+A,A03,secciones,1,"todas, en orden"
+A,A04,palabras_max,1,1080 palabras
+A,A05,cifra_presente,1,verdad=569.0000 ±0; hallada
+A,A06,cifra,1,verdad=0.9474 ±0.006; hallada
+A,A07,cifra,1,verdad=0.9883 ±0.012; hallada
+A,A08,procedencia,1,58/58 cifras respaldadas (1.00)
+B,B01,archivo,1,1 archivo(s) con *.ipynb
+B,B02,ipynb_ejecutado,1,"3 celdas de código, 0 sin ejecutar, 0 con error"
+B,B03,cifra_presente,1,verdad=0.9147 ±0.00051; hallada
+B,B04,cifra_presente,1,verdad=1.7998 ±0.00051; hallada
+B,B05,cifra_presente,1,verdad=2.2888 ±0.00051; hallada
+B,B06,cifra_presente,1,verdad=0.5694 ±0.00051; hallada
+B,B07,contiene,1,todos presentes
+B,B08,archivo,1,16 archivo(s) con **/*.png
+B,B09,procedencia,1,72/72 cifras respaldadas (1.00)
+C,C01,archivo,1,1 archivo(s) con reporte.pdf
+C,C02,paginas_max,1,2 páginas
+C,C03,secciones,1,"todas, en orden"
+C,C04,cifra,1,verdad=0.8611 ±0.006; hallada
+C,C05,cifra,1,verdad=0.8333 ±0.006; hallada
+C,C06,cifra,1,verdad=0.7500 ±0.006; hallada
+C,C07,contiene,1,todos presentes
+C,C08,procedencia,1,23/23 cifras respaldadas (1.00)

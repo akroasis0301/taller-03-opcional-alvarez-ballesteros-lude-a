@@ -1,0 +1,12 @@
+==================================================================
+T2 — Parte 2: GaussianNB vs regresión logística (conjunto de prueba)
+==================================================================
+División: recreada de forma determinista con train_test_split(test_size=0.3, random_state=42, stratify=y): los mismos parámetros con los que T1 creó la división única
+Tamaños: entrenamiento=398 | prueba=171
+------------------------------------------------------------------
+                                        modelo  accuracy_prueba  f1_macro_prueba
+            Naive Bayes gaussiano (GaussianNB)         0.935673         0.930654
+Regresión logística (atributos estandarizados)         0.988304         0.987515
+------------------------------------------------------------------
+Salidas: resultados.json, tabla_parte2_metricas_prueba.png,
+         comparacion_modelos_parte2.png

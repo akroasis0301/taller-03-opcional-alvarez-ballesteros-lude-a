@@ -1,0 +1,226 @@
+{
+  "subtarea": "T3",
+  "descripcion": "Curva de aprendizaje sobre la división única de T1: GaussianNB y regresión logística (atributos estandarizados) entrenados con submuestras estratificadas del 5 %, 10 %, 25 %, 50 % y 100 % del entrenamiento (random_state=42) y evaluados siempre sobre el mismo conjunto de prueba.",
+  "dataset": "breast_cancer_wisconsin_diagnostic (sklearn.datasets.load_breast_cancer)",
+  "division_usada": {
+    "fuente": "recreada de forma determinista con train_test_split(test_size=0.3, random_state=42, stratify=y): los mismos parámetros con los que T1 creó la división única",
+    "test_size": 0.3,
+    "random_state": 42,
+    "estratificada_por_clase": true,
+    "tamano_entrenamiento": 398,
+    "tamano_prueba": 171
+  },
+  "verificacion_contra_T1": {
+    "fuente_division": "recreada de forma determinista con train_test_split(test_size=0.3, random_state=42, stratify=y): los mismos parámetros con los que T1 creó la división única",
+    "archivo_T1_leido": true,
+    "tamano_entrenamiento_coincide": true,
+    "tamano_prueba_coincide": true,
+    "conteo_clases_entrenamiento_coincide": true,
+    "conteo_clases_prueba_coincide": true
+  },
+  "conjunto_prueba": {
+    "fijo_para_todos_los_tamanos": true,
+    "n_ejemplos": 171,
+    "usado_para_ajustar": false
+  },
+  "submuestras_estratificadas": {
+    "metodo": "train_test_split(train_size=fraccion, random_state=42, stratify=y_train) sobre el entrenamiento de T1; para el 100 % se usa el entrenamiento completo",
+    "random_state": 42,
+    "fracciones": [
+      0.05,
+      0.1,
+      0.25,
+      0.5,
+      1.0
+    ],
+    "porcentajes": [
+      5,
+      10,
+      25,
+      50,
+      100
+    ],
+    "composicion_por_porcentaje": {
+      "5%": {
+        "n_ejemplos": 19,
+        "malignant": 7,
+        "benign": 12
+      },
+      "10%": {
+        "n_ejemplos": 39,
+        "malignant": 15,
+        "benign": 24
+      },
+      "25%": {
+        "n_ejemplos": 99,
+        "malignant": 37,
+        "benign": 62
+      },
+      "50%": {
+        "n_ejemplos": 199,
+        "malignant": 74,
+        "benign": 125
+      },
+      "100%": {
+        "n_ejemplos": 398,
+        "malignant": 148,
+        "benign": 250
+      }
+    }
+  },
+  "preprocesamiento": {
+    "escalador": "StandardScaler",
+    "ajustado_solo_con_datos_de_entrenamiento": true,
+    "nota": "Para cada tamaño, el escalador se ajusta únicamente con la submuestra de entrenamiento de esa corrida (nunca con el conjunto de prueba); con la submuestra del 100 % coincide con el ajuste de T2. Ambos modelos usan los atributos estandarizados por consistencia con T2 (GaussianNB es invariante a transformaciones afines por atributo)."
+  },
+  "modelos": {
+    "gaussian_nb": {
+      "clase": "sklearn.naive_bayes.GaussianNB",
+      "parametros": "por defecto"
+    },
+    "regresion_logistica": {
+      "clase": "sklearn.linear_model.LogisticRegression",
+      "parametros": {
+        "max_iter": 5000,
+        "random_state": 42,
+        "resto": "por defecto"
+      }
+    }
+  },
+  "n_ejemplos_entrenamiento": [
+    19,
+    39,
+    99,
+    199,
+    398
+  ],
+  "curva_aprendizaje": {
+    "eje_x": "número de ejemplos de entrenamiento",
+    "eje_y": "accuracy en el conjunto de prueba (fijo)",
+    "n_ejemplos_entrenamiento": [
+      19,
+      39,
+      99,
+      199,
+      398
+    ],
+    "gaussian_nb": {
+      "n_ejemplos": [
+        19,
+        39,
+        99,
+        199,
+        398
+      ],
+      "accuracy_prueba": [
+        0.9415204678362573,
+        0.9473684210526315,
+        0.935672514619883,
+        0.9239766081871345,
+        0.935672514619883
+      ],
+      "f1_macro_prueba": [
+        0.9353056900726393,
+        0.9420055017522704,
+        0.9301703975943869,
+        0.9180460829493088,
+        0.9306543778801843
+      ]
+    },
+    "regresion_logistica": {
+      "n_ejemplos": [
+        19,
+        39,
+        99,
+        199,
+        398
+      ],
+      "accuracy_prueba": [
+        0.9298245614035088,
+        0.935672514619883,
+        0.9415204678362573,
+        0.9766081871345029,
+        0.9883040935672515
+      ],
+      "f1_macro_prueba": [
+        0.9217271895025938,
+        0.9285470085470086,
+        0.9362891207153503,
+        0.97469665581533,
+        0.9875146028037383
+      ]
+    }
+  },
+  "accuracy_prueba_gaussian_nb_por_n": {
+    "19": 0.9415204678362573,
+    "39": 0.9473684210526315,
+    "99": 0.935672514619883,
+    "199": 0.9239766081871345,
+    "398": 0.935672514619883
+  },
+  "accuracy_prueba_regresion_logistica_por_n": {
+    "19": 0.9298245614035088,
+    "39": 0.935672514619883,
+    "99": 0.9415204678362573,
+    "199": 0.9766081871345029,
+    "398": 0.9883040935672515
+  },
+  "f1_macro_prueba_gaussian_nb_por_n": {
+    "19": 0.9353056900726393,
+    "39": 0.9420055017522704,
+    "99": 0.9301703975943869,
+    "199": 0.9180460829493088,
+    "398": 0.9306543778801843
+  },
+  "f1_macro_prueba_regresion_logistica_por_n": {
+    "19": 0.9217271895025938,
+    "39": 0.9285470085470086,
+    "99": 0.9362891207153503,
+    "199": 0.97469665581533,
+    "398": 0.9875146028037383
+  },
+  "tabla_por_punto": [
+    {
+      "porcentaje_entrenamiento": 5,
+      "n_ejemplos_entrenamiento": 19,
+      "accuracy_prueba_gaussian_nb": 0.9415204678362573,
+      "accuracy_prueba_regresion_logistica": 0.9298245614035088,
+      "f1_macro_prueba_gaussian_nb": 0.9353056900726393,
+      "f1_macro_prueba_regresion_logistica": 0.9217271895025938
+    },
+    {
+      "porcentaje_entrenamiento": 10,
+      "n_ejemplos_entrenamiento": 39,
+      "accuracy_prueba_gaussian_nb": 0.9473684210526315,
+      "accuracy_prueba_regresion_logistica": 0.935672514619883,
+      "f1_macro_prueba_gaussian_nb": 0.9420055017522704,
+      "f1_macro_prueba_regresion_logistica": 0.9285470085470086
+    },
+    {
+      "porcentaje_entrenamiento": 25,
+      "n_ejemplos_entrenamiento": 99,
+      "accuracy_prueba_gaussian_nb": 0.935672514619883,
+      "accuracy_prueba_regresion_logistica": 0.9415204678362573,
+      "f1_macro_prueba_gaussian_nb": 0.9301703975943869,
+      "f1_macro_prueba_regresion_logistica": 0.9362891207153503
+    },
+    {
+      "porcentaje_entrenamiento": 50,
+      "n_ejemplos_entrenamiento": 199,
+      "accuracy_prueba_gaussian_nb": 0.9239766081871345,
+      "accuracy_prueba_regresion_logistica": 0.9766081871345029,
+      "f1_macro_prueba_gaussian_nb": 0.9180460829493088,
+      "f1_macro_prueba_regresion_logistica": 0.97469665581533
+    },
+    {
+      "porcentaje_entrenamiento": 100,
+      "n_ejemplos_entrenamiento": 398,
+      "accuracy_prueba_gaussian_nb": 0.935672514619883,
+      "accuracy_prueba_regresion_logistica": 0.9883040935672515,
+      "f1_macro_prueba_gaussian_nb": 0.9306543778801843,
+      "f1_macro_prueba_regresion_logistica": 0.9875146028037383
+    }
+  ],
+  "tabla_markdown": "| % del entrenamiento | n ejemplos | Accuracy prueba (GaussianNB) | Accuracy prueba (Reg. logística) |\n|---|---|---|---|\n| 5 % | 19 | 0.941520 | 0.929825 |\n| 10 % | 39 | 0.947368 | 0.935673 |\n| 25 % | 99 | 0.935673 | 0.941520 |\n| 50 % | 199 | 0.923977 | 0.976608 |\n| 100 % | 398 | 0.935673 | 0.988304 |",
+  "figura_png": "curva_aprendizaje.png"
+}

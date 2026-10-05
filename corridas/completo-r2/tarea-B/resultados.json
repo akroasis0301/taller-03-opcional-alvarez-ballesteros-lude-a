@@ -1,0 +1,72 @@
+{
+  "subtarea": "T3 - Comprobacion empirica: 10,000 muestras de la distribucion renormalizada de T2, comparacion de frecuencias observadas vs probabilidades teoricas y divergencia KL en bits",
+  "generador": "numpy.random.default_rng(0)",
+  "n_muestras": 10000,
+  "fuente_distribucion_teorica": "entrada/T2/resultados.json (distribucion_renormalizada)",
+  "distribucion_teorica_renormalizada": {
+    "t0": 0.5693760554907313,
+    "t1": 0.2094617451103304,
+    "t2": 0.12704497044632815,
+    "t3": 0.09411722895261025,
+    "t4": 0.0,
+    "t5": 0.0
+  },
+  "conteos_observados": {
+    "t0": 5682,
+    "t1": 2093,
+    "t2": 1296,
+    "t3": 929,
+    "t4": 0,
+    "t5": 0
+  },
+  "frecuencias_observadas": {
+    "t0": 0.5682,
+    "t1": 0.2093,
+    "t2": 0.1296,
+    "t3": 0.0929,
+    "t4": 0.0,
+    "t5": 0.0
+  },
+  "comparacion_por_token": [
+    {
+      "token": "t0",
+      "frecuencia_observada": 0.5682,
+      "probabilidad_teorica": 0.5693760554907313,
+      "diferencia_obs_menos_teo": -0.0011760554907312981
+    },
+    {
+      "token": "t1",
+      "frecuencia_observada": 0.2093,
+      "probabilidad_teorica": 0.2094617451103304,
+      "diferencia_obs_menos_teo": -0.00016174511033037464
+    },
+    {
+      "token": "t2",
+      "frecuencia_observada": 0.1296,
+      "probabilidad_teorica": 0.12704497044632815,
+      "diferencia_obs_menos_teo": 0.002555029553671845
+    },
+    {
+      "token": "t3",
+      "frecuencia_observada": 0.0929,
+      "probabilidad_teorica": 0.09411722895261025,
+      "diferencia_obs_menos_teo": -0.0012172289526102553
+    },
+    {
+      "token": "t4",
+      "frecuencia_observada": 0.0,
+      "probabilidad_teorica": 0.0,
+      "diferencia_obs_menos_teo": 0.0
+    },
+    {
+      "token": "t5",
+      "frecuencia_observada": 0.0,
+      "probabilidad_teorica": 0.0,
+      "diferencia_obs_menos_teo": 0.0
+    }
+  ],
+  "kl_bits_empirica_respecto_teorica": 5.006898814879229e-05,
+  "kl_nats_empirica_respecto_teorica": 3.470517796882468e-05,
+  "definicion_kl": "KL(P_emp || P_teo) = sum_i p_emp_i * log2(p_emp_i / p_teo_i); los terminos con p_emp_i = 0 contribuyen 0. Los tokens t4 y t5 tienen probabilidad teorica 0 y recibieron 0 muestras.",
+  "figura": "T3_frecuencias_vs_teoricas.png"
+}

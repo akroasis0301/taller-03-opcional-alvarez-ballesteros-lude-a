@@ -1,0 +1,29 @@
+========================================================================
+T2 — LSA (TruncatedSVD n_components=4, random_state=0) vs TF-IDF (T1)
+========================================================================
+Vocabulario TF-IDF: 105 términos (T1 reporta 105; coincide: True)
+Rankings TF-IDF idénticos a T1: True
+Varianza explicada por los 4 componentes LSA: 0.3953
+------------------------------------------------------------------------
+Tabla única (6 consultas, 10 documentos):
+                                metodo    hit@1    hit@3      mrr
+        TF-IDF (coseno, línea base T1) 0.833333 0.833333 0.861111
+LSA (TruncatedSVD k=4, random_state=0) 0.666667 0.833333 0.750000
+------------------------------------------------------------------------
+Rank del documento relevante por consulta (TF-IDF -> LSA):
+  q1 (relevante d04): 1 -> 1
+  q2 (relevante d03): 1 -> 1
+  q3 (relevante d08): 1 -> 1
+  q4 (relevante d05): 1 -> 3
+  q5 (relevante d09): 6 -> 6
+  q6 (relevante d02): 1 -> 1
+------------------------------------------------------------------------
+Rankings LSA por consulta:
+  q1: d04 > d01 > d06 > d10 > d09 > d05 > d03 > d08 > d07 > d02
+  q2: d03 > d07 > d09 > d02 > d04 > d10 > d08 > d01 > d05 > d06
+  q3: d08 > d02 > d06 > d10 > d01 > d04 > d03 > d05 > d07 > d09
+  q4: d01 > d10 > d05 > d09 > d04 > d03 > d08 > d02 > d06 > d07
+  q5: d04 > d01 > d03 > d06 > d10 > d09 > d07 > d08 > d05 > d02
+  q6: d02 > d08 > d10 > d03 > d06 > d01 > d07 > d04 > d09 > d05
+------------------------------------------------------------------------
+Archivos generados: resultados.json, tabla_comparativa.csv y 4 figuras PNG

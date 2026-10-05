@@ -1,0 +1,12 @@
+=== T1 · Línea base léxica (TF-IDF + coseno) ===
+Vocabulario TF-IDF: 105 términos
+q1 | relevante=d04 | rank= 1 | top3=['d04', 'd01', 'd06']
+q2 | relevante=d03 | rank= 1 | top3=['d03', 'd01', 'd02']
+q3 | relevante=d08 | rank= 1 | top3=['d08', 'd06', 'd04']
+q4 | relevante=d05 | rank= 1 | top3=['d05', 'd01', 'd04']
+q5 | relevante=d09 | rank= 6 | top3=['d03', 'd06', 'd04']
+q6 | relevante=d02 | rank= 1 | top3=['d02', 'd06', 'd03']
+Hit@1 = 0.8333
+Hit@3 = 0.8333
+MRR   = 0.8611
+Salidas: resultados.json, t1_heatmap_similitud.png

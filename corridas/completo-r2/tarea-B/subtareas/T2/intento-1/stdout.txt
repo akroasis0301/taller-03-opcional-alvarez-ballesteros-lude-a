@@ -1,0 +1,24 @@
+==================================================================
+T2 — Muestreo de núcleo (top-p) con p = 0.9 sobre la distribución de T=1
+==================================================================
+Fuente de la distribución T=1: entrada/T1/resultados.json (salida de T1)
+Distribución T=1 (orden descendente):
+  t0: p = 0.551623   acumulada = 0.551623  <- núcleo
+  t1: p = 0.202931   acumulada = 0.754553  <- núcleo
+  t2: p = 0.123084   acumulada = 0.877637  <- núcleo
+  t3: p = 0.091183   acumulada = 0.968820  <- núcleo
+  t4: p = 0.027464   acumulada = 0.996283
+  t5: p = 0.003717   acumulada = 1.000000
+
+Tokens supervivientes (conjunto mínimo con acumulada >= 0.9): ['t0', 't1', 't2', 't3']
+Probabilidad acumulada del núcleo: 0.968820
+Distribución renormalizada:
+  t0: 0.569376
+  t1: 0.209462
+  t2: 0.127045
+  t3: 0.094117
+Suma de la distribución renormalizada: 1.000000
+Tokens descartados: ['t4', 't5']
+Entropía (bits) de la distribución renormalizada: 1.634075
+
+Archivos escritos: resultados.json, T2_top_p_nucleo.png

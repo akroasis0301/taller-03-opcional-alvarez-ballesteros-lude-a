@@ -1,0 +1,1042 @@
+{
+ "Preámbulo": [
+  {
+   "clave": "llm",
+   "nombre": "LLM",
+   "tipo": "metodo",
+   "alias": [
+    "modelo generativo autorregresivo",
+    "LLMs",
+    "modelo de lenguaje",
+    "LLM autorregresivo",
+    "modelos de lenguaje",
+    "large language model",
+    "modelo subyacente"
+   ],
+   "descripciones": [
+    "Modelo generativo autorregresivo que factoriza P(x1,...,xn) como producto de condicionales.",
+    "Modelo cuya distribución sobre el vocabulario en la capa de salida es conceptualmente una mezcla.",
+    "Modelo que define P(xₜ|x₁..xₜ₋₁) sin variable latente explícita; su costo es cuadrático en atención y tiene ventana finita.",
+    "Modelo con conocimiento estático aprendido durante el pretraining, que puede alucinar ante preguntas fuera de su conocimiento.",
+    "Modelo usado en contextual chunking para generar el contexto que describe cada chunk en relación al documento completo.",
+    "Modelo que GraphRAG usa para extraer entidades y relaciones del corpus.",
+    "Modelo requerido por RAGAS para calcular la métrica faithfulness.",
+    "Modelo que actúa como función de agente emergente del agente LLM, capaz de razonar sobre tareas no vistas previamente.",
+    "Modelo que decide qué tool usar (o responder directamente) y genera la respuesta final.",
+    "Modelo que genera el plan detallado de pasos en la fase de planificación.",
+    "Modelos en producción con entradas de texto libre, sin métrica única de calidad y costo por token.",
+    "Modelo usado por RAGAS para verificar claims y clasificar chunks.",
+    "Modelo de lenguaje al que se envía el input validado y del que se recibe la respuesta a verificar.",
+    "Modelo cuyo comportamiento puede cambiar cuando el proveedor lo actualiza.",
+    "Modelo que produce, para el siguiente token, un vector de logits."
+   ],
+   "citas": [
+    "s1-transformers-y-foundation-models § 2. Modelos Generativos Bayesianos: puente conceptual (90 min total) … 2.3 Naive Bayes — el modelo generativo mínimo",
+    "s1-transformers-y-foundation-models § 2.4 Gaussian Mixture Models — variables latentes … 2.5 Hidden Markov Models — generación secuencial",
+    "s1-transformers-y-foundation-models § 2.6 Variational Autoencoder — el puente al espacio latente continuo … 2.7 Del VAE al LLM autorregresivo",
+    "s2-rag-y-vector-search § 1. Por qué RAG existe",
+    "s2-rag-y-vector-search § 4. Chunking Strategies … 4.3 Regla práctica",
+    "s2-rag-y-vector-search § 6. Evaluación de RAG … 6.3 GraphRAG",
+    "s2-rag-y-vector-search § 7. Notas del Lab 02",
+    "s3-agentes § 1. Puente con la teoría clásica de agentes … 1.2 El agente LLM en la taxonomía clásica",
+    "s3-agentes § 2. Tool Use / Function Calling … 2.3 Model Context Protocol (MCP)",
+    "s3-agentes § 3. Patrones de Agentes … 3.3 Reflexion",
+    "s4-llmops-y-finetuning § 1. Por qué LLMOps es diferente a MLOps",
+    "s4-llmops-y-finetuning § 2.3 RAGAS para RAG",
+    "s4-llmops-y-finetuning § 4. Guardrails … 4.3 Costo y latencia",
+    "s4-llmops-y-finetuning § 6. Monitoreo en Producción … 6.2 Drift de calidad",
+    "Preámbulo"
+   ],
+   "origen": [
+    "notas",
+    "enunciado"
+   ],
+   "fragmentos": [
+    "s1-transformers-y-foundation-models#2",
+    "s1-transformers-y-foundation-models#3",
+    "s1-transformers-y-foundation-models#4",
+    "s2-rag-y-vector-search#1",
+    "s2-rag-y-vector-search#4",
+    "s2-rag-y-vector-search#6",
+    "s2-rag-y-vector-search#7",
+    "s3-agentes#1",
+    "s3-agentes#2",
+    "s3-agentes#3",
+    "s4-llmops-y-finetuning#1",
+    "s4-llmops-y-finetuning#3",
+    "s4-llmops-y-finetuning#5",
+    "s4-llmops-y-finetuning#8"
+   ],
+   "comunidad": 9
+  },
+  {
+   "clave": "logit",
+   "nombre": "logits",
+   "tipo": "concepto",
+   "alias": [
+    "vector de logits"
+   ],
+   "descripciones": [
+    "Vector de salida del modelo a partir del cual se elige el siguiente token.",
+    "Vector que el modelo de lenguaje produce para el siguiente token."
+   ],
+   "citas": [
+    "s1-transformers-y-foundation-models § 4.6 Inference: temperatura y sampling",
+    "Preámbulo"
+   ],
+   "origen": [
+    "notas",
+    "enunciado"
+   ],
+   "fragmentos": [
+    "s1-transformers-y-foundation-models#8"
+   ],
+   "comunidad": 2
+  },
+  {
+   "clave": "distribucion de salida",
+   "nombre": "distribución de salida",
+   "tipo": "concepto",
+   "alias": [
+    "distribución del siguiente token"
+   ],
+   "descripciones": [
+    "Distribución de la salida del modelo cuya temperatura, top-p y entropía se estudian en la Tarea B."
+   ],
+   "citas": [
+    "Preámbulo"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 2
+  },
+  {
+   "clave": "temperatura",
+   "nombre": "temperatura",
+   "tipo": "metodo",
+   "alias": [
+    "temperature",
+    "T"
+   ],
+   "descripciones": [
+    "Parámetro de inferencia que controla la aleatoriedad al elegir el siguiente token.",
+    "Parámetro de la distribución de salida abordado en la Tarea B.",
+    "Parámetro que escala los logits en el softmax; se evalúa en 0.5, 1 y 2.",
+    "Parámetro cuyo efecto sobre la distribución se analiza en los límites T → 0 y T → ∞."
+   ],
+   "citas": [
+    "s1-transformers-y-foundation-models § 4.6 Inference: temperatura y sampling",
+    "Preámbulo",
+    "Parte 1",
+    "Parte 4"
+   ],
+   "origen": [
+    "notas",
+    "enunciado"
+   ],
+   "fragmentos": [
+    "s1-transformers-y-foundation-models#8"
+   ],
+   "comunidad": 2
+  },
+  {
+   "clave": "top p",
+   "nombre": "top-p",
+   "tipo": "metodo",
+   "alias": [
+    "nucleus sampling",
+    "muestreo de núcleo"
+   ],
+   "descripciones": [
+    "Técnica de sampling que considera solo los tokens cuya probabilidad acumulada es ≤ p, balanceando creatividad y coherencia.",
+    "Parámetro de la distribución de salida abordado en la Tarea B.",
+    "Técnica que ordena los tokens por probabilidad, conserva el conjunto mínimo cuya probabilidad acumulada alcanza el umbral p y renormaliza."
+   ],
+   "citas": [
+    "s1-transformers-y-foundation-models § 4.6 Inference: temperatura y sampling",
+    "Preámbulo",
+    "Parte 2"
+   ],
+   "origen": [
+    "notas",
+    "enunciado"
+   ],
+   "fragmentos": [
+    "s1-transformers-y-foundation-models#8"
+   ],
+   "comunidad": 2
+  },
+  {
+   "clave": "entropia",
+   "nombre": "entropía",
+   "tipo": "metrica",
+   "alias": [
+    "entropía en bits",
+    "entropías de la Parte 1"
+   ],
+   "descripciones": [
+    "Propiedad de la distribución de salida abordada en la Tarea B.",
+    "Medida en bits que se calcula para cada una de las tres distribuciones.",
+    "Entropías calculadas en la Parte 1 que deben usarse como evidencia de la respuesta."
+   ],
+   "citas": [
+    "Preámbulo",
+    "Parte 1",
+    "Parte 4"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 2
+  },
+  {
+   "clave": "vocabulario de sei token",
+   "nombre": "vocabulario de seis tokens",
+   "tipo": "dataset",
+   "alias": [
+    "t0–t5",
+    "tokens t0 a t5"
+   ],
+   "descripciones": [
+    "Vocabulario de seis tokens (t0 a t5) con logits 2.0, 1.0, 0.5, 0.2, -1.0 y -3.0."
+   ],
+   "citas": [
+    "Preámbulo"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 2
+  },
+  {
+   "clave": "notebook de jupyter ejecutado con salida visibl",
+   "nombre": "notebook de Jupyter ejecutado con salidas visibles",
+   "tipo": "restriccion",
+   "alias": [
+    ".ipynb",
+    "notebook de Jupyter"
+   ],
+   "descripciones": [
+    "Formato de entrega de la tarea: un notebook de Jupyter (.ipynb) ejecutado y con las salidas visibles."
+   ],
+   "citas": [
+    "Preámbulo"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": []
+  }
+ ],
+ "Parte 1": [
+  {
+   "clave": "softmax",
+   "nombre": "Softmax",
+   "tipo": "metodo",
+   "alias": [
+    "softmax con temperatura",
+    "softmax"
+   ],
+   "descripciones": [
+    "Función que normaliza los scores en una distribución de probabilidad.",
+    "Función p_i = exp(z_i/T) / Σ_j exp(z_j/T) que se debe implementar en NumPy."
+   ],
+   "citas": [
+    "s1-transformers-y-foundation-models § 3. Arquitectura Transformer (90 min) … 3.4 Estructura completa de un bloque transformer",
+    "Parte 1"
+   ],
+   "origen": [
+    "notas",
+    "enunciado"
+   ],
+   "fragmentos": [
+    "s1-transformers-y-foundation-models#5"
+   ],
+   "comunidad": 0
+  },
+  {
+   "clave": "numpy",
+   "nombre": "NumPy",
+   "tipo": "metodo",
+   "alias": [],
+   "descripciones": [
+    "Biblioteca en la que se debe implementar la función softmax con temperatura."
+   ],
+   "citas": [
+    "Parte 1"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 0
+  },
+  {
+   "clave": "temperatura",
+   "nombre": "temperatura",
+   "tipo": "metodo",
+   "alias": [
+    "temperature",
+    "T"
+   ],
+   "descripciones": [
+    "Parámetro de inferencia que controla la aleatoriedad al elegir el siguiente token.",
+    "Parámetro de la distribución de salida abordado en la Tarea B.",
+    "Parámetro que escala los logits en el softmax; se evalúa en 0.5, 1 y 2.",
+    "Parámetro cuyo efecto sobre la distribución se analiza en los límites T → 0 y T → ∞."
+   ],
+   "citas": [
+    "s1-transformers-y-foundation-models § 4.6 Inference: temperatura y sampling",
+    "Preámbulo",
+    "Parte 1",
+    "Parte 4"
+   ],
+   "origen": [
+    "notas",
+    "enunciado"
+   ],
+   "fragmentos": [
+    "s1-transformers-y-foundation-models#8"
+   ],
+   "comunidad": 2
+  },
+  {
+   "clave": "distribucion de probabilidad",
+   "nombre": "distribución de probabilidad",
+   "tipo": "concepto",
+   "alias": [
+    "distribución",
+    "distribución renormalizada",
+    "distribución teórica"
+   ],
+   "descripciones": [
+    "Distribución original del modelo sobre el siguiente token.",
+    "Salida del softmax con temperatura que se calcula para cada valor de T.",
+    "Distribución sobre tokens que se ordena, se recorta con top-p y se renormaliza.",
+    "Distribución obtenida en la Parte 2, de la que se toman 10 000 muestras.",
+    "Distribución cuyo comportamiento cambia cuando T → 0 y cuando T → ∞."
+   ],
+   "citas": [
+    "s1-transformers-y-foundation-models § 4.6 Inference: temperatura y sampling",
+    "Parte 1",
+    "Parte 2",
+    "Parte 3",
+    "Parte 4"
+   ],
+   "origen": [
+    "notas",
+    "enunciado"
+   ],
+   "fragmentos": [
+    "s1-transformers-y-foundation-models#8"
+   ],
+   "comunidad": 2
+  },
+  {
+   "clave": "entropia",
+   "nombre": "entropía",
+   "tipo": "metrica",
+   "alias": [
+    "entropía en bits",
+    "entropías de la Parte 1"
+   ],
+   "descripciones": [
+    "Propiedad de la distribución de salida abordada en la Tarea B.",
+    "Medida en bits que se calcula para cada una de las tres distribuciones.",
+    "Entropías calculadas en la Parte 1 que deben usarse como evidencia de la respuesta."
+   ],
+   "citas": [
+    "Preámbulo",
+    "Parte 1",
+    "Parte 4"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 2
+  },
+  {
+   "clave": "estabilidad numerica",
+   "nombre": "estabilidad numérica",
+   "tipo": "restriccion",
+   "alias": [
+    "numéricamente estable"
+   ],
+   "descripciones": [
+    "La implementación del softmax debe ser numéricamente estable."
+   ],
+   "citas": [
+    "Parte 1"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 0
+  },
+  {
+   "clave": "t 0 5 1 y 2",
+   "nombre": "T = 0.5, 1 y 2",
+   "tipo": "restriccion",
+   "alias": [
+    "valores de temperatura"
+   ],
+   "descripciones": [
+    "Valores de temperatura para los que se deben calcular la distribución y la entropía."
+   ],
+   "citas": [
+    "Parte 1"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 2
+  },
+  {
+   "clave": "cuatro decimal",
+   "nombre": "cuatro decimales",
+   "tipo": "restriccion",
+   "alias": [],
+   "descripciones": [
+    "Precisión con la que se presentan los resultados en la tabla."
+   ],
+   "citas": [
+    "Parte 1"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 2
+  }
+ ],
+ "Parte 2": [
+  {
+   "clave": "top p",
+   "nombre": "top-p",
+   "tipo": "metodo",
+   "alias": [
+    "nucleus sampling",
+    "muestreo de núcleo"
+   ],
+   "descripciones": [
+    "Técnica de sampling que considera solo los tokens cuya probabilidad acumulada es ≤ p, balanceando creatividad y coherencia.",
+    "Parámetro de la distribución de salida abordado en la Tarea B.",
+    "Técnica que ordena los tokens por probabilidad, conserva el conjunto mínimo cuya probabilidad acumulada alcanza el umbral p y renormaliza."
+   ],
+   "citas": [
+    "s1-transformers-y-foundation-models § 4.6 Inference: temperatura y sampling",
+    "Preámbulo",
+    "Parte 2"
+   ],
+   "origen": [
+    "notas",
+    "enunciado"
+   ],
+   "fragmentos": [
+    "s1-transformers-y-foundation-models#8"
+   ],
+   "comunidad": 2
+  },
+  {
+   "clave": "p 0 9",
+   "nombre": "p = 0.9",
+   "tipo": "restriccion",
+   "alias": [
+    "umbral 0.9"
+   ],
+   "descripciones": [
+    "Valor del umbral de probabilidad acumulada con el que se aplica top-p en el fragmento."
+   ],
+   "citas": [
+    "Parte 2"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 2
+  },
+  {
+   "clave": "temperatura 1",
+   "nombre": "temperatura = 1",
+   "tipo": "restriccion",
+   "alias": [
+    "temperatura > 1",
+    "T = 1",
+    "temperatura 1"
+   ],
+   "descripciones": [
+    "Configuración que mantiene la distribución de probabilidad original del modelo.",
+    "Configuración que hace la salida más aleatoria y creativa, pero más propensa a errores.",
+    "Configuración de la Parte 1 cuya distribución de probabilidad se usa como entrada del muestreo top-p."
+   ],
+   "citas": [
+    "s1-transformers-y-foundation-models § 4.6 Inference: temperatura y sampling",
+    "Parte 2"
+   ],
+   "origen": [
+    "notas",
+    "enunciado"
+   ],
+   "fragmentos": [
+    "s1-transformers-y-foundation-models#8"
+   ],
+   "comunidad": 2
+  },
+  {
+   "clave": "probabilidad acumulada",
+   "nombre": "probabilidad acumulada",
+   "tipo": "concepto",
+   "alias": [],
+   "descripciones": [
+    "Criterio que usa top-p para seleccionar los tokens candidatos.",
+    "Suma de probabilidades de los tokens ordenados que debe alcanzar 0.9 para definir el conjunto conservado."
+   ],
+   "citas": [
+    "s1-transformers-y-foundation-models § 4.6 Inference: temperatura y sampling",
+    "Parte 2"
+   ],
+   "origen": [
+    "notas",
+    "enunciado"
+   ],
+   "fragmentos": [
+    "s1-transformers-y-foundation-models#8"
+   ],
+   "comunidad": 2
+  },
+  {
+   "clave": "distribucion de probabilidad",
+   "nombre": "distribución de probabilidad",
+   "tipo": "concepto",
+   "alias": [
+    "distribución",
+    "distribución renormalizada",
+    "distribución teórica"
+   ],
+   "descripciones": [
+    "Distribución original del modelo sobre el siguiente token.",
+    "Salida del softmax con temperatura que se calcula para cada valor de T.",
+    "Distribución sobre tokens que se ordena, se recorta con top-p y se renormaliza.",
+    "Distribución obtenida en la Parte 2, de la que se toman 10 000 muestras.",
+    "Distribución cuyo comportamiento cambia cuando T → 0 y cuando T → ∞."
+   ],
+   "citas": [
+    "s1-transformers-y-foundation-models § 4.6 Inference: temperatura y sampling",
+    "Parte 1",
+    "Parte 2",
+    "Parte 3",
+    "Parte 4"
+   ],
+   "origen": [
+    "notas",
+    "enunciado"
+   ],
+   "fragmentos": [
+    "s1-transformers-y-foundation-models#8"
+   ],
+   "comunidad": 2
+  },
+  {
+   "clave": "token",
+   "nombre": "token",
+   "tipo": "metrica",
+   "alias": [
+    "siguiente token",
+    "costo en tokens",
+    "tokens",
+    "costo"
+   ],
+   "descripciones": [
+    "Unidad que se elige en cada paso de inferencia a partir de los logits.",
+    "Unidad por la cual se cobra el costo en LLMs en producción.",
+    "Costo medido en tokens (input y output) que registra cada span, por ejemplo 850 tokens input y 320 output.",
+    "Unidades candidatas que se ordenan por probabilidad y de las que se reporta cuáles sobreviven."
+   ],
+   "citas": [
+    "s1-transformers-y-foundation-models § 4.6 Inference: temperatura y sampling",
+    "s4-llmops-y-finetuning § 1. Por qué LLMOps es diferente a MLOps",
+    "s4-llmops-y-finetuning § 3. Observabilidad … 3.4 Prompt Versioning",
+    "Parte 2"
+   ],
+   "origen": [
+    "notas",
+    "enunciado"
+   ],
+   "fragmentos": [
+    "s1-transformers-y-foundation-models#8",
+    "s4-llmops-y-finetuning#1",
+    "s4-llmops-y-finetuning#4"
+   ],
+   "comunidad": 2
+  },
+  {
+   "clave": "renormalizacion",
+   "nombre": "renormalización",
+   "tipo": "metodo",
+   "alias": [
+    "renormalizar"
+   ],
+   "descripciones": [
+    "Ajuste de la distribución restringida a los tokens sobrevivientes tras aplicar top-p."
+   ],
+   "citas": [
+    "Parte 2"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": []
+  }
+ ],
+ "Parte 3": [
+  {
+   "clave": "distribucion de probabilidad",
+   "nombre": "distribución de probabilidad",
+   "tipo": "concepto",
+   "alias": [
+    "distribución",
+    "distribución renormalizada",
+    "distribución teórica"
+   ],
+   "descripciones": [
+    "Distribución original del modelo sobre el siguiente token.",
+    "Salida del softmax con temperatura que se calcula para cada valor de T.",
+    "Distribución sobre tokens que se ordena, se recorta con top-p y se renormaliza.",
+    "Distribución obtenida en la Parte 2, de la que se toman 10 000 muestras.",
+    "Distribución cuyo comportamiento cambia cuando T → 0 y cuando T → ∞."
+   ],
+   "citas": [
+    "s1-transformers-y-foundation-models § 4.6 Inference: temperatura y sampling",
+    "Parte 1",
+    "Parte 2",
+    "Parte 3",
+    "Parte 4"
+   ],
+   "origen": [
+    "notas",
+    "enunciado"
+   ],
+   "fragmentos": [
+    "s1-transformers-y-foundation-models#8"
+   ],
+   "comunidad": 2
+  },
+  {
+   "clave": "numpy random default rng 0",
+   "nombre": "numpy.random.default_rng(0)",
+   "tipo": "metodo",
+   "alias": [
+    "default_rng",
+    "generador aleatorio de numpy"
+   ],
+   "descripciones": [
+    "Generador de números aleatorios de numpy usado para tomar las muestras."
+   ],
+   "citas": [
+    "Parte 3"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 2
+  },
+  {
+   "clave": "10 000 muestra",
+   "nombre": "10 000 muestras",
+   "tipo": "restriccion",
+   "alias": [
+    "10000 muestras"
+   ],
+   "descripciones": [
+    "Cantidad de muestras que se deben tomar de la distribución renormalizada."
+   ],
+   "citas": [
+    "Parte 3"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 2
+  },
+  {
+   "clave": "semilla 0",
+   "nombre": "semilla 0",
+   "tipo": "restriccion",
+   "alias": [
+    "rng(0)"
+   ],
+   "descripciones": [
+    "Semilla fijada en 0 al crear el generador numpy.random.default_rng."
+   ],
+   "citas": [
+    "Parte 3"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 2
+  },
+  {
+   "clave": "grafico de barra",
+   "nombre": "gráfico de barras",
+   "tipo": "metodo",
+   "alias": [],
+   "descripciones": [
+    "Gráfico usado para comparar las frecuencias observadas con las probabilidades teóricas."
+   ],
+   "citas": [
+    "Parte 3"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": []
+  },
+  {
+   "clave": "frecuencia observada",
+   "nombre": "frecuencias observadas",
+   "tipo": "metrica",
+   "alias": [],
+   "descripciones": [
+    "Frecuencias empíricas obtenidas de las muestras, comparadas con las probabilidades teóricas."
+   ],
+   "citas": [
+    "Parte 3"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": []
+  },
+  {
+   "clave": "probabilidad teorica",
+   "nombre": "probabilidades teóricas",
+   "tipo": "concepto",
+   "alias": [],
+   "descripciones": [
+    "Probabilidades de la distribución renormalizada contra las que se comparan las frecuencias observadas."
+   ],
+   "citas": [
+    "Parte 3"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 0
+  },
+  {
+   "clave": "kl",
+   "nombre": "KL",
+   "tipo": "metrica",
+   "alias": [
+    "divergencia KL",
+    "divergencia de Kullback-Leibler"
+   ],
+   "descripciones": [
+    "Divergencia que actúa como término de regularización del ELBO, acercando qφ(z|x) a la prior p(z) = N(0,I).",
+    "Medida, calculada en bits, de la divergencia de la distribución empírica respecto de la teórica."
+   ],
+   "citas": [
+    "s1-transformers-y-foundation-models § 2.6 Variational Autoencoder — el puente al espacio latente continuo … 2.7 Del VAE al LLM autorregresivo",
+    "Parte 3"
+   ],
+   "origen": [
+    "notas",
+    "enunciado"
+   ],
+   "fragmentos": [
+    "s1-transformers-y-foundation-models#4"
+   ],
+   "comunidad": 0
+  },
+  {
+   "clave": "distribucion empirica",
+   "nombre": "distribución empírica",
+   "tipo": "concepto",
+   "alias": [],
+   "descripciones": [
+    "Distribución construida a partir de las 10 000 muestras, evaluada con la divergencia KL."
+   ],
+   "citas": [
+    "Parte 3"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 0
+  },
+  {
+   "clave": "bit",
+   "nombre": "bits",
+   "tipo": "concepto",
+   "alias": [],
+   "descripciones": [
+    "Unidad en la que se expresa la divergencia KL calculada."
+   ],
+   "citas": [
+    "Parte 3"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 0
+  }
+ ],
+ "Parte 4": [
+  {
+   "clave": "temperatura",
+   "nombre": "temperatura",
+   "tipo": "metodo",
+   "alias": [
+    "temperature",
+    "T"
+   ],
+   "descripciones": [
+    "Parámetro de inferencia que controla la aleatoriedad al elegir el siguiente token.",
+    "Parámetro de la distribución de salida abordado en la Tarea B.",
+    "Parámetro que escala los logits en el softmax; se evalúa en 0.5, 1 y 2.",
+    "Parámetro cuyo efecto sobre la distribución se analiza en los límites T → 0 y T → ∞."
+   ],
+   "citas": [
+    "s1-transformers-y-foundation-models § 4.6 Inference: temperatura y sampling",
+    "Preámbulo",
+    "Parte 1",
+    "Parte 4"
+   ],
+   "origen": [
+    "notas",
+    "enunciado"
+   ],
+   "fragmentos": [
+    "s1-transformers-y-foundation-models#8"
+   ],
+   "comunidad": 2
+  },
+  {
+   "clave": "t 0",
+   "nombre": "T → 0",
+   "tipo": "concepto",
+   "alias": [
+    "temperatura cero"
+   ],
+   "descripciones": [
+    "Límite de temperatura en el que, según la pregunta, la distribución equivale a la decodificación voraz."
+   ],
+   "citas": [
+    "Parte 4"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 2
+  },
+  {
+   "clave": "temperatura infinita",
+   "nombre": "T → ∞",
+   "tipo": "concepto",
+   "alias": [
+    "temperatura infinita"
+   ],
+   "descripciones": [
+    "Límite de temperatura cuyo efecto sobre la distribución debe explicarse."
+   ],
+   "citas": [
+    "Parte 4"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": []
+  },
+  {
+   "clave": "distribucion de probabilidad",
+   "nombre": "distribución de probabilidad",
+   "tipo": "concepto",
+   "alias": [
+    "distribución",
+    "distribución renormalizada",
+    "distribución teórica"
+   ],
+   "descripciones": [
+    "Distribución original del modelo sobre el siguiente token.",
+    "Salida del softmax con temperatura que se calcula para cada valor de T.",
+    "Distribución sobre tokens que se ordena, se recorta con top-p y se renormaliza.",
+    "Distribución obtenida en la Parte 2, de la que se toman 10 000 muestras.",
+    "Distribución cuyo comportamiento cambia cuando T → 0 y cuando T → ∞."
+   ],
+   "citas": [
+    "s1-transformers-y-foundation-models § 4.6 Inference: temperatura y sampling",
+    "Parte 1",
+    "Parte 2",
+    "Parte 3",
+    "Parte 4"
+   ],
+   "origen": [
+    "notas",
+    "enunciado"
+   ],
+   "fragmentos": [
+    "s1-transformers-y-foundation-models#8"
+   ],
+   "comunidad": 2
+  },
+  {
+   "clave": "decodificacion voraz",
+   "nombre": "decodificación voraz",
+   "tipo": "metodo",
+   "alias": [
+    "greedy"
+   ],
+   "descripciones": [
+    "Decodificación a la que equivale T → 0 según el enunciado."
+   ],
+   "citas": [
+    "Parte 4"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 2
+  },
+  {
+   "clave": "entropia",
+   "nombre": "entropía",
+   "tipo": "metrica",
+   "alias": [
+    "entropía en bits",
+    "entropías de la Parte 1"
+   ],
+   "descripciones": [
+    "Propiedad de la distribución de salida abordada en la Tarea B.",
+    "Medida en bits que se calcula para cada una de las tres distribuciones.",
+    "Entropías calculadas en la Parte 1 que deben usarse como evidencia de la respuesta."
+   ],
+   "citas": [
+    "Preámbulo",
+    "Parte 1",
+    "Parte 4"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 2
+  }
+ ],
+ "Formato": [
+  {
+   "clave": "notebook",
+   "nombre": "notebook",
+   "tipo": "dataset",
+   "alias": [],
+   "descripciones": [
+    "Único archivo de entrega que debe ejecutarse de principio a fin sin errores."
+   ],
+   "citas": [
+    "Formato"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": []
+  },
+  {
+   "clave": "celda de markdown",
+   "nombre": "celda de Markdown",
+   "tipo": "dataset",
+   "alias": [],
+   "descripciones": [
+    "Celda que encabeza cada parte del notebook."
+   ],
+   "citas": [
+    "Formato"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": []
+  },
+  {
+   "clave": "cifra",
+   "nombre": "cifras",
+   "tipo": "metrica",
+   "alias": [
+    "resultados numéricos"
+   ],
+   "descripciones": [
+    "Números reportados en la tarea que deben obtenerse por cálculo y no escribirse a mano."
+   ],
+   "citas": [
+    "Formato"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": []
+  },
+  {
+   "clave": "ejecucion sin error",
+   "nombre": "ejecución sin errores",
+   "tipo": "restriccion",
+   "alias": [],
+   "descripciones": [
+    "El notebook debe ejecutarse de principio a fin sin errores."
+   ],
+   "citas": [
+    "Formato"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": []
+  },
+  {
+   "clave": "celda de markdown por parte",
+   "nombre": "celda de Markdown por parte",
+   "tipo": "restriccion",
+   "alias": [],
+   "descripciones": [
+    "Cada parte del notebook debe encabezarse con una celda de Markdown."
+   ],
+   "citas": [
+    "Formato"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": []
+  },
+  {
+   "clave": "cifra calculada en el notebook",
+   "nombre": "cifras calculadas en el notebook",
+   "tipo": "restriccion",
+   "alias": [],
+   "descripciones": [
+    "Las cifras se calculan en el notebook, no se escriben a mano."
+   ],
+   "citas": [
+    "Formato"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": []
+  }
+ ]
+}

@@ -1,0 +1,9 @@
+=== Subtarea T1 — Resumen ===
+Dataset: Breast Cancer Wisconsin (Diagnostic)
+Total de ejemplos: 569
+Número de atributos: 30
+Conteo por clase (total): {'malignant': 212, 'benign': 357}
+División 70/30 estratificada, random_state=42
+  Entrenamiento: 398 ejemplos (0.6995) -> {'malignant': 148, 'benign': 250}
+  Prueba:        171 ejemplos (0.3005) -> {'malignant': 64, 'benign': 107}
+Archivos generados: resultados.json, division_train_test.npz, division_train_test.json, t1_distribucion_clases.png
