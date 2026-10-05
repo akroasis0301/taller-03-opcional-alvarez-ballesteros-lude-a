@@ -1,0 +1,110 @@
+{
+  "subtarea": "T3",
+  "descripcion": "Curva de aprendizaje: exactitud en el conjunto de prueba (fijo, de la división de T1) frente al número de ejemplos de entrenamiento, para Naive Bayes gaussiano y regresión logística entrenados con submuestras estratificadas del 5 %, 10 %, 25 %, 50 % y 100 % del entrenamiento (random_state=42).",
+  "division_usada": {
+    "fuente": "entrada/T1/resultados.json (train_indices / test_indices)",
+    "n_train_completo": 398,
+    "n_test": 171,
+    "random_state_division": 42
+  },
+  "porcentajes": [
+    5,
+    10,
+    25,
+    50,
+    100
+  ],
+  "tamanos_entrenamiento": [
+    19,
+    39,
+    99,
+    199,
+    398
+  ],
+  "curva_aprendizaje": [
+    {
+      "porcentaje": 5,
+      "n_ejemplos_entrenamiento": 19,
+      "n_malignant_en_submuestra": 7,
+      "n_benign_en_submuestra": 12,
+      "accuracy_naive_bayes_gaussiano": 0.9473684210526315,
+      "accuracy_regresion_logistica": 0.9415204678362573,
+      "f1_macro_naive_bayes_gaussiano": 0.942866688940862,
+      "f1_macro_regresion_logistica": 0.9362891207153503
+    },
+    {
+      "porcentaje": 10,
+      "n_ejemplos_entrenamiento": 39,
+      "n_malignant_en_submuestra": 15,
+      "n_benign_en_submuestra": 24,
+      "accuracy_naive_bayes_gaussiano": 0.935672514619883,
+      "accuracy_regresion_logistica": 0.9473684210526315,
+      "f1_macro_naive_bayes_gaussiano": 0.9301703975943869,
+      "f1_macro_regresion_logistica": 0.9436366965757188
+    },
+    {
+      "porcentaje": 25,
+      "n_ejemplos_entrenamiento": 99,
+      "n_malignant_en_submuestra": 37,
+      "n_benign_en_submuestra": 62,
+      "accuracy_naive_bayes_gaussiano": 0.935672514619883,
+      "accuracy_regresion_logistica": 0.9707602339181286,
+      "f1_macro_naive_bayes_gaussiano": 0.9306543778801843,
+      "f1_macro_regresion_logistica": 0.9688830658368818
+    },
+    {
+      "porcentaje": 50,
+      "n_ejemplos_entrenamiento": 199,
+      "n_malignant_en_submuestra": 74,
+      "n_benign_en_submuestra": 125,
+      "accuracy_naive_bayes_gaussiano": 0.9473684210526315,
+      "accuracy_regresion_logistica": 0.9824561403508771,
+      "f1_macro_naive_bayes_gaussiano": 0.9424479264051457,
+      "f1_macro_regresion_logistica": 0.9812122321919063
+    },
+    {
+      "porcentaje": 100,
+      "n_ejemplos_entrenamiento": 398,
+      "n_malignant_en_submuestra": 148,
+      "n_benign_en_submuestra": 250,
+      "accuracy_naive_bayes_gaussiano": 0.9473684210526315,
+      "accuracy_regresion_logistica": 0.9883040935672515,
+      "f1_macro_naive_bayes_gaussiano": 0.942866688940862,
+      "f1_macro_regresion_logistica": 0.9875146028037383
+    }
+  ],
+  "accuracy_naive_bayes_gaussiano_por_tamano": [
+    0.9473684210526315,
+    0.935672514619883,
+    0.935672514619883,
+    0.9473684210526315,
+    0.9473684210526315
+  ],
+  "accuracy_regresion_logistica_por_tamano": [
+    0.9415204678362573,
+    0.9473684210526315,
+    0.9707602339181286,
+    0.9824561403508771,
+    0.9883040935672515
+  ],
+  "f1_macro_naive_bayes_gaussiano_por_tamano": [
+    0.942866688940862,
+    0.9301703975943869,
+    0.9306543778801843,
+    0.9424479264051457,
+    0.942866688940862
+  ],
+  "f1_macro_regresion_logistica_por_tamano": [
+    0.9362891207153503,
+    0.9436366965757188,
+    0.9688830658368818,
+    0.9812122321919063,
+    0.9875146028037383
+  ],
+  "figura": "curva_aprendizaje.png",
+  "config_modelos": {
+    "Naive Bayes gaussiano": "GaussianNB() (valores por defecto)",
+    "Regresión logística": "Pipeline(StandardScaler(), LogisticRegression(max_iter=1000)); el escalador se ajusta únicamente con la submuestra de entrenamiento de cada tamaño"
+  },
+  "protocolo_submuestreo": "train_test_split(train_size=fraccion, stratify=y_train, random_state=42) por cada porcentaje; el 100 % usa el entrenamiento completo. El conjunto de prueba es siempre el mismo y no se usa para ajustar nada (ni escalador ni hiperparámetros)."
+}

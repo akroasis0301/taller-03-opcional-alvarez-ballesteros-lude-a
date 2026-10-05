@@ -1,0 +1,3 @@
+modelo,accuracy_prueba,f1_macro_prueba
+Naive Bayes gaussiano,0.9473684210526315,0.942866688940862
+Regresión logística,0.9883040935672515,0.9875146028037383

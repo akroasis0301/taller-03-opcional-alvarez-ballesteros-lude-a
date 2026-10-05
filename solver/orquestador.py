@@ -52,6 +52,22 @@ def _guardar(ruta: Path, datos) -> str:
     return str(ruta)
 
 
+def _misma(a: Path, b: Path) -> bool:
+    try:
+        return a.samefile(b)
+    except OSError:
+        return False
+
+
+def _libre(ruta: Path) -> Path:
+    """Dos corridas en el mismo segundo no deben chocar: -2, -3… si el nombre ya existe."""
+    candidata, n = ruta, 2
+    while candidata.exists():
+        candidata = ruta.with_name(f"{ruta.name}-{n}")
+        n += 1
+    return candidata
+
+
 class Solver:
     """El solver completo (baseline)."""
 
@@ -292,6 +308,8 @@ class Solver:
             v = {"aprobado": False, "motivos": [r["error"]], "correccion": "- " + r["error"], "resultados": None}
         elif self.cfg.usar_critico:
             v = critico.comprobar(s, estado["codigo"], r)
+            if v["aprobado"]:                       # el código no objetó: ahora opina el LLM
+                v = self._critica_llm(estado, s, r, v)
         else:                                   # ablación: un intento y ninguna comprobación
             ruta = Path(r["carpeta"]) / "resultados.json"
             try:
@@ -312,7 +330,8 @@ class Solver:
             movido.parent.mkdir(parents=True, exist_ok=True)
             shutil.move(r["carpeta"], movido)
         self.traza.decision("critico", "rechazado", v["correccion"], subtarea=s["id"], intento=s["intentos"],
-                            movido_a=str(movido) if movido else None)
+                            movido_a=str(movido) if movido else None,
+                            por="llm" if "descartados" in v else "codigo")
         if s["intentos"] >= self.cfg.max_intentos:          # freno: tope de intentos
             self.traza.decision("orquestador", "tope_intentos",
                                 f"{s['intentos']} intentos: la subtarea queda fallida y la cola sigue",
@@ -320,6 +339,27 @@ class Solver:
             return {"rechazadas": rechazadas,
                     "plan": self._con(estado, s["id"], status="fallida", correccion=v["correccion"])}
         return {"rechazadas": rechazadas, "plan": self._con(estado, s["id"], correccion=v["correccion"])}
+
+    def _critica_llm(self, estado: Estado, s: dict, r: dict, v_codigo: dict) -> dict:
+        """El LLM revisa contra el enunciado completo. Si no responde, vale la decisión del
+        código (y queda en la traza): un crítico caído no debe detener la cola."""
+        try:
+            v = critico.revisar_con_llm(self.llm, _cargar(estado["documento"])["texto"], s,
+                                        estado["codigo"], r, v_codigo["resultados"])
+        except PresupuestoAgotado:
+            raise
+        except Exception as err:
+            self.traza.decision("critico", "llm_no_disponible", f"{type(err).__name__}: {err}; "
+                                "vale la decisión del código", subtarea=s["id"])
+            return v_codigo
+        if v["descartados"]:
+            self.traza.decision("critico", "rechazo_descartado",
+                                "el LLM citó frases que no están en el enunciado: "
+                                + "; ".join(str(p.get("cita"))[:80] for p in v["descartados"]),
+                                subtarea=s["id"])
+        if v["aprobado"]:
+            return v_codigo
+        return {**v, "resultados": None}
 
     def _notas(self, estado: Estado) -> list[str]:
         notas = []
@@ -382,11 +422,22 @@ class Solver:
     # ================================================================ contrato
     def solve(self, ruta_pdf: str, salida: str) -> dict:
         carpeta = Path(salida).resolve()
+        entrada = Path(ruta_pdf).resolve()
+        if carpeta.exists() and (entrada == carpeta or entrada.is_relative_to(carpeta)
+                                 or (entrada.exists() and _misma(entrada, carpeta))):
+            # En macOS «tarea-x» y «tarea-X» son la MISMA carpeta: apartarla movería el enunciado.
+            raise ValueError(f"la carpeta de salida {carpeta} contiene la entrada {entrada}")
+        apartada = None
+        if carpeta.exists() and any(carpeta.iterdir()):
+            # Nunca mezclar corridas: los artefactos aprobados de la anterior respaldarían cifras
+            # de la nueva en la procedencia. La anterior se aparta, no se borra.
+            apartada = _libre(carpeta.with_name(f"{carpeta.name}.anterior-{time.strftime('%Y%m%d-%H%M%S')}"))
+            carpeta.rename(apartada)
         carpeta.mkdir(parents=True, exist_ok=True)
         traza_ruta = carpeta / "traza.jsonl"
-        if traza_ruta.exists():
-            traza_ruta.unlink()                         # una traza por corrida
         self.traza = Traza(traza_ruta)
+        if apartada:
+            self.traza.decision("orquestador", "corrida_anterior_apartada", str(apartada))
         self.traza.evento("inicio", agente="orquestador", variante=self.variante, entrada=str(ruta_pdf),
                           config={k: v for k, v in vars(self.cfg).items() if k not in {"llm", "confirmar"}})
         t0 = time.perf_counter()

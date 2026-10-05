@@ -13,6 +13,7 @@ from __future__ import annotations
 import argparse
 import json
 import sys
+import time
 from collections import Counter
 from pathlib import Path
 
@@ -45,7 +46,8 @@ def main() -> int:
         return 0
     if not a.entrada:
         ap.error("falta la entrada")
-    salida = Path(a.salida or RAIZ / "corridas" / "prueba" / Path(a.entrada).stem)
+    # Una carpeta por corrida: la anterior queda intacta como evidencia (2.c).
+    salida = Path(a.salida or RAIZ / "corridas" / "prueba" / Path(a.entrada).stem / time.strftime("%Y%m%d-%H%M%S"))
     print(f"Solver {a.variante} → {salida}  (puede tardar minutos: el modelo razona)")
     r = VARIANTES[a.variante](cfg).solve(a.entrada, str(salida))
 

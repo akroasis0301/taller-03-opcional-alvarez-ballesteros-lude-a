@@ -4,7 +4,10 @@ Primero las comprobaciones de CÓDIGO (no se dejan convencer): la guarda, el có
 el tiempo, que exista resultados.json y sea un objeto con cifras, que no haya NaN/inf, que la
 figura exista si el criterio la pide, y las dos fugas de la Parte 0.c (estática sobre el AST y
 de plausibilidad), más el escalador ajustado antes de dividir que la 0.c no detectaba.
-Solo si todo pasa opina el LLM (M2). En el M1 decide solo el código.
+Solo si todo pasa opina el LLM (revisar_con_llm): lee el enunciado COMPLETO y puede añadir
+rechazos, nunca quitar uno del código; y cada rechazo suyo debe citar una frase literal del
+enunciado, que el código comprueba. Corrida del 2026-10-04: la T3 entrenó la regresión logística
+sin estandarizar; ninguna regla de código lo veía.
 """
 from __future__ import annotations
 
@@ -113,3 +116,56 @@ def comprobar(subtarea: dict, codigo: str, ejecucion: dict) -> dict:
     correccion = "\n".join(f"- {m}" for m in motivos)
     return {"aprobado": not motivos, "motivos": motivos, "correccion": correccion,
             "resultados": resultados if not motivos else None}
+
+
+# ====================================================================== el LLM, después del código
+SISTEMA_LLM = """Eres el crítico de un solver de tareas de una maestría en IA. Un script YA pasó las
+comprobaciones de código (corre, escribe resultados.json, sin fugas evidentes). Tu trabajo es
+otro: decidir si hace LO QUE PIDE EL ENUNCIADO para esta subtarea. Lee el enunciado COMPLETO:
+una sección puede depender de otra sin nombrarla («entrena los dos modelos» se refiere a los
+modelos definidos antes, con sus condiciones, p. ej. estandarizar).
+Rechaza SOLO por una violación concreta y verificable: un modelo, parámetro, semilla, partición,
+proporción, métrica o preprocesamiento distinto del que fija el enunciado, o una cifra pedida
+que falta. No rechaces por estilo, eficiencia ni por cosas que el enunciado no pide.
+Cada problema lleva la frase LITERAL del enunciado que se viola (cópiala tal cual).
+Devuelve SOLO este JSON:
+{"aprobado": true, "problemas": []}
+o
+{"aprobado": false, "problemas": [{"cita": "frase literal del enunciado", "problema": "qué hace mal el script", "correccion": "qué cambiar"}]}"""
+
+
+def _norm_cita(s: str) -> str:
+    import unicodedata
+    s = unicodedata.normalize("NFKC", s).lower()
+    return " ".join(re.sub(r"[*`_«»\"'“”]", "", s).split())
+
+
+def mensajes_llm(enunciado: str, subtarea: dict, codigo: str, resultados: dict | None,
+                 stdout: str) -> list[dict]:
+    res = json.dumps(resultados, ensure_ascii=False)[:3000] if resultados is not None else "—"
+    usuario = (f"ENUNCIADO COMPLETO:\n{enunciado}\n\n"
+               f"SUBTAREA {subtarea.get('id')}: {subtarea.get('objetivo', '')}\n"
+               f"Secciones: {subtarea.get('secciones')}\nCriterio: {subtarea.get('criterio', '')}\n\n"
+               f"SCRIPT:\n```python\n{codigo}\n```\n\nresultados.json (recortado):\n{res}\n\n"
+               f"stdout (final):\n{stdout[-1500:]}")
+    return [{"role": "system", "content": SISTEMA_LLM}, {"role": "user", "content": usuario}]
+
+
+def revisar_con_llm(llm, enunciado: str, subtarea: dict, codigo: str, ejecucion: dict,
+                    resultados: dict | None) -> dict:
+    """El LLM solo puede AÑADIR rechazos, y cada uno tiene que citar una frase que exista de
+    verdad en el enunciado: un rechazo con una cita inventada se descarta (lo decide el código)."""
+    v = llm.pedir_json("critico", mensajes_llm(enunciado, subtarea, codigo, resultados,
+                                                ejecucion.get("stdout", "")),
+                       subtarea=subtarea.get("id"))
+    enunciado_n = _norm_cita(enunciado)
+    validos, descartados = [], []
+    for p in v.get("problemas") or []:
+        if not isinstance(p, dict):
+            continue
+        cita = _norm_cita(str(p.get("cita", "")))
+        (validos if len(cita) >= 12 and cita in enunciado_n else descartados).append(p)
+    motivos = [f"el enunciado dice «{p.get('cita')}»: {p.get('problema', '')} → {p.get('correccion', '')}"
+               for p in validos]
+    return {"aprobado": not validos, "motivos": motivos, "correccion": "\n".join(f"- {m}" for m in motivos),
+            "descartados": descartados, "veredicto_llm": bool(v.get("aprobado", not validos))}

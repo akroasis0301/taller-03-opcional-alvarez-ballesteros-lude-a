@@ -1,0 +1,8 @@
+División de T1: n_train = 398 | n_test = 171
+
+Tabla de métricas en prueba:
+               modelo  accuracy_prueba  f1_macro_prueba
+Naive Bayes gaussiano         0.947368         0.942867
+  Regresión logística         0.988304         0.987515
+
+Archivos generados: resultados.json, T2_tabla_metricas.csv, T2_metricas_modelos.png

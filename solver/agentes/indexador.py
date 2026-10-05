@@ -2,7 +2,8 @@
 
 Capa 1, el esqueleto determinístico (M1): cada sección es un nodo y cada referencia cruzada
 («la misma división de la Parte 1», «la pregunta anterior») es una arista `depende_de` que
-extrae una REGLA, no el modelo. Es la arista que la Parte 0.b mostró que el RAG plano pierde.
+extrae una REGLA, no el modelo: referencias explícitas («Parte 1»), «la pregunta anterior» y
+anáforas («los dos modelos», «las mismas consultas») que remiten a la sección de trabajo previa. Es la arista que la Parte 0.b mostró que el RAG plano pierde.
 
 Capa 2 (M2): entidades y relaciones del LLM, fusionadas con las notas del curso,
 embeddings para las semillas y comunidades con resumen.
@@ -17,6 +18,11 @@ import networkx as nx
 
 REFERENCIA = re.compile(r"\b(Parte|Tarea|Pregunta|Ejercicio|Problema)\s+(\d+)\b", re.I)
 ANTERIOR = re.compile(r"\b(?:la|el)\s+(?:parte|pregunta|tarea|ejercicio|punto|literal)\s+anterior\b", re.I)
+# Anáfora: «entrena los dos modelos», «con las mismas consultas», «ambos clasificadores» remiten a
+# lo definido antes sin nombrar la parte (corrida del 2026-10-04: la T3 no recibió la Parte 2).
+ANAFORA = re.compile(r"\b(?:(?:los|las)\s+(?:dos|tres|mismos|mismas)|ambos|ambas)\s+"
+                     r"(?:modelos?|clasificadores?|m[eé]todos?|algoritmos?|consultas?|datos|juicios|"
+                     r"distribuci[oó]n(?:es)?|m[eé]tricas?|par[aá]metros|redes|estimadores)\b", re.I)
 
 
 def esqueleto(secciones: list[dict]) -> nx.DiGraph:
@@ -35,6 +41,10 @@ def esqueleto(secciones: list[dict]) -> nx.DiGraph:
                            evidencia=_frase(s["texto"], m.start()))
         if trabajo_previo and (m := ANTERIOR.search(s["texto"])):
             g.add_edge(s["clave"], trabajo_previo, tipo="depende_de", regla="anterior",
+                       evidencia=_frase(s["texto"], m.start()))
+        if trabajo_previo and s["trabajo"] and (m := ANAFORA.search(s["texto"])) \
+                and not g.has_edge(s["clave"], trabajo_previo):
+            g.add_edge(s["clave"], trabajo_previo, tipo="depende_de", regla="anafora",
                        evidencia=_frase(s["texto"], m.start()))
         if s["trabajo"]:
             trabajo_previo = s["clave"]

@@ -1,0 +1,16 @@
+  5 %  n_train= 19  NB acc=0.9474  LR acc=0.9415
+ 10 %  n_train= 39  NB acc=0.9357  LR acc=0.9474
+ 25 %  n_train= 99  NB acc=0.9357  LR acc=0.9708
+ 50 %  n_train=199  NB acc=0.9474  LR acc=0.9825
+100 %  n_train=398  NB acc=0.9474  LR acc=0.9883
+
+Resumen T3 — exactitud en el conjunto de prueba (mismo test en todos los tamaños)
+    %  n_train       NB       LR
+   5%       19   0.9474   0.9415
+  10%       39   0.9357   0.9474
+  25%       99   0.9357   0.9708
+  50%      199   0.9474   0.9825
+ 100%      398   0.9474   0.9883
+
+Figura guardada: curva_aprendizaje.png
+Resultados guardados: resultados.json

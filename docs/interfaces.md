@@ -117,3 +117,21 @@ uv run python scripts/correr.py solver-v2/enunciados/tarea-a-generativo-discrimi
 uv run python scripts/correr.py <pdf> --variante sin_grafo --salida corridas/sin_grafo/tarea-A
 uv run python scripts/correr.py --diagrama > resultados/orquestador.mmd
 ```
+
+## 8. Repeticiones y carpetas (para la 2.b)
+
+- `Solver.solve()` **nunca mezcla corridas**: si la carpeta de salida ya tiene algo, la mueve a
+  `<carpeta>.anterior-AAAAMMDD-HHMMSS` y empieza vacía (evento `corrida_anterior_apartada`).
+  Si no, los artefactos aprobados de la corrida vieja respaldarían cifras de la nueva.
+- `scripts/correr.py` ya crea una carpeta con fecha por corrida.
+- Con `evaluar_solver.py`, usen un `--corridas` distinto por repetición
+  (`../corridas/completo-r1`, `-r2`…) y un `--salida` distinto. La misma tarea con el mismo
+  modelo dio resultados distintos en dos corridas (Tarea A, 2026-10-04): una sola corrida por
+  variante no basta para comparar.
+
+## 9. Quién rechazó (para la 2.c)
+
+El evento `decision: rechazado` lleva `por`: `"codigo"` (guarda, código de salida, contrato,
+NaN, figura, fugas, plausibilidad, script repetido) o `"llm"` (el crítico LLM, que lee el
+enunciado completo). Un rechazo del LLM siempre cita una frase literal del enunciado; si la
+cita no existe, el rechazo se descarta y queda `decision: rechazo_descartado`.

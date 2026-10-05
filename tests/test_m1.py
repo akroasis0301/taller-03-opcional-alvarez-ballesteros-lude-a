@@ -7,6 +7,7 @@ devuelta al redactor → corregida, y el freno de presupuesto.
 from __future__ import annotations
 
 import json
+import sys
 import textwrap
 from pathlib import Path
 
@@ -89,7 +90,8 @@ def test_aristas_depende_de_por_regla():
     g = indexador.esqueleto(lector.segmentar(lineas(TAREA_A)))
     assert g.has_edge("Parte 3", "Parte 1") and not g.has_edge("Parte 1", "Parte 3")
     assert g.has_edge("El reporte", "Parte 2") and g.has_edge("El reporte", "Parte 3")
-    assert indexador.dependencias(g, ["Parte 3"]) == ["Parte 1"]
+    assert indexador.dependencias(g, ["Parte 3"]) == ["Parte 1", "Parte 2"]
+    assert g.edges["Parte 3", "Parte 2"]["regla"] == "anafora"          # «entrena los dos modelos»
 
 
 def test_la_pregunta_anterior():
@@ -106,7 +108,7 @@ def _doc_y_grafo():
 
 
 def _plan(**cambios_t3):
-    t3 = {"id": "T3", "tipo": "calculo", "secciones": ["Parte 3"], "depende_de": ["T1"], "objetivo": "o", "criterio": "c"}
+    t3 = {"id": "T3", "tipo": "calculo", "secciones": ["Parte 3"], "depende_de": ["T1", "T2"], "objetivo": "o", "criterio": "c"}
     t3.update(cambios_t3)
     return {"subtareas": [
         {"id": "T1", "tipo": "calculo", "secciones": ["Parte 1"], "depende_de": [], "objetivo": "o", "criterio": "c"},
@@ -273,6 +275,13 @@ REPORTE_INVENTADO = "## Resultados\nMedia 0.1234, exactitud 0.8765 y un error de
 REPORTE_BIEN = "## Resultados\nMedia 0.1234 y exactitud 0.8765.\n\n![figura](figuras/T2_figura.png)\n\n## Discusión\nBien.\n"
 
 
+def aprueba(usuario):
+    return {"aprobado": True, "problemas": []}
+
+
+CRITICA = aprueba
+
+
 def guion():
     estado = {"plan": 0, "T2": 0, "redactor": 0}
 
@@ -289,6 +298,8 @@ def guion():
         if "redactor" in sistema:
             estado["redactor"] += 1
             return REPORTE_INVENTADO if estado["redactor"] == 1 else REPORTE_BIEN
+        if "crítico" in sistema:
+            return json.dumps(CRITICA(usuario))
         raise AssertionError(f"agente inesperado: {sistema[:40]}")
     return responder
 
@@ -396,3 +407,80 @@ def test_figura_citada_que_no_existe(tmp_path):
     texto = "![ok](figuras/T2_a.png)\n![inventada](figuras/curvas_aprendizaje.png)"
     problemas = comprobar_forma(texto, {}, tmp_path)
     assert len(problemas) == 1 and "curvas_aprendizaje.png" in problemas[0]
+
+
+# ======================================================================== M2-A: crítico LLM, anáfora, corridas separadas
+def test_anafora_no_duplica_ni_inventa():
+    secs = [{"clave": "Preámbulo", "titulo": "x", "texto": "", "trabajo": False, "id": "S0"},
+            {"clave": "Parte 1", "titulo": "Parte 1", "texto": "Implementa TF-IDF.", "trabajo": True, "id": "S1"},
+            {"clave": "Parte 2", "titulo": "Parte 2", "texto": "Con las mismas consultas y los mismos juicios, usa LSA.",
+             "trabajo": True, "id": "S2"},
+            {"clave": "Parte 3", "titulo": "Parte 3", "texto": "Evalúa sobre el mismo conjunto de prueba.",
+             "trabajo": True, "id": "S3"}]
+    g = indexador.esqueleto(secs)
+    assert g.has_edge("Parte 2", "Parte 1") and g.edges["Parte 2", "Parte 1"]["regla"] == "anafora"
+    assert not g.has_edge("Parte 3", "Parte 2")          # «el mismo conjunto» no es anáfora de una parte
+
+
+def test_critico_llm_exige_cita_literal(tmp_path):
+    from solver.agentes.critico import revisar_con_llm
+    from solver.cliente_llm import ClienteLLM
+    from solver.traza import Traza
+    enunciado = "Entrena una regresión logística (con los atributos estandarizados; el escalador se ajusta solo con el entrenamiento)."
+    respuesta = {"aprobado": False, "problemas": [
+        {"cita": "con los atributos estandarizados", "problema": "no estandariza", "correccion": "usa StandardScaler"},
+        {"cita": "usa siempre 5 pliegues", "problema": "inventado", "correccion": "x"}]}
+    c = ClienteLLM(Config(llm=LLMGuion([json.dumps(respuesta)])), Traza(tmp_path / "t.jsonl"))
+    v = revisar_con_llm(c, enunciado, {"id": "T3"}, "codigo", {"stdout": ""}, {"acc": 0.9})
+    assert not v["aprobado"] and len(v["motivos"]) == 1 and "estandarizados" in v["motivos"][0]
+    assert len(v["descartados"]) == 1                    # la cita inventada no rechaza nada
+    solo_inventada = {"aprobado": False, "problemas": [respuesta["problemas"][1]]}
+    c2 = ClienteLLM(Config(llm=LLMGuion([json.dumps(solo_inventada)])), Traza(tmp_path / "t2.jsonl"))
+    assert revisar_con_llm(c2, enunciado, {"id": "T3"}, "codigo", {"stdout": ""}, {})["aprobado"]
+
+
+def test_critico_llm_rechaza_y_el_programador_corrige(enunciado, tmp_path, monkeypatch):
+    """El rechazo que la Parte 1 pide ver en una traza: el código aprueba, el LLM rechaza
+    citando el enunciado, el programador corrige y el segundo intento se aprueba."""
+    from solver.orquestador import Solver
+    vistos = {"T2": 0}
+
+    def critica(usuario):
+        if "SUBTAREA T2" in usuario:
+            vistos["T2"] += 1
+            if vistos["T2"] == 1:
+                return {"aprobado": False, "problemas": [{"cita": "calcula una exactitud y dibuja una figura",
+                        "problema": "la figura no muestra la exactitud", "correccion": "graficar accuracy"}]}
+        return {"aprobado": True, "problemas": []}
+    monkeypatch.setattr(sys.modules[__name__], "CRITICA", critica)
+    estado_guion = guion()
+
+    def sin_fuga(m):        # T2 sin fuga; el segundo intento cambia (si no, sería un script repetido)
+        r = estado_guion(m)
+        if "programador" in m[0]["content"] and "SUBTAREA T2" in m[1]["content"]:
+            corregido = "rechazó" in m[-1]["content"].lower()
+            return f"```python\n{T2_BIEN}{'# graficada la exactitud' if corregido else ''}\n```"
+        return r
+    r = Solver(Config(llm=LLMGuion([sin_fuga]))).solve(str(enunciado), str(tmp_path / "corrida"))
+    filas = leer(r["trace"])
+    rechazos = [f for f in filas if f.get("decision") == "rechazado"]
+    assert len(rechazos) == 1 and rechazos[0]["por"] == "llm" and "dibuja una figura" in rechazos[0]["motivo"]
+    assert {s["id"]: s["intentos"] for s in r["subtareas"]}["T2"] == 2 and r["status"] == "completado"
+
+
+def test_corrida_anterior_se_aparta_no_se_mezcla(enunciado, tmp_path):
+    from solver.orquestador import Solver
+    salida = tmp_path / "corrida-X"       # ojo: en macOS «tarea-X» sería la carpeta «tarea-x» del enunciado
+    for _ in range(3):                      # tres corridas en el mismo segundo: no chocan
+        Solver(Config(llm=LLMGuion([guion()]))).solve(str(enunciado), str(salida))
+    apartadas = sorted(tmp_path.glob("corrida-X.anterior-*"))
+    assert len(apartadas) == 2 and all((a / "traza.jsonl").exists() for a in apartadas)
+    assert any(f.get("decision") == "corrida_anterior_apartada" for f in leer(salida / "traza.jsonl"))
+    assert (enunciado / "enunciado.md").exists()
+
+
+def test_la_salida_no_puede_contener_la_entrada(enunciado):
+    from solver.orquestador import Solver
+    with pytest.raises(ValueError):
+        Solver(Config(llm=LLMGuion([guion()]))).solve(str(enunciado), str(enunciado))
+    assert (enunciado / "enunciado.md").exists()
