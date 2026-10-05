@@ -1,0 +1,17 @@
+ServerMeasurements(shape=(300, 3), features=('gpu_utilization', 'cpu_utilization', 'memory_gb'))
+----------------------------------------------------------------------
+Datos leidos: data/server_measurements.csv -> 300 filas, 7 columnas
+Objeto construido: ServerMeasurements(shape=(300, 3), features=('gpu_utilization', 'cpu_utilization', 'memory_gb'))
+repr coincide con el esperado: True
+dtype de values: float64
+Pruebas de validacion (ValueError esperado en los casos de error):
+  [OK   ] no_bidimensional_ndim1 (lanza ValueError: True)
+  [OK   ] no_bidimensional_ndim3 (lanza ValueError: True)
+  [OK   ] desajuste_3_columnas_2_nombres (lanza ValueError: True)
+  [OK   ] desajuste_2_columnas_3_nombres (lanza ValueError: True)
+  [OK   ] no_numericos_cadenas (lanza ValueError: True)
+  [OK   ] no_numericos_objeto_mixto (lanza ValueError: True)
+  [OK   ] caso_valido_sin_error (lanza ValueError: False)
+  [OK   ] build_measurements_falta_columna (lanza ValueError: True)
+Todas las pruebas pasaron: True
+Resultados escritos en: resultados.json

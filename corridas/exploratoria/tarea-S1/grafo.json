@@ -1,0 +1,2861 @@
+{
+ "directed": true,
+ "multigraph": false,
+ "graph": {},
+ "nodes": [
+  {
+   "titulo": "Preámbulo",
+   "trabajo": false,
+   "id": "Preámbulo",
+   "capa": "enunciado"
+  },
+  {
+   "titulo": "Ejercicio de refuerzo - Semana 1",
+   "trabajo": false,
+   "id": "Ejercicio de refuerzo - Semana 1",
+   "capa": "enunciado"
+  },
+  {
+   "titulo": "Objetivo",
+   "trabajo": false,
+   "id": "Objetivo",
+   "capa": "enunciado"
+  },
+  {
+   "titulo": "Escenario",
+   "trabajo": false,
+   "id": "Escenario",
+   "capa": "enunciado"
+  },
+  {
+   "titulo": "Reglas",
+   "trabajo": false,
+   "id": "Reglas",
+   "capa": "enunciado"
+  },
+  {
+   "titulo": "Tarea 1 - Representar las mediciones",
+   "trabajo": true,
+   "id": "Tarea 1",
+   "capa": "enunciado"
+  },
+  {
+   "titulo": "Tarea 2 - Normalizar y calcular un indicador de carga",
+   "trabajo": true,
+   "id": "Tarea 2",
+   "capa": "enunciado"
+  },
+  {
+   "titulo": "Tarea 3 - Identificar observaciones para revisión",
+   "trabajo": true,
+   "id": "Tarea 3",
+   "capa": "enunciado"
+  },
+  {
+   "titulo": "Tarea 4 - Construir un resumen por servidor",
+   "trabajo": true,
+   "id": "Tarea 4",
+   "capa": "enunciado"
+  },
+  {
+   "titulo": "Tarea 5 - Guardar y verificar el resultado",
+   "trabajo": true,
+   "id": "Tarea 5",
+   "capa": "enunciado"
+  },
+  {
+   "titulo": "Entregable",
+   "trabajo": false,
+   "id": "Entregable",
+   "capa": "enunciado"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "verificación de esquema",
+   "tipo": "restriccion",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 5"
+   ],
+   "comunidad": 2,
+   "id": "ent:verificacion de esquema"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "código fuente Python",
+   "tipo": "dataset",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Entregable"
+   ],
+   "comunidad": 2,
+   "id": "ent:codigo fuente python"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "pesos (0.50, 0.30, 0.20)",
+   "tipo": "restriccion",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 2"
+   ],
+   "comunidad": null,
+   "id": "ent:peso 0 50 0 30 0 20"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "data/server_measurements.csv",
+   "tipo": "dataset",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Escenario"
+   ],
+   "comunidad": null,
+   "id": "ent:data server measurement csv"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "bucle for",
+   "tipo": "concepto",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Reglas"
+   ],
+   "comunidad": null,
+   "id": "ent:bucle for"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "mecanismo de atención",
+   "tipo": "metodo",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s1-transformers-y-foundation-models § 2.4 Gaussian Mixture Models — variables latentes … 2.5 Hidden Markov Models — generación secuencial",
+    "s1-transformers-y-foundation-models § 2.6 Variational Autoencoder — el puente al espacio latente continuo … 2.7 Del VAE al LLM autorregresivo",
+    "s1-transformers-y-foundation-models § 3. Arquitectura Transformer (90 min) … 3.4 Estructura completa de un bloque transformer",
+    "s1-transformers-y-foundation-models § 3.5 Positional encoding … 3.6 Encoder vs. Decoder",
+    "s1-transformers-y-foundation-models § 5. In-context Learning y Prompting (60 min) … 5.3 Structured outputs"
+   ],
+   "comunidad": 0,
+   "id": "ent:mecanismo de atencion"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "no descargar datos",
+   "tipo": "restriccion",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Escenario"
+   ],
+   "comunidad": null,
+   "id": "ent:no descargar dato"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "PyArrow",
+   "tipo": "metodo",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 5"
+   ],
+   "comunidad": null,
+   "id": "ent:pyarrow"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "MATEMÁTICAS Y PROGRAMACIÓN PARA IA",
+   "tipo": "concepto",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Preámbulo"
+   ],
+   "comunidad": null,
+   "id": "ent:matematica y programacion para ia"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "reporte.md",
+   "tipo": "dataset",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Ejercicio de refuerzo - Semana 1",
+    "Entregable"
+   ],
+   "comunidad": 2,
+   "id": "ent:reporte md"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "máximo 800 palabras",
+   "tipo": "restriccion",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Entregable"
+   ],
+   "comunidad": 2,
+   "id": "ent:maximo 800 palabra"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "tipo flotante",
+   "tipo": "restriccion",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 1"
+   ],
+   "comunidad": 0,
+   "id": "ent:tipo flotante"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "leer con parse_dates",
+   "tipo": "restriccion",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Escenario"
+   ],
+   "comunidad": null,
+   "id": "ent:leer con parse date"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "DataFrame analizado",
+   "tipo": "dataset",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 5"
+   ],
+   "comunidad": null,
+   "id": "ent:dataframe analizado"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "matriz bidimensional",
+   "tipo": "restriccion",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 1"
+   ],
+   "comunidad": 0,
+   "id": "ent:matriz bidimensional"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "power_w",
+   "tipo": "metrica",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Escenario"
+   ],
+   "comunidad": null,
+   "id": "ent:power w"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "características",
+   "tipo": "dataset",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 2"
+   ],
+   "comunidad": null,
+   "id": "ent:caracteristica"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "requires_review",
+   "tipo": "metrica",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 3",
+    "Tarea 4"
+   ],
+   "comunidad": 0,
+   "id": "ent:requir review"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "división por cero",
+   "tipo": "restriccion",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 2"
+   ],
+   "comunidad": null,
+   "id": "ent:division por cero"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "tabla_resumen_por_servidor",
+   "tipo": "dataset",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 4"
+   ],
+   "comunidad": 10,
+   "id": "ent:tabla resumen por servidor"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "pipeline",
+   "tipo": "metodo",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Objetivo"
+   ],
+   "comunidad": 2,
+   "id": "ent:pipeline"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "Z-score",
+   "tipo": "metodo",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 2"
+   ],
+   "comunidad": null,
+   "id": "ent:z score"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "copia del DataFrame",
+   "tipo": "dataset",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Reglas"
+   ],
+   "comunidad": null,
+   "id": "ent:copia del dataframe"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "desviación estándar",
+   "tipo": "metrica",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 2"
+   ],
+   "comunidad": null,
+   "id": "ent:desviacion estandar"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "fila 23",
+   "tipo": "concepto",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Entregable"
+   ],
+   "comunidad": 2,
+   "id": "ent:fila 23"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "contratos",
+   "tipo": "concepto",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Ejercicio de refuerzo - Semana 1"
+   ],
+   "comunidad": 2,
+   "id": "ent:contrato"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "nuevo DataFrame",
+   "tipo": "dataset",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 3"
+   ],
+   "comunidad": 0,
+   "id": "ent:nuevo dataframe"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "scripts de Python",
+   "tipo": "metodo",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Ejercicio de refuerzo - Semana 1"
+   ],
+   "comunidad": 2,
+   "id": "ent:script de python"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "gpu_utilization",
+   "tipo": "metrica",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Escenario",
+    "Reglas",
+    "Tarea 1"
+   ],
+   "comunidad": null,
+   "id": "ent:gpu utilization"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "abstraccion_simple",
+   "tipo": "concepto",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Objetivo"
+   ],
+   "comunidad": 2,
+   "id": "ent:abstraccion simple"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "pytest",
+   "tipo": "metodo",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Ejercicio de refuerzo - Semana 1"
+   ],
+   "comunidad": 2,
+   "id": "ent:pytest"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "operaciones vectorizadas",
+   "tipo": "metodo",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 2"
+   ],
+   "comunidad": null,
+   "id": "ent:operacion vectorizada"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "round trip",
+   "tipo": "concepto",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 5",
+    "Entregable"
+   ],
+   "comunidad": 2,
+   "id": "ent:round trip"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "no modificar CSV de entrada",
+   "tipo": "restriccion",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Reglas"
+   ],
+   "comunidad": null,
+   "id": "ent:no modificar csv de entrada"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "df",
+   "tipo": "dataset",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 1",
+    "Tarea 3"
+   ],
+   "comunidad": 0,
+   "id": "ent:df"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "media",
+   "tipo": "metrica",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 2",
+    "Entregable"
+   ],
+   "comunidad": 2,
+   "id": "ent:media"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "temperature_c",
+   "tipo": "metrica",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Escenario",
+    "Tarea 3"
+   ],
+   "comunidad": null,
+   "id": "ent:temperature c"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "verificación de filas",
+   "tipo": "restriccion",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 5"
+   ],
+   "comunidad": 2,
+   "id": "ent:verificacion de fila"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "verificación de valores",
+   "tipo": "restriccion",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 5"
+   ],
+   "comunidad": 2,
+   "id": "ent:verificacion de valor"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "tabla resumen",
+   "tipo": "dataset",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Entregable"
+   ],
+   "comunidad": 2,
+   "id": "ent:tabla resumen"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "uso exclusivo como banco de prueba",
+   "tipo": "restriccion",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Preámbulo"
+   ],
+   "comunidad": null,
+   "id": "ent:uso exclusivo como banco de prueba"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "contrato_de_datos",
+   "tipo": "restriccion",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Objetivo"
+   ],
+   "comunidad": 2,
+   "id": "ent:contrato de dato"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "git",
+   "tipo": "metodo",
+   "origen": [
+    "notas",
+    "enunciado"
+   ],
+   "citas": [
+    "s4-llmops-y-finetuning § 3. Observabilidad … 3.4 Prompt Versioning",
+    "Ejercicio de refuerzo - Semana 1"
+   ],
+   "comunidad": 2,
+   "id": "ent:git"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "orden_exacto_de_columnas",
+   "tipo": "restriccion",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 4"
+   ],
+   "comunidad": 10,
+   "id": "ent:orden exacto de columna"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "vectorización",
+   "tipo": "concepto",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Reglas"
+   ],
+   "comunidad": null,
+   "id": "ent:vectorizacion"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "D2L",
+   "tipo": "metodo",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Ejercicio de refuerzo - Semana 1"
+   ],
+   "comunidad": 2,
+   "id": "ent:d2l"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "pruebas públicas",
+   "tipo": "metodo",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Ejercicio de refuerzo - Semana 1"
+   ],
+   "comunidad": 2,
+   "id": "ent:prueba publica"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "review_count",
+   "tipo": "metrica",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 4"
+   ],
+   "comunidad": 10,
+   "id": "ent:review count"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "prompt versioning",
+   "tipo": "concepto",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s4-llmops-y-finetuning § 3. Observabilidad … 3.4 Prompt Versioning"
+   ],
+   "comunidad": 2,
+   "id": "ent:prompt versioning"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "ReAct",
+   "tipo": "metodo",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s3-agentes § 1. Puente con la teoría clásica de agentes … 1.2 El agente LLM en la taxonomía clásica",
+    "s3-agentes § 3. Patrones de Agentes … 3.3 Reflexion"
+   ],
+   "comunidad": 10,
+   "id": "ent:react"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "load_score",
+   "tipo": "metrica",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 2",
+    "Tarea 3"
+   ],
+   "comunidad": null,
+   "id": "ent:load score"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "feature_names",
+   "tipo": "dataset",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 1"
+   ],
+   "comunidad": 0,
+   "id": "ent:feature name"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "guardar sin índice",
+   "tipo": "restriccion",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 5"
+   ],
+   "comunidad": null,
+   "id": "ent:guardar sin indice"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "Tareas 2 y 3",
+   "tipo": "concepto",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Reglas"
+   ],
+   "comunidad": null,
+   "id": "ent:tarea 2 y 3"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "__repr__",
+   "tipo": "metodo",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 1",
+    "Entregable"
+   ],
+   "comunidad": 0,
+   "id": "ent:repr"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "agrupacion_por_server",
+   "tipo": "metodo",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 4"
+   ],
+   "comunidad": 10,
+   "id": "ent:agrupacion por server"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "DataFrame original",
+   "tipo": "dataset",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Reglas",
+    "Tarea 3"
+   ],
+   "comunidad": null,
+   "id": "ent:dataframe original"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "no modificar DataFrame original",
+   "tipo": "restriccion",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Reglas"
+   ],
+   "comunidad": null,
+   "id": "ent:no modificar dataframe original"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "modalidad individual",
+   "tipo": "restriccion",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Ejercicio de refuerzo - Semana 1"
+   ],
+   "comunidad": 2,
+   "id": "ent:modalidad individual"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "Tarea 1 a Tarea 5",
+   "tipo": "concepto",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Entregable"
+   ],
+   "comunidad": 2,
+   "id": "ent:tarea 1 a tarea 5"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "zscores",
+   "tipo": "dataset",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 2"
+   ],
+   "comunidad": null,
+   "id": "ent:zscor"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "vectorizar operaciones",
+   "tipo": "restriccion",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Reglas"
+   ],
+   "comunidad": null,
+   "id": "ent:vectorizar operacion"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "uv",
+   "tipo": "metodo",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Ejercicio de refuerzo - Semana 1"
+   ],
+   "comunidad": 2,
+   "id": "ent:uv"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "Ejercicio de refuerzo - Semana 1",
+   "tipo": "concepto",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Ejercicio de refuerzo - Semana 1"
+   ],
+   "comunidad": 2,
+   "id": "ent:ejercicio de refuerzo semana 1"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "cifras de ejecución",
+   "tipo": "restriccion",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Entregable"
+   ],
+   "comunidad": 2,
+   "id": "ent:cifra de ejecucion"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "NumPy",
+   "tipo": "metodo",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Objetivo",
+    "Tarea 1"
+   ],
+   "comunidad": 2,
+   "id": "ent:numpy"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "datos numéricos",
+   "tipo": "restriccion",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 1"
+   ],
+   "comunidad": 0,
+   "id": "ent:dato numerico"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "timestamp",
+   "tipo": "concepto",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Escenario"
+   ],
+   "comunidad": null,
+   "id": "ent:timestamp"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "Pandas",
+   "tipo": "metodo",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Objetivo"
+   ],
+   "comunidad": 2,
+   "id": "ent:panda"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "usar características en orden",
+   "tipo": "restriccion",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Reglas"
+   ],
+   "comunidad": null,
+   "id": "ent:usar caracteristica en orden"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "media 0 y desviación 1",
+   "tipo": "restriccion",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 2"
+   ],
+   "comunidad": null,
+   "id": "ent:media 0 y desviacion 1"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "ServerMeasurements",
+   "tipo": "metodo",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 1"
+   ],
+   "comunidad": 0,
+   "id": "ent:servermeasurement"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "build_measurements",
+   "tipo": "metodo",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 1"
+   ],
+   "comunidad": 0,
+   "id": "ent:build measurement"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "ValueError",
+   "tipo": "concepto",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 1"
+   ],
+   "comunidad": 0,
+   "id": "ent:valueerror"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "memory_gb",
+   "tipo": "metrica",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Escenario",
+    "Reglas",
+    "Tarea 1"
+   ],
+   "comunidad": null,
+   "id": "ent:memory gb"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "versión adaptada para el solver",
+   "tipo": "dataset",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Preámbulo"
+   ],
+   "comunidad": null,
+   "id": "ent:version adaptada para el solver"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "CSV de entrada",
+   "tipo": "dataset",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Reglas"
+   ],
+   "comunidad": null,
+   "id": "ent:csv de entrada"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "filtro_requires_review_true",
+   "tipo": "restriccion",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 4"
+   ],
+   "comunidad": 10,
+   "id": "ent:filtro requir review true"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "tipo bool",
+   "tipo": "restriccion",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 3"
+   ],
+   "comunidad": 0,
+   "id": "ent:tipo bool"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "Observation",
+   "tipo": "dataset",
+   "origen": [
+    "notas",
+    "enunciado"
+   ],
+   "citas": [
+    "s3-agentes § 3. Patrones de Agentes … 3.3 Reflexion",
+    "Tarea 4"
+   ],
+   "comunidad": 10,
+   "id": "ent:observation"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "una_fila_por_servidor",
+   "tipo": "restriccion",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 4"
+   ],
+   "comunidad": 10,
+   "id": "ent:fila por servidor"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "output/server_analysis.parquet",
+   "tipo": "dataset",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 5",
+    "Entregable"
+   ],
+   "comunidad": null,
+   "id": "ent:output server analysi parquet"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "tolerancia 1e-10",
+   "tipo": "restriccion",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 2"
+   ],
+   "comunidad": null,
+   "id": "ent:tolerancia 1e 10"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "enunciado original del curso",
+   "tipo": "dataset",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Preámbulo"
+   ],
+   "comunidad": null,
+   "id": "ent:enunciado original del curso"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "Parquet",
+   "tipo": "dataset",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Ejercicio de refuerzo - Semana 1",
+    "Objetivo"
+   ],
+   "comunidad": 2,
+   "id": "ent:parquet"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "telemetría de servidores de IA",
+   "tipo": "dataset",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Ejercicio de refuerzo - Semana 1"
+   ],
+   "comunidad": 2,
+   "id": "ent:telemetria de servidor de ia"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "verificación de columnas",
+   "tipo": "restriccion",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 5"
+   ],
+   "comunidad": 2,
+   "id": "ent:verificacion de columna"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "max_temperature_c",
+   "tipo": "metrica",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 4"
+   ],
+   "comunidad": 10,
+   "id": "ent:max temperature c"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "Value",
+   "tipo": "dataset",
+   "origen": [
+    "notas",
+    "enunciado"
+   ],
+   "citas": [
+    "s1-transformers-y-foundation-models § 3. Arquitectura Transformer (90 min) … 3.4 Estructura completa de un bloque transformer",
+    "Tarea 1"
+   ],
+   "comunidad": 0,
+   "id": "ent:value"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "server",
+   "tipo": "dataset",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Escenario",
+    "Tarea 4"
+   ],
+   "comunidad": 10,
+   "id": "ent:server"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "mean_power_w",
+   "tipo": "metrica",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 4"
+   ],
+   "comunidad": 10,
+   "id": "ent:mean power w"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "mean_load",
+   "tipo": "metrica",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 4"
+   ],
+   "comunidad": 10,
+   "id": "ent:mean load"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "criterio de revisión",
+   "tipo": "restriccion",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 3"
+   ],
+   "comunidad": 0,
+   "id": "ent:criterio de revision"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "cpu_utilization",
+   "tipo": "metrica",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Escenario",
+    "Reglas",
+    "Tarea 1"
+   ],
+   "comunidad": null,
+   "id": "ent:cpu utilization"
+  }
+ ],
+ "aristas": [
+  {
+   "tipo": "menciona",
+   "source": "Preámbulo",
+   "target": "ent:matematica y programacion para ia"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Preámbulo",
+   "target": "ent:version adaptada para el solver"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Preámbulo",
+   "target": "ent:enunciado original del curso"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Preámbulo",
+   "target": "ent:uso exclusivo como banco de prueba"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Ejercicio de refuerzo - Semana 1",
+   "target": "ent:ejercicio de refuerzo semana 1"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Ejercicio de refuerzo - Semana 1",
+   "target": "ent:telemetria de servidor de ia"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Ejercicio de refuerzo - Semana 1",
+   "target": "ent:script de python"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Ejercicio de refuerzo - Semana 1",
+   "target": "ent:parquet"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Ejercicio de refuerzo - Semana 1",
+   "target": "ent:reporte md"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Ejercicio de refuerzo - Semana 1",
+   "target": "ent:git"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Ejercicio de refuerzo - Semana 1",
+   "target": "ent:uv"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Ejercicio de refuerzo - Semana 1",
+   "target": "ent:pytest"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Ejercicio de refuerzo - Semana 1",
+   "target": "ent:d2l"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Ejercicio de refuerzo - Semana 1",
+   "target": "ent:contrato"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Ejercicio de refuerzo - Semana 1",
+   "target": "ent:prueba publica"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Ejercicio de refuerzo - Semana 1",
+   "target": "ent:modalidad individual"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Objetivo",
+   "target": "ent:pipeline"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Objetivo",
+   "target": "ent:numpy"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Objetivo",
+   "target": "ent:panda"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Objetivo",
+   "target": "ent:parquet"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Objetivo",
+   "target": "ent:abstraccion simple"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Objetivo",
+   "target": "ent:contrato de dato"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Escenario",
+   "target": "ent:data server measurement csv"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Escenario",
+   "target": "ent:server"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Escenario",
+   "target": "ent:timestamp"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Escenario",
+   "target": "ent:gpu utilization"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Escenario",
+   "target": "ent:cpu utilization"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Escenario",
+   "target": "ent:memory gb"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Escenario",
+   "target": "ent:power w"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Escenario",
+   "target": "ent:temperature c"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Escenario",
+   "target": "ent:leer con parse date"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Escenario",
+   "target": "ent:no descargar dato"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Reglas",
+   "target": "ent:gpu utilization"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Reglas",
+   "target": "ent:cpu utilization"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Reglas",
+   "target": "ent:memory gb"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Reglas",
+   "target": "ent:tarea 2 y 3"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Reglas",
+   "target": "ent:vectorizacion"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Reglas",
+   "target": "ent:bucle for"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Reglas",
+   "target": "ent:dataframe original"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Reglas",
+   "target": "ent:copia del dataframe"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Reglas",
+   "target": "ent:csv de entrada"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Reglas",
+   "target": "ent:usar caracteristica en orden"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Reglas",
+   "target": "ent:vectorizar operacion"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Reglas",
+   "target": "ent:no modificar dataframe original"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Reglas",
+   "target": "ent:no modificar csv de entrada"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 1",
+   "target": "ent:servermeasurement"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 1",
+   "target": "ent:value"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 1",
+   "target": "ent:feature name"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 1",
+   "target": "ent:valueerror"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 1",
+   "target": "ent:repr"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 1",
+   "target": "ent:build measurement"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 1",
+   "target": "ent:numpy"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 1",
+   "target": "ent:df"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 1",
+   "target": "ent:gpu utilization"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 1",
+   "target": "ent:cpu utilization"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 1",
+   "target": "ent:memory gb"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 1",
+   "target": "ent:matriz bidimensional"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 1",
+   "target": "ent:dato numerico"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 1",
+   "target": "ent:tipo flotante"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 2",
+   "target": "ent:caracteristica"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 2",
+   "target": "ent:zscor"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 2",
+   "target": "ent:load score"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 2",
+   "target": "ent:z score"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 2",
+   "target": "ent:operacion vectorizada"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 2",
+   "target": "ent:media"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 2",
+   "target": "ent:desviacion estandar"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 2",
+   "target": "ent:peso 0 50 0 30 0 20"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 2",
+   "target": "ent:division por cero"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 2",
+   "target": "ent:tolerancia 1e 10"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 2",
+   "target": "ent:media 0 y desviacion 1"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 3",
+   "target": "ent:dataframe original"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 3",
+   "target": "ent:nuevo dataframe"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 3",
+   "target": "ent:load score"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 3",
+   "target": "ent:temperature c"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 3",
+   "target": "ent:requir review"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 3",
+   "target": "ent:criterio de revision"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 3",
+   "target": "ent:tipo bool"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 3",
+   "target": "ent:df"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 4",
+   "target": "ent:observation"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 4",
+   "target": "ent:server"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 4",
+   "target": "ent:tabla resumen por servidor"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 4",
+   "target": "ent:mean power w"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 4",
+   "target": "ent:max temperature c"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 4",
+   "target": "ent:mean load"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 4",
+   "target": "ent:review count"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 4",
+   "target": "ent:requir review"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 4",
+   "target": "ent:agrupacion por server"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 4",
+   "target": "ent:orden exacto de columna"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 4",
+   "target": "ent:fila por servidor"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 4",
+   "target": "ent:filtro requir review true"
+  },
+  {
+   "tipo": "depende_de",
+   "regla": "referencia",
+   "evidencia": "Guardar el DataFrame analizado de la Tarea 3 en output/server_analysis.parquet mediante PyArrow,",
+   "source": "Tarea 5",
+   "target": "Tarea 3"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 5",
+   "target": "ent:dataframe analizado"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 5",
+   "target": "ent:output server analysi parquet"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 5",
+   "target": "ent:pyarrow"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 5",
+   "target": "ent:guardar sin indice"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 5",
+   "target": "ent:round trip"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 5",
+   "target": "ent:verificacion de fila"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 5",
+   "target": "ent:verificacion de columna"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 5",
+   "target": "ent:verificacion de esquema"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 5",
+   "target": "ent:verificacion de valor"
+  },
+  {
+   "tipo": "depende_de",
+   "regla": "referencia",
+   "evidencia": ".parquet. • reporte.md con una sección por tarea, en orden (Tarea 1 a Tarea 5), que cite los resultados obtenidos por el",
+   "source": "Entregable",
+   "target": "Tarea 1"
+  },
+  {
+   "tipo": "depende_de",
+   "regla": "referencia",
+   "evidencia": "• reporte.md con una sección por tarea, en orden (Tarea 1 a Tarea 5), que cite los resultados obtenidos por el código: e",
+   "source": "Entregable",
+   "target": "Tarea 5"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Entregable",
+   "target": "ent:codigo fuente python"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Entregable",
+   "target": "ent:output server analysi parquet"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Entregable",
+   "target": "ent:reporte md"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Entregable",
+   "target": "ent:tarea 1 a tarea 5"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Entregable",
+   "target": "ent:repr"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Entregable",
+   "target": "ent:media"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Entregable",
+   "target": "ent:fila 23"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Entregable",
+   "target": "ent:tabla resumen"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Entregable",
+   "target": "ent:round trip"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Entregable",
+   "target": "ent:maximo 800 palabra"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Entregable",
+   "target": "ent:cifra de ejecucion"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "produce",
+   "citas": [
+    "Entregable"
+   ],
+   "source": "ent:codigo fuente python",
+   "target": "ent:output server analysi parquet"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "produce",
+   "citas": [
+    "Entregable"
+   ],
+   "source": "ent:codigo fuente python",
+   "target": "ent:media"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "contiene",
+   "citas": [
+    "Escenario"
+   ],
+   "source": "ent:data server measurement csv",
+   "target": "ent:server"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "contiene",
+   "citas": [
+    "Escenario"
+   ],
+   "source": "ent:data server measurement csv",
+   "target": "ent:timestamp"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "contiene",
+   "citas": [
+    "Escenario"
+   ],
+   "source": "ent:data server measurement csv",
+   "target": "ent:gpu utilization"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "contiene",
+   "citas": [
+    "Escenario"
+   ],
+   "source": "ent:data server measurement csv",
+   "target": "ent:cpu utilization"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "contiene",
+   "citas": [
+    "Escenario"
+   ],
+   "source": "ent:data server measurement csv",
+   "target": "ent:memory gb"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "contiene",
+   "citas": [
+    "Escenario"
+   ],
+   "source": "ent:data server measurement csv",
+   "target": "ent:power w"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "contiene",
+   "citas": [
+    "Escenario"
+   ],
+   "source": "ent:data server measurement csv",
+   "target": "ent:temperature c"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "sujeto_a",
+   "citas": [
+    "Escenario"
+   ],
+   "source": "ent:data server measurement csv",
+   "target": "ent:no descargar dato"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "usa",
+   "citas": [
+    "s1-transformers-y-foundation-models § 3. Arquitectura Transformer (90 min) … 3.4 Estructura completa de un bloque transformer"
+   ],
+   "source": "ent:mecanismo de atencion",
+   "target": "ent:value"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "guarda",
+   "citas": [
+    "Tarea 5"
+   ],
+   "source": "ent:pyarrow",
+   "target": "ent:output server analysi parquet"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "cubre",
+   "citas": [
+    "Entregable"
+   ],
+   "source": "ent:reporte md",
+   "target": "ent:tarea 1 a tarea 5"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "cita",
+   "citas": [
+    "Entregable"
+   ],
+   "source": "ent:reporte md",
+   "target": "ent:repr"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "cita",
+   "citas": [
+    "Entregable"
+   ],
+   "source": "ent:reporte md",
+   "target": "ent:media"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "cita",
+   "citas": [
+    "Entregable"
+   ],
+   "source": "ent:reporte md",
+   "target": "ent:fila 23"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "incluye",
+   "citas": [
+    "Entregable"
+   ],
+   "source": "ent:reporte md",
+   "target": "ent:tabla resumen"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "cita",
+   "citas": [
+    "Entregable"
+   ],
+   "source": "ent:reporte md",
+   "target": "ent:round trip"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "respeta",
+   "citas": [
+    "Entregable"
+   ],
+   "source": "ent:reporte md",
+   "target": "ent:maximo 800 palabra"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "cumple",
+   "citas": [
+    "Entregable"
+   ],
+   "source": "ent:reporte md",
+   "target": "ent:cifra de ejecucion"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "se_guarda_en",
+   "citas": [
+    "Tarea 5"
+   ],
+   "source": "ent:dataframe analizado",
+   "target": "ent:output server analysi parquet"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "normalizado_mediante",
+   "citas": [
+    "Tarea 2"
+   ],
+   "source": "ent:caracteristica",
+   "target": "ent:z score"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "tiene_tipo",
+   "citas": [
+    "Tarea 3"
+   ],
+   "source": "ent:requir review",
+   "target": "ent:tipo bool"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "es_columna_de",
+   "citas": [
+    "Tarea 4"
+   ],
+   "source": "ent:requir review",
+   "target": "ent:observation"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "deriva_de",
+   "citas": [
+    "Tarea 4"
+   ],
+   "source": "ent:tabla resumen por servidor",
+   "target": "ent:observation"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "usa",
+   "citas": [
+    "Tarea 4"
+   ],
+   "source": "ent:tabla resumen por servidor",
+   "target": "ent:agrupacion por server"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "representa_con",
+   "citas": [
+    "Objetivo"
+   ],
+   "source": "ent:pipeline",
+   "target": "ent:abstraccion simple"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "procesa_con",
+   "citas": [
+    "Objetivo"
+   ],
+   "source": "ent:pipeline",
+   "target": "ent:numpy"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "analiza_con",
+   "citas": [
+    "Objetivo"
+   ],
+   "source": "ent:pipeline",
+   "target": "ent:panda"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "persiste_en",
+   "citas": [
+    "Objetivo"
+   ],
+   "source": "ent:pipeline",
+   "target": "ent:parquet"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "verifica",
+   "citas": [
+    "Objetivo"
+   ],
+   "source": "ent:pipeline",
+   "target": "ent:contrato de dato"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "usa",
+   "citas": [
+    "Tarea 2"
+   ],
+   "source": "ent:z score",
+   "target": "ent:desviacion estandar"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "evita",
+   "citas": [
+    "Tarea 2"
+   ],
+   "source": "ent:z score",
+   "target": "ent:division por cero"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "calculada_de",
+   "citas": [
+    "Tarea 2"
+   ],
+   "source": "ent:desviacion estandar",
+   "target": "ent:caracteristica"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "definen_requisitos",
+   "citas": [
+    "Ejercicio de refuerzo - Semana 1"
+   ],
+   "source": "ent:contrato",
+   "target": "ent:ejercicio de refuerzo semana 1"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "deriva_de",
+   "citas": [
+    "Tarea 3"
+   ],
+   "source": "ent:nuevo dataframe",
+   "target": "ent:dataframe original"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "agrega",
+   "citas": [
+    "Tarea 3"
+   ],
+   "source": "ent:nuevo dataframe",
+   "target": "ent:load score"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "agrega",
+   "citas": [
+    "Tarea 3"
+   ],
+   "source": "ent:nuevo dataframe",
+   "target": "ent:requir review"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "es_un",
+   "citas": [
+    "Tarea 3"
+   ],
+   "source": "ent:nuevo dataframe",
+   "target": "ent:df"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "verifica",
+   "citas": [
+    "Tarea 5"
+   ],
+   "source": "ent:round trip",
+   "target": "ent:output server analysi parquet"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "incluye",
+   "citas": [
+    "Tarea 5"
+   ],
+   "source": "ent:round trip",
+   "target": "ent:verificacion de fila"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "incluye",
+   "citas": [
+    "Tarea 5"
+   ],
+   "source": "ent:round trip",
+   "target": "ent:verificacion de columna"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "incluye",
+   "citas": [
+    "Tarea 5"
+   ],
+   "source": "ent:round trip",
+   "target": "ent:verificacion de esquema"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "incluye",
+   "citas": [
+    "Tarea 5"
+   ],
+   "source": "ent:round trip",
+   "target": "ent:verificacion de valor"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "proteger",
+   "citas": [
+    "Reglas"
+   ],
+   "source": "ent:no modificar csv de entrada",
+   "target": "ent:csv de entrada"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "calculada_de",
+   "citas": [
+    "Tarea 2"
+   ],
+   "source": "ent:media",
+   "target": "ent:caracteristica"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "restringe",
+   "citas": [
+    "Tarea 4"
+   ],
+   "source": "ent:orden exacto de columna",
+   "target": "ent:tabla resumen por servidor"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "verifican",
+   "citas": [
+    "Ejercicio de refuerzo - Semana 1"
+   ],
+   "source": "ent:prueba publica",
+   "target": "ent:contrato"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "es_columna_de",
+   "citas": [
+    "Tarea 4"
+   ],
+   "source": "ent:review count",
+   "target": "ent:tabla resumen por servidor"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "cuenta",
+   "citas": [
+    "Tarea 4"
+   ],
+   "source": "ent:review count",
+   "target": "ent:requir review"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "versionarse_en",
+   "citas": [
+    "s4-llmops-y-finetuning § 3. Observabilidad … 3.4 Prompt Versioning"
+   ],
+   "source": "ent:prompt versioning",
+   "target": "ent:git"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "observa",
+   "citas": [
+    "s3-agentes § 3. Patrones de Agentes … 3.3 Reflexion"
+   ],
+   "source": "ent:react",
+   "target": "ent:observation"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "calculado_desde",
+   "citas": [
+    "Tarea 2"
+   ],
+   "source": "ent:load score",
+   "target": "ent:zscor"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "usa",
+   "citas": [
+    "Tarea 2"
+   ],
+   "source": "ent:load score",
+   "target": "ent:peso 0 50 0 30 0 20"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "calculado_con",
+   "citas": [
+    "Tarea 2"
+   ],
+   "source": "ent:load score",
+   "target": "ent:operacion vectorizada"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "muestra",
+   "citas": [
+    "Tarea 1"
+   ],
+   "source": "ent:repr",
+   "target": "ent:feature name"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "agrupa_por",
+   "citas": [
+    "Tarea 4"
+   ],
+   "source": "ent:agrupacion por server",
+   "target": "ent:server"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "es_un",
+   "citas": [
+    "Tarea 3"
+   ],
+   "source": "ent:dataframe original",
+   "target": "ent:df"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "proteger",
+   "citas": [
+    "Reglas"
+   ],
+   "source": "ent:no modificar dataframe original",
+   "target": "ent:dataframe original"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "requerir",
+   "citas": [
+    "Reglas"
+   ],
+   "source": "ent:no modificar dataframe original",
+   "target": "ent:copia del dataframe"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "derivado_de",
+   "citas": [
+    "Tarea 2"
+   ],
+   "source": "ent:zscor",
+   "target": "ent:caracteristica"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "calculado_con",
+   "citas": [
+    "Tarea 2"
+   ],
+   "source": "ent:zscor",
+   "target": "ent:z score"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "cumple",
+   "citas": [
+    "Tarea 2"
+   ],
+   "source": "ent:zscor",
+   "target": "ent:media 0 y desviacion 1"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "verificado_con",
+   "citas": [
+    "Tarea 2"
+   ],
+   "source": "ent:zscor",
+   "target": "ent:tolerancia 1e 10"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "aplicar_a",
+   "citas": [
+    "Reglas"
+   ],
+   "source": "ent:vectorizar operacion",
+   "target": "ent:tarea 2 y 3"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "exigir",
+   "citas": [
+    "Reglas"
+   ],
+   "source": "ent:vectorizar operacion",
+   "target": "ent:vectorizacion"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "prohibir",
+   "citas": [
+    "Reglas"
+   ],
+   "source": "ent:vectorizar operacion",
+   "target": "ent:bucle for"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "procesa",
+   "citas": [
+    "Ejercicio de refuerzo - Semana 1"
+   ],
+   "source": "ent:ejercicio de refuerzo semana 1",
+   "target": "ent:telemetria de servidor de ia"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "entrega",
+   "citas": [
+    "Ejercicio de refuerzo - Semana 1"
+   ],
+   "source": "ent:ejercicio de refuerzo semana 1",
+   "target": "ent:script de python"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "entrega",
+   "citas": [
+    "Ejercicio de refuerzo - Semana 1"
+   ],
+   "source": "ent:ejercicio de refuerzo semana 1",
+   "target": "ent:parquet"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "entrega",
+   "citas": [
+    "Ejercicio de refuerzo - Semana 1"
+   ],
+   "source": "ent:ejercicio de refuerzo semana 1",
+   "target": "ent:reporte md"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "no_usa",
+   "citas": [
+    "Ejercicio de refuerzo - Semana 1"
+   ],
+   "source": "ent:ejercicio de refuerzo semana 1",
+   "target": "ent:git"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "no_usa",
+   "citas": [
+    "Ejercicio de refuerzo - Semana 1"
+   ],
+   "source": "ent:ejercicio de refuerzo semana 1",
+   "target": "ent:uv"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "no_usa",
+   "citas": [
+    "Ejercicio de refuerzo - Semana 1"
+   ],
+   "source": "ent:ejercicio de refuerzo semana 1",
+   "target": "ent:pytest"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "no_usa",
+   "citas": [
+    "Ejercicio de refuerzo - Semana 1"
+   ],
+   "source": "ent:ejercicio de refuerzo semana 1",
+   "target": "ent:d2l"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "tiene",
+   "citas": [
+    "Ejercicio de refuerzo - Semana 1"
+   ],
+   "source": "ent:ejercicio de refuerzo semana 1",
+   "target": "ent:modalidad individual"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "se_lee_con",
+   "citas": [
+    "Escenario"
+   ],
+   "source": "ent:timestamp",
+   "target": "ent:leer con parse date"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "usar",
+   "citas": [
+    "Reglas"
+   ],
+   "source": "ent:usar caracteristica en orden",
+   "target": "ent:gpu utilization"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "usar",
+   "citas": [
+    "Reglas"
+   ],
+   "source": "ent:usar caracteristica en orden",
+   "target": "ent:cpu utilization"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "usar",
+   "citas": [
+    "Reglas"
+   ],
+   "source": "ent:usar caracteristica en orden",
+   "target": "ent:memory gb"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "almacena",
+   "citas": [
+    "Tarea 1"
+   ],
+   "source": "ent:servermeasurement",
+   "target": "ent:value"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "almacena",
+   "citas": [
+    "Tarea 1"
+   ],
+   "source": "ent:servermeasurement",
+   "target": "ent:feature name"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "lanza",
+   "citas": [
+    "Tarea 1"
+   ],
+   "source": "ent:servermeasurement",
+   "target": "ent:valueerror"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "implementa",
+   "citas": [
+    "Tarea 1"
+   ],
+   "source": "ent:servermeasurement",
+   "target": "ent:repr"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "valida",
+   "citas": [
+    "Tarea 1"
+   ],
+   "source": "ent:servermeasurement",
+   "target": "ent:matriz bidimensional"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "valida",
+   "citas": [
+    "Tarea 1"
+   ],
+   "source": "ent:servermeasurement",
+   "target": "ent:dato numerico"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "recibe",
+   "citas": [
+    "Tarea 1"
+   ],
+   "source": "ent:build measurement",
+   "target": "ent:df"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "selecciona",
+   "citas": [
+    "Tarea 1"
+   ],
+   "source": "ent:build measurement",
+   "target": "ent:gpu utilization"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "selecciona",
+   "citas": [
+    "Tarea 1"
+   ],
+   "source": "ent:build measurement",
+   "target": "ent:cpu utilization"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "selecciona",
+   "citas": [
+    "Tarea 1"
+   ],
+   "source": "ent:build measurement",
+   "target": "ent:memory gb"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "convierte_a",
+   "citas": [
+    "Tarea 1"
+   ],
+   "source": "ent:build measurement",
+   "target": "ent:tipo flotante"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "retorna",
+   "citas": [
+    "Tarea 1"
+   ],
+   "source": "ent:build measurement",
+   "target": "ent:servermeasurement"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "basada_en",
+   "citas": [
+    "Preámbulo"
+   ],
+   "source": "ent:version adaptada para el solver",
+   "target": "ent:enunciado original del curso"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "pertenece_a",
+   "citas": [
+    "Preámbulo"
+   ],
+   "source": "ent:version adaptada para el solver",
+   "target": "ent:matematica y programacion para ia"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "sujeta_a",
+   "citas": [
+    "Preámbulo"
+   ],
+   "source": "ent:version adaptada para el solver",
+   "target": "ent:uso exclusivo como banco de prueba"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "restringe",
+   "citas": [
+    "Tarea 4"
+   ],
+   "source": "ent:filtro requir review true",
+   "target": "ent:review count"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "es_columna_de",
+   "citas": [
+    "Tarea 4"
+   ],
+   "source": "ent:observation",
+   "target": "ent:tabla resumen por servidor"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "restringe",
+   "citas": [
+    "Tarea 4"
+   ],
+   "source": "ent:fila por servidor",
+   "target": "ent:tabla resumen por servidor"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "cumple",
+   "citas": [
+    "Tarea 5"
+   ],
+   "source": "ent:output server analysi parquet",
+   "target": "ent:guardar sin indice"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "es_columna_de",
+   "citas": [
+    "Tarea 4"
+   ],
+   "source": "ent:max temperature c",
+   "target": "ent:tabla resumen por servidor"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "usa",
+   "citas": [
+    "Tarea 1"
+   ],
+   "source": "ent:value",
+   "target": "ent:numpy"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "es_columna_de",
+   "citas": [
+    "Tarea 4"
+   ],
+   "source": "ent:server",
+   "target": "ent:observation"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "es_columna_de",
+   "citas": [
+    "Tarea 4"
+   ],
+   "source": "ent:mean power w",
+   "target": "ent:tabla resumen por servidor"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "es_columna_de",
+   "citas": [
+    "Tarea 4"
+   ],
+   "source": "ent:mean load",
+   "target": "ent:tabla resumen por servidor"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "define",
+   "citas": [
+    "Tarea 3"
+   ],
+   "source": "ent:criterio de revision",
+   "target": "ent:requir review"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "usa",
+   "citas": [
+    "Tarea 3"
+   ],
+   "source": "ent:criterio de revision",
+   "target": "ent:load score"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "usa",
+   "citas": [
+    "Tarea 3"
+   ],
+   "source": "ent:criterio de revision",
+   "target": "ent:temperature c"
+  }
+ ]
+}

@@ -1,0 +1,8 @@
+=== T6 · Bootstrap pareado (análisis de sensibilidad aproximado) ===
+Semilla: 20260829 | Remuestras: 10000 | Tiendas: 16
+Media observada de diferencias (A - B): 0.418750
+IC percentil 95 %: [-0.193750, 1.006250] (amplitud 1.200000)
+¿El IC percentil 95 % contiene 0?: True
+Reproducibilidad (2 corridas, misma semilla): True | max diff intervalo = 0.0 | max diff medias bootstrap = 0.0
+Vector de diferencias coincide con T2: True
+Archivos generados: t6_bootstrap_histograma.png, t6_bootstrap_medias.csv, resultados.json

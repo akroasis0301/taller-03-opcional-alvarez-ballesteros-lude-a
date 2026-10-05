@@ -1,0 +1,168 @@
+{
+  "subtarea": "T6",
+  "titulo": "Bootstrap pareado — intervalo percentil del 95 % (análisis de sensibilidad aproximado)",
+  "semilla": 20260829,
+  "bootstrap_remuestras": 10000,
+  "n_tiendas": 16,
+  "generador_aleatorio": "np.random.default_rng(20260829)",
+  "remuestreo": "tiendas completas mediante el vector de diferencias (difference = error_a - error_b); los errores de A y B NO se remuestrean por separado",
+  "papel_del_intervalo": "análisis de sensibilidad aproximado",
+  "percentiles_usados": [
+    2.5,
+    97.5
+  ],
+  "media_diferencias_observada": 0.4187499999999997,
+  "mediana_diferencias_observada": 0.7999999999999998,
+  "desviacion_estandar_diferencias_muestral": 1.2533787669070087,
+  "media_bootstrap": 0.4209674999999998,
+  "mediana_bootstrap": 0.425,
+  "desviacion_estandar_bootstrap": 0.3055936070813965,
+  "error_estandar_bootstrap": 0.3055936070813965,
+  "ic_percentil_95": [
+    -0.19375000000000037,
+    1.0062499999999996
+  ],
+  "ic_percentil_95_inf": -0.19375000000000037,
+  "ic_percentil_95_sup": 1.0062499999999996,
+  "amplitud_ic_percentil_95": 1.2,
+  "ic_contiene_cero": true,
+  "proporcion_remuestras_con_media_mayor_que_cero": 0.9119,
+  "reproducibilidad": {
+    "corridas_con_misma_semilla": 2,
+    "corrida_1_ic_percentil_95": [
+      -0.19375000000000037,
+      1.0062499999999996
+    ],
+    "corrida_2_ic_percentil_95": [
+      -0.19375000000000037,
+      1.0062499999999996
+    ],
+    "intervalos_identicos": true,
+    "medias_bootstrap_identicas": true,
+    "max_diferencia_absoluta_en_intervalo": 0.0,
+    "max_diferencia_absoluta_en_medias_bootstrap": 0.0,
+    "reproducible": true
+  },
+  "coincide_con_T2": true,
+  "vector_diferencias": [
+    1.8000000000000007,
+    0.7000000000000011,
+    1.1999999999999993,
+    -1.4000000000000004,
+    1.4999999999999991,
+    -0.3000000000000007,
+    0.8999999999999986,
+    2.0999999999999996,
+    -1.8000000000000007,
+    1.0,
+    -0.5,
+    1.700000000000001,
+    -1.200000000000001,
+    0.5999999999999996,
+    1.299999999999999,
+    -0.9000000000000004
+  ],
+  "tabla_pareada": [
+    {
+      "store_id": "S01",
+      "error_a": 12.4,
+      "error_b": 10.6,
+      "difference": 1.8000000000000007
+    },
+    {
+      "store_id": "S02",
+      "error_a": 9.8,
+      "error_b": 9.1,
+      "difference": 0.7000000000000011
+    },
+    {
+      "store_id": "S03",
+      "error_a": 15.1,
+      "error_b": 13.9,
+      "difference": 1.1999999999999993
+    },
+    {
+      "store_id": "S04",
+      "error_a": 11.0,
+      "error_b": 12.4,
+      "difference": -1.4000000000000004
+    },
+    {
+      "store_id": "S05",
+      "error_a": 8.7,
+      "error_b": 7.2,
+      "difference": 1.4999999999999991
+    },
+    {
+      "store_id": "S06",
+      "error_a": 13.6,
+      "error_b": 13.9,
+      "difference": -0.3000000000000007
+    },
+    {
+      "store_id": "S07",
+      "error_a": 10.2,
+      "error_b": 9.3,
+      "difference": 0.8999999999999986
+    },
+    {
+      "store_id": "S08",
+      "error_a": 14.9,
+      "error_b": 12.8,
+      "difference": 2.0999999999999996
+    },
+    {
+      "store_id": "S09",
+      "error_a": 7.5,
+      "error_b": 9.3,
+      "difference": -1.8000000000000007
+    },
+    {
+      "store_id": "S10",
+      "error_a": 16.0,
+      "error_b": 15.0,
+      "difference": 1.0
+    },
+    {
+      "store_id": "S11",
+      "error_a": 9.3,
+      "error_b": 9.8,
+      "difference": -0.5
+    },
+    {
+      "store_id": "S12",
+      "error_a": 12.8,
+      "error_b": 11.1,
+      "difference": 1.700000000000001
+    },
+    {
+      "store_id": "S13",
+      "error_a": 11.7,
+      "error_b": 12.9,
+      "difference": -1.200000000000001
+    },
+    {
+      "store_id": "S14",
+      "error_a": 8.9,
+      "error_b": 8.3,
+      "difference": 0.5999999999999996
+    },
+    {
+      "store_id": "S15",
+      "error_a": 13.2,
+      "error_b": 11.9,
+      "difference": 1.299999999999999
+    },
+    {
+      "store_id": "S16",
+      "error_a": 10.6,
+      "error_b": 11.5,
+      "difference": -0.9000000000000004
+    }
+  ],
+  "archivos_generados": {
+    "figura": "t6_bootstrap_histograma.png",
+    "csv_remuestras_bootstrap": "t6_bootstrap_medias.csv",
+    "resultados": "resultados.json"
+  }
+}

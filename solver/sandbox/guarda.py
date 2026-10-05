@@ -17,7 +17,9 @@ from dataclasses import dataclass, field
 
 MODULOS_PROHIBIDOS = {"socket", "ssl", "requests", "httpx", "urllib", "urllib3", "http", "aiohttp",
                       "ftplib", "smtplib", "telnetlib", "subprocess", "multiprocessing", "pty",
-                      "ctypes", "webbrowser", "paramiko", "shutil"}
+                      "ctypes", "webbrowser", "paramiko", "shutil",
+                      # importlib: importlib.import_module("soc" + "ket") esquivaba la lista (2026-10-05)
+                      "importlib"}
 LLAMADAS_PROHIBIDAS = {"eval", "exec", "compile", "__import__", "breakpoint", "input"}
 ATRIBUTOS_PROHIBIDOS = {
     "system", "popen", "spawnl", "spawnv", "spawnve", "execv", "execve", "execl", "fork", "kill",
@@ -88,6 +90,12 @@ def revisar(codigo: str) -> Veredicto:
             for kw in nodo.keywords:
                 if kw.arg == "download" and isinstance(kw.value, ast.Constant) and kw.value.value is True:
                     v.descargas.append(f"línea {nodo.lineno}: {nombre}(download=True)")
+            # Una URL como argumento (pd.read_csv("https://…")) es una descarga aunque la función no
+            # esté en DESCARGAS: pasaba la guarda y salía a la red (revisión del 2026-10-05).
+            for arg in list(nodo.args) + [k.value for k in nodo.keywords]:
+                if isinstance(arg, ast.Constant) and isinstance(arg.value, str) \
+                        and arg.value.strip().lower().startswith(("http://", "https://", "ftp://")):
+                    v.descargas.append(f"línea {nodo.lineno}: {nombre}({arg.value[:60]!r})")
             if nombre in FUNCIONES_DE_RUTA:
                 for arg in list(nodo.args[:1]) + [k.value for k in nodo.keywords if k.arg in {"path", "fname", "file"}]:
                     if isinstance(arg, ast.Constant) and isinstance(arg.value, str) and _ruta_fuera(arg.value):

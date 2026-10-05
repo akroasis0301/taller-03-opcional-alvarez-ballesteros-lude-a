@@ -1,0 +1,13 @@
+metrica,valor
+n_tiendas,16.0
+media_observada,0.4187499999999997
+suma_observada,6.699999999999995
+magnitud_media_observada,0.4187499999999997
+total_configuraciones,65536.0
+conteo_configuraciones_extremas,13372.0
+p_value_exacto_cambios_signo,0.20404052734375
+p_value_t_bilateral_T4,0.20134214922904944
+diferencia_absoluta_p,0.002698378114700556
+diferencia_relativa_p_vs_t,0.013401953465942423
+sd_de_las_medias_nulas,0.3209507505809365
+p_value_aproximacion_normal,0.19198912492044662

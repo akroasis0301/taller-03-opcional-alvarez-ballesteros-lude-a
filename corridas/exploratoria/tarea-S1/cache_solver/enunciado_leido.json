@@ -1,0 +1,166 @@
+{
+ "fuente": "/Users/miguelestebanalvarez/Posgrado Maestría Inteligencia Artificial/1er Semestre/IA Generativa y Agentes/Talleres/Taller 03/taller-03-opcional-alvarez-ballesteros-ludeña/tareas/reales/semana1/enunciado.pdf",
+ "texto": "Versión adaptada para el solver · basada en el enunciado original del curso · uso exclusivo como banco de prueba\nPágina 1\nMATEMÁTICAS Y PROGRAMACIÓN PARA IA\nEjercicio de refuerzo - Semana 1\nProcesamiento reproducible de telemetría de servidores de IA\nModalidad\nTiempo sugerido\nEntrega\nIndividual\n2-3 horas\nScripts, Parquet y reporte.md\nVersión adaptada para el solver (Taller 03 v2, MMIA 6013). El contenido técnico, los datos, las\nconstantes y los resultados esperados son los del enunciado original del curso. Solo cambia la logística de\nentrega: no se usa Git, uv, pytest ni D2L; en lugar de completar un proyecto inicial, se entregan scripts de\nPython, el archivo Parquet y un reporte.md. Los contratos que verificaban las pruebas públicas se\nescriben aquí como requisitos.\nObjetivo\nIntegrar los contenidos de la primera semana en un único pipeline: representar datos con una\nabstracción simple, procesarlos con NumPy, analizarlos con Pandas y persistir el resultado en\nParquet verificando el contrato de los datos.\nEscenario\nEl archivo data/server_measurements.csv contiene mediciones de seis servidores que ejecutan\ncargas de IA. Cada fila corresponde a una medición en un instante determinado. El archivo se\nentrega junto a este enunciado; no se descarga nada.\nColumna\nTipo\nDescripción\nserver\ntexto\nidentificador del servidor (AI-SRV-01 ... AI-SRV-06)\ntimestamp\nfecha-hora\ninstante de la medición (leer con parse_dates)\ngpu_utilization\nfloat\nutilización de GPU, %\ncpu_utilization\nfloat\nutilización de CPU, %\nmemory_gb\nfloat\nmemoria en uso, GB\npower_w\nfloat\npotencia, W\ntemperature_c\nfloat\ntemperatura, °C\nReglas\n• Usar como características exactamente gpu_utilization, cpu_utilization y memory_gb, en\nese orden.\n• Las operaciones de las Tareas 2 y 3 deben ser vectorizadas: no recorrer las observaciones\ncon un for.\n• No modificar el DataFrame original: toda columna nueva va en una copia.\n• No modificar el CSV de entrada.\nTarea 1 - Representar las mediciones\nImplementar una clase ServerMeasurements que almacene una matriz NumPy bidimensional\n(values) y una tupla con los nombres de las características (feature_names). La clase debe\nlanzar ValueError si la matriz no es bidimensional, si el número de columnas no coincide con la\ncantidad de nombres o si los datos no son numéricos. Implementar también __repr__, que\nmuestre la forma y los nombres.\nImplementar build_measurements(df): selecciona las tres características, las convierte a una\nmatriz NumPy de tipo flotante y retorna un objeto ServerMeasurements.\nResultado esperado:\nServerMeasurements(shape=(300, 3), features=('gpu_utilization',\n'cpu_utilization', 'memory_gb'))\nTarea 2 - Normalizar y calcular un indicador de carga\nVersión adaptada para el solver · basada en el enunciado original del curso · uso exclusivo como banco de prueba\nPágina 2\nCalcular media y desviación estándar por columna. Normalizar las tres características mediante\nZ-score. Si una desviación estándar es cero, evitar la división por cero. Después calcular\nload_score usando los pesos (0.50, 0.30, 0.20) y operaciones vectorizadas.\nResultado esperado:\nmeans: [57.99313333 50.54163333 29.45533333]\nzscores.shape    -> (300, 3)\nload_score.shape -> (300,)\nCada columna de zscores debe tener media 0 y desviación 1 (tolerancia 1e-10), y load_score\ndebe ser igual a zscores @ [0.50, 0.30, 0.20].\nTarea 3 - Identificar observaciones para revisión\nCrear un nuevo DataFrame a partir del original y agregar las columnas load_score y\nrequires_review (tipo bool). Una fila requiere revisión si load_score > 1.5 o temperature_c >\n80.\nResultado esperado (una fila):\nserver     timestamp            load_score  temperature_c  requires_review\n23  AI-SRV-01  2026-08-24 09:55:00  3.136218    66.97          True\nTarea 4 - Construir un resumen por servidor\nAgrupar por server y construir una tabla con una fila por servidor y exactamente estas\ncolumnas, en este orden: server, observations, mean_power_w, max_temperature_c,\nmean_load, review_count. review_count cuenta las observaciones del servidor con\nrequires_review=True.\nResultado esperado (una fila):\nserver     observations  mean_power_w  max_temperature_c  mean_load  review_count\nAI-SRV-01  50            363.4598      86.50              -0.614527  2\nTarea 5 - Guardar y verificar el resultado\nGuardar el DataFrame analizado de la Tarea 3 en output/server_analysis.parquet mediante\nPyArrow, sin el índice. Volver a leer el archivo y verificar, como mínimo: filas antes == filas\ndespués, columnas antes == columnas después, esquema antes == esquema después y valores\niguales.\nResultado esperado:\nRound trip verificado: output/server_analysis.parquet\nFilas: True\nColumnas: True\nEsquema: True\nValores: True\nEntregable\n• El código fuente en Python que produce todos los resultados.\n• output/server_analysis.parquet.\n• reporte.md con una sección por tarea, en orden (Tarea 1 a Tarea 5), que cite los resultados\nobtenidos por el código: el repr, las medias, la fila 23, la tabla resumen completa (seis\nservidores) y las cuatro verificaciones del round trip. Máximo 800 palabras.\n• Toda cifra del reporte debe provenir de una ejecución del código.",
+ "secciones": [
+  {
+   "id": "S0",
+   "titulo": "Preámbulo",
+   "clave": "Preámbulo",
+   "trabajo": false,
+   "pagina": 1,
+   "texto": "Versión adaptada para el solver · basada en el enunciado original del curso · uso exclusivo como banco de prueba\nPágina 1\nMATEMÁTICAS Y PROGRAMACIÓN PARA IA"
+  },
+  {
+   "id": "S1",
+   "titulo": "Ejercicio de refuerzo - Semana 1",
+   "clave": "Ejercicio de refuerzo - Semana 1",
+   "trabajo": false,
+   "pagina": 1,
+   "texto": "Procesamiento reproducible de telemetría de servidores de IA\nModalidad\nTiempo sugerido\nEntrega\nIndividual\n2-3 horas\nScripts, Parquet y reporte.md\nVersión adaptada para el solver (Taller 03 v2, MMIA 6013). El contenido técnico, los datos, las\nconstantes y los resultados esperados son los del enunciado original del curso. Solo cambia la logística de\nentrega: no se usa Git, uv, pytest ni D2L; en lugar de completar un proyecto inicial, se entregan scripts de\nPython, el archivo Parquet y un reporte.md. Los contratos que verificaban las pruebas públicas se\nescriben aquí como requisitos."
+  },
+  {
+   "id": "S2",
+   "titulo": "Objetivo",
+   "clave": "Objetivo",
+   "trabajo": false,
+   "pagina": 1,
+   "texto": "Integrar los contenidos de la primera semana en un único pipeline: representar datos con una\nabstracción simple, procesarlos con NumPy, analizarlos con Pandas y persistir el resultado en\nParquet verificando el contrato de los datos."
+  },
+  {
+   "id": "S3",
+   "titulo": "Escenario",
+   "clave": "Escenario",
+   "trabajo": false,
+   "pagina": 1,
+   "texto": "El archivo data/server_measurements.csv contiene mediciones de seis servidores que ejecutan\ncargas de IA. Cada fila corresponde a una medición en un instante determinado. El archivo se\nentrega junto a este enunciado; no se descarga nada.\nColumna\nTipo\nDescripción\nserver\ntexto\nidentificador del servidor (AI-SRV-01 ... AI-SRV-06)\ntimestamp\nfecha-hora\ninstante de la medición (leer con parse_dates)\ngpu_utilization\nfloat\nutilización de GPU, %\ncpu_utilization\nfloat\nutilización de CPU, %\nmemory_gb\nfloat\nmemoria en uso, GB\npower_w\nfloat\npotencia, W\ntemperature_c\nfloat\ntemperatura, °C"
+  },
+  {
+   "id": "S4",
+   "titulo": "Reglas",
+   "clave": "Reglas",
+   "trabajo": false,
+   "pagina": 1,
+   "texto": "• Usar como características exactamente gpu_utilization, cpu_utilization y memory_gb, en\nese orden.\n• Las operaciones de las Tareas 2 y 3 deben ser vectorizadas: no recorrer las observaciones\ncon un for.\n• No modificar el DataFrame original: toda columna nueva va en una copia.\n• No modificar el CSV de entrada."
+  },
+  {
+   "id": "S5",
+   "titulo": "Tarea 1 - Representar las mediciones",
+   "clave": "Tarea 1",
+   "trabajo": true,
+   "pagina": 1,
+   "texto": "Implementar una clase ServerMeasurements que almacene una matriz NumPy bidimensional\n(values) y una tupla con los nombres de las características (feature_names). La clase debe\nlanzar ValueError si la matriz no es bidimensional, si el número de columnas no coincide con la\ncantidad de nombres o si los datos no son numéricos. Implementar también __repr__, que\nmuestre la forma y los nombres.\nImplementar build_measurements(df): selecciona las tres características, las convierte a una\nmatriz NumPy de tipo flotante y retorna un objeto ServerMeasurements.\nResultado esperado:\nServerMeasurements(shape=(300, 3), features=('gpu_utilization',\n'cpu_utilization', 'memory_gb'))"
+  },
+  {
+   "id": "S6",
+   "titulo": "Tarea 2 - Normalizar y calcular un indicador de carga",
+   "clave": "Tarea 2",
+   "trabajo": true,
+   "pagina": 1,
+   "texto": "Versión adaptada para el solver · basada en el enunciado original del curso · uso exclusivo como banco de prueba\nPágina 2\nCalcular media y desviación estándar por columna. Normalizar las tres características mediante\nZ-score. Si una desviación estándar es cero, evitar la división por cero. Después calcular\nload_score usando los pesos (0.50, 0.30, 0.20) y operaciones vectorizadas.\nResultado esperado:\nmeans: [57.99313333 50.54163333 29.45533333]\nzscores.shape    -> (300, 3)\nload_score.shape -> (300,)\nCada columna de zscores debe tener media 0 y desviación 1 (tolerancia 1e-10), y load_score\ndebe ser igual a zscores @ [0.50, 0.30, 0.20]."
+  },
+  {
+   "id": "S7",
+   "titulo": "Tarea 3 - Identificar observaciones para revisión",
+   "clave": "Tarea 3",
+   "trabajo": true,
+   "pagina": 2,
+   "texto": "Crear un nuevo DataFrame a partir del original y agregar las columnas load_score y\nrequires_review (tipo bool). Una fila requiere revisión si load_score > 1.5 o temperature_c >\n80.\nResultado esperado (una fila):\nserver     timestamp            load_score  temperature_c  requires_review\n23  AI-SRV-01  2026-08-24 09:55:00  3.136218    66.97          True"
+  },
+  {
+   "id": "S8",
+   "titulo": "Tarea 4 - Construir un resumen por servidor",
+   "clave": "Tarea 4",
+   "trabajo": true,
+   "pagina": 2,
+   "texto": "Agrupar por server y construir una tabla con una fila por servidor y exactamente estas\ncolumnas, en este orden: server, observations, mean_power_w, max_temperature_c,\nmean_load, review_count. review_count cuenta las observaciones del servidor con\nrequires_review=True.\nResultado esperado (una fila):\nserver     observations  mean_power_w  max_temperature_c  mean_load  review_count\nAI-SRV-01  50            363.4598      86.50              -0.614527  2"
+  },
+  {
+   "id": "S9",
+   "titulo": "Tarea 5 - Guardar y verificar el resultado",
+   "clave": "Tarea 5",
+   "trabajo": true,
+   "pagina": 2,
+   "texto": "Guardar el DataFrame analizado de la Tarea 3 en output/server_analysis.parquet mediante\nPyArrow, sin el índice. Volver a leer el archivo y verificar, como mínimo: filas antes == filas\ndespués, columnas antes == columnas después, esquema antes == esquema después y valores\niguales.\nResultado esperado:\nRound trip verificado: output/server_analysis.parquet\nFilas: True\nColumnas: True\nEsquema: True\nValores: True"
+  },
+  {
+   "id": "S10",
+   "titulo": "Entregable",
+   "clave": "Entregable",
+   "trabajo": false,
+   "pagina": 2,
+   "texto": "• El código fuente en Python que produce todos los resultados.\n• output/server_analysis.parquet.\n• reporte.md con una sección por tarea, en orden (Tarea 1 a Tarea 5), que cite los resultados\nobtenidos por el código: el repr, las medias, la fila 23, la tabla resumen completa (seis\nservidores) y las cuatro verificaciones del round trip. Máximo 800 palabras.\n• Toda cifra del reporte debe provenir de una ejecución del código."
+  }
+ ],
+ "tablas": [
+  {
+   "pagina": 1,
+   "filas": [
+    [
+     "Modalidad",
+     "Tiempo sugerido",
+     "Entrega"
+    ],
+    [
+     "Individual",
+     "2-3 horas",
+     "Scripts, Parquet y reporte.md"
+    ]
+   ]
+  },
+  {
+   "pagina": 1,
+   "filas": [
+    [
+     "Columna",
+     "Tipo",
+     "Descripción"
+    ],
+    [
+     "server",
+     "texto",
+     "identificador del servidor (AI-SRV-01 ... AI-SRV-06)"
+    ],
+    [
+     "timestamp",
+     "fecha-hora",
+     "instante de la medición (leer con parse dates)\n_"
+    ],
+    [
+     "gpu utilization\n_",
+     "float",
+     "utilización de GPU, %"
+    ],
+    [
+     "cpu utilization\n_",
+     "float",
+     "utilización de CPU, %"
+    ],
+    [
+     "memory gb\n_",
+     "float",
+     "memoria en uso, GB"
+    ],
+    [
+     "power w\n_",
+     "float",
+     "potencia, W"
+    ],
+    [
+     "temperature c\n_",
+     "float",
+     "temperatura, °C"
+    ]
+   ]
+  }
+ ],
+ "paginas_sin_texto": [],
+ "escaneado": false,
+ "datos": "/Users/miguelestebanalvarez/Posgrado Maestría Inteligencia Artificial/1er Semestre/IA Generativa y Agentes/Talleres/Taller 03/taller-03-opcional-alvarez-ballesteros-ludeña/tareas/reales/semana1/data",
+ "restricciones": {
+  "entregable": "reporte.md",
+  "formato": "md",
+  "palabras_max": 800,
+  "paginas_max": null,
+  "secciones": []
+ }
+}

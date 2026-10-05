@@ -101,6 +101,9 @@ def mensajes(documento: dict, plan: list[dict], figuras: list[str], problemas: l
                f"LÍMITE DE PALABRAS: {r.get('palabras_max') or 'sin límite'}\n"
                f"FIGURAS DISPONIBLES: {figuras or 'ninguna'}\n\n"
                "RESULTADOS MEDIDOS POR SUBTAREA:\n" + "\n\n".join(resultados))
+    if r.get("limites_parciales"):
+        usuario += ("\n\nLÍMITES DE UNA PARTE (no del documento entero), respétalos en esa parte:\n"
+                    + "\n".join(f"- «{x}»" for x in r["limites_parciales"]))
     if notas:
         usuario += "\n\nDEBES DECLARAR EN EL DOCUMENTO:\n" + "\n".join(f"- {n}" for n in notas)
     msgs = [{"role": "system", "content": SISTEMA}, {"role": "user", "content": usuario}]

@@ -281,7 +281,9 @@ class Solver:
         if self.cfg.usar_grafo and self.capa2 is not None:
             try:                                 # búsqueda local + global de la capa 2, con citas
                 titulos = [x["titulo"] for x in doc["secciones"] if x["clave"] in (s.get("secciones") or [])]
-                local = graphrag.busqueda_local(self.capa2, s, s.get("secciones") or [], titulos)
+                propias = s.get("secciones") or []
+                local = graphrag.busqueda_local(self.capa2, s, propias, titulos,
+                                                dependencias=indexador.dependencias(g, propias))
                 ctx["texto"] += "\n\n" + local["texto"]
                 ctx["citas"] = ctx["citas"] + local["citas"]
                 ctx["modo"] = "grafo+capa2"
@@ -292,12 +294,15 @@ class Solver:
             base = Path(doc["datos"])
             archivos = [f"{base.name}/{f.relative_to(base)}" for f in sorted(base.rglob("*")) if f.is_file()][:30]
             ctx["texto"] += "\n\n[archivos de datos disponibles, rutas relativas]\n" + "\n".join(archivos)
+        if archivos := doc["restricciones"].get("archivos"):
+            ctx["texto"] += ("\n\n[ARCHIVOS QUE EXIGE EL ENUNCIADO, con su ruta relativa exacta]\n"
+                             + "\n".join(f"- {a}" for a in archivos))
         ruta = self._salida(estado) / INTERNO / "contextos" / f"{s['id']}.md"
         ruta.parent.mkdir(parents=True, exist_ok=True)
         ruta.write_text(ctx["texto"] + "\n\n" + ctx["previos"], encoding="utf-8")
         self.traza.decision("investigador", ctx["modo"], f"citas: {ctx['citas']}", subtarea=s["id"],
                             caracteres=len(ctx["texto"]), semillas=local.get("semillas"),
-                            vecinos=local.get("vecinos"))
+                            vecinos=local.get("vecinos"), anclas=local.get("anclas"))
         return {"contexto": ctx}
 
     def _programar(self, estado: Estado) -> dict:
@@ -407,7 +412,9 @@ class Solver:
     def _notas(self, estado: Estado) -> list[str]:
         notas = []
         for s in estado.get("plan") or []:
-            if s["status"] in {"fallida", "omitida"}:
+            # «pendiente»: la cola no llegó a ella (presupuesto o error). El enunciado exige que el
+            # entregable diga QUÉ no se hizo, no solo que algo faltó.
+            if s["status"] in {"fallida", "omitida", "pendiente"} and s.get("tipo") == "calculo":
                 notas.append(f"La subtarea {s['id']} ({', '.join(s.get('secciones') or [])}) no tiene "
                              f"resultado ({s['status']}): no se reportan sus cifras.")
         if estado.get("motivo_parada") == "presupuesto":
@@ -423,6 +430,7 @@ class Solver:
         plan = estado.get("plan") or []
         aprobadas = {s["id"]: Path(s["carpeta"]) for s in plan if s.get("status") == "aprobada" and s.get("carpeta")}
         figuras = redactor.copiar_figuras(aprobadas, self._salida(estado))
+        publicados = self._publicar_exigidos(estado, doc, plan, aprobadas)
         texto = redactor.redactar(self.llm, doc, plan, figuras, estado.get("problemas_redaccion"),
                                   estado.get("borrador"), self._notas(estado))
         salida, r = self._salida(estado), doc["restricciones"]
@@ -451,7 +459,42 @@ class Solver:
         else:
             destino = salida / (nombre if nombre.endswith(".md") else Path(nombre).stem + ".md")
             destino.write_text(texto, encoding="utf-8")
-        return {"borrador": texto, "entregables": [str(destino)], "intentos_redaccion": estado.get("intentos_redaccion", 0) + 1}
+        return {"borrador": texto, "entregables": [str(destino)] + publicados,
+                "intentos_redaccion": estado.get("intentos_redaccion", 0) + 1}
+
+    def _publicar_exigidos(self, estado: Estado, doc: dict, plan: list[dict],
+                           aprobadas: dict[str, Path]) -> list[str]:
+        """Los archivos que el enunciado exige con su ruta (output/x.parquet) se copian, desde la
+        ejecución APROBADA que los escribió, a esa ruta en la raíz de la corrida. Antes quedaban
+        dentro de subtareas/ y el entregable estaba incompleto (S102, S202, S203 el 2026-10-05).
+        Nunca se fabrican: si ninguna ejecución aprobada los escribió, la traza lo dice."""
+        salida, publicados, faltan = self._salida(estado), [], []
+        orden = [s["id"] for s in plan if s["id"] in aprobadas]
+        for rel in doc["restricciones"].get("archivos") or []:
+            origen = None
+            for sid in reversed(orden):                          # la última subtarea que lo escribió
+                carpeta = aprobadas[sid]
+                exacto = carpeta / rel
+                if exacto.is_file():
+                    origen = exacto
+                    break
+                por_nombre = [f for f in carpeta.rglob(Path(rel).name)
+                              if f.is_file() and "entrada" not in f.relative_to(carpeta).parts]
+                if por_nombre:
+                    origen = por_nombre[0]
+                    break
+            if origen is None:
+                faltan.append(rel)
+                continue
+            destino = salida / rel
+            destino.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(origen, destino)
+            publicados.append(str(destino))
+        if publicados or faltan:
+            self.traza.decision("redactor", "archivos_exigidos",
+                                f"publicados: {[str(Path(p).relative_to(salida)) for p in publicados]}; "
+                                f"ninguna ejecución aprobada escribió: {faltan}", faltan=faltan)
+        return publicados
 
     def _verificar(self, estado: Estado) -> dict:
         doc = _cargar(estado["documento"])

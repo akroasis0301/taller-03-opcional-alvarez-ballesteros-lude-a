@@ -127,15 +127,45 @@ def _numero(txt: str) -> int | None:
     return int(digitos) if digitos.isdigit() else None
 
 
-def _limite(texto: str, unidad: str) -> int | None:
+# Un límite que se refiere a UNA parte («la respuesta 18 no supera las 150 palabras») no es el
+# límite del documento. Semana 2 (exploratoria, 2026-10-05): el redactor recibió «máximo 150
+# palabras» para un informe de 18 respuestas y se le pidió recortar 1 753 palabras a 150.
+ALCANCE_PARCIAL = re.compile(r"respuesta|pregunta|p[aá]rrafo|informe ejecutivo|resumen ejecutivo|"
+                             r"cada (?:secci[oó]n|parte|respuesta)|abstract", re.I)
+NO_SUPERA = r"no\s+(?:supera|debe\s+superar|exceda?|pase\s+de)\s+(?:las?\s+|los?\s+)?"
+
+
+def _limites(texto: str, unidad: str) -> tuple[int | None, list[str]]:
+    """(límite del documento, frases con límites de una sola parte)."""
     num = r"(\d[\d   .]*\d|\d|" + "|".join(NUMEROS_ESCRITOS) + r")"
-    patrones = [rf"(?:m[aá]ximo|como\s+m[aá]ximo|≤|hasta)\s*(?:de\s*)?{num}\s*{unidad}",
+    patrones = [rf"(?:m[aá]ximo|como\s+m[aá]ximo|≤|hasta|{NO_SUPERA})\s*(?:de\s*)?{num}\s*{unidad}",
                 rf"{num}\s*{unidad}\s*(?:como\s*)?m[aá]ximo"]
+    global_, parciales = None, []
     for p in patrones:
-        m = re.search(p, texto, re.I)
-        if m and (n := _numero(m.group(1))):
-            return n
-    return None
+        for m in re.finditer(p, texto, re.I):
+            n = _numero(m.group(1))
+            if not n:
+                continue
+            inicio = max(texto.rfind(". ", 0, m.start()), texto.rfind("•", 0, m.start()), 0)
+            anterior = max(texto.rfind(". ", 0, max(inicio - 1, 0)), 0)        # la frase de antes también
+            item = re.search(r"(?:^|\s)\d{1,2}$", texto[max(inicio - 4, 0): inicio])  # «18. Redacte …»
+            if item or ALCANCE_PARCIAL.search(texto[anterior: m.end() + 40]):
+                frase = texto[inicio: m.end() + 60].strip(" .•")[:200]
+                if frase not in parciales:
+                    parciales.append(frase)
+            elif global_ is None:
+                global_ = n
+    return global_, parciales
+
+
+def _limite(texto: str, unidad: str) -> int | None:
+    return _limites(texto, unidad)[0]
+
+
+# Archivos que el enunciado exige con su ruta (Semana 1: output/server_analysis.parquet). Los de
+# entrada (data/…) no cuentan: no se producen, se leen.
+ARCHIVO_EXIGIDO = re.compile(r"(?<![\w/])((?:output|outputs|salida|resultados|results|figuras)/[\w\-./]+\.[a-z0-9]{2,8})\b",
+                             re.I)
 
 
 def restricciones(texto: str, secciones: list[dict]) -> dict:
@@ -157,11 +187,15 @@ def restricciones(texto: str, secciones: list[dict]) -> dict:
         partes = re.split(r",\s*|\s+y\s+", m.group(1))
         exigidas = [p.strip() for p in partes
                     if p.strip() and p.strip()[0].isupper() and len(p.split()) <= 4]
+    palabras, parciales = _limites(plano, "palabras")
+    archivos = list(dict.fromkeys(a.rstrip(".") for a in ARCHIVO_EXIGIDO.findall(plano)))
     return {"entregable": nombre,
             "formato": Path(nombre).suffix.lstrip(".").lower(),
-            "palabras_max": _limite(plano, "palabras"),
+            "palabras_max": palabras,
             "paginas_max": _limite(plano, r"p[aá]ginas?"),
-            "secciones": exigidas}
+            "secciones": exigidas,
+            "limites_parciales": parciales,
+            "archivos": archivos}
 
 
 # ------------------------------------------------------------------ entrada

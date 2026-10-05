@@ -4,6 +4,7 @@ Ninguna usa red: el LLM es un guion y los embeddings son los léxicos (n-gramas 
 """
 from __future__ import annotations
 
+import dataclasses
 import json
 import threading
 import textwrap
@@ -197,7 +198,7 @@ def test_capa2_de_punta_a_punta(enunciado, tmp_path):
     assert {"depende_de", "menciona", "relacion"} <= tipos
     # la extracción del enunciado sí se cobra a la tarea; el índice de las notas no
     del_indexador = [f for f in filas if f["tipo"] == "llamada" and f["agente"] == "indexador"]
-    assert len(del_indexador) == 5        # una por sección con texto: preámbulo, Partes 1-3, el reporte
+    assert len(del_indexador) == 3        # una por sección de TRABAJO (Partes 1-3): las únicas que anclan
     pytest.importorskip("matplotlib")
     assert (salida / "grafo_entidades.png").exists()
 
@@ -230,3 +231,61 @@ def test_si_la_capa2_falla_sigue_con_el_esqueleto(enunciado, tmp_path):
     filas = leer(r["trace"])
     assert any(f.get("decision") == "capa2_no_disponible" for f in filas)
     assert not any(f.get("decision") == "grafo+capa2" for f in filas)
+
+
+# =========================================================================== F1 y F2 (tras r2, 2026-10-04)
+def test_vacio_por_longitud_en_el_tope_no_se_repite(tmp_path):
+    """r2, Tarea C: repetir una llamada que ya razonó hasta el tope cobró otros 32 768 tokens."""
+    from solver.cliente_llm import LLMVacio
+
+    llm = LLMGuion([{"contenido": "", "fin": "length"}])
+    traza = Traza(tmp_path / "t.jsonl")
+    c = ClienteLLM(Config(llm=llm, max_tokens=1000, max_tokens_tope=2000), traza)
+    with pytest.raises(LLMVacio):
+        c.chat("programador", [{"role": "user", "content": "x"}])
+    assert [ll["max_tokens"] for ll in llm.llamadas] == [1000, 2000]        # duplica una vez y para
+    assert leer(traza.ruta)[-1]["decision"] == "tope_de_razonamiento"
+
+
+def test_el_indexador_usa_su_propio_tope_de_tokens(tmp_path):
+    llm = LLMGuion([{"contenido": "", "fin": "length"}])
+    traza = Traza(tmp_path / "t.jsonl")
+    c = ClienteLLM(Config(llm=llm, max_tokens_indexador=4096), traza)
+    assert G.extraer_en_paralelo(c, [("texto", "Parte 1")], hilos=1) == []   # se omite la sección
+    assert [ll["max_tokens"] for ll in llm.llamadas] == [4096]               # sin duplicar
+    assert leer(traza.ruta)[-1]["decision"] == "extraccion_fallida"
+
+
+def _indice_de_prueba(tmp_path):
+    llm = LLMGuion([con_capa2()])
+    cfg = _cfg(tmp_path, llm)
+    traza = Traza(tmp_path / "t.jsonl")
+    cliente = ClienteLLM(cfg, traza)
+    notas = G.indice_notas(cliente, cfg, traza)
+    doc = {"secciones": [
+        {"clave": "Parte 1", "titulo": "Parte 1 — Datos", "texto": "Carga los datos."},
+        {"clave": "Parte 2", "titulo": "Parte 2 — Modelo", "texto": "Mide la exactitud."}]}
+    sin_entidades = LLMGuion([lambda m: json.dumps({"entidades": [], "relaciones": []})
+                              if "[Parte 1]" in m[-1]["content"] else json.dumps(ENTIDADES_ENUNCIADO)])
+    cliente2 = ClienteLLM(dataclasses.replace(cfg, llm=sin_entidades), traza)
+    return G.indexar_tarea(cliente2, cfg, doc, traza, notas)
+
+
+def test_sin_anclas_no_se_agregan_notas(tmp_path):
+    """La T1 de A en r2 recibió «§ 6.3 GraphRAG» para cargar breast_cancer: ninguna entidad
+    de su sección estaba en las notas. Ahora no recibe fragmentos y lo dice."""
+    indice = _indice_de_prueba(tmp_path)
+    r = G.busqueda_local(indice, {"objetivo": "cargar los datos"}, ["Parte 1"], ["Parte 1 — Datos"])
+    assert r["anclas"] == [] and r["citas"] == []
+    assert "ninguna entidad de esta subtarea aparece en las notas" in r["texto"]
+    # con la dependencia (Parte 2 menciona «accuracy» = «Exactitud» de las notas) sí hay notas
+    r = G.busqueda_local(indice, {"objetivo": "cargar los datos"}, ["Parte 1"], ["Parte 1 — Datos"],
+                         dependencias=["Parte 2"])
+    assert r["anclas"] == ["Exactitud"] and any(c.startswith("s9-evaluacion") for c in r["citas"])
+
+
+def test_una_entidad_en_demasiados_fragmentos_no_ancla(tmp_path):
+    indice = _indice_de_prueba(tmp_path)
+    clave = indice.fusion.clave_de("accuracy")
+    indice.fusion.entidades[clave]["fragmentos"] = [f"x#{i}" for i in range(G.MAX_FRAGMENTOS_ANCLA + 1)]
+    assert G.anclas(indice, ["Parte 2"]) == []

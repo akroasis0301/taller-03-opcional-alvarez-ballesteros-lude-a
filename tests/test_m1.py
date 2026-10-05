@@ -576,3 +576,74 @@ def test_de_punta_a_punta_con_notebook(tmp_path):
     assert nb.suffix == ".ipynb" and nb.parent == (tmp_path / "corrida").resolve()   # en la raíz, como lo busca B01
     from solver.formatos import errores_notebook, texto_notebook
     assert errores_notebook(nb) == [] and "entropia 1.9873" in texto_notebook(nb)
+
+
+# ======================================================================== tras la exploratoria (2026-10-05)
+def test_limite_de_una_respuesta_no_es_el_del_documento():
+    """Semana 2: «La respuesta 18 no supera las 150 palabras» se tomó como límite del informe."""
+    texto = ("Completar las preguntas 11 a 17 y redactar el informe ejecutivo de máximo 150 palabras de la "
+             "pregunta 18. Entregable • informe.md con las 18 preguntas. La respuesta 18 no supera las 150 "
+             "palabras. 18. Redacte un máximo de 150 palabras que incluya unidad.")
+    r = lector.restricciones(texto, [])
+    assert r["palabras_max"] is None and len(r["limites_parciales"]) == 3
+    r = lector.restricciones("Un reporte.md con estas secciones, en este orden: Resultados, Discusión y "
+                             "Conclusiones. Máximo 1 200 palabras.", [])
+    assert r["palabras_max"] == 1200 and r["limites_parciales"] == []
+
+
+def test_archivos_exigidos_por_el_enunciado():
+    r = lector.restricciones("Guardar en output/server_analysis.parquet. Leer data/x.csv. Guardar "
+                             "output/store_differences.csv y output/store_differences.png.", [])
+    assert r["archivos"] == ["output/server_analysis.parquet", "output/store_differences.csv",
+                             "output/store_differences.png"]
+
+
+ENUNCIADO_CON_ARCHIVO = ENUNCIADO.replace("Calcula la media de los datos con semilla 0.",
+                                          "Calcula la media de los datos con semilla 0 y guárdala en output/media.csv.")
+T1_CON_ARCHIVO = ("import json\nfrom pathlib import Path\nPath('output').mkdir(exist_ok=True)\n"
+                  "Path('output/media.csv').write_text('media\\n0.1234\\n')\n" + T1)
+
+
+def test_los_archivos_exigidos_se_publican_en_la_raiz(tmp_path):
+    from solver.orquestador import Solver
+
+    carpeta = tmp_path / "tarea-x"
+    carpeta.mkdir()
+    (carpeta / "enunciado.md").write_text(ENUNCIADO_CON_ARCHIVO, encoding="utf-8")
+    base = guion()
+
+    def responder(m):
+        if "programador" in m[0]["content"] and "SUBTAREA T1" in m[1]["content"]:
+            assert "output/media.csv" in m[1]["content"]          # el programador sabe qué se exige
+            return f"```python\n{T1_CON_ARCHIVO}```"
+        return base(m)
+    salida = tmp_path / "corrida"
+    r = Solver(Config(llm=LLMGuion([responder]))).solve(str(carpeta), str(salida))
+    assert (salida / "output" / "media.csv").read_text() == "media\n0.1234\n"
+    assert str(salida / "output" / "media.csv") in r["entregables"]
+    d = next(f for f in leer(r["trace"]) if f.get("decision") == "archivos_exigidos")
+    assert d["faltan"] == []
+
+
+def test_un_archivo_exigido_que_nadie_escribio_no_se_fabrica(tmp_path):
+    from solver.orquestador import Solver
+
+    carpeta = tmp_path / "tarea-x"
+    carpeta.mkdir()
+    (carpeta / "enunciado.md").write_text(ENUNCIADO_CON_ARCHIVO, encoding="utf-8")
+    salida = tmp_path / "corrida"
+    r = Solver(Config(llm=LLMGuion([guion()]))).solve(str(carpeta), str(salida))
+    assert not (salida / "output").exists()
+    d = next(f for f in leer(r["trace"]) if f.get("decision") == "archivos_exigidos")
+    assert d["faltan"] == ["output/media.csv"]
+
+
+@pytest.mark.parametrize("codigo", ["import pandas as pd\npd.read_csv('https://example.org/datos.csv')",
+                                    "import numpy as np\nnp.loadtxt(fname='ftp://example.org/x.txt')"])
+def test_una_url_como_argumento_es_una_descarga(codigo):
+    v = revisar(codigo)
+    assert v.descargas and not v.violaciones          # se detiene hasta que una persona confirme
+
+
+def test_importlib_esta_bloqueado():
+    assert revisar("import importlib\nimportlib.import_module('soc' + 'ket')").violaciones

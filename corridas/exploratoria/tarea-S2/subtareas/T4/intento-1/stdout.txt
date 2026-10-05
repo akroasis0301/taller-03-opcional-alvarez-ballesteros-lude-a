@@ -1,0 +1,13 @@
+=== T4: Estadísticos de las diferencias y prueba t pareada ===
+n                = 16
+mean             = 0.418750
+sample_sd (ddof=1) = 1.253379
+standard_error   = 0.313345  (SE = sd/sqrt(n) verificado: True)
+t                = 1.336388
+gl               = 15
+p (bilateral)    = 0.201342
+IC t 95%         = [-0.249128, 1.086628]  (contiene 0: True)
+Decisión alpha=0.05: no se rechaza H0
+sd (dispersión entre tiendas) = 1.253379  vs  SE (precisión de la media) = 0.313345
+Consistencia con T2 (vector de diferencias): True
+Archivos: resultados.json | t4_resumen_estadistico.csv | t4_media_ic_diferencias.png

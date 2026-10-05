@@ -1,0 +1,166 @@
+{
+  "subtarea": "T2",
+  "archivo_entrada": "data/model_errors.csv",
+  "validaciones_aplicadas": [
+    "Columnas exactas store_id, error_a, error_b (ValueError en caso contrario)",
+    "store_id único y no nulo (ValueError que menciona el identificador)",
+    "error_a y error_b numéricos, finitos y no negativos (ValueError en caso contrario)",
+    "Número de tiendas igual a 16",
+    "Emparejamiento verificado por store_id (difference recalculada por tienda)",
+    "CSV original intacto (SHA-256 idéntico antes y después)"
+  ],
+  "n_filas_tabla_pareada": 16,
+  "n_columnas_tabla_pareada": 5,
+  "columnas_tabla_pareada": [
+    "store_id",
+    "error_a",
+    "error_b",
+    "difference",
+    "favors"
+  ],
+  "tabla_pareada": [
+    {
+      "store_id": "S01",
+      "error_a": 12.4,
+      "error_b": 10.6,
+      "difference": 1.8000000000000007,
+      "favors": "B"
+    },
+    {
+      "store_id": "S02",
+      "error_a": 9.8,
+      "error_b": 9.1,
+      "difference": 0.7000000000000011,
+      "favors": "B"
+    },
+    {
+      "store_id": "S03",
+      "error_a": 15.1,
+      "error_b": 13.9,
+      "difference": 1.1999999999999993,
+      "favors": "B"
+    },
+    {
+      "store_id": "S04",
+      "error_a": 11.0,
+      "error_b": 12.4,
+      "difference": -1.4000000000000004,
+      "favors": "A"
+    },
+    {
+      "store_id": "S05",
+      "error_a": 8.7,
+      "error_b": 7.2,
+      "difference": 1.4999999999999991,
+      "favors": "B"
+    },
+    {
+      "store_id": "S06",
+      "error_a": 13.6,
+      "error_b": 13.9,
+      "difference": -0.3000000000000007,
+      "favors": "A"
+    },
+    {
+      "store_id": "S07",
+      "error_a": 10.2,
+      "error_b": 9.3,
+      "difference": 0.8999999999999986,
+      "favors": "B"
+    },
+    {
+      "store_id": "S08",
+      "error_a": 14.9,
+      "error_b": 12.8,
+      "difference": 2.0999999999999996,
+      "favors": "B"
+    },
+    {
+      "store_id": "S09",
+      "error_a": 7.5,
+      "error_b": 9.3,
+      "difference": -1.8000000000000007,
+      "favors": "A"
+    },
+    {
+      "store_id": "S10",
+      "error_a": 16.0,
+      "error_b": 15.0,
+      "difference": 1.0,
+      "favors": "B"
+    },
+    {
+      "store_id": "S11",
+      "error_a": 9.3,
+      "error_b": 9.8,
+      "difference": -0.5,
+      "favors": "A"
+    },
+    {
+      "store_id": "S12",
+      "error_a": 12.8,
+      "error_b": 11.1,
+      "difference": 1.700000000000001,
+      "favors": "B"
+    },
+    {
+      "store_id": "S13",
+      "error_a": 11.7,
+      "error_b": 12.9,
+      "difference": -1.200000000000001,
+      "favors": "A"
+    },
+    {
+      "store_id": "S14",
+      "error_a": 8.9,
+      "error_b": 8.3,
+      "difference": 0.5999999999999996,
+      "favors": "B"
+    },
+    {
+      "store_id": "S15",
+      "error_a": 13.2,
+      "error_b": 11.9,
+      "difference": 1.299999999999999,
+      "favors": "B"
+    },
+    {
+      "store_id": "S16",
+      "error_a": 10.6,
+      "error_b": 11.5,
+      "difference": -0.9000000000000004,
+      "favors": "A"
+    }
+  ],
+  "tiendas_favorecen_A": 6,
+  "tiendas_favorecen_B": 10,
+  "empates": 0,
+  "hay_empates": false,
+  "ids_favor_A": [
+    "S04",
+    "S06",
+    "S09",
+    "S11",
+    "S13",
+    "S16"
+  ],
+  "ids_favor_B": [
+    "S01",
+    "S02",
+    "S03",
+    "S05",
+    "S07",
+    "S08",
+    "S10",
+    "S12",
+    "S14",
+    "S15"
+  ],
+  "ids_empate": [],
+  "emparejamiento_verificado_por_store_id": true,
+  "sha256_csv_antes": "cdd1af7ad3a6ee8f49a14f48ea2d8347591e85388a222b2a83b9d661ae95d7a2",
+  "sha256_csv_despues": "cdd1af7ad3a6ee8f49a14f48ea2d8347591e85388a222b2a83b9d661ae95d7a2",
+  "csv_original_intacto": true,
+  "tabla_pareada_guardada_en": "output/store_differences.csv",
+  "figura_guardada_en": "t2_diferencias_por_tienda.png"
+}

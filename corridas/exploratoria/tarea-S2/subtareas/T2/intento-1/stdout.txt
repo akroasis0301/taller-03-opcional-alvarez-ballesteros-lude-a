@@ -1,0 +1,8 @@
+=== Resumen T2 ===
+CSV validado: columnas exactas, store_id único/no nulo, errores numéricos/finitos/no negativos.
+Tabla pareada: 16 filas x 5 columnas; emparejamiento verificado por store_id.
+Tiendas que favorecen a A: 6 -> ['S04', 'S06', 'S09', 'S11', 'S13', 'S16']
+Tiendas que favorecen a B: 10 -> ['S01', 'S02', 'S03', 'S05', 'S07', 'S08', 'S10', 'S12', 'S14', 'S15']
+Empates: 0 (hay_empates = False)
+Salidas: output/store_differences.csv, resultados.json, t2_diferencias_por_tienda.png
+data/model_errors.csv intacto: True (SHA-256 cdd1af7ad3a6...)

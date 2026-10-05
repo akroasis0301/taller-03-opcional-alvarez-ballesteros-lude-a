@@ -36,8 +36,11 @@ def negar_siempre(motivo: str) -> bool:
 @dataclass
 class Config:
     # --- Frenos (Parte 3, P3 los fuerza) ---
-    presupuesto_tokens: int = field(default_factory=lambda: _entero("SOLVER_PRESUPUESTO_TOKENS", 300_000))
-    reserva_redactor: int = field(default_factory=lambda: _entero("SOLVER_RESERVA_REDACTOR", 30_000))
+    # 500 k: con 300 k la Tarea C (r2) y la Semana 2 (exploratoria) se quedaron sin presupuesto con
+    # subtareas pendientes; el modelo de la H200 razona siempre y lo cobra en la salida. La reserva
+    # del redactor es el 10 %: el redactor de la Semana 2 gastó 36 k en una sola llamada.
+    presupuesto_tokens: int = field(default_factory=lambda: _entero("SOLVER_PRESUPUESTO_TOKENS", 500_000))
+    reserva_redactor: int = field(default_factory=lambda: _entero("SOLVER_RESERVA_REDACTOR", 50_000))
     max_intentos: int = field(default_factory=lambda: _entero("SOLVER_MAX_INTENTOS", 3))
     timeout_s: int = field(default_factory=lambda: _entero("SANDBOX_TIMEOUT_S", 120))
     # Recibe el motivo (p. ej. "fetch_openml en T2") y devuelve True si una persona aprueba.
@@ -51,6 +54,11 @@ class Config:
     max_tokens: int = 32_768             # el modelo de la H200 razona siempre y lo cobra aquí
     max_tokens_tope: int = 65_536        # hasta dónde se duplica si vuelve vacío por longitud
     reintentos_vacio: int = 2
+    # Extraer entidades no necesita 32 k de razonamiento: en la Tarea C (r2, 2026-10-04) la
+    # tabla del corpus razonó hasta 32 768 sin responder y hubo que repetirla con 65 536.
+    # 16 384 cubre 43 de las 44 llamadas del índice de las notas y todas las de A, B y C
+    # salvo las dos que se fueron al tope; esas se omiten en vez de costar 32 k + 65 k.
+    max_tokens_indexador: int = field(default_factory=lambda: _entero("SOLVER_MAX_TOKENS_INDEXADOR", 16_384))
     reintentos_red: int = 1              # solo errores de conexión; un timeout NO se reintenta
     # Tiempo máximo de UNA llamada al LLM. h200.py usa 600 s; con el Ollama compartido,
     # una llamada del programador pasó de 10 min (corrida del 2026-10-04).

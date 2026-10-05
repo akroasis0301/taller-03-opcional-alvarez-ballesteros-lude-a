@@ -22,6 +22,8 @@ de Python 3.12 que resuelve una subtarea. Reglas obligatorias:
 - Guarda cada figura como PNG en la carpeta actual (plt.savefig("nombre.png", dpi=120)).
 - Respeta al pie de la letra semillas, particiones y parámetros del enunciado. El conjunto de
   prueba no se usa para ajustar nada (tampoco escaladores ni selección de atributos).
+- Si el contexto lista ARCHIVOS QUE EXIGE EL ENUNCIADO y tu subtarea produce alguno, escríbelo con
+  esa ruta relativa EXACTA (crea la carpeta con Path(...).parent.mkdir(parents=True, exist_ok=True)).
 - Imprime un resumen breve de los resultados.
 Devuelve SOLO el script, dentro de un bloque ```python ... ```."""
 

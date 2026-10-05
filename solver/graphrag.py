@@ -184,7 +184,8 @@ def _limpiar_extraccion(datos: dict) -> dict:
 def extraer(llm: ClienteLLM, texto: str, cita: str, subtarea: str | None = None) -> dict:
     datos = llm.pedir_json("indexador", [
         {"role": "system", "content": SISTEMA_ENTIDADES},
-        {"role": "user", "content": f"FRAGMENTO [{cita}]:\n{texto[:6000]}"}], subtarea=subtarea)
+        {"role": "user", "content": f"FRAGMENTO [{cita}]:\n{texto[:6000]}"}], subtarea=subtarea,
+        max_tokens=llm.cfg.max_tokens_indexador, tope=llm.cfg.max_tokens_indexador)
     return {"cita": cita, **_limpiar_extraccion(datos)}
 
 
@@ -366,7 +367,8 @@ def resumir_comunidades(llm: ClienteLLM, fusion: Fusion, grupos: list[list[str]]
         citas = sorted({c for e in ents for c in e["citas"]})
         try:
             resumen = llm.pedir("indexador", [{"role": "system", "content": SISTEMA_COMUNIDAD},
-                                              {"role": "user", "content": usuario}], subtarea=f"comunidad-{i}").strip()
+                                              {"role": "user", "content": usuario}], subtarea=f"comunidad-{i}",
+                               max_tokens=llm.cfg.max_tokens_indexador, tope=llm.cfg.max_tokens_indexador).strip()
         except PresupuestoAgotado:
             raise
         except Exception as err:
@@ -482,7 +484,12 @@ def indexar_tarea(cliente: ClienteLLM, cfg, documento: dict, traza: Traza,
     con las del índice de las notas."""
     embedder = elegir_embedder(cliente, cfg.embedder, traza)
     fusion = Fusion.de_dict(notas["fusion"]) if notas else Fusion()
-    piezas = [(f"{s['titulo']}\n{s['texto']}", s["clave"]) for s in documento["secciones"] if s["texto"].strip()]
+    # Solo las secciones de TRABAJO: son las únicas que la búsqueda local usa como anclas (las de la
+    # subtarea y sus dependencias). Semana 2 (exploratoria, 2026-10-05): extraer las 18 secciones,
+    # anexos y escenario incluidos, costó 84 k tokens de 309 k. Sin secciones de trabajo, todas.
+    candidatas = [s for s in documento["secciones"] if s["texto"].strip()]
+    de_trabajo = [s for s in candidatas if s.get("trabajo")]
+    piezas = [(f"{s['titulo']}\n{s['texto']}", s["clave"]) for s in (de_trabajo or candidatas)]
     extracciones = extraer_en_paralelo(cliente, piezas, cfg.hilos_indexador)
     del_enunciado = {ex["cita"]: fusion.agregar(ex, "enunciado") for ex in extracciones}
     comunidades_notas = notas["comunidades"] if notas else []
@@ -562,11 +569,29 @@ def busqueda_global(indice: IndiceTarea, q: np.ndarray, k: int = 2,
     return [(indice.comunidades[i], s) for i, s in pares[:k]]
 
 
+MAX_FRAGMENTOS_ANCLA = 4   # una entidad citada en más fragmentos («LLM», «embeddings») no ancla nada
+MARGEN_SIMILITUD = 0.05    # solo los fragmentos a esta distancia del mejor
+
+
+def anclas(indice: IndiceTarea, secciones: list[str]) -> list[str]:
+    """Las entidades que el enunciado menciona en esas secciones Y que también están en las notas:
+    son el único puente legítimo hacia el material del curso. Calibrado con r2 (2026-10-04): sin
+    este filtro, la T1 de la Tarea A (cargar breast_cancer y dividir) recibía «§ 6.3 GraphRAG» y
+    «§ 5.3 Structured outputs» con similitud 0.52, más alta que la de fragmentos pertinentes de
+    otras tareas (0.508): ningún umbral de similitud separaba lo útil del ruido."""
+    ents = indice.fusion.entidades
+    vistas = [c for s in secciones for c in indice.del_enunciado.get(s, [])]
+    return [c for c in dict.fromkeys(vistas)
+            if "notas" in ents[c]["origen"] and 0 < len(ents[c].get("fragmentos", [])) <= MAX_FRAGMENTOS_ANCLA]
+
+
 def busqueda_local(indice: IndiceTarea, subtarea: dict, propias: list[str], titulos: list[str],
-                   k_semillas: int = 6, k_vecinos: int = 6, k_fragmentos: int = 3,
-                   max_car: int = 6000) -> dict:
-    """Semillas (las entidades de las secciones propias + las k más parecidas) → vecinos → los
-    fragmentos de las notas que las mencionan, y los resúmenes de su comunidad. Todo citado."""
+                   dependencias: list[str] | None = None, k_semillas: int = 6, k_vecinos: int = 6,
+                   k_fragmentos: int = 3, max_car: int = 6000) -> dict:
+    """Semillas (las entidades de las secciones propias + las k más parecidas) → vecinos; y del
+    material del curso, SOLO lo que alcanzan las anclas (entidades del enunciado que también están
+    en las notas, en las secciones propias o en sus dependencias): sus fragmentos más parecidos a la
+    subtarea y los resúmenes de sus comunidades. Sin anclas no se agregan notas. Todo citado."""
     ents, fila = indice.fusion.entidades, {c: i for i, c in enumerate(indice.claves)}
     consulta = " ".join([subtarea.get("objetivo", ""), subtarea.get("criterio", ""), *titulos])
     q = indice.embedder.embed([consulta])[0]
@@ -586,11 +611,15 @@ def busqueda_local(indice: IndiceTarea, subtarea: dict, propias: list[str], titu
     seleccion = semillas + vecinos_top
     rels = [r for r in rels if r["origen"] in seleccion and r["destino"] in seleccion][:15]
 
+    ancladas = anclas(indice, list(propias) + list(dependencias or []))
     ids_frag = {f["id"]: i for i, f in enumerate(indice.fragmentos)}
-    candidatos = sorted({ids_frag[f] for c in seleccion for f in ents[c].get("fragmentos", []) if f in ids_frag})
-    frags = _top(indice.F, q, k_fragmentos, candidatos or None)
-    preferidas = {ents[c].get("comunidad") for c in semillas} - {None}
-    globales = busqueda_global(indice, q, 2, preferidas)
+    candidatos = sorted({ids_frag[f] for c in ancladas for f in ents[c]["fragmentos"] if f in ids_frag})
+    frags = _top(indice.F, q, k_fragmentos, candidatos) if candidatos else []
+    if frags:
+        frags = [(i, s) for i, s in frags if s >= frags[0][1] - MARGEN_SIMILITUD]
+    de_anclas = {ents[c].get("comunidad") for c in ancladas} - {None}
+    globales = [(c, s) for c, s in busqueda_global(indice, q, len(indice.comunidades), de_anclas)
+                if c["id"] in de_anclas][:2]
 
     def fuentes(e):
         return "; ".join(e["citas"][:3])
@@ -605,6 +634,9 @@ def busqueda_local(indice: IndiceTarea, subtarea: dict, propias: list[str], titu
             f"[{'; '.join(r['citas'][:2])}]"
             for r in rels))
     citas = []
+    if not ancladas:
+        partes.append("[material del curso: ninguna entidad de esta subtarea aparece en las notas; "
+                      "no se agregan fragmentos]")
     for i, s in frags:
         f = indice.fragmentos[i]
         partes.append(f"[notas del curso — {f['cita']} · similitud {s:.3f}]\n{f['texto'][:1200]}")
@@ -616,7 +648,8 @@ def busqueda_local(indice: IndiceTarea, subtarea: dict, propias: list[str], titu
     if len(texto) > max_car:
         texto = texto[:max_car] + "\n[… recortado]"
     return {"texto": texto, "citas": citas, "semillas": [ents[c]["nombre"] for c in semillas],
-            "vecinos": [ents[c]["nombre"] for c in vecinos_top]}
+            "vecinos": [ents[c]["nombre"] for c in vecinos_top],
+            "anclas": [ents[c]["nombre"] for c in ancladas]}
 
 
 # =========================================================================== figura

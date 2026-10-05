@@ -1,0 +1,15 @@
+================================================================
+T2 — Z-score vectorizado y load_score
+================================================================
+Matriz de características   : (300, 3) (float64), no finitos=0
+means                       : [57.99313333 50.54163333 29.45533333]
+stds (ddof=0)               : [14.43011728 12.69846349  6.53680183]
+zscores.shape               : (300, 3)
+load_score.shape            : (300,)
+media de zscores (por col)  : [ 5.68434189e-16  2.36847579e-16 -3.31586610e-16]  -> |media|<=1e-10: True
+std de zscores (por col)    : [1. 1. 1.]  -> |std-1|<=1e-10: True
+load_score min/max/media    : -1.955650 / 3.136218 / 0.000000
+load_score == zscores @ w   : True
+means ≈ esperados           : True
+Verificación contra T1      : {'resultados_json_leido': True, 'medias_coinciden_con_T1': True, 'desv_std_T1_coincide_con_ddof': 0}
+ÉXITO                       : True

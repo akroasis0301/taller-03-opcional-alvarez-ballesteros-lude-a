@@ -28,7 +28,7 @@ con `answer`, `trace`, `status`, `model`, `usage` para el Taller 4.
 
 | Campo | Defecto | Quién lo usa |
 |---|---|---|
-| `presupuesto_tokens`, `reserva_redactor` | `.env` (300 000 / 30 000) | P3: freno 1 |
+| `presupuesto_tokens`, `reserva_redactor` | `.env` (500 000 / 50 000; antes 300 000 / 30 000) | freno 1 |
 | `max_intentos` | 3 | P3: freno 2 |
 | `timeout_s` | 120 | P3: freno 3 |
 | `confirmar(motivo) -> bool` | niega siempre | P3: freno 4 y extensión D |
@@ -37,6 +37,7 @@ con `answer`, `trace`, `status`, `model`, `usage` para el Taller 4.
 | `capa2` | `SOLVER_CAPA2` (1) | apagarla abarata las pruebas de frenos |
 | `notas`, `cache_graphrag` | `conocimiento/notas-teoricas`, `cache/graphrag` | capa 2 (sección 10) |
 | `hilos_indexador` | 8 | llamadas en paralelo del indexador |
+| `max_tokens_indexador` | 16 384 | tope de una extracción o un resumen (no se duplica) |
 | `presupuesto_notas` | 2 000 000 | el índice de las notas, aparte del de la tarea |
 | `embedder` | `None` (= bge-m3, con respaldo léxico) | pruebas sin red |
 
@@ -169,10 +170,50 @@ Eventos en la traza:
 | `decision: indice_notas` | `cache: true/false`; si se construyó, tokens y duración (no se cobran a la tarea) |
 | `decision: capa2` | entidades por tipo, cuántas se fusionaron con las notas y ejemplos |
 | `evento: embeddings` | modelo (`bge-m3` o `lexico-…`), cuántos textos, latencia |
-| `decision: grafo+capa2` | por subtarea: `citas`, `semillas`, `vecinos` |
+| `decision: grafo+capa2` | por subtarea: `citas`, `semillas`, `vecinos`, `anclas` |
+| `decision: tope_de_razonamiento` | una llamada volvió vacía por longitud ya en su tope: no se repite |
 | `decision: capa2_no_disponible` | la capa 2 falló y la corrida siguió con el esqueleto |
 | `decision: embeddings_lexicos` | bge-m3 no respondió; se usó el respaldo léxico |
 
 **Para la 2.b (P2):** los tokens del índice de las notas son un costo fijo que se paga una
 vez; repórtenlo aparte (están en `indice.json`, campo `tokens`). Los tokens de extraer el
 enunciado sí están en `resumen_solver.csv` del solver completo, y no en `sin_grafo`.
+
+**Anclas (desde el 2026-10-05).** Un fragmento de las notas solo llega al programador si lo cita
+una entidad que el enunciado menciona en las secciones de la subtarea (o en sus dependencias) y
+que también está en las notas, y que no aparece en más de 4 fragmentos. Se entregan los que están
+a 0.05 del más parecido. Sin anclas, el contexto lo dice y no agrega notas. Se calibró con r2: un
+umbral de similitud no separaba lo útil (0.508) del ruido (0.525).
+
+## 11. Parte 2: golden, tablas y evidencia
+
+```bash
+# 2.a — el golden del grupo (A, B, C del kit + A09 + S1 + S2); SIEMPRE desde la raíz del repo
+uv run python golden/verdades_reales.py
+uv run python solver-v2/evaluar_solver.py --golden golden/golden_tareas.json --solo-evaluar corridas/completo-r2 --solo A B C
+# 2.b — corridas y tablas
+uv run python solver-v2/evaluar_solver.py --golden golden/golden_tareas.json --solver solver.orquestador:Solver \
+  --ruta . --corridas corridas/completo-r1 --salida resultados/resultados_completo_r1.csv
+uv run python solver-v2/evaluar_solver.py --golden golden/golden_tareas.json --solver solver.orquestador:SolverSinGrafo \
+  --ruta . --corridas corridas/sin_grafo-r1 --salida resultados/resultados_sin_grafo_r1.csv
+uv run python scripts/tablas_2b.py --variante completo corridas/completo-r1:resultados/resultados_completo_r1.csv \
+  --variante sin_grafo corridas/sin_grafo-r1:resultados/resultados_sin_grafo_r1.csv --salida resultados/tablas_2b
+# 2.c — la evidencia de una subtarea
+uv run python scripts/evidencia.py corridas/completo-r1/tarea-C --subtarea T3 --completo --salida informe/evidencia/C_T3.md
+```
+
+`golden/README.md` lista cada comprobación con lo que detecta (`_por_que` en el JSON).
+
+## 12. Cambios tras la corrida exploratoria (2026-10-05)
+
+| Cambio | Dónde | Evento / campo |
+|---|---|---|
+| Un límite de una sola parte («la respuesta 18 no supera las 150 palabras») ya no es el límite del documento | `lector._limites` | `restricciones.limites_parciales` (se le pasan al redactor) |
+| Archivos exigidos con ruta (`output/x.parquet`): el programador los recibe en el contexto y el orquestador copia a la raíz los que escribió una ejecución aprobada; nunca se fabrican | `lector.ARCHIVO_EXIGIDO`, `orquestador._publicar_exigidos` | `restricciones.archivos`; `decision: archivos_exigidos` con `faltan` |
+| La capa 2 extrae solo las secciones de trabajo (las únicas que anclan) | `graphrag.indexar_tarea` | menos llamadas del indexador |
+| Presupuesto 500 000 / reserva 50 000 | `config.py`, `.env` | — |
+| El reporte dice QUÉ subtareas quedaron pendientes cuando se agota el presupuesto | `orquestador._notas` | — |
+| La guarda trata una URL como argumento como descarga y prohíbe `importlib` | `sandbox/guarda.py` | `decision: confirmacion_red` |
+
+Scripts nuevos: `forzar_frenos.py` (Parte 3), `juez.py` (Parte 4, opción E), `diagrama_png.py`,
+`informe_pdf.py` y `corridas_2b.sh` (todas las corridas finales, en orden).

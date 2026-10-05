@@ -1,0 +1,110 @@
+{
+  "subtarea": "T1_representar_las_mediciones",
+  "archivo_datos": "data/server_measurements.csv",
+  "clase": "ServerMeasurements",
+  "repr": "ServerMeasurements(shape=(300, 3), features=('gpu_utilization', 'cpu_utilization', 'memory_gb'))",
+  "repr_esperado": "ServerMeasurements(shape=(300, 3), features=('gpu_utilization', 'cpu_utilization', 'memory_gb'))",
+  "repr_coincide_con_esperado": true,
+  "shape": [
+    300,
+    3
+  ],
+  "n_filas": 300,
+  "n_columnas": 3,
+  "dtype_values": "float64",
+  "feature_names": [
+    "gpu_utilization",
+    "cpu_utilization",
+    "memory_gb"
+  ],
+  "orden_caracteristicas": [
+    "gpu_utilization",
+    "cpu_utilization",
+    "memory_gb"
+  ],
+  "estadisticas_por_caracteristica": {
+    "gpu_utilization": {
+      "n_valores": 300,
+      "n_no_finitos": 0,
+      "min": 22.31,
+      "max": 97.82,
+      "media": 57.993133333333326,
+      "desv_std": 14.43011728465465
+    },
+    "cpu_utilization": {
+      "n_valores": 300,
+      "n_no_finitos": 0,
+      "min": 19.09,
+      "max": 93.0,
+      "media": 50.54163333333333,
+      "desv_std": 12.69846348968602
+    },
+    "memory_gb": {
+      "n_valores": 300,
+      "n_no_finitos": 0,
+      "min": 13.59,
+      "max": 55.0,
+      "media": 29.455333333333336,
+      "desv_std": 6.536801834400537
+    }
+  },
+  "pruebas_validacion": [
+    {
+      "test": "no_bidimensional_ndim1",
+      "espera_valueerror": true,
+      "lanza_valueerror": true,
+      "passed": true,
+      "mensaje": "La matriz debe ser bidimensional (ndim=2); se recibió ndim=1."
+    },
+    {
+      "test": "no_bidimensional_ndim3",
+      "espera_valueerror": true,
+      "lanza_valueerror": true,
+      "passed": true,
+      "mensaje": "La matriz debe ser bidimensional (ndim=2); se recibió ndim=3."
+    },
+    {
+      "test": "desajuste_3_columnas_2_nombres",
+      "espera_valueerror": true,
+      "lanza_valueerror": true,
+      "passed": true,
+      "mensaje": "El número de columnas (3) no coincide con la cantidad de nombres de características (2)."
+    },
+    {
+      "test": "desajuste_2_columnas_3_nombres",
+      "espera_valueerror": true,
+      "lanza_valueerror": true,
+      "passed": true,
+      "mensaje": "El número de columnas (2) no coincide con la cantidad de nombres de características (3)."
+    },
+    {
+      "test": "no_numericos_cadenas",
+      "espera_valueerror": true,
+      "lanza_valueerror": true,
+      "passed": true,
+      "mensaje": "Los datos deben ser numéricos; se recibió dtype=<U5."
+    },
+    {
+      "test": "no_numericos_objeto_mixto",
+      "espera_valueerror": true,
+      "lanza_valueerror": true,
+      "passed": true,
+      "mensaje": "Los datos deben ser numéricos; se recibió dtype=object."
+    },
+    {
+      "test": "caso_valido_sin_error",
+      "espera_valueerror": false,
+      "lanza_valueerror": false,
+      "passed": true,
+      "mensaje": ""
+    },
+    {
+      "test": "build_measurements_falta_columna",
+      "espera_valueerror": true,
+      "lanza_valueerror": true,
+      "passed": true,
+      "mensaje": "Faltan columnas requeridas en el DataFrame: ['memory_gb']"
+    }
+  ],
+  "todas_las_pruebas_pasaron": true
+}

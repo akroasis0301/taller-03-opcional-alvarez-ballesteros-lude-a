@@ -1,0 +1,11 @@
+========================================================================
+T5 · Referencia nula exacta por cambios de signo
+  n = 16 diferencias pareadas | media observada = 0.418750
+  Total de configuraciones de signos: 2^16 = 65536
+  Configuraciones extremas (|media nula| >= 0.418750): 13372
+  p-value exacto = 13372/65536 = 0.204041
+  Verificación DP entera: total = 65536, extremas = 13372, coincide = True
+  p-value t bilateral (T4, fuente: entrada/T4/resultados.json) = 0.201342
+  |p_exacto - p_t| = 2.698378e-03 (relativa = 1.34%) | misma decisión a alpha=0.05 (no rechazar H0): True
+  Salidas: resultados.json | t5_referencia_nula_cambios_signo.png | t5_resumen_referencia_nula.csv
+========================================================================

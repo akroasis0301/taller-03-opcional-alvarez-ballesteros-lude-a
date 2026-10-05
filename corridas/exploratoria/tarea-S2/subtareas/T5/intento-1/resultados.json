@@ -1,0 +1,171 @@
+{
+  "subtarea": "T5",
+  "titulo": "Referencia nula exacta por cambios de signo: enumeración completa de las 2^16 configuraciones",
+  "archivo_entrada": "data/model_errors.csv",
+  "entrada_T4_usada": "entrada/T4/resultados.json",
+  "n": 16,
+  "diferencias_por_tienda": [
+    {
+      "store_id": "S01",
+      "error_a": 12.4,
+      "error_b": 10.6,
+      "difference": 1.8000000000000007
+    },
+    {
+      "store_id": "S02",
+      "error_a": 9.8,
+      "error_b": 9.1,
+      "difference": 0.7000000000000011
+    },
+    {
+      "store_id": "S03",
+      "error_a": 15.1,
+      "error_b": 13.9,
+      "difference": 1.1999999999999993
+    },
+    {
+      "store_id": "S04",
+      "error_a": 11.0,
+      "error_b": 12.4,
+      "difference": -1.4000000000000004
+    },
+    {
+      "store_id": "S05",
+      "error_a": 8.7,
+      "error_b": 7.2,
+      "difference": 1.4999999999999991
+    },
+    {
+      "store_id": "S06",
+      "error_a": 13.6,
+      "error_b": 13.9,
+      "difference": -0.3000000000000007
+    },
+    {
+      "store_id": "S07",
+      "error_a": 10.2,
+      "error_b": 9.3,
+      "difference": 0.8999999999999986
+    },
+    {
+      "store_id": "S08",
+      "error_a": 14.9,
+      "error_b": 12.8,
+      "difference": 2.0999999999999996
+    },
+    {
+      "store_id": "S09",
+      "error_a": 7.5,
+      "error_b": 9.3,
+      "difference": -1.8000000000000007
+    },
+    {
+      "store_id": "S10",
+      "error_a": 16.0,
+      "error_b": 15.0,
+      "difference": 1.0
+    },
+    {
+      "store_id": "S11",
+      "error_a": 9.3,
+      "error_b": 9.8,
+      "difference": -0.5
+    },
+    {
+      "store_id": "S12",
+      "error_a": 12.8,
+      "error_b": 11.1,
+      "difference": 1.700000000000001
+    },
+    {
+      "store_id": "S13",
+      "error_a": 11.7,
+      "error_b": 12.9,
+      "difference": -1.200000000000001
+    },
+    {
+      "store_id": "S14",
+      "error_a": 8.9,
+      "error_b": 8.3,
+      "difference": 0.5999999999999996
+    },
+    {
+      "store_id": "S15",
+      "error_a": 13.2,
+      "error_b": 11.9,
+      "difference": 1.299999999999999
+    },
+    {
+      "store_id": "S16",
+      "error_a": 10.6,
+      "error_b": 11.5,
+      "difference": -0.9000000000000004
+    }
+  ],
+  "media_observada": 0.4187499999999997,
+  "suma_observada": 6.699999999999995,
+  "magnitud_media_observada": 0.4187499999999997,
+  "enumeracion": {
+    "total_configuraciones": 65536,
+    "formula_total": "2^16 = 65536",
+    "esquema": "cada diferencia d_i se multiplica por +1 o -1; bit=0 -> +1, bit=1 -> -1; la configuración 0 (todos +1) es la observada",
+    "determinista": true,
+    "sin_semilla_requerida": true
+  },
+  "criterio_extremo": "|media nula| >= |media observada| (bilateral)",
+  "tolerancia_punto_flotante": 1e-09,
+  "conteo_extremas": 13372,
+  "p_value_exacto": 0.20404052734375,
+  "p_value_exacto_como_fraccion": "13372/65536",
+  "desglose_colas": {
+    "configuraciones_cola_positiva": 6686,
+    "configuraciones_cola_negativa": 6686,
+    "simetria_exacta_de_colas": true,
+    "configuraciones_con_magnitud_exacta_de_la_observada": 896
+  },
+  "verificaciones": {
+    "configuracion_todos_mas1_reproduce_media_observada": true,
+    "configuracion_todos_menos1_reproduce_menos_media_observada": true,
+    "observada_incluida_en_extremas": true,
+    "verificacion_aritmetica_entera_dp": {
+      "descripcion": "DP exacta sobre sumas escaladas x10 (d*10 enteros): cuenta configuraciones con |suma| >= 67, equivalente a |media| >= |media observada|",
+      "total_configuraciones_dp": 65536,
+      "conteo_extremas_dp": 13372,
+      "p_value_dp": 0.20404052734375,
+      "coincide_con_enumeracion_float": true
+    }
+  },
+  "distribucion_nula": {
+    "media_de_las_medias_nulas": 0.0,
+    "sd_de_las_medias_nulas": 0.3209507505809365,
+    "minimo": -1.18125,
+    "maximo": 1.18125,
+    "p_value_aproximacion_normal_bilateral": 0.19198912492044662,
+    "nota": "La aproximación normal se incluye solo como contexto; el p-value reportado es el exacto por enumeración completa."
+  },
+  "comparacion_con_prueba_t_T4": {
+    "p_value_exacto_cambios_signo": 0.20404052734375,
+    "p_value_t_bilateral_T4": 0.20134214922904944,
+    "fuente_p_value_t": "entrada/T4/resultados.json",
+    "estadistico_t_T4": 1.3363877259014323,
+    "grados_de_libertad_T4": 15,
+    "media_T4": 0.4187499999999997,
+    "coincide_media_con_T4": true,
+    "diferencia_absoluta": 0.002698378114700556,
+    "diferencia_relativa_respecto_t": 0.013401953465942423,
+    "alpha": 0.05,
+    "misma_decision_alpha_0_05_no_rechazar_H0": true
+  },
+  "diseno_y_supuestos": {
+    "diseno": "pareado por store_id (16 tiendas), misma métrica de error en ambos modelos",
+    "h0": "media de las diferencias d_i = 0",
+    "alternativa": "bilateral",
+    "supuestos_cambios_de_signo": "intercambiabilidad/simetría del signo de cada d_i bajo H0; no requiere normalidad",
+    "supuestos_prueba_t": "diferencias iid de población normal (o TCL para n grande)"
+  },
+  "interpretacion": "Bajo H0 (media de las diferencias = 0) y el supuesto de intercambiabilidad del signo de cada d_i, las 2^16 = 65536 configuraciones de signos son igualmente probables; el p-value exacto es la fracción de configuraciones cuya media nula tiene magnitud >= |media observada| = 0.418750: 13372/65536 = 0.204041. Es una probabilidad CONDICIONAL a H0 (frecuencia de resultados al menos tan extremos si H0 fuera cierta), NO la probabilidad de que H0 sea verdadera. A alpha = 0.05, p_exacto > alpha: no se rechaza H0, la misma decisión que con la prueba t de T4 (p = 0.201342).",
+  "por_que_no_son_intercambiables": "La prueba t evalúa t = media/SE bajo una distribución t de Student con 15 grados de libertad y, para su calibración exacta, asume que las diferencias d_i provienen de una población normal (o apoya su p-value en el TCL). La referencia por cambios de signo no asume normalidad: solo requiere que, bajo H0, el signo de cada d_i sea intercambiable, y calibra el p-value con la distribución FINITA y exacta de las 65536 medias nulas. Al basarse en supuestos y distribuciones de referencia distintas, los dos procedimientos no son intercambiables; que aquí sus p-values queden cerca (diferencia absoluta = 2.698e-03, relativa = 1.34%) es una coincidencia empírica (la referencia de signos es aproximadamente simétrica y campanuda), no una identidad matemática.",
+  "figura_guardada_en": "t5_referencia_nula_cambios_signo.png",
+  "csv_resumen_guardado_en": "t5_resumen_referencia_nula.csv",
+  "resultados_guardados_en": "resultados.json"
+}

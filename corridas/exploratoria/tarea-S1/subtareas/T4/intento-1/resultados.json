@@ -1,0 +1,171 @@
+{
+  "subtarea": "T4_tabla_resumen_por_servidor",
+  "fuente_datos": "data/server_measurements.csv",
+  "fuente_t3": "entrada/T3/resultados.json",
+  "fuente_load_score": "entrada/T3/resultados.json (lista load_score)",
+  "n_filas_entrada": 300,
+  "columnas_tabla": [
+    "server",
+    "observations",
+    "mean_power_w",
+    "max_temperature_c",
+    "mean_load",
+    "review_count"
+  ],
+  "orden_columnas_correcto": true,
+  "n_filas_tabla": 6,
+  "seis_filas_una_por_servidor": true,
+  "servidores": [
+    "AI-SRV-01",
+    "AI-SRV-02",
+    "AI-SRV-03",
+    "AI-SRV-04",
+    "AI-SRV-05",
+    "AI-SRV-06"
+  ],
+  "servidores_esperados_ok": true,
+  "tabla_resumen": [
+    {
+      "server": "AI-SRV-01",
+      "observations": 50,
+      "mean_power_w": 363.45980000000003,
+      "max_temperature_c": 86.5,
+      "mean_load": -0.6145273545959999,
+      "review_count": 2
+    },
+    {
+      "server": "AI-SRV-02",
+      "observations": 50,
+      "mean_power_w": 390.499,
+      "max_temperature_c": 76.47,
+      "mean_load": -0.4177297003125984,
+      "review_count": 1
+    },
+    {
+      "server": "AI-SRV-03",
+      "observations": 50,
+      "mean_power_w": 416.6088,
+      "max_temperature_c": 86.5,
+      "mean_load": -0.08588446470318914,
+      "review_count": 2
+    },
+    {
+      "server": "AI-SRV-04",
+      "observations": 50,
+      "mean_power_w": 434.86840000000007,
+      "max_temperature_c": 80.86,
+      "mean_load": -0.0030414730046210894,
+      "review_count": 5
+    },
+    {
+      "server": "AI-SRV-05",
+      "observations": 50,
+      "mean_power_w": 471.18080000000003,
+      "max_temperature_c": 86.5,
+      "mean_load": 0.4535829868000993,
+      "review_count": 12
+    },
+    {
+      "server": "AI-SRV-06",
+      "observations": 50,
+      "mean_power_w": 495.7276,
+      "max_temperature_c": 88.01,
+      "mean_load": 0.6676000058163108,
+      "review_count": 27
+    }
+  ],
+  "tabla_resumen_redondeada": [
+    {
+      "server": "AI-SRV-01",
+      "observations": 50,
+      "mean_power_w": 363.4598,
+      "max_temperature_c": 86.5,
+      "mean_load": -0.614527,
+      "review_count": 2
+    },
+    {
+      "server": "AI-SRV-02",
+      "observations": 50,
+      "mean_power_w": 390.499,
+      "max_temperature_c": 76.47,
+      "mean_load": -0.41773,
+      "review_count": 1
+    },
+    {
+      "server": "AI-SRV-03",
+      "observations": 50,
+      "mean_power_w": 416.6088,
+      "max_temperature_c": 86.5,
+      "mean_load": -0.085884,
+      "review_count": 2
+    },
+    {
+      "server": "AI-SRV-04",
+      "observations": 50,
+      "mean_power_w": 434.8684,
+      "max_temperature_c": 80.86,
+      "mean_load": -0.003041,
+      "review_count": 5
+    },
+    {
+      "server": "AI-SRV-05",
+      "observations": 50,
+      "mean_power_w": 471.1808,
+      "max_temperature_c": 86.5,
+      "mean_load": 0.453583,
+      "review_count": 12
+    },
+    {
+      "server": "AI-SRV-06",
+      "observations": 50,
+      "mean_power_w": 495.7276,
+      "max_temperature_c": 88.01,
+      "mean_load": 0.6676,
+      "review_count": 27
+    }
+  ],
+  "verificacion_AI-SRV-01": [
+    {
+      "metrica": "observations",
+      "obtenido": 50.0,
+      "esperado": 50.0,
+      "ok": true
+    },
+    {
+      "metrica": "mean_power_w",
+      "obtenido": 363.45980000000003,
+      "esperado": 363.4598,
+      "ok": true
+    },
+    {
+      "metrica": "max_temperature_c",
+      "obtenido": 86.5,
+      "esperado": 86.5,
+      "ok": true
+    },
+    {
+      "metrica": "mean_load",
+      "obtenido": -0.6145273545959999,
+      "esperado": -0.614527,
+      "ok": true
+    },
+    {
+      "metrica": "review_count",
+      "obtenido": 2.0,
+      "esperado": 2.0,
+      "ok": true
+    }
+  ],
+  "verificacion_AI-SRV-01_ok": true,
+  "verificacion_global": {
+    "total_observations": 300,
+    "total_review_count": 49,
+    "n_requires_review_T3": 49,
+    "review_count_coincide_con_T3": true,
+    "indices_requires_review_coinciden_con_T3": true
+  },
+  "archivos_generados": {
+    "parquet": "tabla_resumen_por_servidor.parquet",
+    "figura_png": "t4_resumen_por_servidor.png"
+  }
+}

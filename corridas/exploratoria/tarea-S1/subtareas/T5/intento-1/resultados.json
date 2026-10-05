@@ -1,0 +1,193 @@
+{
+  "subtarea": "T5_guardar_y_verificar_parquet",
+  "archivo_parquet": "output/server_analysis.parquet",
+  "libreria": "pyarrow",
+  "version_pyarrow": "25.0.1",
+  "version_pandas": "3.0.6",
+  "guardado_sin_indice": true,
+  "reconstruccion_T3": {
+    "fuente_load_score": "entrada/T3/resultados.json:load_score",
+    "fuente_requires_review": "entrada/T3/resultados.json:indices_requires_review_true",
+    "n_filas": 300,
+    "columnas": [
+      "server",
+      "timestamp",
+      "gpu_utilization",
+      "cpu_utilization",
+      "memory_gb",
+      "power_w",
+      "temperature_c",
+      "load_score",
+      "requires_review"
+    ],
+    "n_requires_review_true": 49,
+    "n_requires_review_true_coincide_con_T3": true,
+    "mismatches_requires_review_vs_criterio": 0,
+    "max_abs_diff_load_score_vs_recomputado_ddof0": 8.881784197001252e-16,
+    "max_abs_diff_load_score_vs_recomputado_ddof1": 0.005231392901703824,
+    "fila_23_coincide_con_T3": true
+  },
+  "round_trip": {
+    "filas_antes": 300,
+    "filas_despues": 300,
+    "filas_ok": true,
+    "columnas_antes": [
+      "server",
+      "timestamp",
+      "gpu_utilization",
+      "cpu_utilization",
+      "memory_gb",
+      "power_w",
+      "temperature_c",
+      "load_score",
+      "requires_review"
+    ],
+    "columnas_despues": [
+      "server",
+      "timestamp",
+      "gpu_utilization",
+      "cpu_utilization",
+      "memory_gb",
+      "power_w",
+      "temperature_c",
+      "load_score",
+      "requires_review"
+    ],
+    "n_columnas_antes": 9,
+    "n_columnas_despues": 9,
+    "columnas_ok": true,
+    "esquema_antes": [
+      {
+        "nombre": "server",
+        "tipo": "large_string"
+      },
+      {
+        "nombre": "timestamp",
+        "tipo": "timestamp[us]"
+      },
+      {
+        "nombre": "gpu_utilization",
+        "tipo": "double"
+      },
+      {
+        "nombre": "cpu_utilization",
+        "tipo": "double"
+      },
+      {
+        "nombre": "memory_gb",
+        "tipo": "double"
+      },
+      {
+        "nombre": "power_w",
+        "tipo": "double"
+      },
+      {
+        "nombre": "temperature_c",
+        "tipo": "double"
+      },
+      {
+        "nombre": "load_score",
+        "tipo": "double"
+      },
+      {
+        "nombre": "requires_review",
+        "tipo": "bool"
+      }
+    ],
+    "esquema_despues": [
+      {
+        "nombre": "server",
+        "tipo": "large_string"
+      },
+      {
+        "nombre": "timestamp",
+        "tipo": "timestamp[us]"
+      },
+      {
+        "nombre": "gpu_utilization",
+        "tipo": "double"
+      },
+      {
+        "nombre": "cpu_utilization",
+        "tipo": "double"
+      },
+      {
+        "nombre": "memory_gb",
+        "tipo": "double"
+      },
+      {
+        "nombre": "power_w",
+        "tipo": "double"
+      },
+      {
+        "nombre": "temperature_c",
+        "tipo": "double"
+      },
+      {
+        "nombre": "load_score",
+        "tipo": "double"
+      },
+      {
+        "nombre": "requires_review",
+        "tipo": "bool"
+      }
+    ],
+    "esquema_ok": true,
+    "esquema_ok_con_metadatos": true,
+    "valores_ok": true,
+    "valores_iguales_por_columna": {
+      "server": true,
+      "timestamp": true,
+      "gpu_utilization": true,
+      "cpu_utilization": true,
+      "memory_gb": true,
+      "power_w": true,
+      "temperature_c": true,
+      "load_score": true,
+      "requires_review": true
+    },
+    "max_abs_diff_por_columna_numerica": {
+      "gpu_utilization": 0.0,
+      "cpu_utilization": 0.0,
+      "memory_gb": 0.0,
+      "power_w": 0.0,
+      "temperature_c": 0.0,
+      "load_score": 0.0
+    },
+    "dtypes_antes": {
+      "server": "str",
+      "timestamp": "datetime64[us]",
+      "gpu_utilization": "float64",
+      "cpu_utilization": "float64",
+      "memory_gb": "float64",
+      "power_w": "float64",
+      "temperature_c": "float64",
+      "load_score": "float64",
+      "requires_review": "bool"
+    },
+    "dtypes_despues": {
+      "server": "str",
+      "timestamp": "datetime64[us]",
+      "gpu_utilization": "float64",
+      "cpu_utilization": "float64",
+      "memory_gb": "float64",
+      "power_w": "float64",
+      "temperature_c": "float64",
+      "load_score": "float64",
+      "requires_review": "bool"
+    },
+    "dtypes_ok": true,
+    "tablas_arrow_iguales": true,
+    "dataframes_pandas_iguales": true,
+    "num_row_groups_parquet": 1,
+    "formato_parquet": "2.6",
+    "tamano_archivo_bytes": 17629
+  },
+  "verificacion_final": {
+    "Filas": true,
+    "Columnas": true,
+    "Esquema": true,
+    "Valores": true
+  },
+  "exito": true
+}

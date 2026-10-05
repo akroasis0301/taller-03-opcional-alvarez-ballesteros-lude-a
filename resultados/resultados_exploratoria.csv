@@ -1,0 +1,22 @@
+tarea,check,tipo,ok,detalle
+S1,S101,archivo,1,1 archivo(s) con reporte.md
+S1,S102,archivo,0,0 archivo(s) con output/server_analysis.parquet
+S1,S103,secciones,0,faltan: ['Tarea 2']
+S1,S104,palabras_max,1,663 palabras
+S1,S105,cifra_presente,1,verdad=57.9931 ±0.0005; hallada
+S1,S106,cifra_presente,1,verdad=3.1362 ±0.002; hallada
+S1,S107,cifra,1,verdad=363.4598 ±0.0005; hallada
+S1,S108,cifra,1,verdad=0.6676 ±0.0005; hallada
+S1,S109,procedencia,1,29/29 cifras respaldadas (1.00)
+S2,S201,archivo,1,1 archivo(s) con informe.md
+S2,S202,archivo,0,0 archivo(s) con output/store_differences.csv
+S2,S203,archivo,0,0 archivo(s) con output/store_differences.png
+S2,S204,secciones,1,"todas, en orden"
+S2,S205,cifra_presente,1,verdad=1.2534 ±0.0005; hallada
+S2,S206,cifra_presente,1,verdad=0.3133 ±0.0005; hallada
+S2,S207,cifra_presente,1,verdad=0.2013 ±0.0005; hallada
+S2,S208,cifra_presente,1,verdad=0.2040 ±0.0005; hallada
+S2,S209,contiene,1,todos presentes
+S2,S210,cifra_presente,0,verdad=0.1938 ±0.005; no hallada
+S2,S211,cifra_presente,0,verdad=1.0062 ±0.005; no hallada
+S2,S212,procedencia,1,58/58 cifras respaldadas (1.00)

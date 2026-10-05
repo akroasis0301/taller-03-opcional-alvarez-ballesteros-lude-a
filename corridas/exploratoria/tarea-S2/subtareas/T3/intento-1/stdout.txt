@@ -1,0 +1,13 @@
+================================================================
+T3 · Figura de diferencias por tienda
+================================================================
+Figura guardada en : output/store_differences.png (existe: True)
+Tiendas mostradas  : 16 (una observación por tienda)
+Favorecen a A      : 6 -> ['S04', 'S06', 'S09', 'S11', 'S13', 'S16']
+Favorecen a B      : 10 -> ['S01', 'S02', 'S03', 'S05', 'S07', 'S08', 'S10', 'S12', 'S14', 'S15']
+Empates            : 0
+Mayor diferencia positiva : S08 = +2.1000 (favorece a B)
+Mayor diferencia negativa : S09 = -1.8000 (favorece a A)
+Mayor |difference|        : S08 = +2.1000
+Coherencia con T2  : OK
+Contrato escrito en: resultados.json

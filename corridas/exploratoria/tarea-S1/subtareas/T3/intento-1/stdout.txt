@@ -1,0 +1,10 @@
+=== T3: copia del DataFrame con load_score y requires_review ===
+Filas: 300 | Columnas finales: ['server', 'timestamp', 'gpu_utilization', 'cpu_utilization', 'memory_gb', 'power_w', 'temperature_c', 'load_score', 'requires_review']
+dtypes nuevos: load_score=float64, requires_review=bool (bool=True)
+requires_review True: 49 / 300 (16.33%) | False: 251
+load_score: min=-1.955650, max=3.136218
+Fila 23: {'server': 'AI-SRV-01', 'timestamp': '2026-08-24 09:55:00', 'load_score': 3.136217861183744, 'temperature_c': 66.97, 'requires_review': True}
+Fila 23 coincide con lo esperado: True
+Original sin modificar: True
+Verificación vs T2: {'t2_disponible': True, 'fuente_zscores': 'entrada/T2/resultados.json (zscores)', 'max_abs_diff_primeros_5_vs_T2': 2.7755575615628914e-17, 'abs_diff_load_score_max_vs_T2': 0.0, 'abs_diff_load_score_min_vs_T2': 0.0, 'abs_diff_load_score_media_vs_T2': 0.0, 'abs_diff_load_score_std_vs_T2': 0.0}
+Salidas: resultados.json, T3_server_measurements_con_revision.parquet, T3_load_score_requires_review.png

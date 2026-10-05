@@ -1,0 +1,17 @@
+Round trip verificado: output/server_analysis.parquet
+Filas: True
+Columnas: True
+Esquema: True
+Valores: True
+----------------------------------------------------------------------
+Archivo: output/server_analysis.parquet (17629 bytes, PyArrow 25.0.1, pandas 3.0.6)
+Filas antes/después: 300/300 | Columnas antes/después: 9/9
+Guardado sin índice (sin '__index_level_0__'): True
+Esquema parquet: [('server', 'large_string'), ('timestamp', 'timestamp[us]'), ('gpu_utilization', 'double'), ('cpu_utilization', 'double'), ('memory_gb', 'double'), ('power_w', 'double'), ('temperature_c', 'double'), ('load_score', 'double'), ('requires_review', 'bool')]
+Esquema idéntico incluso con metadatos de pandas: True
+Tablas Arrow iguales: True | DataFrames pandas iguales: True | dtypes iguales: True
+Valores iguales por columna: {'server': True, 'timestamp': True, 'gpu_utilization': True, 'cpu_utilization': True, 'memory_gb': True, 'power_w': True, 'temperature_c': True, 'load_score': True, 'requires_review': True}
+Máx. diferencia absoluta por columna numérica: {'gpu_utilization': 0.0, 'cpu_utilization': 0.0, 'memory_gb': 0.0, 'power_w': 0.0, 'temperature_c': 0.0, 'load_score': 0.0}
+Reconstrucción de T3 -> load_score: entrada/T3/resultados.json:load_score | requires_review: entrada/T3/resultados.json:indices_requires_review_true
+Coherencia con T3: requires_review True=49 (coincide con T3: True), mismatches vs criterio=0, fila 23 coincide=True, max|load_score-recomputado| ddof0=8.882e-16, ddof1=5.231e-03
+Resultados escritos en resultados.json

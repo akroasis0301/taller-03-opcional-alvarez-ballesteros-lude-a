@@ -103,9 +103,14 @@ class ClienteLLM:
     # ------------------------------------------------------------------ llamadas
     def chat(self, agente: str, mensajes: list[dict], *, subtarea: str | None = None,
              json_mode: bool = False, tools: list[dict] | None = None,
-             max_tokens: int | None = None) -> dict:
-        """Una respuesta no vacía del modelo, o una excepción. Nunca una cadena vacía."""
+             max_tokens: int | None = None, tope: int | None = None) -> dict:
+        """Una respuesta no vacía del modelo, o una excepción. Nunca una cadena vacía.
+
+        Si vuelve vacía por longitud, se duplica max_tokens hasta `tope`. Si ya estaba en el tope,
+        NO se repite: la misma llamada con el mismo límite razona igual y vuelve a cobrar todo
+        (r2, Tarea C: un segundo intento de 32 768 tokens perdidos dejó la corrida sin presupuesto)."""
         max_tokens = max_tokens or self.cfg.max_tokens
+        tope = tope or self.cfg.max_tokens_tope
         intento = vacios = red = 0
         while True:
             if self.disponible(agente) <= 0:          # freno: ANTES de la llamada
@@ -143,12 +148,17 @@ class ClienteLLM:
                 razonamiento_caracteres=len(r.get("razonamiento") or "") + len(crudo) - len(contenido))
             if not vacio:
                 return r
+            if r.get("fin") == "length" and max_tokens >= tope:
+                self.traza.decision(agente, "tope_de_razonamiento", subtarea=subtarea,
+                                    motivo=f"vacío por longitud con max_tokens={max_tokens}, que ya es el tope: "
+                                           "repetirlo costaría lo mismo sin otro resultado")
+                raise LLMVacio(f"{agente}: contenido vacío por longitud en el tope ({max_tokens} tokens)")
             if vacios >= self.cfg.reintentos_vacio:
                 raise LLMVacio(f"{agente}: contenido vacío tras {vacios + 1} intentos "
                                f"(fin={r.get('fin')}, max_tokens={max_tokens})")
             vacios += 1
-            if r.get("fin") == "length":              # razonó hasta el tope: más espacio
-                max_tokens = min(max_tokens * 2, self.cfg.max_tokens_tope)
+            if r.get("fin") == "length":              # razonó hasta el límite: más espacio
+                max_tokens = min(max_tokens * 2, tope)
 
     def pedir(self, agente: str, mensajes: list[dict], **kw) -> str:
         return self.chat(agente, mensajes, **kw)["contenido"]
