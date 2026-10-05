@@ -42,6 +42,8 @@ htmlcov/
 cache/
 # Carpetas de trabajo temporales del sandbox
 sandbox_tmp/
+# Cachés del sandbox dentro de cada corrida (fuentes de matplotlib…): no son resultados
+**/cache_solver/tmp/
 # ⚠ A diferencia del Taller 02, NO se ignoran:
 #   *.jsonl  -> corridas/tarea-*/traza.jsonl es entregable
 #   data/    -> tareas/reales/semana*/data/*.csv son entradas del golden set

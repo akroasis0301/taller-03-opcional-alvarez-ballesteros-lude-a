@@ -93,10 +93,27 @@ df[df.tipo == "llamada"].groupby("agente")[["tokens_entrada", "tokens_salida"]].
 
 ```
 corridas/<variante>/tarea-X/
-├── traza.jsonl
-├── documento.json        lector: páginas, secciones, tablas
-├── grafo.json, grafo.png indexador
-├── plan.json             planificador (validado)
-├── subtareas/T1/intento-1/{script.py, stdout.txt, stderr.txt, resultados.json, *.png}
-└── <entregable>          reporte.md | reporte.pdf | *.ipynb
+├── traza.jsonl            C6: todo evento, en todo camino
+├── grafo.json, grafo.png  [2] esqueleto del enunciado (aristas depende_de en rojo)
+├── plan.json              [3] el plan validado, en orden topológico
+├── subtareas/T1/intento-N/{script.py, stdout.txt, stderr.txt, resultados.json, *.png, entrada/, data/}
+├── figuras/               [8] las figuras aprobadas que cita el entregable
+├── reporte.md             [8] el entregable (M1: Markdown; M2: PDF y notebook)
+└── cache_solver/          lo que NO escribió una ejecución aprobada
+    ├── enunciado_leido.json   [1] secciones, tablas, restricciones
+    ├── contextos/T1.md        [4] lo que recibió el programador (evidencia para la 2.c)
+    ├── rechazados/T2/intento-1/  scripts que el crítico rechazó, con su salida
+    └── tmp/                   cachés del sandbox (ignorado por git)
+```
+
+`cache_solver/` lleva «cache» en el nombre a propósito: `evaluar_solver.py` no cuenta como
+respaldo de procedencia nada cuya ruta contenga «cache», «traza», «plan» o «grafo». Así un
+intento rechazado (p. ej. la exactitud 1,000 de una fuga) no respalda una cifra del reporte.
+
+## 7. Correr una tarea
+
+```bash
+uv run python scripts/correr.py solver-v2/enunciados/tarea-a-generativo-discriminativo.pdf
+uv run python scripts/correr.py <pdf> --variante sin_grafo --salida corridas/sin_grafo/tarea-A
+uv run python scripts/correr.py --diagrama > resultados/orquestador.mmd
 ```

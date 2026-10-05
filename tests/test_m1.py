@@ -1,0 +1,353 @@
+"""Pruebas del M1: cada agente por separado y el solver de punta a punta con un modelo de guion.
+
+Ninguna usa red ni la H200. La de punta a punta recorre todas las aristas que importan:
+plan inválido → corregido, script rechazado por el crítico → corregido, cifra inventada
+devuelta al redactor → corregida, y el freno de presupuesto.
+"""
+from __future__ import annotations
+
+import json
+import textwrap
+from pathlib import Path
+
+import pytest
+
+from solver.agentes import critico, ejecutor, indexador, lector, planificador
+from solver.cliente_llm import LLMGuion
+from solver.config import RAIZ, Config
+from solver.procedencia import verificar
+from solver.sandbox.guarda import revisar
+from solver.traza import leer
+
+# ======================================================================== lector
+TAREA_A = [  # líneas como las entrega PyMuPDF para la Tarea A (tamaño, negrita)
+    ("Tarea A — Generativo contra discriminativo con pocos", 17, True),
+    ("datos", 17, True),
+    ("MMIA 6013 · Tarea de práctica para el solver del Taller 03 v2 Entrega: un reporte en Markdown", 10.5, False),
+    ("(reporte.md), con el código que lo produce. Ng y Jordan mostraron que un clasificador generativo", 10.5, False),
+    ("Parte 1 — Datos", 13, True),
+    ("Carga el conjunto Breast Cancer Wisconsin que trae scikit-learn y divide 70 % y 30 %.", 10.5, False),
+    ("Parte 2 — Dos clasificadores", 13, True),
+    ("Entrena un Naive Bayes gaussiano y una regresión logística con los atributos estandarizados.", 10.5, False),
+    ("Parte 3 — La curva de aprendizaje", 13, True),
+    ("Sobre la misma división de la Parte 1, entrena los dos modelos con el 5 %, 10 % y 100 %.", 10.5, False),
+    ("Parte 4 — Discusión", 13, True),
+    ("Explica, con tus cifras, si se observa el cruce que predicen Ng y Jordan en cada tamaño.", 10.5, False),
+    ("El reporte", 13, True),
+    ("Un reporte.md con estas secciones, en este orden: Introducción, Metodología, Resultados", 10.5, False),
+    ("(con la tabla de la Parte 2 y la figura de la Parte 3), Discusión y Conclusiones. Máximo 1 200", 10.5, False),
+    ("palabras. Toda cifra del reporte tiene que salir de la ejecución del código entregado.", 10.5, False),
+]
+
+
+def lineas(datos):
+    return [{"texto": t, "tam": s, "negrita": b, "pagina": 1} for t, s, b in datos]
+
+
+def test_segmenta_por_tipografia_y_une_titulo_partido():
+    secs = lector.segmentar(lineas(TAREA_A))
+    assert [s["clave"] for s in secs] == ["Preámbulo", "Parte 1", "Parte 2", "Parte 3", "Parte 4", "El reporte"]
+    assert "pocos datos" in secs[0]["titulo"]
+    assert [s["trabajo"] for s in secs] == [False, True, True, True, True, False]
+
+
+def test_restricciones_de_la_tarea_a():
+    secs = lector.segmentar(lineas(TAREA_A))
+    r = lector.restricciones("\n".join(t for t, _, _ in TAREA_A), secs)
+    assert r["entregable"] == "reporte.md" and r["formato"] == "md"
+    assert r["palabras_max"] == 1200
+    assert r["secciones"] == ["Introducción", "Metodología", "Resultados", "Discusión", "Conclusiones"]
+
+
+def test_restricciones_de_las_tareas_b_y_c():
+    c = ("Entrega: un reporte en PDF (reporte.pdf) de dos páginas como máximo, con el código. "
+         "El reporte En PDF, dos páginas como máximo, con las secciones Objetivo, Método, Resultados "
+         "(la tabla de la Parte 2 y la de la Parte 3) y Discusión. Toda cifra sale de la ejecución.")
+    r = lector.restricciones(c, [])
+    assert (r["entregable"], r["paginas_max"]) == ("reporte.pdf", 2)
+    assert r["secciones"] == ["Objetivo", "Método", "Resultados", "Discusión"]
+    b = lector.restricciones("Entrega: un notebook de Jupyter (.ipynb) ejecutado, con las salidas visibles.", [])
+    assert b["formato"] == "ipynb"
+
+
+def test_ligaduras_y_guiones():
+    assert lector.normalizar("clasiﬁcador estratiﬁ-\ncando") == "clasificador estratificando"
+
+
+def test_lee_el_pdf_real_de_la_tarea_a():
+    pytest.importorskip("pymupdf")
+    pdf = RAIZ / "solver-v2" / "enunciados" / "tarea-a-generativo-discriminativo.pdf"
+    doc = lector.leer(pdf)
+    assert [s["clave"] for s in doc["secciones"] if s["trabajo"]] == ["Parte 1", "Parte 2", "Parte 3", "Parte 4"]
+    assert doc["restricciones"]["palabras_max"] == 1200
+    g = indexador.esqueleto(doc["secciones"])
+    assert g.has_edge("Parte 3", "Parte 1")             # la arista de la 0.b, por regla
+
+
+# ======================================================================== indexador
+def test_aristas_depende_de_por_regla():
+    g = indexador.esqueleto(lector.segmentar(lineas(TAREA_A)))
+    assert g.has_edge("Parte 3", "Parte 1") and not g.has_edge("Parte 1", "Parte 3")
+    assert g.has_edge("El reporte", "Parte 2") and g.has_edge("El reporte", "Parte 3")
+    assert indexador.dependencias(g, ["Parte 3"]) == ["Parte 1"]
+
+
+def test_la_pregunta_anterior():
+    secs = [{"clave": "Preámbulo", "titulo": "x", "texto": "", "trabajo": False, "id": "S0"},
+            {"clave": "Pregunta 1", "titulo": "Pregunta 1", "texto": "a", "trabajo": True, "id": "S1"},
+            {"clave": "Pregunta 2", "titulo": "Pregunta 2", "texto": "Con la pregunta anterior…", "trabajo": True, "id": "S2"}]
+    assert indexador.esqueleto(secs).has_edge("Pregunta 2", "Pregunta 1")
+
+
+# ======================================================================== planificador (C1)
+def _doc_y_grafo():
+    secs = lector.segmentar(lineas(TAREA_A))
+    return {"secciones": secs}, indexador.esqueleto(secs)
+
+
+def _plan(**cambios_t3):
+    t3 = {"id": "T3", "tipo": "calculo", "secciones": ["Parte 3"], "depende_de": ["T1"], "objetivo": "o", "criterio": "c"}
+    t3.update(cambios_t3)
+    return {"subtareas": [
+        {"id": "T1", "tipo": "calculo", "secciones": ["Parte 1"], "depende_de": [], "objetivo": "o", "criterio": "c"},
+        {"id": "T2", "tipo": "calculo", "secciones": ["Parte 2"], "depende_de": ["T1"], "objetivo": "o", "criterio": "c"},
+        t3,
+        {"id": "T4", "tipo": "conceptual", "secciones": ["Parte 4"], "depende_de": ["T2", "T3"], "objetivo": "o", "criterio": "c"}]}
+
+
+def test_plan_valido():
+    doc, g = _doc_y_grafo()
+    assert planificador.validar(_plan(), doc, g) == []
+    assert [s["id"] for s in planificador.ordenar(_plan())] == ["T1", "T2", "T3", "T4"]
+
+
+@pytest.mark.parametrize("cambio, esperado", [
+    ({"depende_de": []}, "T3 cubre Parte 3, que depende de Parte 1"),      # coherencia con el grafo
+    ({"depende_de": ["T9"]}, "depende de T9, que no existe"),
+    ({"depende_de": ["T3"]}, "depende de sí misma"),
+    ({"depende_de": ["T4"]}, "ciclo"),
+    ({"secciones": ["Parte 7"]}, "no existe en el enunciado"),
+    ({"tipo": "redaccion"}, "tipo"),
+])
+def test_plan_invalido(cambio, esperado):
+    doc, g = _doc_y_grafo()
+    assert any(esperado in p for p in planificador.validar(_plan(**cambio), doc, g))
+
+
+def test_seccion_sin_cubrir():
+    doc, g = _doc_y_grafo()
+    plan = _plan()
+    plan["subtareas"] = plan["subtareas"][:3]
+    assert any("Parte 4" in p for p in planificador.validar(plan, doc, g))
+
+
+# ======================================================================== guarda y ejecutor (C3)
+@pytest.mark.parametrize("codigo", [
+    "import socket", "import subprocess", "from urllib.request import urlopen", "import shutil",
+    "import os\nos.system('ls')", "import os\nos.remove('a')", "from pathlib import Path\nPath('a').unlink()",
+    "eval('1')", "open('/etc/passwd')", "open('../../.env')", "import os\nprint(os.environ)",
+    "x = __import__('os')", "def f(:\n  pass"])
+def test_guarda_bloquea(codigo):
+    assert not revisar(codigo).permitido
+
+
+def test_guarda_deja_pasar_lo_legitimo():
+    codigo = textwrap.dedent("""
+        import json, numpy as np, pandas as pd, matplotlib.pyplot as plt
+        from sklearn.datasets import load_breast_cancer
+        from sklearn.model_selection import train_test_split
+        X, y = load_breast_cancer(return_X_y=True)
+        df = pd.read_csv('data/x.csv')
+        json.dump({'n': len(y)}, open('resultados.json', 'w'))
+        plt.savefig('curva.png')""")
+    v = revisar(codigo)
+    assert v.permitido and not v.descargas
+
+
+def test_descarga_pide_confirmacion_y_por_defecto_se_niega(tmp_path):
+    codigo = "from sklearn.datasets import fetch_openml\nX = fetch_openml('mnist_784')\n"
+    assert revisar(codigo).descargas
+    r = ejecutor.ejecutar(codigo, tmp_path / "t", confirmar=lambda m: False)
+    assert r["returncode"] is None and "no confirmada" in r["error"]
+
+
+def test_ejecuta_con_entorno_vacio_y_entradas(tmp_path):
+    previo = tmp_path / "previo"
+    previo.mkdir()
+    (previo / "resultados.json").write_text('{"media": 2.5}')
+    codigo = textwrap.dedent("""
+        import json
+        m = json.load(open('entrada/T1/resultados.json'))['media']
+        json.dump({'doble': m * 2}, open('resultados.json', 'w'))""")
+    r = ejecutor.ejecutar(codigo, tmp_path / "t2", entradas={"T1": previo})
+    assert r["returncode"] == 0 and "resultados.json" in r["archivos"]
+    assert json.loads((tmp_path / "t2" / "resultados.json").read_text()) == {"doble": 5.0}
+    env = ejecutor.entorno_vacio(tmp_path)
+    assert not any(k.endswith(("KEY", "TOKEN")) or k.startswith("H200") for k in env)
+
+
+def test_timeout_mata_el_proceso(tmp_path):
+    r = ejecutor.ejecutar("while True:\n    pass\n", tmp_path / "t", timeout_s=1)
+    assert r["timeout"] and "timeout" in r["error"]
+
+
+# ======================================================================== crítico (C4)
+FUGA_0C = textwrap.dedent("""
+    import json
+    from sklearn.datasets import load_breast_cancer
+    from sklearn.tree import DecisionTreeClassifier
+    X, y = load_breast_cancer(return_X_y=True)
+    m = DecisionTreeClassifier(random_state=42).fit(X, y)
+    acc = float((m.predict(X) == y).mean())
+    json.dump({'accuracy': acc}, open('resultados.json', 'w'))""")
+
+
+def test_critico_rechaza_la_fuga_de_la_0c(tmp_path):
+    r = ejecutor.ejecutar(FUGA_0C, tmp_path / "t")
+    v = critico.comprobar({"objetivo": "exactitud", "criterio": "accuracy"}, FUGA_0C, r)
+    assert not v["aprobado"]
+    assert any("fuga" in m for m in v["motivos"]) and any("plausibilidad" in m for m in v["motivos"])
+
+
+def test_critico_detecta_escalador_antes_de_dividir():
+    codigo = textwrap.dedent("""
+        from sklearn.preprocessing import StandardScaler
+        from sklearn.model_selection import train_test_split
+        Xs = StandardScaler().fit_transform(X)
+        Xtr, Xte, ytr, yte = train_test_split(Xs, y, test_size=0.3)""")
+    assert critico.ajuste_antes_de_dividir(codigo)
+    bien = textwrap.dedent("""
+        Xtr, Xte, ytr, yte = train_test_split(X, y, test_size=0.3)
+        Xtr_s = StandardScaler().fit_transform(Xtr)
+        sub, _, ysub, _ = train_test_split(Xtr, ytr, train_size=0.1)""")
+    assert not critico.ajuste_antes_de_dividir(bien)
+
+
+def test_critico_exige_figura_contrato_y_cifras_finitas(tmp_path):
+    codigo = "import json\njson.dump({'kl': float('nan')}, open('resultados.json', 'w'))\n"
+    r = ejecutor.ejecutar(codigo, tmp_path / "t")
+    v = critico.comprobar({"objetivo": "dibuja la curva", "criterio": "una figura PNG"}, codigo, r)
+    assert any("NaN" in m for m in v["motivos"]) and any("figura" in m for m in v["motivos"])
+    sin = ejecutor.ejecutar("print('hola')\n", tmp_path / "t2")
+    assert any("resultados.json" in m for m in critico.comprobar({}, "print('hola')", sin)["motivos"])
+
+
+# ======================================================================== procedencia (C5)
+def test_procedencia_con_redondeo_y_enunciado(tmp_path):
+    (tmp_path / "resultados.json").write_text('{"acc": 0.947368421, "f1": 0.9428}')
+    texto = "NB 0.9474, F1 0.94, inventada 0.9415, del enunciado 0.25, y en código:\n```\n0.5555\n```"
+    p = verificar(texto, "con el 25 % y 0.25", [tmp_path])
+    assert p["sin_origen"] == ["0.9415"] and p["total"] == 3
+
+
+# ======================================================================== de punta a punta
+ENUNCIADO = textwrap.dedent("""\
+    # Tarea X — prueba del solver
+    **Entrega:** un reporte en Markdown (`reporte.md`).
+    ## Parte 1 — Datos
+    Calcula la media de los datos con semilla 0.
+    ## Parte 2 — Modelo
+    Sobre los mismos datos de la Parte 1, calcula una exactitud y dibuja una figura.
+    ## Parte 3 — Discusión
+    Explica los resultados.
+    ## El reporte
+    Un reporte.md con estas secciones, en este orden: Resultados y Discusión. Máximo 300 palabras.
+    """)
+
+PLAN_MALO = {"subtareas": [
+    {"id": "T1", "tipo": "calculo", "secciones": ["Parte 1"], "depende_de": [], "objetivo": "media", "criterio": "media en resultados.json"},
+    {"id": "T2", "tipo": "calculo", "secciones": ["Parte 2"], "depende_de": [], "objetivo": "exactitud y figura", "criterio": "accuracy y una figura PNG"},
+    {"id": "T3", "tipo": "conceptual", "secciones": ["Parte 3"], "depende_de": ["T2"], "objetivo": "discusión", "criterio": "argumentada"}]}
+PLAN_BUENO = json.loads(json.dumps(PLAN_MALO))
+PLAN_BUENO["subtareas"][1]["depende_de"] = ["T1"]
+
+T1 = "import json\njson.dump({'media': 0.1234}, open('resultados.json', 'w'))\nprint('media 0.1234')\n"
+T2_FUGA = FUGA_0C
+T2_BIEN = textwrap.dedent("""
+    import json
+    import matplotlib.pyplot as plt
+    media = json.load(open('entrada/T1/resultados.json'))['media']
+    plt.plot([1, 2], [media, 0.8765]); plt.savefig('figura.png')
+    json.dump({'accuracy': 0.8765, 'media_previa': media}, open('resultados.json', 'w'))""")
+REPORTE_INVENTADO = "## Resultados\nMedia 0.1234, exactitud 0.8765 y un error de 0.4321.\n\n## Discusión\nBien.\n"
+REPORTE_BIEN = "## Resultados\nMedia 0.1234 y exactitud 0.8765.\n\n![figura](figuras/T2_figura.png)\n\n## Discusión\nBien.\n"
+
+
+def guion():
+    estado = {"plan": 0, "T2": 0, "redactor": 0}
+
+    def responder(mensajes):
+        sistema, usuario = mensajes[0]["content"], mensajes[-1]["content"]
+        if "planificador" in sistema:
+            estado["plan"] += 1
+            return json.dumps(PLAN_MALO if estado["plan"] == 1 else PLAN_BUENO)
+        if "programador" in sistema:
+            if "SUBTAREA T1" in mensajes[1]["content"]:
+                return f"```python\n{T1}```"
+            estado["T2"] += 1
+            return f"```python\n{T2_FUGA if estado['T2'] == 1 else T2_BIEN}```"
+        if "redactor" in sistema:
+            estado["redactor"] += 1
+            return REPORTE_INVENTADO if estado["redactor"] == 1 else REPORTE_BIEN
+        raise AssertionError(f"agente inesperado: {sistema[:40]}")
+    return responder
+
+
+@pytest.fixture
+def enunciado(tmp_path):
+    carpeta = tmp_path / "tarea-x"
+    carpeta.mkdir()
+    (carpeta / "enunciado.md").write_text(ENUNCIADO, encoding="utf-8")
+    return carpeta
+
+
+def test_de_punta_a_punta(enunciado, tmp_path):
+    from solver.orquestador import Solver
+
+    salida = tmp_path / "corrida"
+    r = Solver(Config(llm=LLMGuion([guion()]))).solve(str(enunciado), str(salida))
+    assert r["status"] == "completado", r
+    assert {s["id"]: s["status"] for s in r["subtareas"]} == {"T1": "aprobada", "T2": "aprobada", "T3": "aprobada"}
+    assert {s["id"]: s["intentos"] for s in r["subtareas"]}["T2"] == 2
+    filas = leer(r["trace"])
+    decisiones = [f.get("decision") for f in filas if f["tipo"] == "decision"]
+    for d in ["plan_invalido", "plan_valido", "rechazado", "aprobado", "devuelto_al_redactor", "publicable"]:
+        assert d in decisiones, d
+    assert any(f["tipo"] == "ejecucion" for f in filas) and filas[-1]["tipo"] == "fin"
+    reporte = (salida / "reporte.md").read_text()
+    assert "0.4321" not in reporte and (salida / "figuras" / "T2_figura.png").exists()
+    assert (salida / "plan.json").exists() and (salida / "grafo.json").exists()
+    assert (salida / "cache_solver" / "rechazados" / "T2" / "intento-1" / "script.py").exists()
+    assert r["usage"]["tokens_entrada"] > 0
+
+
+def test_freno_de_presupuesto_redacta_con_la_reserva(enunciado, tmp_path):
+    from solver.orquestador import Solver
+
+    cfg = Config(llm=LLMGuion([lambda m: json.dumps(PLAN_BUENO) if "planificador" in m[0]["content"]
+                                else REPORTE_BIEN if "redactor" in m[0]["content"] else f"```python\n{T1}```"]),
+                 presupuesto_tokens=4000, reserva_redactor=2000)
+    r = Solver(cfg).solve(str(enunciado), str(tmp_path / "corrida"))
+    assert r["status"] == "parcial" and r["motivo_parada"] == "presupuesto"
+    assert r["entregables"], "con el presupuesto agotado igual se entrega lo que hay"
+    assert any(f.get("decision") == "presupuesto_agotado" for f in leer(r["trace"]))
+
+
+def test_ablacion_sin_critico_aprueba_la_fuga(enunciado, tmp_path):
+    from solver.orquestador import SolverSinCritico
+
+    r = SolverSinCritico(Config(llm=LLMGuion([guion()]))).solve(str(enunciado), str(tmp_path / "corrida"))
+    t2 = next(s for s in r["subtareas"] if s["id"] == "T2")
+    assert t2["status"] == "aprobada" and t2["intentos"] == 1      # la fuga pasó: eso mide la ablación
+
+
+def test_sin_modelo_disponible_es_fallido_con_traza(enunciado, tmp_path, monkeypatch):
+    from solver import cliente_llm
+    from solver.orquestador import Solver
+
+    def sin_vpn():
+        raise RuntimeError("Sin respuesta de la H200. ¿Está GlobalProtect conectada?")
+    monkeypatch.setattr(cliente_llm, "cargar_h200", sin_vpn)
+    r = Solver(Config()).solve(str(enunciado), str(tmp_path / "corrida"))
+    assert r["status"] == "fallido" and "GlobalProtect" in r["error"]
+    assert any(f["tipo"] == "error" for f in leer(r["trace"]))
