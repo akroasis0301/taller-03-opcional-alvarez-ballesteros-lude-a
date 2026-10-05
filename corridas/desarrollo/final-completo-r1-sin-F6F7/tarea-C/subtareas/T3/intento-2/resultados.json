@@ -1,0 +1,365 @@
+{
+  "subtarea": "T3",
+  "descripcion": "Análisis por consulta: fallos (relevante fuera del top 3) de TF-IDF (T1) y LSA(4) (T2) y términos compartidos consulta–documento relevante según el vocabulario TF-IDF",
+  "criterio_de_fallo": "posición del documento relevante > 3",
+  "top_k": 3,
+  "fuentes": {
+    "TF-IDF": "entrada/T1/resultados.json (6/6 consultas)",
+    "LSA(4)": "entrada/T2/resultados.json (6/6 consultas)",
+    "verificacion_contra_recomputacion": {
+      "TF-IDF": {
+        "consultas_con_ranking_en_archivo": 6,
+        "rankings_identicos_a_recomputacion": 6,
+        "juicios_de_relevancia_coinciden": true
+      },
+      "LSA(4)": {
+        "consultas_con_ranking_en_archivo": 6,
+        "rankings_identicos_a_recomputacion": 6,
+        "juicios_de_relevancia_coinciden": true
+      }
+    },
+    "vocabulario_tamano": 105,
+    "vocabulario_coincide_con_T1": true
+  },
+  "posicion_del_relevante": {
+    "TF-IDF": {
+      "q1": 1,
+      "q2": 1,
+      "q3": 1,
+      "q4": 1,
+      "q5": 6,
+      "q6": 1
+    },
+    "LSA(4)": {
+      "q1": 1,
+      "q2": 1,
+      "q3": 1,
+      "q4": 3,
+      "q5": 6,
+      "q6": 1
+    }
+  },
+  "consultas_fallidas": {
+    "TF-IDF": {
+      "consultas": [
+        "q5"
+      ],
+      "n_fallos": 1,
+      "detalle": {
+        "q5": {
+          "relevante": "d09",
+          "posicion": 6
+        }
+      }
+    },
+    "LSA(4)": {
+      "consultas": [
+        "q5"
+      ],
+      "n_fallos": 1,
+      "detalle": {
+        "q5": {
+          "relevante": "d09",
+          "posicion": 6
+        }
+      }
+    }
+  },
+  "metricas_verificacion": {
+    "TF-IDF": {
+      "Hit@1": 0.8333333333333334,
+      "Hit@3": 0.8333333333333334,
+      "MRR": 0.8611111111111112
+    },
+    "LSA(4)": {
+      "Hit@1": 0.6666666666666666,
+      "Hit@3": 0.8333333333333334,
+      "MRR": 0.75
+    }
+  },
+  "analisis_de_fallos": [
+    {
+      "metodo": "TF-IDF",
+      "consulta_id": "q5",
+      "consulta": "¿Qué hace que el modelo sea más determinista al elegir la siguiente palabra?",
+      "relevante": "d09",
+      "texto_relevante": "La temperatura reescala los logits antes del softmax; valores bajos concentran la probabilidad.",
+      "posicion_del_relevante": 6,
+      "similitud_del_relevante": 0.07900232923856973,
+      "posicion_del_relevante_con_el_otro_metodo": 6,
+      "similitud_del_relevante_con_el_otro_metodo": 0.499885516803482,
+      "ranking": [
+        "d03",
+        "d06",
+        "d04",
+        "d01",
+        "d10",
+        "d09",
+        "d08",
+        "d05",
+        "d02",
+        "d07"
+      ],
+      "top3": [
+        {
+          "posicion": 1,
+          "documento": "d03",
+          "similitud": 0.3106758887220715,
+          "terminos_compartidos_con_consulta": [
+            "al",
+            "la",
+            "modelo"
+          ]
+        },
+        {
+          "posicion": 2,
+          "documento": "d06",
+          "similitud": 0.2008513459062183,
+          "terminos_compartidos_con_consulta": [
+            "el",
+            "qué"
+          ]
+        },
+        {
+          "posicion": 3,
+          "documento": "d04",
+          "similitud": 0.18955976285205217,
+          "terminos_compartidos_con_consulta": [
+            "la",
+            "que"
+          ]
+        }
+      ],
+      "terminos_compartidos_consulta_relevante": [
+        {
+          "termino": "la",
+          "peso_consulta_tfidf": 0.24397961091537643,
+          "peso_documento_tfidf": 0.32380709577396377,
+          "idf": 1.4519851237430572,
+          "df": 6,
+          "frecuencia_en_consulta": 1,
+          "frecuencia_en_documento": 2,
+          "tipo": "funcional"
+        }
+      ],
+      "n_terminos_compartidos": 1,
+      "terminos_de_contenido_compartidos": [],
+      "diagnostico": "parafasis_sin_solapamiento_lexico_de_contenido",
+      "tokens_de_la_consulta_en_vocabulario": [
+        "al",
+        "el",
+        "la",
+        "modelo",
+        "que",
+        "qué"
+      ],
+      "tokens_de_la_consulta_fuera_del_vocabulario": [
+        "determinista",
+        "elegir",
+        "hace",
+        "más",
+        "palabra",
+        "sea",
+        "siguiente"
+      ],
+      "tokens_del_relevante_ausentes_en_la_consulta": [
+        "antes",
+        "bajos",
+        "concentran",
+        "del",
+        "logits",
+        "los",
+        "probabilidad",
+        "reescala",
+        "softmax",
+        "temperatura",
+        "valores"
+      ],
+      "explicacion": "La consulta q5 y su relevante d09 comparten 1 término(s) del vocabulario TF-IDF: 'la' (peso en la consulta=0.2440, peso en d09=0.3238, IDF=1.4520, DF=6/10). Todos los términos compartidos son palabras funcionales de IDF baja (DF hasta 6/10), sin capacidad discriminativa: no hay solapamiento de términos de contenido. Los términos de contenido de la consulta no aparecen en d09 y los términos característicos de d09 (antes, bajos, concentran, del, logits, los, probabilidad, reescala, …) no aparecen en la consulta: la relación consulta–documento es puramente semántica (una paráfrasis), invisible para el matching léxico. La similitud coseno de d09 (0.0790) solo recoge el cruce de palabras funcionales y queda por debajo de la de documentos que comparten más (o más específicas) palabras con la consulta — top 3: d03 (pos 1, sim 0.3107, comparte: al, la, modelo); d06 (pos 2, sim 0.2009, comparte: el, qué); d04 (pos 3, sim 0.1896, comparte: la, que) —, de modo que d09 cae a la posición 6, fuera del top 3."
+    },
+    {
+      "metodo": "LSA(4)",
+      "consulta_id": "q5",
+      "consulta": "¿Qué hace que el modelo sea más determinista al elegir la siguiente palabra?",
+      "relevante": "d09",
+      "texto_relevante": "La temperatura reescala los logits antes del softmax; valores bajos concentran la probabilidad.",
+      "posicion_del_relevante": 6,
+      "similitud_del_relevante": 0.499885516803482,
+      "posicion_del_relevante_con_el_otro_metodo": 6,
+      "similitud_del_relevante_con_el_otro_metodo": 0.07900232923856973,
+      "ranking": [
+        "d04",
+        "d01",
+        "d03",
+        "d06",
+        "d10",
+        "d09",
+        "d07",
+        "d08",
+        "d05",
+        "d02"
+      ],
+      "top3": [
+        {
+          "posicion": 1,
+          "documento": "d04",
+          "similitud": 0.9427359534682048,
+          "terminos_compartidos_con_consulta": [
+            "la",
+            "que"
+          ]
+        },
+        {
+          "posicion": 2,
+          "documento": "d01",
+          "similitud": 0.8066012329018133,
+          "terminos_compartidos_con_consulta": [
+            "el",
+            "la"
+          ]
+        },
+        {
+          "posicion": 3,
+          "documento": "d03",
+          "similitud": 0.6140509840251385,
+          "terminos_compartidos_con_consulta": [
+            "al",
+            "la",
+            "modelo"
+          ]
+        }
+      ],
+      "terminos_compartidos_consulta_relevante": [
+        {
+          "termino": "la",
+          "peso_consulta_tfidf": 0.24397961091537643,
+          "peso_documento_tfidf": 0.32380709577396377,
+          "idf": 1.4519851237430572,
+          "df": 6,
+          "frecuencia_en_consulta": 1,
+          "frecuencia_en_documento": 2,
+          "tipo": "funcional"
+        }
+      ],
+      "n_terminos_compartidos": 1,
+      "terminos_de_contenido_compartidos": [],
+      "diagnostico": "parafasis_sin_solapamiento_lexico_de_contenido",
+      "tokens_de_la_consulta_en_vocabulario": [
+        "al",
+        "el",
+        "la",
+        "modelo",
+        "que",
+        "qué"
+      ],
+      "tokens_de_la_consulta_fuera_del_vocabulario": [
+        "determinista",
+        "elegir",
+        "hace",
+        "más",
+        "palabra",
+        "sea",
+        "siguiente"
+      ],
+      "tokens_del_relevante_ausentes_en_la_consulta": [
+        "antes",
+        "bajos",
+        "concentran",
+        "del",
+        "logits",
+        "los",
+        "probabilidad",
+        "reescala",
+        "softmax",
+        "temperatura",
+        "valores"
+      ],
+      "explicacion": "La consulta q5 y su relevante d09 comparten 1 término(s) del vocabulario TF-IDF: 'la' (peso en la consulta=0.2440, peso en d09=0.3238, IDF=1.4520, DF=6/10). Todos los términos compartidos son palabras funcionales de IDF baja (DF hasta 6/10), sin capacidad discriminativa: no hay solapamiento de términos de contenido. Los términos de contenido de la consulta no aparecen en d09 y los términos característicos de d09 (antes, bajos, concentran, del, logits, los, probabilidad, reescala, …) no aparecen en la consulta: la relación consulta–documento es puramente semántica (una paráfrasis), invisible para el matching léxico. LSA solo puede acercar vectores mediante co-ocurrencias observadas en el corpus; al no co-ocurrir esos términos en los 10 documentos, la proyección a 4 componentes no salva la paráfrasis y d09 queda en la posición 6 (top 3: d04 (pos 1, sim 0.9427, comparte: la, que); d01 (pos 2, sim 0.8066, comparte: el, la); d03 (pos 3, sim 0.6141, comparte: al, la, modelo))."
+    }
+  ],
+  "tabla_terminos_compartidos": [
+    {
+      "metodo": "TF-IDF",
+      "consulta": "q5",
+      "relevante": "d09",
+      "termino": "la",
+      "peso_consulta_tfidf": 0.24397961091537643,
+      "peso_documento_tfidf": 0.32380709577396377,
+      "idf": 1.4519851237430572,
+      "df": 6,
+      "tipo": "funcional"
+    },
+    {
+      "metodo": "LSA(4)",
+      "consulta": "q5",
+      "relevante": "d09",
+      "termino": "la",
+      "peso_consulta_tfidf": 0.24397961091537643,
+      "peso_documento_tfidf": 0.32380709577396377,
+      "idf": 1.4519851237430572,
+      "df": 6,
+      "tipo": "funcional"
+    }
+  ],
+  "caso_q5_d09": {
+    "consulta_id": "q5",
+    "consulta": "¿Qué hace que el modelo sea más determinista al elegir la siguiente palabra?",
+    "relevante": "d09",
+    "texto_relevante": "La temperatura reescala los logits antes del softmax; valores bajos concentran la probabilidad.",
+    "fallo_en_tf_idf": true,
+    "posicion_en_tf_idf": 6,
+    "similitud_en_tf_idf": 0.07900232923856973,
+    "fallo_en_lsa": true,
+    "posicion_en_lsa": 6,
+    "similitud_en_lsa": 0.499885516803482,
+    "terminos_compartidos": [
+      {
+        "termino": "la",
+        "peso_consulta_tfidf": 0.24397961091537643,
+        "peso_documento_tfidf": 0.32380709577396377,
+        "idf": 1.4519851237430572,
+        "df": 6,
+        "frecuencia_en_consulta": 1,
+        "frecuencia_en_documento": 2,
+        "tipo": "funcional"
+      }
+    ],
+    "n_terminos_compartidos": 1,
+    "tokens_de_la_consulta_en_vocabulario": [
+      "al",
+      "el",
+      "la",
+      "modelo",
+      "que",
+      "qué"
+    ],
+    "tokens_de_la_consulta_fuera_del_vocabulario": [
+      "determinista",
+      "elegir",
+      "hace",
+      "más",
+      "palabra",
+      "sea",
+      "siguiente"
+    ],
+    "tokens_de_d09_ausentes_en_la_consulta": [
+      "antes",
+      "bajos",
+      "concentran",
+      "del",
+      "logits",
+      "los",
+      "probabilidad",
+      "reescala",
+      "softmax",
+      "temperatura",
+      "valores"
+    ],
+    "lectura": "q5 y d09 comparten 1 término(s) del vocabulario TF-IDF: 'la' ('la': peso en la consulta=0.2440, peso en d09=0.3238, IDF=1.4520, DF=6/10). El único puente léxico es una palabra funcional, sin poder discriminativo. De los términos de la consulta presentes en el vocabulario (al, el, la, modelo, que, qué), solo 'la' aparece(n) en d09 —el resto tiene peso 0 en d09—; además, 7 término(s) de la consulta ni siquiera pertenecen al vocabulario (determinista, elegir, hace, más, palabra, sea, siguiente), y los términos que definen a d09 (antes, bajos, concentran, del, logits, los, probabilidad, reescala, softmax, temperatura, …) no aparecen en la consulta: 'más determinista' es una paráfrasis de 'la temperatura baja concentra la probabilidad'. Sin solapamiento de contenido, TF-IDF puntúa a d09 solo por el cruce de palabras funcionales y lo deja en la posición 6 (similitud 0.0790), fuera del top 3. LSA(4) tampoco lo rescata (posición 6, similitud 0.4999): con solo 10 documentos, los términos de la paráfrasis nunca co-ocurren y la proyección a 4 componentes no puede acercarlos."
+  },
+  "figuras": [
+    "t3_posicion_relevante.png",
+    "t3_q5_similitudes.png",
+    "t3_q5_tokens.png"
+  ]
+}

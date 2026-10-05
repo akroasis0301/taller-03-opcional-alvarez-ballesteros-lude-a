@@ -1,0 +1,14 @@
+==================================================================
+T5 — Prueba exacta por cambios de signo (referencia nula exacta)
+==================================================================
+n diferencias pareadas            : 16
+media observada de las diferencias: 0.4187500000
+total de configuraciones de signos: 65536 (2^16)
+configuraciones extremas          : 13372
+  estrictamente más extremas      : 12476
+  empates con la magnitud observada: 896
+p-value exacto                    : 13372/65536 = 0.2040405273
+verificación aritmética exacta    : OK (enteros: 13372, flotantes: 13372)
+referencia prueba t (T4)          : p = 0.2013421492 (|diferencia| = 0.002698)
+decisión al 5%                    : no se rechaza H0
+Salidas: output/store_differences.csv, output/store_differences.png, resultados.json

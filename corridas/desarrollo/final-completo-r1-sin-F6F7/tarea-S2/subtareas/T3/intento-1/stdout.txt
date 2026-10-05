@@ -1,0 +1,7 @@
+T3 — Evidencia por tienda
+  Figura : output/store_differences.png (existe: True)
+  CSV    : output/store_differences.csv (existe: True)
+  Tiendas: 16 | favorecen a A: 6 | favorecen a B: 10 | empates: 0
+  Mayor diferencia a favor de B: S08 (+2.1000, magnitud 2.1000)
+  Mayor diferencia a favor de A: S09 (-1.8000, magnitud 1.8000)
+  Verificación contra T2: consistente

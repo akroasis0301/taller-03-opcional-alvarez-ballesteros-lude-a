@@ -1,0 +1,181 @@
+{
+  "subtask": "T5",
+  "description": "Prueba exacta por cambios de signo tras la prueba t (T4): enumeración exhaustiva de las 2^16 = 65536 configuraciones de signos de las diferencias pareadas, conteo de medias nulas con magnitud al menos tan extrema como la observada y p-value exacto",
+  "csv_source": "data/model_errors.csv",
+  "n": 16,
+  "n_zero_differences": 0,
+  "observed_mean_difference": 0.4187499999999997,
+  "observed_sum_difference": 6.699999999999995,
+  "total_configurations": 65536,
+  "n_sign_configurations": 65536,
+  "expected_total_configurations": 65536,
+  "total_matches_expected": true,
+  "comparison_rule": "|media nula| >= |media observada| (bilateral, 'al menos tan extrema', incluye empates y la configuración observada)",
+  "extreme_count": 13372,
+  "count_extreme_configurations": 13372,
+  "p_value_exact": 0.20404052734375,
+  "p_value": 0.20404052734375,
+  "p_value_definition": "p_value = extreme_count / total_configurations",
+  "p_value_fraction": "13372/65536",
+  "enumeration_method": "exhaustiva y determinista: las 2^16 asignaciones de signo (+1/−1) a las 16 diferencias; sin muestreo aleatorio ni semilla",
+  "float_comparison_tolerance": 1e-09,
+  "exact_integer_verification": {
+    "scale_factor": 10,
+    "differences_on_decimal_grid": true,
+    "observed_sum_integer_units": 67,
+    "extreme_count_integer_arithmetic": 13372,
+    "extreme_count_float_arithmetic": 13372,
+    "agreement": true
+  },
+  "ties_at_observed_magnitude": 896,
+  "strictly_more_extreme_count": 12476,
+  "extreme_positive_count": 6686,
+  "extreme_negative_count": 6686,
+  "includes_observed_configuration": true,
+  "null_distribution_summary": {
+    "mean": 0.0,
+    "sd": 0.3209507505809365,
+    "min": -1.18125,
+    "max": 1.18125,
+    "n_positive_sums": 32768,
+    "n_negative_sums": 32768,
+    "symmetric_counts": true
+  },
+  "t_test_reference": {
+    "p_value_two_sided_t_test": 0.20134214922904944,
+    "p_value_exact_sign_flip": 0.20404052734375,
+    "abs_difference": 0.002698378114700556,
+    "note": "Ambos evalúan H0: media de las diferencias = 0, pero con referencias nulas y supuestos distintos; no son procedimientos intercambiables."
+  },
+  "rejects_h0_at_5pct": false,
+  "t4_crosscheck": {
+    "t4_mean": 0.4187499999999997,
+    "mean_matches_t4": true,
+    "t4_p_value_two_sided": 0.20134214922904944,
+    "t4_table_differences_match": true
+  },
+  "interpretation": {
+    "p_value_condicional_a_h0": "Condicional a la hipótesis nula (bajo H0 cada una de las 65536 configuraciones de signos es igualmente probable, con probabilidad 0.00001526), el p-value es la probabilidad de observar una media de las diferencias con magnitud al menos tan extrema como la observada (0.4187): 13372 de 65536 configuraciones, p = 0.204041.",
+    "diseno": "Diseño pareado dentro de tienda: cada tienda aporta una diferencia error_a − error_b; la unidad de análisis es la tienda (n = 16) y la estadística de prueba es la media de las diferencias.",
+    "supuestos": "La referencia nula por cambios de signo solo supone que, bajo H0, el signo de cada diferencia es intercambiable (simetría de cada diferencia respecto a 0); no exige normalidad. La prueba t supone que la media muestral sigue (aprox.) una distribución t de Student con n−1 = 15 grados de libertad. Los supuestos no son idénticos.",
+    "no_intercambiables": "La prueba t compara el estadístico t observado con una distribución t teórica continua que depende de la varianza estimada, mientras que la prueba por cambios de signo compara la media observada con la distribución exacta y discreta de las 65536 medias obtenidas reasignando signos. Aunque aquí los p-values son numéricamente cercanos (t: 0.2013; cambios de signo: 0.2040), provienen de modelos de nula distintos y no son intercambiables: pueden divergir con muestras pequeñas, asimetría o colas pesadas."
+  },
+  "table": [
+    {
+      "store_id": "S01",
+      "error_a": 12.4,
+      "error_b": 10.6,
+      "difference": 1.8000000000000007,
+      "favors": "B"
+    },
+    {
+      "store_id": "S02",
+      "error_a": 9.8,
+      "error_b": 9.1,
+      "difference": 0.7000000000000011,
+      "favors": "B"
+    },
+    {
+      "store_id": "S03",
+      "error_a": 15.1,
+      "error_b": 13.9,
+      "difference": 1.1999999999999993,
+      "favors": "B"
+    },
+    {
+      "store_id": "S04",
+      "error_a": 11.0,
+      "error_b": 12.4,
+      "difference": -1.4000000000000004,
+      "favors": "A"
+    },
+    {
+      "store_id": "S05",
+      "error_a": 8.7,
+      "error_b": 7.2,
+      "difference": 1.4999999999999991,
+      "favors": "B"
+    },
+    {
+      "store_id": "S06",
+      "error_a": 13.6,
+      "error_b": 13.9,
+      "difference": -0.3000000000000007,
+      "favors": "A"
+    },
+    {
+      "store_id": "S07",
+      "error_a": 10.2,
+      "error_b": 9.3,
+      "difference": 0.8999999999999986,
+      "favors": "B"
+    },
+    {
+      "store_id": "S08",
+      "error_a": 14.9,
+      "error_b": 12.8,
+      "difference": 2.0999999999999996,
+      "favors": "B"
+    },
+    {
+      "store_id": "S09",
+      "error_a": 7.5,
+      "error_b": 9.3,
+      "difference": -1.8000000000000007,
+      "favors": "A"
+    },
+    {
+      "store_id": "S10",
+      "error_a": 16.0,
+      "error_b": 15.0,
+      "difference": 1.0,
+      "favors": "B"
+    },
+    {
+      "store_id": "S11",
+      "error_a": 9.3,
+      "error_b": 9.8,
+      "difference": -0.5,
+      "favors": "A"
+    },
+    {
+      "store_id": "S12",
+      "error_a": 12.8,
+      "error_b": 11.1,
+      "difference": 1.700000000000001,
+      "favors": "B"
+    },
+    {
+      "store_id": "S13",
+      "error_a": 11.7,
+      "error_b": 12.9,
+      "difference": -1.200000000000001,
+      "favors": "A"
+    },
+    {
+      "store_id": "S14",
+      "error_a": 8.9,
+      "error_b": 8.3,
+      "difference": 0.5999999999999996,
+      "favors": "B"
+    },
+    {
+      "store_id": "S15",
+      "error_a": 13.2,
+      "error_b": 11.9,
+      "difference": 1.299999999999999,
+      "favors": "B"
+    },
+    {
+      "store_id": "S16",
+      "error_a": 10.6,
+      "error_b": 11.5,
+      "difference": -0.9000000000000004,
+      "favors": "A"
+    }
+  ],
+  "outputs": [
+    "output/store_differences.csv",
+    "output/store_differences.png"
+  ]
+}

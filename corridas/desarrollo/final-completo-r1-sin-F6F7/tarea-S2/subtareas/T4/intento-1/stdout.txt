@@ -1,0 +1,12 @@
+=== T4 · Efecto e incertidumbre de las diferencias pareadas ===
+n                 = 16
+media             = 0.418750
+sd muestral       = 1.253379
+SE = sd/sqrt(n)   = 0.313345  (verificado vs scipy.sem: True)
+gl                = 15
+estadístico t     = 1.336388
+p-value bilateral = 0.201342
+IC t 95 %         = [-0.249128, 1.086628]  (verificado con cuantil t: True)
+Coherencia con ttest_rel (pareada): True
+Decisión al 5 %: No se rechaza H0 al 5 %: la diferencia media no es significativa.
+Archivos escritos: resultados.json, output/store_differences.csv, output/store_differences.png

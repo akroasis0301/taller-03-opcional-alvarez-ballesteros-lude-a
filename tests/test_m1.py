@@ -677,3 +677,37 @@ def test_lo_que_el_redactor_no_corrige_no_se_publica(enunciado, tmp_path):
     assert sum(f.get("decision") == "devuelto_al_redactor" for f in filas) == 3
     assert next(f for f in filas if f.get("decision") == "cifras_marcadas")["cifras"] == ["0.4321"]
     assert r["status"] == "parcial"
+
+
+# ======================================================================== F6 y F7 (completo-r1 con F3/F4, 2026-10-05)
+def test_si_el_redactor_falla_las_cifras_sin_respaldo_igual_se_marcan(enunciado, tmp_path):
+    """Semana 1: la segunda redacción volvió vacía en su tope y quedó publicado el borrador anterior."""
+    from solver.orquestador import Solver
+    from solver.procedencia import MARCA
+
+    base, redacciones = guion(), []
+
+    def responder(m):
+        if m[0]["content"].startswith("Eres el redactor"):
+            redacciones.append(1)
+            return REPORTE_INVENTADO if len(redacciones) == 1 else {"contenido": "", "fin": "length"}
+        return base(m)
+    salida = tmp_path / "corrida"
+    r = Solver(Config(llm=LLMGuion([responder]), max_tokens=1000, max_tokens_tope=1000)).solve(
+        str(enunciado), str(salida))
+    reporte = (salida / "reporte.md").read_text()
+    assert "0.4321" not in reporte and MARCA in reporte
+    assert r["motivo_parada"].startswith("error en redactar") and r["status"] == "parcial"
+    assert any(f.get("decision") == "cifras_marcadas" for f in leer(r["trace"]))
+
+
+@pytest.mark.parametrize("codigo", ['s = "a".replace("a", "b")', "import pandas as pd\ndf = pd.DataFrame()\n"
+                                    "df = df.replace(0, 1).rename(columns={})", "l = [1]\nl.remove(1)"])
+def test_metodos_comunes_no_son_operaciones_de_archivos(codigo):
+    assert revisar(codigo).violaciones == []
+
+
+@pytest.mark.parametrize("codigo", ['import os\nos.replace("a", "b")', 'from pathlib import Path\nPath("a").rename("b")',
+                                    "from os import replace"])
+def test_renombrar_archivos_sigue_bloqueado(codigo):
+    assert revisar(codigo).violaciones

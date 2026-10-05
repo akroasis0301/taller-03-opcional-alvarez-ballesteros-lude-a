@@ -1,0 +1,98 @@
+{
+  "subtarea": "T3 — Comprobación empírica: muestreo de la distribución renormalizada (top-p p=0.9, T=1) y divergencia KL",
+  "n_muestras": 10000,
+  "semilla": 0,
+  "generador": "numpy.random.default_rng(0)",
+  "fuente_distribucion_teorica": "entrada/T2/resultados.json (clave 'distribucion_renormalizada')",
+  "tokens": [
+    "t0",
+    "t1",
+    "t2",
+    "t3",
+    "t4",
+    "t5"
+  ],
+  "probabilidades_teoricas": {
+    "t0": 0.5693760554907313,
+    "t1": 0.2094617451103304,
+    "t2": 0.12704497044632815,
+    "t3": 0.09411722895261025,
+    "t4": 0.0,
+    "t5": 0.0
+  },
+  "conteos_observados": {
+    "t0": 5682,
+    "t1": 2093,
+    "t2": 1296,
+    "t3": 929,
+    "t4": 0,
+    "t5": 0
+  },
+  "frecuencias_observadas": {
+    "t0": 0.5682,
+    "t1": 0.2093,
+    "t2": 0.1296,
+    "t3": 0.0929,
+    "t4": 0.0,
+    "t5": 0.0
+  },
+  "divergencia_KL_bits": 5.006898814879229e-05,
+  "KL_bits": 5.006898814879229e-05,
+  "definicion_KL": "KL(empírica || teórica) = Σ_i q_i * log2(q_i / p_i); términos con q_i = 0 aportan 0",
+  "tabla_4_decimales": {
+    "columnas": [
+      "token",
+      "prob_teorica",
+      "frecuencia_observada",
+      "conteo"
+    ],
+    "filas": [
+      [
+        "t0",
+        "0.5694",
+        "0.5682",
+        "5682"
+      ],
+      [
+        "t1",
+        "0.2095",
+        "0.2093",
+        "2093"
+      ],
+      [
+        "t2",
+        "0.1270",
+        "0.1296",
+        "1296"
+      ],
+      [
+        "t3",
+        "0.0941",
+        "0.0929",
+        "929"
+      ],
+      [
+        "t4",
+        "0.0000",
+        "0.0000",
+        "0"
+      ],
+      [
+        "t5",
+        "0.0000",
+        "0.0000",
+        "0"
+      ]
+    ]
+  },
+  "figura": "fig_T3_frecuencias_vs_teoricas.png",
+  "verificaciones": {
+    "suma_probabilidades_teoricas": 1.0,
+    "suma_frecuencias_observadas": 1.0,
+    "total_muestras": 10000,
+    "tokens_sin_muestras": [
+      "t4",
+      "t5"
+    ]
+  }
+}

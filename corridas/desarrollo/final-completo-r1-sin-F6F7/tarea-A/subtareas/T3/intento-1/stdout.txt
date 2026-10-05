@@ -1,0 +1,11 @@
+T3 — Curva de aprendizaje (evaluación siempre sobre el mismo test de T1)
+n_train total: 398 | n_test: 171
+| fracción | n_train | accuracy Naive Bayes gaussiano | accuracy Regresión logística |
+|---|---|---|---|
+| 5 % | 19 | 0.941520 | 0.929825 |
+| 10 % | 39 | 0.947368 | 0.935673 |
+| 25 % | 99 | 0.935673 | 0.941520 |
+| 50 % | 199 | 0.923977 | 0.976608 |
+| 100 % | 398 | 0.935673 | 0.988304 |
+Figura guardada en: t3_curva_aprendizaje.png
+Resultados escritos en: resultados.json

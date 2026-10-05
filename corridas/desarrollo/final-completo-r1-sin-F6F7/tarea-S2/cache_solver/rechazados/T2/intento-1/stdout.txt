@@ -1,0 +1,9 @@
+T2 completada.
+  Validaciones ejecutadas sin errores: True
+  Filas pareadas: 16 (tiendas únicas: 16)
+  Columnas: ['store_id', 'error_a', 'error_b', 'difference', 'favors']
+  favors -> A: 6, B: 10, ties: 0
+  Media de difference: 0.418750
+  Emparejamiento verificado por store_id: True
+  CSV original sin modificar: True
+  Archivos escritos: output/store_differences.csv, output/store_differences.png, results.json

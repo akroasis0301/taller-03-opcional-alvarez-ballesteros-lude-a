@@ -1,0 +1,28 @@
+==================================================================
+T2 — Top-p (nucleus sampling) con p = 0.9 sobre la distribución T = 1
+==================================================================
+Fuente de la distribución T = 1 : entrada/T1/resultados.json (clave 'T=1.0')
+
+Tokens ordenados por probabilidad descendente:
+  1. t0  p = 0.551623  acum = 0.551623  [NÚCLEO]
+  2. t1  p = 0.202931  acum = 0.754553  [NÚCLEO]
+  3. t2  p = 0.123084  acum = 0.877637  [NÚCLEO]
+  4. t3  p = 0.091183  acum = 0.968820  [NÚCLEO]
+  5. t4  p = 0.027464  acum = 0.996283  [fuera ]
+  6. t5  p = 0.003717  acum = 1.000000  [fuera ]
+
+Núcleo mínimo (k = 4): ['t0', 't1', 't2', 't3']
+Probabilidad acumulada del núcleo: 0.968820  (>= 0.9: True)
+Tokens fuera del núcleo: ['t4', 't5']  (quedan con probabilidad 0)
+
+Distribución renormalizada:
+  t0: 0.569376
+  t1: 0.209462
+  t2: 0.127045
+  t3: 0.094117
+  t4: 0.000000
+  t5: 0.000000
+Suma de la distribución renormalizada: 1.000000000000
+
+Verificaciones: {'acumulada_nucleo_alcanza_p': True, 'conjunto_es_minimo': True, 'tokens_fuera_con_probabilidad_cero': True, 'suma_renormalizada_es_1': True}
+Figura guardada: fig_T2_top_p.png | Contrato escrito: resultados.json

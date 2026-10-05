@@ -228,3 +228,14 @@ Scripts nuevos: `forzar_frenos.py` (Parte 3), `juez.py` (Parte 4, opción E), `d
 - **F4.** Si tras la última redacción (o con el presupuesto agotado) quedan cifras sin respaldo, se
   reemplazan por `[cifra sin respaldo]` y el entregable se reconstruye: evento `cifras_marcadas`.
   La tarea queda «parcial».
+
+## 14. F6 y F7 (2026-10-05, antes de congelar `baseline-v1`)
+
+- **F6.** Si la redacción termina sin la última verificación (el redactor falló o se agotó el
+  presupuesto) y el último borrador tenía cifras sin respaldo, `_cerrar` las marca igual y
+  reconstruye el entregable (`cifras_marcadas`). Un error al marcar queda en la traza; la corrida
+  siempre cierra.
+- **F7.** La guarda bloquea `remove`, `rename`, `replace`, `truncate` y `link` solo sobre `os`,
+  `shutil`, `pathlib` o un `Path(...)`. `str.replace`, `df.replace`, `df.rename` y `list.remove` pasan.
+  Límite declarado: un `Path` guardado en una variable (`p.rename(q)`) no se detecta; renombra dentro
+  de la carpeta del sandbox, y una ruta constante que sale de ella sigue bloqueada.

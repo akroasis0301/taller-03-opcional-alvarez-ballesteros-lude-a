@@ -1,0 +1,1112 @@
+{
+ "directed": true,
+ "multigraph": false,
+ "graph": {},
+ "nodes": [
+  {
+   "titulo": "Tarea A — Generativo contra discriminativo con pocos datos",
+   "trabajo": false,
+   "id": "Preámbulo",
+   "capa": "enunciado"
+  },
+  {
+   "titulo": "Parte 1 — Datos",
+   "trabajo": true,
+   "id": "Parte 1",
+   "capa": "enunciado"
+  },
+  {
+   "titulo": "Parte 2 — Dos clasificadores",
+   "trabajo": true,
+   "id": "Parte 2",
+   "capa": "enunciado"
+  },
+  {
+   "titulo": "Parte 3 — La curva de aprendizaje",
+   "trabajo": true,
+   "id": "Parte 3",
+   "capa": "enunciado"
+  },
+  {
+   "titulo": "Parte 4 — Discusión",
+   "trabajo": true,
+   "id": "Parte 4",
+   "capa": "enunciado"
+  },
+  {
+   "titulo": "El reporte",
+   "trabajo": false,
+   "id": "El reporte",
+   "capa": "enunciado"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "clase",
+   "tipo": "concepto",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 1"
+   ],
+   "comunidad": null,
+   "id": "ent:clase"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "división de la Parte 1",
+   "tipo": "restriccion",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 3"
+   ],
+   "comunidad": null,
+   "id": "ent:division de la parte 1"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "cruce de Ng y Jordan",
+   "tipo": "concepto",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 4"
+   ],
+   "comunidad": 0,
+   "id": "ent:cruce de ng y jordan"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "F1 macro",
+   "tipo": "metrica",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 2"
+   ],
+   "comunidad": 7,
+   "id": "ent:f1 macro"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "ajuste del escalador solo con entrenamiento",
+   "tipo": "restriccion",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 2"
+   ],
+   "comunidad": 0,
+   "id": "ent:ajuste del escalador solo con entrenamiento"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "estratificación por clase",
+   "tipo": "restriccion",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 1"
+   ],
+   "comunidad": null,
+   "id": "ent:estratificacion por clase"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "conjunto de entrenamiento",
+   "tipo": "dataset",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 1",
+    "Parte 2"
+   ],
+   "comunidad": null,
+   "id": "ent:conjunto de entrenamiento"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "MLOps",
+   "tipo": "metodo",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s4-llmops-y-finetuning § 1. Por qué LLMOps es diferente a MLOps"
+   ],
+   "comunidad": 9,
+   "id": "ent:mlop"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "tamaño de entrenamiento",
+   "tipo": "concepto",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 4"
+   ],
+   "comunidad": 0,
+   "id": "ent:tamano de entrenamiento"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "sesgo",
+   "tipo": "concepto",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 4"
+   ],
+   "comunidad": 0,
+   "id": "ent:sesgo"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "Transformer",
+   "tipo": "metodo",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s1-transformers-y-foundation-models § 1. Sesión histórica: IA antes de los LLMs (20 min) … Conexión con el curso anterior",
+    "s1-transformers-y-foundation-models § 2. Modelos Generativos Bayesianos: puente conceptual (90 min total) … 2.3 Naive Bayes — el modelo generativo mínimo",
+    "s1-transformers-y-foundation-models § 2.4 Gaussian Mixture Models — variables latentes … 2.5 Hidden Markov Models — generación secuencial",
+    "s1-transformers-y-foundation-models § 3. Arquitectura Transformer (90 min) … 3.4 Estructura completa de un bloque transformer"
+   ],
+   "comunidad": 0,
+   "id": "ent:transformer"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "accuracy",
+   "tipo": "metrica",
+   "origen": [
+    "notas",
+    "enunciado"
+   ],
+   "citas": [
+    "s4-llmops-y-finetuning § 1. Por qué LLMOps es diferente a MLOps",
+    "s4-llmops-y-finetuning § 2. Evaluación Sistemática … 2.2 LLM-as-Judge",
+    "Parte 2",
+    "Parte 3"
+   ],
+   "comunidad": 7,
+   "id": "ent:accuracy"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "varianza",
+   "tipo": "concepto",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 4"
+   ],
+   "comunidad": 0,
+   "id": "ent:varianza"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "curva de aprendizaje",
+   "tipo": "concepto",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 3"
+   ],
+   "comunidad": 7,
+   "id": "ent:curva de aprendizaje"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "Breast Cancer Wisconsin (Diagnostic)",
+   "tipo": "dataset",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 1"
+   ],
+   "comunidad": null,
+   "id": "ent:breast cancer wisconsin diagnostic"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "no tocar el conjunto de prueba",
+   "tipo": "restriccion",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 1"
+   ],
+   "comunidad": null,
+   "id": "ent:no tocar el conjunto de prueba"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "figura PNG",
+   "tipo": "dataset",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 3"
+   ],
+   "comunidad": 7,
+   "id": "ent:figura png"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "conteo de ejemplos, atributos y clases",
+   "tipo": "metrica",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 1"
+   ],
+   "comunidad": null,
+   "id": "ent:conteo de ejemplo atributo y clase"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "número de ejemplos de entrenamiento",
+   "tipo": "metrica",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 3"
+   ],
+   "comunidad": 7,
+   "id": "ent:numero de ejemplo de entrenamiento"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "submuestreo estratificado",
+   "tipo": "metodo",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 3"
+   ],
+   "comunidad": null,
+   "id": "ent:submuestreo estratificado"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "modelo discriminativo",
+   "tipo": "metodo",
+   "origen": [
+    "notas",
+    "enunciado"
+   ],
+   "citas": [
+    "s1-transformers-y-foundation-models § 2. Modelos Generativos Bayesianos: puente conceptual (90 min total) … 2.3 Naive Bayes — el modelo generativo mínimo",
+    "Parte 4"
+   ],
+   "comunidad": 0,
+   "id": "ent:modelo discriminativo"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "modelo generativo",
+   "tipo": "metodo",
+   "origen": [
+    "notas",
+    "enunciado"
+   ],
+   "citas": [
+    "s1-transformers-y-foundation-models § 2. Modelos Generativos Bayesianos: puente conceptual (90 min total) … 2.3 Naive Bayes — el modelo generativo mínimo",
+    "Parte 4"
+   ],
+   "comunidad": 0,
+   "id": "ent:modelo generativo"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "JUDGE_PROMPT",
+   "tipo": "dataset",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s4-llmops-y-finetuning § 2. Evaluación Sistemática … 2.2 LLM-as-Judge"
+   ],
+   "comunidad": 7,
+   "id": "ent:judge prompt"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "Naive Bayes",
+   "tipo": "metodo",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s1-transformers-y-foundation-models § 2. Modelos Generativos Bayesianos: puente conceptual (90 min total) … 2.3 Naive Bayes — el modelo generativo mínimo",
+    "s1-transformers-y-foundation-models § 2.6 Variational Autoencoder — el puente al espacio latente continuo … 2.7 Del VAE al LLM autorregresivo"
+   ],
+   "comunidad": 0,
+   "id": "ent:naive baye"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "conjunto de prueba",
+   "tipo": "dataset",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 1",
+    "Parte 2",
+    "Parte 3"
+   ],
+   "comunidad": 0,
+   "id": "ent:conjunto de prueba"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "estandarización de atributos",
+   "tipo": "restriccion",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 2"
+   ],
+   "comunidad": 0,
+   "id": "ent:estandarizacion de atributo"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "dos modelos",
+   "tipo": "metodo",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 3"
+   ],
+   "comunidad": 7,
+   "id": "ent:dos modelo"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "división 70/30",
+   "tipo": "restriccion",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 1"
+   ],
+   "comunidad": null,
+   "id": "ent:division 70 30"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "random_state=42",
+   "tipo": "restriccion",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 1",
+    "Parte 3"
+   ],
+   "comunidad": null,
+   "id": "ent:random state 42"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "fracciones de entrenamiento",
+   "tipo": "restriccion",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 3"
+   ],
+   "comunidad": 7,
+   "id": "ent:fraccion de entrenamiento"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "Naive Bayes gaussiano",
+   "tipo": "metodo",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 2"
+   ],
+   "comunidad": 7,
+   "id": "ent:naive baye gaussiano"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "LLM",
+   "tipo": "metodo",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s1-transformers-y-foundation-models § 2. Modelos Generativos Bayesianos: puente conceptual (90 min total) … 2.3 Naive Bayes — el modelo generativo mínimo",
+    "s1-transformers-y-foundation-models § 2.4 Gaussian Mixture Models — variables latentes … 2.5 Hidden Markov Models — generación secuencial",
+    "s1-transformers-y-foundation-models § 2.6 Variational Autoencoder — el puente al espacio latente continuo … 2.7 Del VAE al LLM autorregresivo",
+    "s2-rag-y-vector-search § 1. Por qué RAG existe",
+    "s2-rag-y-vector-search § 4. Chunking Strategies … 4.3 Regla práctica",
+    "s2-rag-y-vector-search § 6. Evaluación de RAG … 6.3 GraphRAG",
+    "s2-rag-y-vector-search § 7. Notas del Lab 02",
+    "s3-agentes § 1. Puente con la teoría clásica de agentes … 1.2 El agente LLM en la taxonomía clásica",
+    "s3-agentes § 2. Tool Use / Function Calling … 2.3 Model Context Protocol (MCP)",
+    "s3-agentes § 3. Patrones de Agentes … 3.3 Reflexion",
+    "s4-llmops-y-finetuning § 1. Por qué LLMOps es diferente a MLOps",
+    "s4-llmops-y-finetuning § 2.3 RAGAS para RAG",
+    "s4-llmops-y-finetuning § 4. Guardrails … 4.3 Costo y latencia",
+    "s4-llmops-y-finetuning § 6. Monitoreo en Producción … 6.2 Drift de calidad"
+   ],
+   "comunidad": 9,
+   "id": "ent:llm"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "regresión logística",
+   "tipo": "metodo",
+   "origen": [
+    "notas",
+    "enunciado"
+   ],
+   "citas": [
+    "s1-transformers-y-foundation-models § 2. Modelos Generativos Bayesianos: puente conceptual (90 min total) … 2.3 Naive Bayes — el modelo generativo mínimo",
+    "Parte 2"
+   ],
+   "comunidad": 0,
+   "id": "ent:regresion logistica"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "scikit-learn",
+   "tipo": "metodo",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 1"
+   ],
+   "comunidad": null,
+   "id": "ent:scikit learn"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "Ng y Jordan",
+   "tipo": "concepto",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 4"
+   ],
+   "comunidad": 0,
+   "id": "ent:ng y jordan"
+  }
+ ],
+ "aristas": [
+  {
+   "tipo": "menciona",
+   "source": "Parte 1",
+   "target": "ent:breast cancer wisconsin diagnostic"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 1",
+   "target": "ent:scikit learn"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 1",
+   "target": "ent:division 70 30"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 1",
+   "target": "ent:estratificacion por clase"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 1",
+   "target": "ent:random state 42"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 1",
+   "target": "ent:no tocar el conjunto de prueba"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 1",
+   "target": "ent:conjunto de entrenamiento"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 1",
+   "target": "ent:conjunto de prueba"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 1",
+   "target": "ent:clase"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 1",
+   "target": "ent:conteo de ejemplo atributo y clase"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 2",
+   "target": "ent:naive baye gaussiano"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 2",
+   "target": "ent:regresion logistica"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 2",
+   "target": "ent:accuracy"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 2",
+   "target": "ent:f1 macro"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 2",
+   "target": "ent:estandarizacion de atributo"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 2",
+   "target": "ent:ajuste del escalador solo con entrenamiento"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 2",
+   "target": "ent:conjunto de prueba"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 2",
+   "target": "ent:conjunto de entrenamiento"
+  },
+  {
+   "tipo": "depende_de",
+   "regla": "referencia",
+   "evidencia": "Sobre la misma división de la Parte 1, entrena los dos modelos con el 5 %, 10 %, 25 %, 50",
+   "source": "Parte 3",
+   "target": "Parte 1"
+  },
+  {
+   "tipo": "depende_de",
+   "regla": "anafora",
+   "evidencia": "Sobre la misma división de la Parte 1, entrena los dos modelos con el 5 %, 10 %, 25 %, 50 % y 100 % del ent",
+   "source": "Parte 3",
+   "target": "Parte 2"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 3",
+   "target": "ent:curva de aprendizaje"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 3",
+   "target": "ent:division de la parte 1"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 3",
+   "target": "ent:dos modelo"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 3",
+   "target": "ent:submuestreo estratificado"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 3",
+   "target": "ent:random state 42"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 3",
+   "target": "ent:fraccion de entrenamiento"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 3",
+   "target": "ent:conjunto de prueba"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 3",
+   "target": "ent:accuracy"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 3",
+   "target": "ent:numero de ejemplo de entrenamiento"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 3",
+   "target": "ent:figura png"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 4",
+   "target": "ent:cruce de ng y jordan"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 4",
+   "target": "ent:ng y jordan"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 4",
+   "target": "ent:tamano de entrenamiento"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 4",
+   "target": "ent:modelo generativo"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 4",
+   "target": "ent:modelo discriminativo"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 4",
+   "target": "ent:sesgo"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 4",
+   "target": "ent:varianza"
+  },
+  {
+   "tipo": "depende_de",
+   "regla": "referencia",
+   "evidencia": ": Introducción, Metodología, Resultados (con la tabla de la Parte 2 y la figura de la Parte 3), Discusión y Conclusiones",
+   "source": "El reporte",
+   "target": "Parte 2"
+  },
+  {
+   "tipo": "depende_de",
+   "regla": "referencia",
+   "evidencia": "a, Resultados (con la tabla de la Parte 2 y la figura de la Parte 3), Discusión y Conclusiones. Máximo 1 200 palabras. T",
+   "source": "El reporte",
+   "target": "Parte 3"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "depender_de",
+   "citas": [
+    "Parte 4"
+   ],
+   "source": "ent:cruce de ng y jordan",
+   "target": "ent:tamano de entrenamiento"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "involucrar",
+   "citas": [
+    "Parte 4"
+   ],
+   "source": "ent:cruce de ng y jordan",
+   "target": "ent:modelo generativo"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "involucrar",
+   "citas": [
+    "Parte 4"
+   ],
+   "source": "ent:cruce de ng y jordan",
+   "target": "ent:modelo discriminativo"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "usa",
+   "citas": [
+    "Parte 2"
+   ],
+   "source": "ent:ajuste del escalador solo con entrenamiento",
+   "target": "ent:conjunto de entrenamiento"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "se_basa_en",
+   "citas": [
+    "Parte 1"
+   ],
+   "source": "ent:estratificacion por clase",
+   "target": "ent:clase"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "usa",
+   "citas": [
+    "s4-llmops-y-finetuning § 1. Por qué LLMOps es diferente a MLOps"
+   ],
+   "source": "ent:mlop",
+   "target": "ent:accuracy"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "ejemplifica",
+   "citas": [
+    "s1-transformers-y-foundation-models § 2. Modelos Generativos Bayesianos: puente conceptual (90 min total) … 2.3 Naive Bayes — el modelo generativo mínimo"
+   ],
+   "source": "ent:transformer",
+   "target": "ent:modelo discriminativo"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "dibuja",
+   "citas": [
+    "Parte 3"
+   ],
+   "source": "ent:curva de aprendizaje",
+   "target": "ent:accuracy"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "dibuja_contra",
+   "citas": [
+    "Parte 3"
+   ],
+   "source": "ent:curva de aprendizaje",
+   "target": "ent:numero de ejemplo de entrenamiento"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "compara",
+   "citas": [
+    "Parte 3"
+   ],
+   "source": "ent:curva de aprendizaje",
+   "target": "ent:dos modelo"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "se_guarda_como",
+   "citas": [
+    "Parte 3"
+   ],
+   "source": "ent:curva de aprendizaje",
+   "target": "ent:figura png"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "se_carga_con",
+   "citas": [
+    "Parte 1"
+   ],
+   "source": "ent:breast cancer wisconsin diagnostic",
+   "target": "ent:scikit learn"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "se_divide_en",
+   "citas": [
+    "Parte 1"
+   ],
+   "source": "ent:breast cancer wisconsin diagnostic",
+   "target": "ent:division 70 30"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "aplica_a",
+   "citas": [
+    "Parte 1"
+   ],
+   "source": "ent:no tocar el conjunto de prueba",
+   "target": "ent:conjunto de prueba"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "describe",
+   "citas": [
+    "Parte 1"
+   ],
+   "source": "ent:conteo de ejemplo atributo y clase",
+   "target": "ent:breast cancer wisconsin diagnostic"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "usa",
+   "citas": [
+    "Parte 3"
+   ],
+   "source": "ent:submuestreo estratificado",
+   "target": "ent:random state 42"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "genera",
+   "citas": [
+    "Parte 3"
+   ],
+   "source": "ent:submuestreo estratificado",
+   "target": "ent:fraccion de entrenamiento"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "relacionar_con",
+   "citas": [
+    "Parte 4"
+   ],
+   "source": "ent:modelo discriminativo",
+   "target": "ent:sesgo"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "relacionar_con",
+   "citas": [
+    "Parte 4"
+   ],
+   "source": "ent:modelo discriminativo",
+   "target": "ent:varianza"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "comparar_con",
+   "citas": [
+    "Parte 4"
+   ],
+   "source": "ent:modelo generativo",
+   "target": "ent:modelo discriminativo"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "relacionar_con",
+   "citas": [
+    "Parte 4"
+   ],
+   "source": "ent:modelo generativo",
+   "target": "ent:sesgo"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "relacionar_con",
+   "citas": [
+    "Parte 4"
+   ],
+   "source": "ent:modelo generativo",
+   "target": "ent:varianza"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "mide",
+   "citas": [
+    "s4-llmops-y-finetuning § 2. Evaluación Sistemática … 2.2 LLM-as-Judge"
+   ],
+   "source": "ent:judge prompt",
+   "target": "ent:accuracy"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "es_un",
+   "citas": [
+    "s1-transformers-y-foundation-models § 2. Modelos Generativos Bayesianos: puente conceptual (90 min total) … 2.3 Naive Bayes — el modelo generativo mínimo"
+   ],
+   "source": "ent:naive baye",
+   "target": "ent:modelo generativo"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "implica",
+   "citas": [
+    "Parte 2"
+   ],
+   "source": "ent:estandarizacion de atributo",
+   "target": "ent:ajuste del escalador solo con entrenamiento"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "usa",
+   "citas": [
+    "Parte 3"
+   ],
+   "source": "ent:dos modelo",
+   "target": "ent:division de la parte 1"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "entrena_con",
+   "citas": [
+    "Parte 3"
+   ],
+   "source": "ent:dos modelo",
+   "target": "ent:fraccion de entrenamiento"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "evalua_sobre",
+   "citas": [
+    "Parte 3"
+   ],
+   "source": "ent:dos modelo",
+   "target": "ent:conjunto de prueba"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "genera",
+   "citas": [
+    "Parte 1"
+   ],
+   "source": "ent:division 70 30",
+   "target": "ent:conjunto de entrenamiento"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "genera",
+   "citas": [
+    "Parte 1"
+   ],
+   "source": "ent:division 70 30",
+   "target": "ent:conjunto de prueba"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "requiere",
+   "citas": [
+    "Parte 1"
+   ],
+   "source": "ent:division 70 30",
+   "target": "ent:estratificacion por clase"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "usa",
+   "citas": [
+    "Parte 1"
+   ],
+   "source": "ent:division 70 30",
+   "target": "ent:random state 42"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "evaluado_con",
+   "citas": [
+    "Parte 2"
+   ],
+   "source": "ent:naive baye gaussiano",
+   "target": "ent:accuracy"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "evaluado_con",
+   "citas": [
+    "Parte 2"
+   ],
+   "source": "ent:naive baye gaussiano",
+   "target": "ent:f1 macro"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "evaluado_sobre",
+   "citas": [
+    "Parte 2"
+   ],
+   "source": "ent:naive baye gaussiano",
+   "target": "ent:conjunto de prueba"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "es_un",
+   "citas": [
+    "s1-transformers-y-foundation-models § 2. Modelos Generativos Bayesianos: puente conceptual (90 min total) … 2.3 Naive Bayes — el modelo generativo mínimo"
+   ],
+   "source": "ent:llm",
+   "target": "ent:modelo generativo"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "ejemplifica",
+   "citas": [
+    "s1-transformers-y-foundation-models § 2. Modelos Generativos Bayesianos: puente conceptual (90 min total) … 2.3 Naive Bayes — el modelo generativo mínimo"
+   ],
+   "source": "ent:regresion logistica",
+   "target": "ent:modelo discriminativo"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "evaluado_con",
+   "citas": [
+    "Parte 2"
+   ],
+   "source": "ent:regresion logistica",
+   "target": "ent:accuracy"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "evaluado_con",
+   "citas": [
+    "Parte 2"
+   ],
+   "source": "ent:regresion logistica",
+   "target": "ent:f1 macro"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "requiere",
+   "citas": [
+    "Parte 2"
+   ],
+   "source": "ent:regresion logistica",
+   "target": "ent:estandarizacion de atributo"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "evaluado_sobre",
+   "citas": [
+    "Parte 2"
+   ],
+   "source": "ent:regresion logistica",
+   "target": "ent:conjunto de prueba"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "predecir",
+   "citas": [
+    "Parte 4"
+   ],
+   "source": "ent:ng y jordan",
+   "target": "ent:cruce de ng y jordan"
+  }
+ ]
+}

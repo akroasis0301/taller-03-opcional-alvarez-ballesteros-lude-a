@@ -23,8 +23,13 @@ MODULOS_PROHIBIDOS = {"socket", "ssl", "requests", "httpx", "urllib", "urllib3",
 LLAMADAS_PROHIBIDAS = {"eval", "exec", "compile", "__import__", "breakpoint", "input"}
 ATRIBUTOS_PROHIBIDOS = {
     "system", "popen", "spawnl", "spawnv", "spawnve", "execv", "execve", "execl", "fork", "kill",
-    "remove", "unlink", "rmdir", "removedirs", "rmtree", "rename", "replace", "chmod", "chown",
-    "putenv", "unsetenv", "setuid", "symlink", "link", "truncate"}
+    "unlink", "rmdir", "removedirs", "rmtree", "chmod", "chown",
+    "putenv", "unsetenv", "setuid", "symlink"}
+# Nombres que también son métodos comunes y legítimos: str.replace, df.replace, df.rename,
+# list.remove, df.truncate. Solo se bloquean sobre os / shutil / pathlib o un Path(...): la guarda
+# bloqueó `.replace()` de pandas en la Semana 1 (completo-r1, 2026-10-05) creyendo que era os.replace.
+AMBIGUOS = {"remove", "rename", "replace", "truncate", "link"}
+RECEPTORES_DE_ARCHIVOS = {"os", "shutil", "pathlib", "Path", "PurePath", "PosixPath", "WindowsPath"}
 DESCARGAS = {"fetch_openml", "load_dataset", "urlretrieve", "fetch_20newsgroups",
              "fetch_california_housing", "fetch_covtype", "fetch_lfw_people", "fetch_olivetti_faces",
              "fetch_kddcup99", "fetch_rcv1", "fetch_species_distributions", "hf_hub_download",
@@ -53,6 +58,17 @@ def _nombre(func: ast.AST) -> str:
     return ""
 
 
+def _sobre_archivos(receptor: ast.AST) -> bool:
+    """¿El método se llama sobre un módulo de archivos o un Path(...)? (os.replace, Path("a").rename)"""
+    while isinstance(receptor, ast.Attribute):                    # os.path.x → os
+        receptor = receptor.value
+    if isinstance(receptor, ast.Name):
+        return receptor.id in RECEPTORES_DE_ARCHIVOS
+    if isinstance(receptor, ast.Call):
+        return _nombre(receptor.func) in RECEPTORES_DE_ARCHIVOS
+    return False
+
+
 def _ruta_fuera(valor: str) -> bool:
     v = valor.strip()
     return v.startswith(("/", "~", "\\")) or ".." in v.replace("\\", "/").split("/") or \
@@ -75,7 +91,7 @@ def revisar(codigo: str) -> Veredicto:
             if (nodo.module or "").split(".")[0] in MODULOS_PROHIBIDOS:
                 v.violaciones.append(f"línea {nodo.lineno}: from {nodo.module} import … (red, procesos o borrado)")
             for a in nodo.names:
-                if a.name in ATRIBUTOS_PROHIBIDOS | LLAMADAS_PROHIBIDAS:
+                if a.name in ATRIBUTOS_PROHIBIDOS | LLAMADAS_PROHIBIDAS | AMBIGUOS:
                     v.violaciones.append(f"línea {nodo.lineno}: from {nodo.module} import {a.name}")
                 if a.name in DESCARGAS:
                     v.descargas.append(f"línea {nodo.lineno}: import {a.name}")
@@ -83,7 +99,8 @@ def revisar(codigo: str) -> Veredicto:
             nombre = _nombre(nodo.func)
             if isinstance(nodo.func, ast.Name) and nombre in LLAMADAS_PROHIBIDAS:
                 v.violaciones.append(f"línea {nodo.lineno}: {nombre}()")
-            if isinstance(nodo.func, ast.Attribute) and nombre in ATRIBUTOS_PROHIBIDOS:
+            if isinstance(nodo.func, ast.Attribute) and (
+                    nombre in ATRIBUTOS_PROHIBIDOS or (nombre in AMBIGUOS and _sobre_archivos(nodo.func.value))):
                 v.violaciones.append(f"línea {nodo.lineno}: .{nombre}() (procesos, borrado o permisos)")
             if nombre in DESCARGAS:
                 v.descargas.append(f"línea {nodo.lineno}: {nombre}()")

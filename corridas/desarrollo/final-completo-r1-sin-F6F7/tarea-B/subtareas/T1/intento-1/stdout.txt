@@ -1,0 +1,14 @@
+Tabla (4 decimales):
+                  T=0.5   T=1.0   T=2.0
+t0               0.8231  0.5516  0.3583
+t1               0.1114  0.2029  0.2173
+t2               0.0410  0.1231  0.1693
+t3               0.0225  0.0912  0.1457
+t4               0.0020  0.0275  0.0800
+t5               0.0000  0.0037  0.0294
+Entropía (bits)  0.9147  1.7998  2.2888
+
+Suma de cada distribución: {'T=0.5': 1.0, 'T=1.0': 1.0, 'T=2.0': 1.0}
+Entropías (bits): {'T=0.5': 0.914682, 'T=1.0': 1.799836, 'T=2.0': 2.288826}
+Entropía monótona creciente con T: True
+Archivos generados: resultados.json, t1_softmax_temperatura.png

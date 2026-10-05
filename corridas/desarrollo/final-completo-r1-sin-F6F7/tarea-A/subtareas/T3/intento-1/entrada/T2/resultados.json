@@ -1,0 +1,79 @@
+{
+  "subtarea": "T2",
+  "descripcion": "Naive Bayes gaussiano y regresión logística entrenados sobre la división 70/30 estratificada de T1 (random_state=42); accuracy y F1 macro medidos sobre el conjunto de prueba.",
+  "division_usada": {
+    "origen": "entrada/T1 (train.parquet, test.parquet)",
+    "test_size": 0.3,
+    "train_size": 0.7,
+    "estratificada_por_clase": true,
+    "random_state": 42,
+    "n_train": 398,
+    "n_test": 171,
+    "info_t1": {
+      "test_size": 0.3,
+      "train_size": 0.7,
+      "estratificada_por_clase": true,
+      "random_state": 42,
+      "n_train": 398,
+      "n_test": 171,
+      "conteo_clases_train": {
+        "malignant": 148,
+        "benign": 250
+      },
+      "conteo_clases_test": {
+        "malignant": 64,
+        "benign": 107
+      }
+    }
+  },
+  "preprocesamiento": {
+    "estandarizacion": "StandardScaler ajustado únicamente con el conjunto de entrenamiento; el mismo escalador transforma el conjunto de prueba.",
+    "nota_nb": "GaussianNB es invariante a transformaciones afines por atributo, por lo que estandarizar no altera sus predicciones; se usa la misma matriz estandarizada para ambos modelos."
+  },
+  "clases": [
+    "malignant",
+    "benign"
+  ],
+  "clases_codificadas": [
+    "0",
+    "1"
+  ],
+  "num_atributos": 30,
+  "tabla_metricas_prueba": [
+    {
+      "modelo": "Naive Bayes gaussiano",
+      "accuracy": 0.935672514619883,
+      "f1_macro": 0.9306543778801843,
+      "matriz_confusion_prueba": [
+        [
+          57,
+          7
+        ],
+        [
+          4,
+          103
+        ]
+      ]
+    },
+    {
+      "modelo": "Regresión logística",
+      "accuracy": 0.9883040935672515,
+      "f1_macro": 0.9875146028037383,
+      "matriz_confusion_prueba": [
+        [
+          63,
+          1
+        ],
+        [
+          1,
+          106
+        ]
+      ]
+    }
+  ],
+  "tabla_markdown": "| modelo | accuracy | f1_macro |\n|---|---|---|\n| Naive Bayes gaussiano | 0.935673 | 0.930654 |\n| Regresión logística | 0.988304 | 0.987515 |",
+  "archivos_generados": [
+    "t2_tabla_metricas.csv",
+    "t2_metricas_prueba.png"
+  ]
+}

@@ -1,0 +1,2882 @@
+{
+ "directed": true,
+ "multigraph": false,
+ "graph": {},
+ "nodes": [
+  {
+   "titulo": "Preámbulo",
+   "trabajo": false,
+   "id": "Preámbulo",
+   "capa": "enunciado"
+  },
+  {
+   "titulo": "Ejercicio de refuerzo - Semana 2",
+   "trabajo": false,
+   "id": "Ejercicio de refuerzo - Semana 2",
+   "capa": "enunciado"
+  },
+  {
+   "titulo": "Objetivo",
+   "trabajo": false,
+   "id": "Objetivo",
+   "capa": "enunciado"
+  },
+  {
+   "titulo": "Escenario",
+   "trabajo": false,
+   "id": "Escenario",
+   "capa": "enunciado"
+  },
+  {
+   "titulo": "Reglas de interpretación",
+   "trabajo": false,
+   "id": "Reglas de interpretación",
+   "capa": "enunciado"
+  },
+  {
+   "titulo": "Tarea 1 - Completar el contrato de análisis",
+   "trabajo": true,
+   "id": "Tarea 1",
+   "capa": "enunciado"
+  },
+  {
+   "titulo": "Tarea 2 - Auditar los datos y construir los pares",
+   "trabajo": true,
+   "id": "Tarea 2",
+   "capa": "enunciado"
+  },
+  {
+   "titulo": "Tarea 3 - Hacer visible la evidencia por tienda",
+   "trabajo": true,
+   "id": "Tarea 3",
+   "capa": "enunciado"
+  },
+  {
+   "titulo": "Tarea 4 - Calcular el efecto y su incertidumbre",
+   "trabajo": true,
+   "id": "Tarea 4",
+   "capa": "enunciado"
+  },
+  {
+   "titulo": "Tarea 5 - Comparar dos referencias nulas",
+   "trabajo": true,
+   "id": "Tarea 5",
+   "capa": "enunciado"
+  },
+  {
+   "titulo": "Tarea 6 - Realizar un bootstrap pareado",
+   "trabajo": true,
+   "id": "Tarea 6",
+   "capa": "enunciado"
+  },
+  {
+   "titulo": "Tarea 7 - Ejecutar el pipeline y redactar la conclusión",
+   "trabajo": true,
+   "id": "Tarea 7",
+   "capa": "enunciado"
+  },
+  {
+   "titulo": "Entregable",
+   "trabajo": false,
+   "id": "Entregable",
+   "capa": "enunciado"
+  },
+  {
+   "titulo": "Anexo - Preguntas de informe.md",
+   "trabajo": false,
+   "id": "Anexo - Preguntas de informe.md",
+   "capa": "enunciado"
+  },
+  {
+   "titulo": "Parte 2. Auditoría y evidencia por tienda",
+   "trabajo": true,
+   "id": "Parte 2",
+   "capa": "enunciado"
+  },
+  {
+   "titulo": "Parte 3. Efecto e incertidumbre",
+   "trabajo": true,
+   "id": "Parte 3",
+   "capa": "enunciado"
+  },
+  {
+   "titulo": "Parte 4. Referencias nulas y sensibilidad",
+   "trabajo": true,
+   "id": "Parte 4",
+   "capa": "enunciado"
+  },
+  {
+   "titulo": "Parte 5. Informe ejecutivo",
+   "trabajo": true,
+   "id": "Parte 5",
+   "capa": "enunciado"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "límites del diseño",
+   "tipo": "restriccion",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 1"
+   ],
+   "comunidad": null,
+   "id": "ent:limite del diseno"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "proceso objetivo propuesto",
+   "tipo": "concepto",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 1"
+   ],
+   "comunidad": null,
+   "id": "ent:proceso objetivo propuesto"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "output/store_differences.png",
+   "tipo": "dataset",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 3",
+    "Tarea 7"
+   ],
+   "comunidad": 3,
+   "id": "ent:output store difference png"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "variante B",
+   "tipo": "metodo",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 2"
+   ],
+   "comunidad": null,
+   "id": "ent:variante b"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "hipótesis nula",
+   "tipo": "concepto",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 5"
+   ],
+   "comunidad": null,
+   "id": "ent:hipotesi nula"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "intervalo t bilateral del 95 %",
+   "tipo": "metodo",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 4"
+   ],
+   "comunidad": 3,
+   "id": "ent:intervalo t bilateral del 95"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "remuestreo de tiendas completas",
+   "tipo": "restriccion",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 6",
+    "Parte 4"
+   ],
+   "comunidad": 3,
+   "id": "ent:remuestreo de tienda completa"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "prueba exacta por cambios de signo",
+   "tipo": "metodo",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 5",
+    "Parte 4"
+   ],
+   "comunidad": 3,
+   "id": "ent:prueba exacta por cambio de signo"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "unidad de análisis",
+   "tipo": "concepto",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 1"
+   ],
+   "comunidad": null,
+   "id": "ent:unidad de analisi"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "evidencia de emparejamiento",
+   "tipo": "concepto",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 1"
+   ],
+   "comunidad": null,
+   "id": "ent:evidencia de emparejamiento"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "desviación muestral",
+   "tipo": "restriccion",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 4"
+   ],
+   "comunidad": null,
+   "id": "ent:desviacion muestral"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "probabilidad posterior",
+   "tipo": "concepto",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 3"
+   ],
+   "comunidad": null,
+   "id": "ent:probabilidad posterior"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "SE = sd / √n",
+   "tipo": "restriccion",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 4"
+   ],
+   "comunidad": null,
+   "id": "ent:se sd n"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "dispersión entre tiendas",
+   "tipo": "concepto",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 4"
+   ],
+   "comunidad": null,
+   "id": "ent:dispersion entre tienda"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "pares (instrucción, respuesta)",
+   "tipo": "dataset",
+   "origen": [
+    "notas",
+    "enunciado"
+   ],
+   "citas": [
+    "s1-transformers-y-foundation-models § 4. Ciclo de vida de un Foundation Model (60 min) … 4.5 Constitutional AI (Anthropic)",
+    "Tarea 2",
+    "Tarea 7",
+    "Parte 2"
+   ],
+   "comunidad": 3,
+   "id": "ent:par instruccion respuesta"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "variante A",
+   "tipo": "metodo",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 2"
+   ],
+   "comunidad": null,
+   "id": "ent:variante a"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "alternativa bilateral",
+   "tipo": "concepto",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 5"
+   ],
+   "comunidad": 3,
+   "id": "ent:alternativa bilateral"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "incertidumbre",
+   "tipo": "concepto",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 7",
+    "Parte 5"
+   ],
+   "comunidad": 3,
+   "id": "ent:incertidumbre"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "mean",
+   "tipo": "metrica",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 4",
+    "Parte 3"
+   ],
+   "comunidad": null,
+   "id": "ent:mean"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "sensibilidad",
+   "tipo": "metrica",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 7"
+   ],
+   "comunidad": null,
+   "id": "ent:sensibilidad"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "semilla 20260829",
+   "tipo": "restriccion",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 6"
+   ],
+   "comunidad": 3,
+   "id": "ent:semilla 20260829"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "error_b",
+   "tipo": "concepto",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 2"
+   ],
+   "comunidad": 3,
+   "id": "ent:error b"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "supuestos",
+   "tipo": "concepto",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 5"
+   ],
+   "comunidad": null,
+   "id": "ent:supuesto"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "informe",
+   "tipo": "dataset",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 1",
+    "Tarea 3"
+   ],
+   "comunidad": null,
+   "id": "ent:informe"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "unidades vendidas",
+   "tipo": "metrica",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 4",
+    "Parte 3"
+   ],
+   "comunidad": null,
+   "id": "ent:unidad vendida"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "desviación estándar muestral",
+   "tipo": "metrica",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 3"
+   ],
+   "comunidad": null,
+   "id": "ent:desviacion estandar muestral"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "n",
+   "tipo": "metrica",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 4"
+   ],
+   "comunidad": null,
+   "id": "ent:tamano muestral"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "unidad",
+   "tipo": "concepto",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 5"
+   ],
+   "comunidad": null,
+   "id": "ent:unidad"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "intervalo t del 95 %",
+   "tipo": "metodo",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 3"
+   ],
+   "comunidad": null,
+   "id": "ent:intervalo t del 95"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "tienda",
+   "tipo": "dataset",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 3",
+    "Parte 2",
+    "Parte 4"
+   ],
+   "comunidad": null,
+   "id": "ent:tienda"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "igual longitud de columnas",
+   "tipo": "concepto",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 2"
+   ],
+   "comunidad": 3,
+   "id": "ent:igual longitud de columna"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "referencia por cambios de signo",
+   "tipo": "metodo",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 7"
+   ],
+   "comunidad": null,
+   "id": "ent:referencia por cambio de signo"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "reportar resultados",
+   "tipo": "restriccion",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 5"
+   ],
+   "comunidad": 3,
+   "id": "ent:reportar resultado"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "modelo utilizado",
+   "tipo": "metodo",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 3"
+   ],
+   "comunidad": null,
+   "id": "ent:modelo utilizado"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "unicidad de identificadores",
+   "tipo": "restriccion",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 2"
+   ],
+   "comunidad": 3,
+   "id": "ent:unicidad de identificador"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "grados de libertad",
+   "tipo": "metrica",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 4",
+    "Parte 4"
+   ],
+   "comunidad": 3,
+   "id": "ent:grado de libertad"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "efecto",
+   "tipo": "metrica",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 7",
+    "Parte 3",
+    "Parte 5"
+   ],
+   "comunidad": null,
+   "id": "ent:efecto"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "magnitud de la diferencia",
+   "tipo": "metrica",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 2"
+   ],
+   "comunidad": null,
+   "id": "ent:magnitud de la diferencia"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "métrica",
+   "tipo": "metrica",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 1",
+    "Parte 5"
+   ],
+   "comunidad": null,
+   "id": "ent:metrica"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "limitaciones",
+   "tipo": "concepto",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 7",
+    "Parte 5"
+   ],
+   "comunidad": null,
+   "id": "ent:limitacion"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "número de remuestras",
+   "tipo": "restriccion",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 4"
+   ],
+   "comunidad": 3,
+   "id": "ent:numero de remuestra"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "contrato de análisis",
+   "tipo": "concepto",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 1"
+   ],
+   "comunidad": null,
+   "id": "ent:contrato de analisi"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "número de tiendas",
+   "tipo": "metrica",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 3"
+   ],
+   "comunidad": null,
+   "id": "ent:numero de tienda"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "ValueError",
+   "tipo": "concepto",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 2"
+   ],
+   "comunidad": null,
+   "id": "ent:valueerror"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "CSV",
+   "tipo": "dataset",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 2"
+   ],
+   "comunidad": 3,
+   "id": "ent:csv"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "medias nulas",
+   "tipo": "concepto",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 5"
+   ],
+   "comunidad": 3,
+   "id": "ent:media nula"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "intervalo percentil del 95 %",
+   "tipo": "metrica",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 6"
+   ],
+   "comunidad": 3,
+   "id": "ent:intervalo percentil del 95"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "standard_error",
+   "tipo": "metrica",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 4",
+    "Parte 3"
+   ],
+   "comunidad": null,
+   "id": "ent:standard error"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "p-value",
+   "tipo": "metrica",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 1",
+    "Tarea 4",
+    "Tarea 5",
+    "Tarea 7",
+    "Parte 4",
+    "Parte 5"
+   ],
+   "comunidad": null,
+   "id": "ent:p value"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "no modificar el CSV original",
+   "tipo": "restriccion",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 2"
+   ],
+   "comunidad": 3,
+   "id": "ent:no modificar el csv original"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "afirmación de no conclusión",
+   "tipo": "restriccion",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 5"
+   ],
+   "comunidad": null,
+   "id": "ent:afirmacion de no conclusion"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "estadístico",
+   "tipo": "metrica",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 4",
+    "Parte 4"
+   ],
+   "comunidad": 3,
+   "id": "ent:estadistico"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "procedencia",
+   "tipo": "concepto",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 5"
+   ],
+   "comunidad": null,
+   "id": "ent:procedencia"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "10 000 remuestras",
+   "tipo": "restriccion",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 6"
+   ],
+   "comunidad": 3,
+   "id": "ent:10 000 remuestra"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "sample_sd",
+   "tipo": "metrica",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 4"
+   ],
+   "comunidad": null,
+   "id": "ent:sample sd"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "procedimiento principal",
+   "tipo": "metodo",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 1"
+   ],
+   "comunidad": null,
+   "id": "ent:procedimiento principal"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "supuestos estadísticos",
+   "tipo": "concepto",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 4"
+   ],
+   "comunidad": 3,
+   "id": "ent:supuesto estadistico"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "diseño",
+   "tipo": "concepto",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 5"
+   ],
+   "comunidad": null,
+   "id": "ent:diseno"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "conteo de extremas",
+   "tipo": "metrica",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 5"
+   ],
+   "comunidad": 3,
+   "id": "ent:conteo de extrema"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "difference",
+   "tipo": "metrica",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 2",
+    "Tarea 3",
+    "Tarea 4",
+    "Tarea 6"
+   ],
+   "comunidad": 3,
+   "id": "ent:difference"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "emparejamiento",
+   "tipo": "metodo",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 7",
+    "Parte 5"
+   ],
+   "comunidad": null,
+   "id": "ent:emparejamiento"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "análisis de sensibilidad",
+   "tipo": "metodo",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 5"
+   ],
+   "comunidad": null,
+   "id": "ent:analisi de sensibilidad"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "análisis de sensibilidad aproximado",
+   "tipo": "concepto",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 6"
+   ],
+   "comunidad": 3,
+   "id": "ent:analisi de sensibilidad aproximado"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "store_id",
+   "tipo": "dataset",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 2",
+    "Parte 2"
+   ],
+   "comunidad": 3,
+   "id": "ent:store id"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "error_a",
+   "tipo": "concepto",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 2"
+   ],
+   "comunidad": 3,
+   "id": "ent:error a"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "referencia nula",
+   "tipo": "concepto",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 4"
+   ],
+   "comunidad": 3,
+   "id": "ent:referencia nula"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "reproducibilidad",
+   "tipo": "restriccion",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 6"
+   ],
+   "comunidad": 3,
+   "id": "ent:reproducibilidad"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "SFT",
+   "tipo": "metodo",
+   "origen": [
+    "notas"
+   ],
+   "citas": [
+    "s1-transformers-y-foundation-models § 4. Ciclo de vida de un Foundation Model (60 min) … 4.5 Constitutional AI (Anthropic)"
+   ],
+   "comunidad": 3,
+   "id": "ent:sft"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "auditoría por tienda",
+   "tipo": "concepto",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 2"
+   ],
+   "comunidad": 3,
+   "id": "ent:auditoria por tienda"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "np.random.default_rng",
+   "tipo": "metodo",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 6"
+   ],
+   "comunidad": 3,
+   "id": "ent:np random default rng"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "bootstrap pareado",
+   "tipo": "metodo",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 6",
+    "Tarea 7",
+    "Parte 4"
+   ],
+   "comunidad": 3,
+   "id": "ent:bootstrap pareado"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "errores de A y B",
+   "tipo": "concepto",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 6"
+   ],
+   "comunidad": 3,
+   "id": "ent:error de a y b"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "scipy.stats",
+   "tipo": "metodo",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 4"
+   ],
+   "comunidad": null,
+   "id": "ent:scipy stat"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "estimando",
+   "tipo": "concepto",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 1"
+   ],
+   "comunidad": null,
+   "id": "ent:estimando"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "prueba t",
+   "tipo": "metodo",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 4",
+    "Tarea 5",
+    "Tarea 7",
+    "Parte 4"
+   ],
+   "comunidad": 3,
+   "id": "ent:prueba t"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "hipótesis",
+   "tipo": "concepto",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 1"
+   ],
+   "comunidad": null,
+   "id": "ent:hipotesi"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "máximo 150 palabras",
+   "tipo": "restriccion",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 7"
+   ],
+   "comunidad": null,
+   "id": "ent:maximo 150 palabra"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "semilla",
+   "tipo": "restriccion",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 4"
+   ],
+   "comunidad": 3,
+   "id": "ent:semilla"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "referencia en cero",
+   "tipo": "restriccion",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 3"
+   ],
+   "comunidad": null,
+   "id": "ent:referencia en cero"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "errores numéricos, finitos y no negativos",
+   "tipo": "restriccion",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 2"
+   ],
+   "comunidad": 3,
+   "id": "ent:error numerico finito y no negativo"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "total de configuraciones",
+   "tipo": "metrica",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 5"
+   ],
+   "comunidad": null,
+   "id": "ent:total de configuracion"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "empate",
+   "tipo": "concepto",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 2"
+   ],
+   "comunidad": null,
+   "id": "ent:empate"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "explicación condicional del p-value",
+   "tipo": "restriccion",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 5"
+   ],
+   "comunidad": null,
+   "id": "ent:explicacion condicional del p value"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "no intercambiabilidad de pruebas",
+   "tipo": "restriccion",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 5"
+   ],
+   "comunidad": 3,
+   "id": "ent:no intercambiabilidad de prueba"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "configuraciones de signos",
+   "tipo": "concepto",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 5"
+   ],
+   "comunidad": 3,
+   "id": "ent:configuracion de signo"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "informe ejecutivo",
+   "tipo": "concepto",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 7",
+    "Parte 5"
+   ],
+   "comunidad": null,
+   "id": "ent:informe ejecutivo"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "favors",
+   "tipo": "concepto",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 2"
+   ],
+   "comunidad": 3,
+   "id": "ent:favor"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "parámetro",
+   "tipo": "concepto",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 3"
+   ],
+   "comunidad": null,
+   "id": "ent:parametro"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "máximo de 150 palabras",
+   "tipo": "restriccion",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Parte 5"
+   ],
+   "comunidad": null,
+   "id": "ent:maximo de 150 palabra"
+  },
+  {
+   "capa": "entidad",
+   "nombre": "verificación de pares por store_id",
+   "tipo": "restriccion",
+   "origen": [
+    "enunciado"
+   ],
+   "citas": [
+    "Tarea 2"
+   ],
+   "comunidad": 3,
+   "id": "ent:verificacion de par por store id"
+  }
+ ],
+ "aristas": [
+  {
+   "tipo": "menciona",
+   "source": "Tarea 1",
+   "target": "ent:contrato de analisi"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 1",
+   "target": "ent:informe"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 1",
+   "target": "ent:proceso objetivo propuesto"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 1",
+   "target": "ent:metrica"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 1",
+   "target": "ent:unidad de analisi"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 1",
+   "target": "ent:evidencia de emparejamiento"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 1",
+   "target": "ent:estimando"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 1",
+   "target": "ent:hipotesi"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 1",
+   "target": "ent:procedimiento principal"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 1",
+   "target": "ent:p value"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 1",
+   "target": "ent:limite del diseno"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 2",
+   "target": "ent:csv"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 2",
+   "target": "ent:store id"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 2",
+   "target": "ent:error a"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 2",
+   "target": "ent:error b"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 2",
+   "target": "ent:par instruccion respuesta"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 2",
+   "target": "ent:difference"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 2",
+   "target": "ent:favor"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 2",
+   "target": "ent:valueerror"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 2",
+   "target": "ent:unicidad de identificador"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 2",
+   "target": "ent:error numerico finito y no negativo"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 2",
+   "target": "ent:no modificar el csv original"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 2",
+   "target": "ent:verificacion de par por store id"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 3",
+   "target": "ent:tienda"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 3",
+   "target": "ent:difference"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 3",
+   "target": "ent:referencia en cero"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 3",
+   "target": "ent:output store difference png"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 3",
+   "target": "ent:informe"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 4",
+   "target": "ent:difference"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 4",
+   "target": "ent:tamano muestral"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 4",
+   "target": "ent:mean"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 4",
+   "target": "ent:sample sd"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 4",
+   "target": "ent:standard error"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 4",
+   "target": "ent:scipy stat"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 4",
+   "target": "ent:prueba t"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 4",
+   "target": "ent:intervalo t bilateral del 95"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 4",
+   "target": "ent:grado de libertad"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 4",
+   "target": "ent:estadistico"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 4",
+   "target": "ent:p value"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 4",
+   "target": "ent:se sd n"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 4",
+   "target": "ent:desviacion muestral"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 4",
+   "target": "ent:unidad vendida"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 4",
+   "target": "ent:dispersion entre tienda"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 5",
+   "target": "ent:prueba t"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 5",
+   "target": "ent:prueba exacta por cambio de signo"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 5",
+   "target": "ent:p value"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 5",
+   "target": "ent:conteo de extrema"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 5",
+   "target": "ent:total de configuracion"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 5",
+   "target": "ent:hipotesi nula"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 5",
+   "target": "ent:alternativa bilateral"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 5",
+   "target": "ent:configuracion de signo"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 5",
+   "target": "ent:media nula"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 5",
+   "target": "ent:diseno"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 5",
+   "target": "ent:supuesto"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 5",
+   "target": "ent:reportar resultado"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 5",
+   "target": "ent:explicacion condicional del p value"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 5",
+   "target": "ent:no intercambiabilidad de prueba"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 6",
+   "target": "ent:bootstrap pareado"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 6",
+   "target": "ent:np random default rng"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 6",
+   "target": "ent:semilla 20260829"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 6",
+   "target": "ent:10 000 remuestra"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 6",
+   "target": "ent:difference"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 6",
+   "target": "ent:remuestreo de tienda completa"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 6",
+   "target": "ent:error de a y b"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 6",
+   "target": "ent:intervalo percentil del 95"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 6",
+   "target": "ent:analisi de sensibilidad aproximado"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 6",
+   "target": "ent:reproducibilidad"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 7",
+   "target": "ent:par instruccion respuesta"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 7",
+   "target": "ent:output store difference png"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 7",
+   "target": "ent:prueba t"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 7",
+   "target": "ent:referencia por cambio de signo"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 7",
+   "target": "ent:bootstrap pareado"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 7",
+   "target": "ent:informe ejecutivo"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 7",
+   "target": "ent:maximo 150 palabra"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 7",
+   "target": "ent:p value"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 7",
+   "target": "ent:emparejamiento"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 7",
+   "target": "ent:efecto"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 7",
+   "target": "ent:incertidumbre"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 7",
+   "target": "ent:sensibilidad"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Tarea 7",
+   "target": "ent:limitacion"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 2",
+   "target": "ent:store id"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 2",
+   "target": "ent:par instruccion respuesta"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 2",
+   "target": "ent:igual longitud de columna"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 2",
+   "target": "ent:auditoria por tienda"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 2",
+   "target": "ent:tienda"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 2",
+   "target": "ent:variante a"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 2",
+   "target": "ent:variante b"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 2",
+   "target": "ent:empate"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 2",
+   "target": "ent:magnitud de la diferencia"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 3",
+   "target": "ent:numero de tienda"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 3",
+   "target": "ent:mean"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 3",
+   "target": "ent:desviacion estandar muestral"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 3",
+   "target": "ent:standard error"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 3",
+   "target": "ent:intervalo t del 95"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 3",
+   "target": "ent:efecto"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 3",
+   "target": "ent:unidad vendida"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 3",
+   "target": "ent:probabilidad posterior"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 3",
+   "target": "ent:parametro"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 3",
+   "target": "ent:modelo utilizado"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 4",
+   "target": "ent:estadistico"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 4",
+   "target": "ent:grado de libertad"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 4",
+   "target": "ent:p value"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 4",
+   "target": "ent:prueba t"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 4",
+   "target": "ent:prueba exacta por cambio de signo"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 4",
+   "target": "ent:referencia nula"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 4",
+   "target": "ent:supuesto estadistico"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 4",
+   "target": "ent:bootstrap pareado"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 4",
+   "target": "ent:semilla"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 4",
+   "target": "ent:numero de remuestra"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 4",
+   "target": "ent:remuestreo de tienda completa"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 4",
+   "target": "ent:tienda"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 5",
+   "target": "ent:informe ejecutivo"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 5",
+   "target": "ent:maximo de 150 palabra"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 5",
+   "target": "ent:unidad"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 5",
+   "target": "ent:procedencia"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 5",
+   "target": "ent:metrica"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 5",
+   "target": "ent:emparejamiento"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 5",
+   "target": "ent:efecto"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 5",
+   "target": "ent:incertidumbre"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 5",
+   "target": "ent:p value"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 5",
+   "target": "ent:analisi de sensibilidad"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 5",
+   "target": "ent:limitacion"
+  },
+  {
+   "tipo": "menciona",
+   "source": "Parte 5",
+   "target": "ent:afirmacion de no conclusion"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "visualiza",
+   "citas": [
+    "Tarea 7"
+   ],
+   "source": "ent:output store difference png",
+   "target": "ent:par instruccion respuesta"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "se_calcula_sobre",
+   "citas": [
+    "Tarea 4"
+   ],
+   "source": "ent:intervalo t bilateral del 95",
+   "target": "ent:difference"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "usa",
+   "citas": [
+    "Tarea 4"
+   ],
+   "source": "ent:intervalo t bilateral del 95",
+   "target": "ent:scipy stat"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "estima",
+   "citas": [
+    "Tarea 4"
+   ],
+   "source": "ent:intervalo t bilateral del 95",
+   "target": "ent:mean"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "excluye",
+   "citas": [
+    "Tarea 6"
+   ],
+   "source": "ent:remuestreo de tienda completa",
+   "target": "ent:error de a y b"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "remuestrea",
+   "citas": [
+    "Parte 4"
+   ],
+   "source": "ent:remuestreo de tienda completa",
+   "target": "ent:tienda"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "enumera",
+   "citas": [
+    "Tarea 5"
+   ],
+   "source": "ent:prueba exacta por cambio de signo",
+   "target": "ent:configuracion de signo"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "cuenta",
+   "citas": [
+    "Tarea 5"
+   ],
+   "source": "ent:prueba exacta por cambio de signo",
+   "target": "ent:media nula"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "produce",
+   "citas": [
+    "Tarea 5",
+    "Parte 4"
+   ],
+   "source": "ent:prueba exacta por cambio de signo",
+   "target": "ent:p value"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "produce",
+   "citas": [
+    "Tarea 5"
+   ],
+   "source": "ent:prueba exacta por cambio de signo",
+   "target": "ent:conteo de extrema"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "usa",
+   "citas": [
+    "Parte 4"
+   ],
+   "source": "ent:prueba exacta por cambio de signo",
+   "target": "ent:referencia nula"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "difiere_de",
+   "citas": [
+    "Parte 4"
+   ],
+   "source": "ent:prueba exacta por cambio de signo",
+   "target": "ent:prueba t"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "tiene",
+   "citas": [
+    "Parte 4"
+   ],
+   "source": "ent:prueba exacta por cambio de signo",
+   "target": "ent:supuesto estadistico"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "se_refiere_a",
+   "citas": [
+    "Parte 3"
+   ],
+   "source": "ent:probabilidad posterior",
+   "target": "ent:parametro"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "deriva_de",
+   "citas": [
+    "Tarea 2"
+   ],
+   "source": "ent:par instruccion respuesta",
+   "target": "ent:csv"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "anade",
+   "citas": [
+    "Tarea 2"
+   ],
+   "source": "ent:par instruccion respuesta",
+   "target": "ent:difference"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "anade",
+   "citas": [
+    "Tarea 2"
+   ],
+   "source": "ent:par instruccion respuesta",
+   "target": "ent:favor"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "validado_mediante",
+   "citas": [
+    "Parte 2"
+   ],
+   "source": "ent:par instruccion respuesta",
+   "target": "ent:store id"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "se_compara_con",
+   "citas": [
+    "Parte 2"
+   ],
+   "source": "ent:variante a",
+   "target": "ent:variante b"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "se_mide_en",
+   "citas": [
+    "Parte 3"
+   ],
+   "source": "ent:mean",
+   "target": "ent:unidad vendida"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "estima",
+   "citas": [
+    "Parte 3"
+   ],
+   "source": "ent:mean",
+   "target": "ent:efecto"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "se_calcula_sobre",
+   "citas": [
+    "Parte 3"
+   ],
+   "source": "ent:mean",
+   "target": "ent:numero de tienda"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "garantiza",
+   "citas": [
+    "Tarea 6"
+   ],
+   "source": "ent:semilla 20260829",
+   "target": "ent:reproducibilidad"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "identifica",
+   "citas": [
+    "Tarea 3"
+   ],
+   "source": "ent:informe",
+   "target": "ent:difference"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "acota",
+   "citas": [
+    "Parte 3"
+   ],
+   "source": "ent:intervalo t del 95",
+   "target": "ent:efecto"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "depende_de",
+   "citas": [
+    "Parte 3"
+   ],
+   "source": "ent:intervalo t del 95",
+   "target": "ent:modelo utilizado"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "no_es",
+   "citas": [
+    "Parte 3"
+   ],
+   "source": "ent:intervalo t del 95",
+   "target": "ent:probabilidad posterior"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "favorece",
+   "citas": [
+    "Parte 2"
+   ],
+   "source": "ent:tienda",
+   "target": "ent:variante a"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "favorece",
+   "citas": [
+    "Parte 2"
+   ],
+   "source": "ent:tienda",
+   "target": "ent:variante b"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "puede_registrar",
+   "citas": [
+    "Parte 2"
+   ],
+   "source": "ent:tienda",
+   "target": "ent:empate"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "insuficiente_para_validar",
+   "citas": [
+    "Parte 2"
+   ],
+   "source": "ent:igual longitud de columna",
+   "target": "ent:par instruccion respuesta"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "incluye",
+   "citas": [
+    "Tarea 5"
+   ],
+   "source": "ent:reportar resultado",
+   "target": "ent:total de configuracion"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "incluye",
+   "citas": [
+    "Tarea 5"
+   ],
+   "source": "ent:reportar resultado",
+   "target": "ent:conteo de extrema"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "incluye",
+   "citas": [
+    "Tarea 5"
+   ],
+   "source": "ent:reportar resultado",
+   "target": "ent:p value"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "aplica_a",
+   "citas": [
+    "Tarea 2"
+   ],
+   "source": "ent:unicidad de identificador",
+   "target": "ent:store id"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "lanza",
+   "citas": [
+    "Tarea 2"
+   ],
+   "source": "ent:unicidad de identificador",
+   "target": "ent:valueerror"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "se_calcula_por",
+   "citas": [
+    "Parte 2"
+   ],
+   "source": "ent:magnitud de la diferencia",
+   "target": "ent:tienda"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "responde",
+   "citas": [
+    "Tarea 1"
+   ],
+   "source": "ent:contrato de analisi",
+   "target": "ent:informe"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "propone",
+   "citas": [
+    "Tarea 1"
+   ],
+   "source": "ent:contrato de analisi",
+   "target": "ent:proceso objetivo propuesto"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "define",
+   "citas": [
+    "Tarea 1"
+   ],
+   "source": "ent:contrato de analisi",
+   "target": "ent:metrica"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "define",
+   "citas": [
+    "Tarea 1"
+   ],
+   "source": "ent:contrato de analisi",
+   "target": "ent:unidad de analisi"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "incluye",
+   "citas": [
+    "Tarea 1"
+   ],
+   "source": "ent:contrato de analisi",
+   "target": "ent:evidencia de emparejamiento"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "define",
+   "citas": [
+    "Tarea 1"
+   ],
+   "source": "ent:contrato de analisi",
+   "target": "ent:estimando"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "formula",
+   "citas": [
+    "Tarea 1"
+   ],
+   "source": "ent:contrato de analisi",
+   "target": "ent:hipotesi"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "describe",
+   "citas": [
+    "Tarea 1"
+   ],
+   "source": "ent:contrato de analisi",
+   "target": "ent:procedimiento principal"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "declara",
+   "citas": [
+    "Tarea 1"
+   ],
+   "source": "ent:contrato de analisi",
+   "target": "ent:limite del diseno"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "contiene",
+   "citas": [
+    "Tarea 2"
+   ],
+   "source": "ent:csv",
+   "target": "ent:store id"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "contiene",
+   "citas": [
+    "Tarea 2"
+   ],
+   "source": "ent:csv",
+   "target": "ent:error a"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "contiene",
+   "citas": [
+    "Tarea 2"
+   ],
+   "source": "ent:csv",
+   "target": "ent:error b"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "sirve_como",
+   "citas": [
+    "Tarea 6"
+   ],
+   "source": "ent:intervalo percentil del 95",
+   "target": "ent:analisi de sensibilidad aproximado"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "depende_de",
+   "citas": [
+    "Tarea 4"
+   ],
+   "source": "ent:standard error",
+   "target": "ent:sample sd"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "cumple",
+   "citas": [
+    "Tarea 4"
+   ],
+   "source": "ent:standard error",
+   "target": "ent:se sd n"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "cuantifica",
+   "citas": [
+    "Parte 3"
+   ],
+   "source": "ent:standard error",
+   "target": "ent:mean"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "se_condiciona_a",
+   "citas": [
+    "Tarea 5"
+   ],
+   "source": "ent:p value",
+   "target": "ent:hipotesi nula"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "proviene_de",
+   "citas": [
+    "Tarea 7"
+   ],
+   "source": "ent:p value",
+   "target": "ent:prueba t"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "aplica_a",
+   "citas": [
+    "Tarea 2"
+   ],
+   "source": "ent:no modificar el csv original",
+   "target": "ent:csv"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "tiene",
+   "citas": [
+    "Parte 4"
+   ],
+   "source": "ent:estadistico",
+   "target": "ent:grado de libertad"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "cumple",
+   "citas": [
+    "Tarea 4"
+   ],
+   "source": "ent:sample sd",
+   "target": "ent:desviacion muestral"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "mide",
+   "citas": [
+    "Tarea 4"
+   ],
+   "source": "ent:sample sd",
+   "target": "ent:dispersion entre tienda"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "deriva_de",
+   "citas": [
+    "Tarea 2"
+   ],
+   "source": "ent:difference",
+   "target": "ent:error a"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "deriva_de",
+   "citas": [
+    "Tarea 2"
+   ],
+   "source": "ent:difference",
+   "target": "ent:error b"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "aplica_a",
+   "citas": [
+    "Tarea 6"
+   ],
+   "source": "ent:reproducibilidad",
+   "target": "ent:intervalo percentil del 95"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "entrena_sobre",
+   "citas": [
+    "s1-transformers-y-foundation-models § 4. Ciclo de vida de un Foundation Model (60 min) … 4.5 Constitutional AI (Anthropic)"
+   ],
+   "source": "ent:sft",
+   "target": "ent:par instruccion respuesta"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "verifica",
+   "citas": [
+    "Parte 2"
+   ],
+   "source": "ent:auditoria por tienda",
+   "target": "ent:par instruccion respuesta"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "usa",
+   "citas": [
+    "Parte 2"
+   ],
+   "source": "ent:auditoria por tienda",
+   "target": "ent:store id"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "usa",
+   "citas": [
+    "Tarea 6"
+   ],
+   "source": "ent:bootstrap pareado",
+   "target": "ent:np random default rng"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "requiere",
+   "citas": [
+    "Tarea 6"
+   ],
+   "source": "ent:bootstrap pareado",
+   "target": "ent:semilla 20260829"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "requiere",
+   "citas": [
+    "Tarea 6"
+   ],
+   "source": "ent:bootstrap pareado",
+   "target": "ent:10 000 remuestra"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "remuestrea",
+   "citas": [
+    "Tarea 6"
+   ],
+   "source": "ent:bootstrap pareado",
+   "target": "ent:difference"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "reporta",
+   "citas": [
+    "Tarea 6"
+   ],
+   "source": "ent:bootstrap pareado",
+   "target": "ent:intervalo percentil del 95"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "usa",
+   "citas": [
+    "Parte 4"
+   ],
+   "source": "ent:bootstrap pareado",
+   "target": "ent:remuestreo de tienda completa"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "cuantifica",
+   "citas": [
+    "Tarea 7"
+   ],
+   "source": "ent:bootstrap pareado",
+   "target": "ent:incertidumbre"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "usa",
+   "citas": [
+    "Parte 4"
+   ],
+   "source": "ent:bootstrap pareado",
+   "target": "ent:semilla"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "usa",
+   "citas": [
+    "Parte 4"
+   ],
+   "source": "ent:bootstrap pareado",
+   "target": "ent:numero de remuestra"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "se_calcula_sobre",
+   "citas": [
+    "Tarea 4"
+   ],
+   "source": "ent:prueba t",
+   "target": "ent:difference"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "usa",
+   "citas": [
+    "Tarea 4"
+   ],
+   "source": "ent:prueba t",
+   "target": "ent:scipy stat"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "produce",
+   "citas": [
+    "Tarea 4"
+   ],
+   "source": "ent:prueba t",
+   "target": "ent:grado de libertad"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "produce",
+   "citas": [
+    "Tarea 4",
+    "Parte 4"
+   ],
+   "source": "ent:prueba t",
+   "target": "ent:estadistico"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "produce",
+   "citas": [
+    "Tarea 4",
+    "Tarea 5",
+    "Parte 4"
+   ],
+   "source": "ent:prueba t",
+   "target": "ent:p value"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "usa",
+   "citas": [
+    "Tarea 5"
+   ],
+   "source": "ent:prueba t",
+   "target": "ent:alternativa bilateral"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "analiza",
+   "citas": [
+    "Tarea 7"
+   ],
+   "source": "ent:prueba t",
+   "target": "ent:par instruccion respuesta"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "tiene",
+   "citas": [
+    "Parte 4"
+   ],
+   "source": "ent:prueba t",
+   "target": "ent:supuesto estadistico"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "aplica_a",
+   "citas": [
+    "Tarea 2"
+   ],
+   "source": "ent:error numerico finito y no negativo",
+   "target": "ent:error a"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "aplica_a",
+   "citas": [
+    "Tarea 2"
+   ],
+   "source": "ent:error numerico finito y no negativo",
+   "target": "ent:error b"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "condiciona_a",
+   "citas": [
+    "Tarea 5"
+   ],
+   "source": "ent:explicacion condicional del p value",
+   "target": "ent:hipotesi nula"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "menciona",
+   "citas": [
+    "Tarea 5"
+   ],
+   "source": "ent:explicacion condicional del p value",
+   "target": "ent:diseno"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "menciona",
+   "citas": [
+    "Tarea 5"
+   ],
+   "source": "ent:explicacion condicional del p value",
+   "target": "ent:supuesto"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "compara",
+   "citas": [
+    "Tarea 5"
+   ],
+   "source": "ent:no intercambiabilidad de prueba",
+   "target": "ent:prueba t"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "compara",
+   "citas": [
+    "Tarea 5"
+   ],
+   "source": "ent:no intercambiabilidad de prueba",
+   "target": "ent:prueba exacta por cambio de signo"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "limitado_por",
+   "citas": [
+    "Tarea 7"
+   ],
+   "source": "ent:informe ejecutivo",
+   "target": "ent:maximo 150 palabra"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "incluye",
+   "citas": [
+    "Tarea 7",
+    "Parte 5"
+   ],
+   "source": "ent:informe ejecutivo",
+   "target": "ent:p value"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "incluye",
+   "citas": [
+    "Tarea 7",
+    "Parte 5"
+   ],
+   "source": "ent:informe ejecutivo",
+   "target": "ent:emparejamiento"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "incluye",
+   "citas": [
+    "Tarea 7",
+    "Parte 5"
+   ],
+   "source": "ent:informe ejecutivo",
+   "target": "ent:efecto"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "incluye",
+   "citas": [
+    "Tarea 7",
+    "Parte 5"
+   ],
+   "source": "ent:informe ejecutivo",
+   "target": "ent:incertidumbre"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "incluye",
+   "citas": [
+    "Tarea 7"
+   ],
+   "source": "ent:informe ejecutivo",
+   "target": "ent:sensibilidad"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "menciona",
+   "citas": [
+    "Parte 5"
+   ],
+   "source": "ent:informe ejecutivo",
+   "target": "ent:limitacion"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "incluye",
+   "citas": [
+    "Parte 5"
+   ],
+   "source": "ent:informe ejecutivo",
+   "target": "ent:unidad"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "incluye",
+   "citas": [
+    "Parte 5"
+   ],
+   "source": "ent:informe ejecutivo",
+   "target": "ent:procedencia"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "incluye",
+   "citas": [
+    "Parte 5"
+   ],
+   "source": "ent:informe ejecutivo",
+   "target": "ent:metrica"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "incluye",
+   "citas": [
+    "Parte 5"
+   ],
+   "source": "ent:informe ejecutivo",
+   "target": "ent:analisi de sensibilidad"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "declara",
+   "citas": [
+    "Parte 5"
+   ],
+   "source": "ent:informe ejecutivo",
+   "target": "ent:afirmacion de no conclusion"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "depende_de",
+   "citas": [
+    "Tarea 2"
+   ],
+   "source": "ent:favor",
+   "target": "ent:difference"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "limita",
+   "citas": [
+    "Parte 5"
+   ],
+   "source": "ent:maximo de 150 palabra",
+   "target": "ent:informe ejecutivo"
+  },
+  {
+   "tipo": "relacion",
+   "relacion": "verifica",
+   "citas": [
+    "Tarea 2"
+   ],
+   "source": "ent:verificacion de par por store id",
+   "target": "ent:par instruccion respuesta"
+  }
+ ]
+}

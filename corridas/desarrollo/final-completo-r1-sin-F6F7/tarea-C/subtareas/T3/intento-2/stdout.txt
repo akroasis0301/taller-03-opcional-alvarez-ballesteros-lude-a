@@ -1,0 +1,21 @@
+========================================================================
+T3 — Análisis por consulta (fallos y términos compartidos)
+========================================================================
+Vocabulario TF-IDF: 105 términos (coincide con T1: True)
+
+[TF-IDF] fuente: entrada/T1/resultados.json (6/6 consultas)
+  posición del relevante: q1:1, q2:1, q3:1, q4:1, q5:6, q6:1
+  CONSULTAS FALLIDAS (relevante fuera del top 3): q5
+    q5 vs d09 (pos 6): 'la' (q=0.2440, d09=0.3238, IDF=1.4520, DF=6)
+
+[LSA(4)] fuente: entrada/T2/resultados.json (6/6 consultas)
+  posición del relevante: q1:1, q2:1, q3:1, q4:3, q5:6, q6:1
+  CONSULTAS FALLIDAS (relevante fuera del top 3): q5
+    q5 vs d09 (pos 6): 'la' (q=0.2440, d09=0.3238, IDF=1.4520, DF=6)
+
+Caso q5 (relevante d09):
+  TF-IDF: posición 6 (fallo: sí) | LSA(4): posición 6 (fallo: sí)
+  términos compartidos q5–d09: 'la' (q=0.2440, d09=0.3238, IDF=1.4520, DF=6)
+
+Figuras: t3_posicion_relevante.png, t3_q5_similitudes.png, t3_q5_tokens.png
+Resultados escritos en resultados.json

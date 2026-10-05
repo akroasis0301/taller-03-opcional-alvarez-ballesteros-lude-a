@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "/Users/miguelestebanalvarez/Posgrado Maestría Inteligencia Artificial/1er Semestre/IA Generativa y Agentes/Talleres/Taller 03/taller-03-opcional-alvarez-ballesteros-ludeña/corridas/final/completo-r1/tarea-S1/subtareas/T5/intento-3/script.py", line 177, in <module>
+    raise RuntimeError("No fue posible obtener el load_score de las subtareas previas.")
+RuntimeError: No fue posible obtener el load_score de las subtareas previas.

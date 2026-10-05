@@ -1,0 +1,10 @@
+ServerMeasurements(shape=(300, 3), features=('gpu_utilization', 'cpu_utilization', 'memory_gb'))
+------------------------------------------------------------
+Filas leídas del CSV: 300
+Timestamp parseado como fecha: True
+Shape de values: (300, 3)
+Feature names: ('gpu_utilization', 'cpu_utilization', 'memory_gb')
+Tipo de values: float64
+Repr coincide con el esperado: True
+Validaciones ValueError correctas: True
+Resultados escritos en: resultados.json

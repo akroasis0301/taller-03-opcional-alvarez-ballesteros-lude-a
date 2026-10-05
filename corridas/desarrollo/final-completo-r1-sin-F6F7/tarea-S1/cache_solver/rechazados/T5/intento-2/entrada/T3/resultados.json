@@ -1,0 +1,505 @@
+{
+  "subtarea": "T3",
+  "criterio_revision": "load_score > 1.5 o temperature_c > 80",
+  "umbrales": {
+    "load_score": 1.5,
+    "temperature_c": 80.0
+  },
+  "n_observaciones": 300,
+  "columnas_originales": [
+    "server",
+    "timestamp",
+    "gpu_utilization",
+    "cpu_utilization",
+    "memory_gb",
+    "power_w",
+    "temperature_c"
+  ],
+  "columnas_df_analizado": [
+    "server",
+    "timestamp",
+    "gpu_utilization",
+    "cpu_utilization",
+    "memory_gb",
+    "power_w",
+    "temperature_c",
+    "load_score",
+    "requires_review"
+  ],
+  "requires_review_dtype": "bool",
+  "load_score_shape": [
+    300
+  ],
+  "load_score_fuente": "entrada/T2/resultados.json (clave 'load_score')",
+  "max_diff_load_score_recalculado": 0.0,
+  "n_requires_review": 49,
+  "indices_requires_review": [
+    23,
+    42,
+    78,
+    121,
+    146,
+    162,
+    171,
+    176,
+    189,
+    192,
+    201,
+    211,
+    212,
+    213,
+    219,
+    223,
+    225,
+    240,
+    241,
+    246,
+    247,
+    249,
+    251,
+    252,
+    253,
+    254,
+    256,
+    259,
+    260,
+    261,
+    263,
+    264,
+    266,
+    268,
+    269,
+    273,
+    274,
+    276,
+    278,
+    281,
+    282,
+    283,
+    287,
+    288,
+    290,
+    292,
+    293,
+    295,
+    298
+  ],
+  "filas_requires_review": [
+    {
+      "indice": 23,
+      "server": "AI-SRV-01",
+      "timestamp": "2026-08-24 09:55:00",
+      "load_score": 3.136217861183744,
+      "temperature_c": 66.97,
+      "requires_review": true
+    },
+    {
+      "indice": 42,
+      "server": "AI-SRV-01",
+      "timestamp": "2026-08-24 11:30:00",
+      "load_score": -0.043064228429197576,
+      "temperature_c": 86.5,
+      "requires_review": true
+    },
+    {
+      "indice": 78,
+      "server": "AI-SRV-02",
+      "timestamp": "2026-08-24 10:20:00",
+      "load_score": 3.136217861183744,
+      "temperature_c": 69.9,
+      "requires_review": true
+    },
+    {
+      "indice": 121,
+      "server": "AI-SRV-03",
+      "timestamp": "2026-08-24 09:45:00",
+      "load_score": 3.136217861183744,
+      "temperature_c": 73.24,
+      "requires_review": true
+    },
+    {
+      "indice": 146,
+      "server": "AI-SRV-03",
+      "timestamp": "2026-08-24 11:50:00",
+      "load_score": -0.10364649252906025,
+      "temperature_c": 86.5,
+      "requires_review": true
+    },
+    {
+      "indice": 162,
+      "server": "AI-SRV-04",
+      "timestamp": "2026-08-24 09:00:00",
+      "load_score": 1.521068837072572,
+      "temperature_c": 79.55,
+      "requires_review": true
+    },
+    {
+      "indice": 171,
+      "server": "AI-SRV-04",
+      "timestamp": "2026-08-24 09:45:00",
+      "load_score": 0.32193530476168875,
+      "temperature_c": 80.86,
+      "requires_review": true
+    },
+    {
+      "indice": 176,
+      "server": "AI-SRV-04",
+      "timestamp": "2026-08-24 10:10:00",
+      "load_score": 3.136217861183744,
+      "temperature_c": 70.88,
+      "requires_review": true
+    },
+    {
+      "indice": 189,
+      "server": "AI-SRV-04",
+      "timestamp": "2026-08-24 11:15:00",
+      "load_score": 0.2916761908292549,
+      "temperature_c": 80.42,
+      "requires_review": true
+    },
+    {
+      "indice": 192,
+      "server": "AI-SRV-04",
+      "timestamp": "2026-08-24 11:30:00",
+      "load_score": -0.12460149956528907,
+      "temperature_c": 80.11,
+      "requires_review": true
+    },
+    {
+      "indice": 201,
+      "server": "AI-SRV-05",
+      "timestamp": "2026-08-24 08:05:00",
+      "load_score": -0.2777835834391999,
+      "temperature_c": 86.5,
+      "requires_review": true
+    },
+    {
+      "indice": 211,
+      "server": "AI-SRV-05",
+      "timestamp": "2026-08-24 08:55:00",
+      "load_score": 1.0097732946470004,
+      "temperature_c": 80.69,
+      "requires_review": true
+    },
+    {
+      "indice": 212,
+      "server": "AI-SRV-05",
+      "timestamp": "2026-08-24 09:00:00",
+      "load_score": 0.9396089555012611,
+      "temperature_c": 81.34,
+      "requires_review": true
+    },
+    {
+      "indice": 213,
+      "server": "AI-SRV-05",
+      "timestamp": "2026-08-24 09:05:00",
+      "load_score": 1.2980464970676746,
+      "temperature_c": 82.02,
+      "requires_review": true
+    },
+    {
+      "indice": 219,
+      "server": "AI-SRV-05",
+      "timestamp": "2026-08-24 09:35:00",
+      "load_score": 0.3735330782689127,
+      "temperature_c": 81.18,
+      "requires_review": true
+    },
+    {
+      "indice": 223,
+      "server": "AI-SRV-05",
+      "timestamp": "2026-08-24 09:55:00",
+      "load_score": 1.4141955855707893,
+      "temperature_c": 84.42,
+      "requires_review": true
+    },
+    {
+      "indice": 225,
+      "server": "AI-SRV-05",
+      "timestamp": "2026-08-24 10:05:00",
+      "load_score": 0.6911312812730316,
+      "temperature_c": 81.39,
+      "requires_review": true
+    },
+    {
+      "indice": 240,
+      "server": "AI-SRV-05",
+      "timestamp": "2026-08-24 11:20:00",
+      "load_score": 1.5127416440396473,
+      "temperature_c": 82.36,
+      "requires_review": true
+    },
+    {
+      "indice": 241,
+      "server": "AI-SRV-05",
+      "timestamp": "2026-08-24 11:25:00",
+      "load_score": 1.6034613264831046,
+      "temperature_c": 75.9,
+      "requires_review": true
+    },
+    {
+      "indice": 246,
+      "server": "AI-SRV-05",
+      "timestamp": "2026-08-24 11:50:00",
+      "load_score": 1.022895061846023,
+      "temperature_c": 83.97,
+      "requires_review": true
+    },
+    {
+      "indice": 247,
+      "server": "AI-SRV-05",
+      "timestamp": "2026-08-24 11:55:00",
+      "load_score": 1.3111913760423561,
+      "temperature_c": 80.85,
+      "requires_review": true
+    },
+    {
+      "indice": 249,
+      "server": "AI-SRV-05",
+      "timestamp": "2026-08-24 12:05:00",
+      "load_score": 3.136217861183744,
+      "temperature_c": 82.66,
+      "requires_review": true
+    },
+    {
+      "indice": 251,
+      "server": "AI-SRV-06",
+      "timestamp": "2026-08-24 08:05:00",
+      "load_score": 0.7020653071118642,
+      "temperature_c": 81.57,
+      "requires_review": true
+    },
+    {
+      "indice": 252,
+      "server": "AI-SRV-06",
+      "timestamp": "2026-08-24 08:10:00",
+      "load_score": 1.2416413460143843,
+      "temperature_c": 83.62,
+      "requires_review": true
+    },
+    {
+      "indice": 253,
+      "server": "AI-SRV-06",
+      "timestamp": "2026-08-24 08:15:00",
+      "load_score": 1.1012579032546501,
+      "temperature_c": 86.73,
+      "requires_review": true
+    },
+    {
+      "indice": 254,
+      "server": "AI-SRV-06",
+      "timestamp": "2026-08-24 08:20:00",
+      "load_score": 0.8329472808218908,
+      "temperature_c": 81.8,
+      "requires_review": true
+    },
+    {
+      "indice": 256,
+      "server": "AI-SRV-06",
+      "timestamp": "2026-08-24 08:30:00",
+      "load_score": 1.3832952621906627,
+      "temperature_c": 88.01,
+      "requires_review": true
+    },
+    {
+      "indice": 259,
+      "server": "AI-SRV-06",
+      "timestamp": "2026-08-24 08:45:00",
+      "load_score": 0.6991387434613258,
+      "temperature_c": 82.68,
+      "requires_review": true
+    },
+    {
+      "indice": 260,
+      "server": "AI-SRV-06",
+      "timestamp": "2026-08-24 08:50:00",
+      "load_score": 1.1532791011065981,
+      "temperature_c": 83.43,
+      "requires_review": true
+    },
+    {
+      "indice": 261,
+      "server": "AI-SRV-06",
+      "timestamp": "2026-08-24 08:55:00",
+      "load_score": 0.5467244433515844,
+      "temperature_c": 84.55,
+      "requires_review": true
+    },
+    {
+      "indice": 263,
+      "server": "AI-SRV-06",
+      "timestamp": "2026-08-24 09:05:00",
+      "load_score": 0.5445961411664024,
+      "temperature_c": 84.33,
+      "requires_review": true
+    },
+    {
+      "indice": 264,
+      "server": "AI-SRV-06",
+      "timestamp": "2026-08-24 09:10:00",
+      "load_score": 1.1755293697545344,
+      "temperature_c": 80.5,
+      "requires_review": true
+    },
+    {
+      "indice": 266,
+      "server": "AI-SRV-06",
+      "timestamp": "2026-08-24 09:20:00",
+      "load_score": 0.7670033204587093,
+      "temperature_c": 82.45,
+      "requires_review": true
+    },
+    {
+      "indice": 268,
+      "server": "AI-SRV-06",
+      "timestamp": "2026-08-24 09:30:00",
+      "load_score": 1.2029235970883685,
+      "temperature_c": 86.5,
+      "requires_review": true
+    },
+    {
+      "indice": 269,
+      "server": "AI-SRV-06",
+      "timestamp": "2026-08-24 09:35:00",
+      "load_score": 0.923535398693613,
+      "temperature_c": 82.39,
+      "requires_review": true
+    },
+    {
+      "indice": 273,
+      "server": "AI-SRV-06",
+      "timestamp": "2026-08-24 09:55:00",
+      "load_score": 1.1913871114829737,
+      "temperature_c": 86.34,
+      "requires_review": true
+    },
+    {
+      "indice": 274,
+      "server": "AI-SRV-06",
+      "timestamp": "2026-08-24 10:00:00",
+      "load_score": 1.3142070585217607,
+      "temperature_c": 82.59,
+      "requires_review": true
+    },
+    {
+      "indice": 276,
+      "server": "AI-SRV-06",
+      "timestamp": "2026-08-24 10:10:00",
+      "load_score": 0.5325827969808309,
+      "temperature_c": 82.33,
+      "requires_review": true
+    },
+    {
+      "indice": 278,
+      "server": "AI-SRV-06",
+      "timestamp": "2026-08-24 10:20:00",
+      "load_score": 0.6663552497865135,
+      "temperature_c": 81.74,
+      "requires_review": true
+    },
+    {
+      "indice": 281,
+      "server": "AI-SRV-06",
+      "timestamp": "2026-08-24 10:35:00",
+      "load_score": 0.6433698819145935,
+      "temperature_c": 81.38,
+      "requires_review": true
+    },
+    {
+      "indice": 282,
+      "server": "AI-SRV-06",
+      "timestamp": "2026-08-24 10:40:00",
+      "load_score": 0.8794815581644082,
+      "temperature_c": 80.81,
+      "requires_review": true
+    },
+    {
+      "indice": 283,
+      "server": "AI-SRV-06",
+      "timestamp": "2026-08-24 10:45:00",
+      "load_score": -0.014637664328363055,
+      "temperature_c": 83.23,
+      "requires_review": true
+    },
+    {
+      "indice": 287,
+      "server": "AI-SRV-06",
+      "timestamp": "2026-08-24 11:05:00",
+      "load_score": 3.136217861183744,
+      "temperature_c": 77.37,
+      "requires_review": true
+    },
+    {
+      "indice": 288,
+      "server": "AI-SRV-06",
+      "timestamp": "2026-08-24 11:10:00",
+      "load_score": 1.2900413235172319,
+      "temperature_c": 84.03,
+      "requires_review": true
+    },
+    {
+      "indice": 290,
+      "server": "AI-SRV-06",
+      "timestamp": "2026-08-24 11:20:00",
+      "load_score": 0.7911270472533465,
+      "temperature_c": 80.41,
+      "requires_review": true
+    },
+    {
+      "indice": 292,
+      "server": "AI-SRV-06",
+      "timestamp": "2026-08-24 11:30:00",
+      "load_score": 0.3185449533130408,
+      "temperature_c": 80.41,
+      "requires_review": true
+    },
+    {
+      "indice": 293,
+      "server": "AI-SRV-06",
+      "timestamp": "2026-08-24 11:35:00",
+      "load_score": 0.5681731657994397,
+      "temperature_c": 83.91,
+      "requires_review": true
+    },
+    {
+      "indice": 295,
+      "server": "AI-SRV-06",
+      "timestamp": "2026-08-24 11:45:00",
+      "load_score": 0.9833170826196531,
+      "temperature_c": 80.42,
+      "requires_review": true
+    },
+    {
+      "indice": 298,
+      "server": "AI-SRV-06",
+      "timestamp": "2026-08-24 12:00:00",
+      "load_score": 0.18981001120660668,
+      "temperature_c": 82.12,
+      "requires_review": true
+    }
+  ],
+  "n_load_score_mayor_umbral": 9,
+  "n_temperature_mayor_umbral": 42,
+  "load_score_min": -1.955649651274497,
+  "load_score_max": 3.136217861183744,
+  "load_score_media": 2.6053233644537007e-16,
+  "temperature_c_max": 88.01,
+  "original_sin_cambios": true,
+  "verificacion_fila_esperada": {
+    "una_sola_fila_ok": false,
+    "indice_ok": false,
+    "server_ok": false,
+    "timestamp_ok": false,
+    "load_score": null,
+    "load_score_ok": false,
+    "temperature_c": null,
+    "temperature_c_ok": false,
+    "requires_review_ok": false,
+    "exito": false
+  },
+  "archivos_generados": [
+    "output/server_analysis.parquet",
+    "t3_revision.png",
+    "resultados.json"
+  ]
+}

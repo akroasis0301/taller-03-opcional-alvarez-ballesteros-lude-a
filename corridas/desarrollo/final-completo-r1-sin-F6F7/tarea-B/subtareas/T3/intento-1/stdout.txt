@@ -1,0 +1,13 @@
+=== T3 — Comprobación empírica ===
+Fuente de la distribución teórica: entrada/T2/resultados.json (clave 'distribucion_renormalizada')
+Muestras: 10000 | Generador: numpy.random.default_rng(0)
+Token      Teórica   Observada    Conteo
+t0        0.569376    0.568200      5682
+t1        0.209462    0.209300      2093
+t2        0.127045    0.129600      1296
+t3        0.094117    0.092900       929
+t4        0.000000    0.000000         0
+t5        0.000000    0.000000         0
+Divergencia KL (bits), KL(empírica || teórica): 0.00005007
+Figura guardada: fig_T3_frecuencias_vs_teoricas.png
+Resultados escritos en resultados.json

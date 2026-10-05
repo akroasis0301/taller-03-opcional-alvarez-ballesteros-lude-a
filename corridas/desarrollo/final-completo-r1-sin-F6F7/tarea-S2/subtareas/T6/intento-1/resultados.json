@@ -1,0 +1,163 @@
+{
+  "subtask": "T6",
+  "description": "Bootstrap pareado: remuestreo de tiendas completas mediante el vector de diferencias; intervalo percentil del 95 % como análisis de sensibilidad aproximado y verificación de reproducibilidad con dos ejecuciones de la misma semilla",
+  "method": {
+    "generator": "np.random.default_rng",
+    "resampling_unit": "tienda completa (par error_a, error_b) vía el vector de diferencias d_i = error_a_i - error_b_i; nunca se remuestrean los errores de A y B por separado",
+    "statistic_per_resample": "media del vector de diferencias remuestreado",
+    "percentile_method": "np.percentile (interpolación lineal por defecto)",
+    "indices_drawn_with_replacement": true
+  },
+  "seed": 20260829,
+  "bootstrap_resamples": 10000,
+  "confidence_level_pct": 95.0,
+  "n_stores": 16,
+  "observed_mean_difference": 0.4187499999999997,
+  "bootstrap_mean_of_means": 0.4209674999999998,
+  "bootstrap_std_of_means": 0.3055936070813965,
+  "percentile_interval_95": {
+    "low": -0.19375000000000037,
+    "high": 1.0062499999999996
+  },
+  "percentile_2_5": -0.19375000000000037,
+  "percentile_97_5": 1.0062499999999996,
+  "interval_covers_zero": true,
+  "fraction_bootstrap_means_positive": 0.9119,
+  "fraction_bootstrap_means_negative": 0.0881,
+  "reproducibility": {
+    "two_runs_same_seed": true,
+    "run1_percentile_interval_95": [
+      -0.19375000000000037,
+      1.0062499999999996
+    ],
+    "run2_percentile_interval_95": [
+      -0.19375000000000037,
+      1.0062499999999996
+    ],
+    "intervals_identical": true,
+    "bootstrap_means_identical": true,
+    "resample_index_matrices_identical": true,
+    "max_abs_difference_between_runs": 0.0
+  },
+  "cross_check_with_T2_mean_difference": true,
+  "table": [
+    {
+      "store_id": "S01",
+      "error_a": 12.4,
+      "error_b": 10.6,
+      "difference": 1.8000000000000007,
+      "favors": "B"
+    },
+    {
+      "store_id": "S02",
+      "error_a": 9.8,
+      "error_b": 9.1,
+      "difference": 0.7000000000000011,
+      "favors": "B"
+    },
+    {
+      "store_id": "S03",
+      "error_a": 15.1,
+      "error_b": 13.9,
+      "difference": 1.1999999999999993,
+      "favors": "B"
+    },
+    {
+      "store_id": "S04",
+      "error_a": 11.0,
+      "error_b": 12.4,
+      "difference": -1.4000000000000004,
+      "favors": "A"
+    },
+    {
+      "store_id": "S05",
+      "error_a": 8.7,
+      "error_b": 7.2,
+      "difference": 1.4999999999999991,
+      "favors": "B"
+    },
+    {
+      "store_id": "S06",
+      "error_a": 13.6,
+      "error_b": 13.9,
+      "difference": -0.3000000000000007,
+      "favors": "A"
+    },
+    {
+      "store_id": "S07",
+      "error_a": 10.2,
+      "error_b": 9.3,
+      "difference": 0.8999999999999986,
+      "favors": "B"
+    },
+    {
+      "store_id": "S08",
+      "error_a": 14.9,
+      "error_b": 12.8,
+      "difference": 2.0999999999999996,
+      "favors": "B"
+    },
+    {
+      "store_id": "S09",
+      "error_a": 7.5,
+      "error_b": 9.3,
+      "difference": -1.8000000000000007,
+      "favors": "A"
+    },
+    {
+      "store_id": "S10",
+      "error_a": 16.0,
+      "error_b": 15.0,
+      "difference": 1.0,
+      "favors": "B"
+    },
+    {
+      "store_id": "S11",
+      "error_a": 9.3,
+      "error_b": 9.8,
+      "difference": -0.5,
+      "favors": "A"
+    },
+    {
+      "store_id": "S12",
+      "error_a": 12.8,
+      "error_b": 11.1,
+      "difference": 1.700000000000001,
+      "favors": "B"
+    },
+    {
+      "store_id": "S13",
+      "error_a": 11.7,
+      "error_b": 12.9,
+      "difference": -1.200000000000001,
+      "favors": "A"
+    },
+    {
+      "store_id": "S14",
+      "error_a": 8.9,
+      "error_b": 8.3,
+      "difference": 0.5999999999999996,
+      "favors": "B"
+    },
+    {
+      "store_id": "S15",
+      "error_a": 13.2,
+      "error_b": 11.9,
+      "difference": 1.299999999999999,
+      "favors": "B"
+    },
+    {
+      "store_id": "S16",
+      "error_a": 10.6,
+      "error_b": 11.5,
+      "difference": -0.9000000000000004,
+      "favors": "A"
+    }
+  ],
+  "outputs": [
+    "output/store_differences.csv",
+    "output/store_differences.png",
+    "bootstrap_percentile_interval.png",
+    "resultados.json"
+  ]
+}

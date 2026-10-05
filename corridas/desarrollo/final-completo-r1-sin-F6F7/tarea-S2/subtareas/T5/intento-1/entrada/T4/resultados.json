@@ -1,0 +1,163 @@
+{
+  "subtask": "T4",
+  "description": "Efecto e incertidumbre de las diferencias pareadas: n, media, sd muestral, error estándar (SE = sd/sqrt(n)), prueba t bilateral e IC t del 95 %",
+  "csv_source": "data/model_errors.csv",
+  "n": 16,
+  "n_expected": 16,
+  "n_matches_expected": true,
+  "mean": 0.4187499999999997,
+  "sample_sd": 1.2533787669070087,
+  "standard_error": 0.31334469172675217,
+  "se_definition": "SE = sd / sqrt(n)",
+  "se_check": {
+    "se_from_formula": 0.31334469172675217,
+    "se_from_scipy_sem": 0.31334469172675217,
+    "abs_difference": 0.0,
+    "verified": true
+  },
+  "degrees_of_freedom": 15,
+  "degrees_of_freedom_scipy": 15.0,
+  "t_statistic": 1.3363877259014323,
+  "p_value_two_sided": 0.20134214922904944,
+  "test_method": "scipy.stats.ttest_1samp(differences, popmean=0), bilateral",
+  "paired_crosscheck": {
+    "method": "scipy.stats.ttest_rel(error_a, error_b)",
+    "t_statistic": 1.3363877259014323,
+    "p_value": 0.20134214922904944,
+    "consistent_with_one_sample_on_differences": true
+  },
+  "confidence_level": 0.95,
+  "ci95_low": -0.24912840078455428,
+  "ci95_high": 1.0866284007845537,
+  "t_critical_975": 2.131449545559776,
+  "ci_check": {
+    "low_manual": -0.24912840078455428,
+    "high_manual": 1.0866284007845537,
+    "verified": true
+  },
+  "rejects_h0_at_5pct": false,
+  "ci_contains_zero": true,
+  "interpretation": {
+    "mean_difference": "La diferencia media es 0.4187 unidades de la métrica (error_a − error_b): en promedio, el modelo A comete más error que B.",
+    "dispersion_vs_standard_error": "La sd muestral (1.2534) describe la dispersión de las diferencias entre tiendas; el error estándar (0.3133) es sd/sqrt(n) y mide la precisión de la media muestral, no la dispersión individual entre tiendas.",
+    "decision_at_5pct": "p-value bilateral = 0.2013; IC t 95 % = [-0.2491, 1.0866] (contiene 0: True). No se rechaza H0 al 5 %: la diferencia media no es significativa."
+  },
+  "table": [
+    {
+      "store_id": "S01",
+      "error_a": 12.4,
+      "error_b": 10.6,
+      "difference": 1.8000000000000007,
+      "favors": "B"
+    },
+    {
+      "store_id": "S02",
+      "error_a": 9.8,
+      "error_b": 9.1,
+      "difference": 0.7000000000000011,
+      "favors": "B"
+    },
+    {
+      "store_id": "S03",
+      "error_a": 15.1,
+      "error_b": 13.9,
+      "difference": 1.1999999999999993,
+      "favors": "B"
+    },
+    {
+      "store_id": "S04",
+      "error_a": 11.0,
+      "error_b": 12.4,
+      "difference": -1.4000000000000004,
+      "favors": "A"
+    },
+    {
+      "store_id": "S05",
+      "error_a": 8.7,
+      "error_b": 7.2,
+      "difference": 1.4999999999999991,
+      "favors": "B"
+    },
+    {
+      "store_id": "S06",
+      "error_a": 13.6,
+      "error_b": 13.9,
+      "difference": -0.3000000000000007,
+      "favors": "A"
+    },
+    {
+      "store_id": "S07",
+      "error_a": 10.2,
+      "error_b": 9.3,
+      "difference": 0.8999999999999986,
+      "favors": "B"
+    },
+    {
+      "store_id": "S08",
+      "error_a": 14.9,
+      "error_b": 12.8,
+      "difference": 2.0999999999999996,
+      "favors": "B"
+    },
+    {
+      "store_id": "S09",
+      "error_a": 7.5,
+      "error_b": 9.3,
+      "difference": -1.8000000000000007,
+      "favors": "A"
+    },
+    {
+      "store_id": "S10",
+      "error_a": 16.0,
+      "error_b": 15.0,
+      "difference": 1.0,
+      "favors": "B"
+    },
+    {
+      "store_id": "S11",
+      "error_a": 9.3,
+      "error_b": 9.8,
+      "difference": -0.5,
+      "favors": "A"
+    },
+    {
+      "store_id": "S12",
+      "error_a": 12.8,
+      "error_b": 11.1,
+      "difference": 1.700000000000001,
+      "favors": "B"
+    },
+    {
+      "store_id": "S13",
+      "error_a": 11.7,
+      "error_b": 12.9,
+      "difference": -1.200000000000001,
+      "favors": "A"
+    },
+    {
+      "store_id": "S14",
+      "error_a": 8.9,
+      "error_b": 8.3,
+      "difference": 0.5999999999999996,
+      "favors": "B"
+    },
+    {
+      "store_id": "S15",
+      "error_a": 13.2,
+      "error_b": 11.9,
+      "difference": 1.299999999999999,
+      "favors": "B"
+    },
+    {
+      "store_id": "S16",
+      "error_a": 10.6,
+      "error_b": 11.5,
+      "difference": -0.9000000000000004,
+      "favors": "A"
+    }
+  ],
+  "outputs": [
+    "output/store_differences.csv",
+    "output/store_differences.png"
+  ]
+}

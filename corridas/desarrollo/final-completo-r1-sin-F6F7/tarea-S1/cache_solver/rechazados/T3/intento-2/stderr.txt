@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/Users/miguelestebanalvarez/Posgrado Maestría Inteligencia Artificial/1er Semestre/IA Generativa y Agentes/Talleres/Taller 03/taller-03-opcional-alvarez-ballesteros-ludeña/corridas/final/completo-r1/tarea-S1/subtareas/T3/intento-2/script.py", line 70, in <module>
+    if not np.issubdtype(df_original[col_ts].dtype, np.datetime64):
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/miguelestebanalvarez/Posgrado Maestría Inteligencia Artificial/1er Semestre/IA Generativa y Agentes/Talleres/Taller 03/taller-03-opcional-alvarez-ballesteros-ludeña/.venv/lib/python3.12/site-packages/numpy/_core/numerictypes.py", line 477, in issubdtype
+    arg1 = dtype(arg1).type
+           ^^^^^^^^^^^
+TypeError: Cannot interpret '<StringDtype(na_value=nan)>' as a data type

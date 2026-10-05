@@ -555,6 +555,9 @@ class Solver:
         return {"borrador": texto, "entregables": [str(destino)] + list(estado["entregables"][1:])}
 
     def _cerrar(self, estado: Estado) -> dict:
+        cambios = self._marcar_al_cerrar(estado)
+        if cambios:
+            estado = {**estado, **cambios}
         plan = estado.get("plan") or []
         calculo = [s for s in plan if s["tipo"] == "calculo"]
         if not estado.get("entregables"):
@@ -567,7 +570,24 @@ class Solver:
         motivo = estado.get("motivo_parada") or ("plan inválido" if estado.get("problemas_plan") else "cola vacía")
         self.traza.evento("fin", agente="orquestador", status=status, motivo=motivo,
                           subtareas={s["id"]: s["status"] for s in plan}, **self.traza.tokens_totales)
-        return {"status": status, "motivo_parada": estado.get("motivo_parada") or ""}
+        return {"status": status, "motivo_parada": estado.get("motivo_parada") or "", **cambios}
+
+    def _marcar_al_cerrar(self, estado: Estado) -> dict:
+        """F6: si la redacción terminó sin pasar por la última verificación (el redactor falló o se
+        agotó el presupuesto) y el último borrador publicado tenía cifras sin respaldo, se marcan igual.
+        Semana 1 (completo-r1, 2026-10-05): el redactor volvió vacío en su tope y quedó publicado un
+        0.1633 que nadie midió. Nunca hace que la corrida falle: un error aquí solo queda en la traza."""
+        sin = (estado.get("procedencia") or {}).get("sin_origen") or []
+        if not (sin and estado.get("borrador") and estado.get("entregables") and estado.get("documento")):
+            return {}
+        if marcar(estado["borrador"], sin) == estado["borrador"]:       # ya estaban marcadas (F4)
+            return {}
+        try:
+            return self._marcar_sin_respaldo(estado, _cargar(estado["documento"]), estado.get("plan") or [],
+                                             estado["procedencia"])
+        except Exception as err:
+            self.traza.error("cerrar", err)
+            return {}
 
     # ================================================================ contrato
     def solve(self, ruta_pdf: str, salida: str) -> dict:

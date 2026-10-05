@@ -1,0 +1,11 @@
+T2 — Normalización Z-score y load_score
+  means            = [57.99313333 50.54163333 29.45533333]
+  stds             = [14.43011728 12.69846349  6.53680183] (columnas con std=0: 0)
+  zscores.shape    = (300, 3)
+  load_score.shape = (300,)
+  media por columna de zscores = [ 5.68434189e-16  2.36847579e-16 -3.31586610e-16] (|media|<=1e-10: True)
+  std por columna de zscores   = [1. 1. 1.] (|std-1|<=1e-10: True)
+  load_score: min=-1.955650 max=3.136218 media=0.000000
+  load_score == zscores @ [0.50, 0.30, 0.20]: True
+  Parquet: output/server_analysis.parquet (300 filas, verificado: True)
+  CRITERIO DE ÉXITO: CUMPLE
