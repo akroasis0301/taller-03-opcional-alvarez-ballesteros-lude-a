@@ -95,6 +95,24 @@ def juzgar(modelo: str, enunciado: str, entregable: str, preguntas: dict[str, st
     return veredictos, meta
 
 
+def normalizar_veredicto(v) -> tuple[bool | None, str, str]:
+    """(ok, razón, formato) de un veredicto, sea cual sea el formato en que lo devolvió el juez.
+
+    Se pide {"ok": bool, "razon": str}, pero gemma3 a veces devuelve solo el booleano ("B03": true),
+    aun con temperature=0 y response_format=json. No se adivina: se registra en qué formato llegó.
+      completo   {"ok": true, "razon": "…"}
+      sin_razon  true / false, o el texto "true" / "false"; razón vacía
+      faltante   ausente o cualquier otra cosa: sin veredicto (no entra al acuerdo)
+    """
+    if isinstance(v, dict) and isinstance(v.get("ok"), bool):
+        return v["ok"], str(v.get("razon", "")), "completo"
+    if isinstance(v, bool):
+        return v, "", "sin_razon"
+    if isinstance(v, str) and v.strip().lower() in ("true", "false"):
+        return v.strip().lower() == "true", "", "sin_razon"
+    return None, "", "faltante"
+
+
 # ============================================================================ métricas
 def kappa(pares: list[tuple[int, int]]) -> float | None:
     """Kappa de Cohen entre el golden (a) y el juez (b), binario."""
@@ -118,6 +136,9 @@ def resumen(filas: list[dict]) -> list[str]:
           "| | juez: aprueba | juez: rechaza |", "|---|---|---|",
           f"| **golden: aprueba** | {c[(1, 1)]} | {c[(1, 0)]} |",
           f"| **golden: rechaza** | {c[(0, 1)]} (falso positivo del juez) | {c[(0, 0)]} |", ""]
+    formatos = Counter(f.get("formato", "completo") for f in filas)
+    md += [f"Formato de las respuestas del juez (se pidió `{{\"ok\", \"razon\"}}` en todas): "
+           + ", ".join(f"{k} {formatos[k]}" for k in ("completo", "sin_razon", "faltante")) + ".", ""]
     por_tipo = defaultdict(list)
     for f in filas:
         if f["juez"] != "":
@@ -184,12 +205,12 @@ def main() -> int:
                                         **meta}, ensure_ascii=False) + "\n")
                 traza.flush()
                 for cid in preguntas:
-                    v = veredictos.get(cid) or {}
-                    ok = v.get("ok")
+                    ok, razon, formato = normalizar_veredicto(veredictos.get(cid))
                     filas.append({"variante": variante, "repeticion": rep, "tarea": tid, "check": cid,
                                   "tipo": golden_ok[tid][cid]["tipo"], "golden": golden_ok[tid][cid]["ok"],
                                   "juez": "" if ok is None else str(int(bool(ok))),
-                                  "detalle": golden_ok[tid][cid]["detalle"], "razon": str(v.get("razon", ""))[:300]})
+                                  "detalle": golden_ok[tid][cid]["detalle"], "formato": formato,
+                                  "razon": razon[:300]})
                 print(f"  {variante} r{rep} {tid}: {len(preguntas)} preguntas · {meta['latencia_s']} s · "
                       f"{meta['tokens_entrada']}+{meta['tokens_salida']} tokens{' · ERROR ' + meta['error'] if meta.get('error') else ''}")
     traza.close()

@@ -1,0 +1,73 @@
+{
+  "subtarea": "T1",
+  "dataset": "Breast Cancer Wisconsin (Diagnostic)",
+  "n_ejemplos_total": 569,
+  "n_atributos": 30,
+  "nombres_atributos": [
+    "mean radius",
+    "mean texture",
+    "mean perimeter",
+    "mean area",
+    "mean smoothness",
+    "mean compactness",
+    "mean concavity",
+    "mean concave points",
+    "mean symmetry",
+    "mean fractal dimension",
+    "radius error",
+    "texture error",
+    "perimeter error",
+    "area error",
+    "smoothness error",
+    "compactness error",
+    "concavity error",
+    "concave points error",
+    "symmetry error",
+    "fractal dimension error",
+    "worst radius",
+    "worst texture",
+    "worst perimeter",
+    "worst area",
+    "worst smoothness",
+    "worst compactness",
+    "worst concavity",
+    "worst concave points",
+    "worst symmetry",
+    "worst fractal dimension"
+  ],
+  "nombres_clases": [
+    "malignant",
+    "benign"
+  ],
+  "codificacion_clases": {
+    "malignant": 0,
+    "benign": 1
+  },
+  "conteo_clases_total": {
+    "malignant": 212,
+    "benign": 357
+  },
+  "division": {
+    "test_size": 0.3,
+    "train_size": 0.7,
+    "estratificada": true,
+    "random_state": 42
+  },
+  "n_train": 398,
+  "n_test": 171,
+  "fraccion_train": 0.6994727592267135,
+  "fraccion_test": 0.30052724077328646,
+  "conteo_clases_train": {
+    "malignant": 148,
+    "benign": 250
+  },
+  "conteo_clases_test": {
+    "malignant": 64,
+    "benign": 107
+  },
+  "archivos_generados": {
+    "train": "t1_train.csv",
+    "test": "t1_test.csv",
+    "figura": "t1_distribucion_clases.png"
+  }
+}

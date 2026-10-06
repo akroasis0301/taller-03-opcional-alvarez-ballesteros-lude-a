@@ -1,0 +1,8 @@
+=== T1: Breast Cancer Wisconsin (Diagnostic) ===
+Ejemplos totales: 569
+Atributos: 30
+Conteo por clase (total): {'clase_0_malignant': 212, 'clase_1_benign': 357}
+Train: 398 ejemplos | Test: 171 ejemplos
+Conteo train: {'clase_0_malignant': 148, 'clase_1_benign': 250}
+Conteo test:  {'clase_0_malignant': 64, 'clase_1_benign': 107}
+Archivos escritos: resultados.json, split_train_test.npz

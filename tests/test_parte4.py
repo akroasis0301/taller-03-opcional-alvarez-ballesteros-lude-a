@@ -55,3 +55,15 @@ def test_juez_contra_el_golden(tmp_path, monkeypatch):
     assert [(f["check"], f["golden"], f["juez"]) for f in filas] == [("X1", "1", "1"), ("X2", "0", "1")]
     md = (tmp_path / "out" / "juez.md").read_text()
     assert "falso positivo del juez" in md and "X2" in md
+
+
+def test_normalizar_veredicto():
+    """El juez a veces devuelve solo el booleano (gemma3, tarea B): no debe romper la corrida."""
+    import juez
+
+    assert juez.normalizar_veredicto({"ok": True, "razon": "bien"}) == (True, "bien", "completo")
+    assert juez.normalizar_veredicto(False) == (False, "", "sin_razon")
+    assert juez.normalizar_veredicto(" True ") == (True, "", "sin_razon")
+    assert juez.normalizar_veredicto(None) == (None, "", "faltante")
+    assert juez.normalizar_veredicto({"razon": "sin ok"}) == (None, "", "faltante")
+    assert juez.normalizar_veredicto(1) == (None, "", "faltante")

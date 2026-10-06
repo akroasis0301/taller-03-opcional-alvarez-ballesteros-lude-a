@@ -1,0 +1,161 @@
+{
+  "subtarea": "T3",
+  "descripcion": "Curva de aprendizaje sobre la división 70/30 estratificada de la Parte 1: Naive Bayes gaussiano (generativo) y regresión logística con atributos estandarizados (discriminativo) entrenados con el 5 %, 10 %, 25 %, 50 % y 100 % del entrenamiento (submuestras estratificadas, random_state=42) y evaluados siempre sobre el mismo conjunto de prueba.",
+  "division_usada": {
+    "fuente": "entrada/T1/train.parquet (división única de la Parte 1)",
+    "test_size": 0.3,
+    "estratificada": true,
+    "random_state": 42,
+    "n_train_total": 398,
+    "n_test": 171
+  },
+  "porcentajes_entrenamiento": [
+    "5 %",
+    "10 %",
+    "25 %",
+    "50 %",
+    "100 %"
+  ],
+  "tamanos_entrenamiento": [
+    19,
+    39,
+    99,
+    199,
+    398
+  ],
+  "tabla_accuracy_prueba": [
+    {
+      "porcentaje_entrenamiento": "5 %",
+      "n_train": 19,
+      "accuracy_prueba_naive_bayes_gaussiano": 0.9415204678362573,
+      "accuracy_prueba_regresion_logistica": 0.9298245614035088
+    },
+    {
+      "porcentaje_entrenamiento": "10 %",
+      "n_train": 39,
+      "accuracy_prueba_naive_bayes_gaussiano": 0.9473684210526315,
+      "accuracy_prueba_regresion_logistica": 0.935672514619883
+    },
+    {
+      "porcentaje_entrenamiento": "25 %",
+      "n_train": 99,
+      "accuracy_prueba_naive_bayes_gaussiano": 0.9473684210526315,
+      "accuracy_prueba_regresion_logistica": 0.9415204678362573
+    },
+    {
+      "porcentaje_entrenamiento": "50 %",
+      "n_train": 199,
+      "accuracy_prueba_naive_bayes_gaussiano": 0.935672514619883,
+      "accuracy_prueba_regresion_logistica": 0.9766081871345029
+    },
+    {
+      "porcentaje_entrenamiento": "100 %",
+      "n_train": 398,
+      "accuracy_prueba_naive_bayes_gaussiano": 0.9473684210526315,
+      "accuracy_prueba_regresion_logistica": 0.9883040935672515
+    }
+  ],
+  "accuracy_por_modelo": {
+    "naive_bayes_gaussiano": {
+      "19": 0.9415204678362573,
+      "39": 0.9473684210526315,
+      "99": 0.9473684210526315,
+      "199": 0.935672514619883,
+      "398": 0.9473684210526315
+    },
+    "regresion_logistica": {
+      "19": 0.9298245614035088,
+      "39": 0.935672514619883,
+      "99": 0.9415204678362573,
+      "199": 0.9766081871345029,
+      "398": 0.9883040935672515
+    }
+  },
+  "n_cifras_accuracy": 10,
+  "modelo_ganador_por_tamano": [
+    {
+      "n_train": 19,
+      "ganador": "naive_bayes_gaussiano",
+      "diferencia_accuracy_nb_menos_lr": 0.011695906432748537
+    },
+    {
+      "n_train": 39,
+      "ganador": "naive_bayes_gaussiano",
+      "diferencia_accuracy_nb_menos_lr": 0.011695906432748537
+    },
+    {
+      "n_train": 99,
+      "ganador": "naive_bayes_gaussiano",
+      "diferencia_accuracy_nb_menos_lr": 0.005847953216374213
+    },
+    {
+      "n_train": 199,
+      "ganador": "regresion_logistica",
+      "diferencia_accuracy_nb_menos_lr": -0.040935672514619936
+    },
+    {
+      "n_train": 398,
+      "ganador": "regresion_logistica",
+      "diferencia_accuracy_nb_menos_lr": -0.040935672514619936
+    }
+  ],
+  "composicion_submuestras": [
+    {
+      "porcentaje": "5 %",
+      "n_train": 19,
+      "n_por_clase": {
+        "0": 7,
+        "1": 12
+      }
+    },
+    {
+      "porcentaje": "10 %",
+      "n_train": 39,
+      "n_por_clase": {
+        "0": 15,
+        "1": 24
+      }
+    },
+    {
+      "porcentaje": "25 %",
+      "n_train": 99,
+      "n_por_clase": {
+        "0": 37,
+        "1": 62
+      }
+    },
+    {
+      "porcentaje": "50 %",
+      "n_train": 199,
+      "n_por_clase": {
+        "0": 74,
+        "1": 125
+      }
+    },
+    {
+      "porcentaje": "100 %",
+      "n_train": 398,
+      "n_por_clase": {
+        "0": 148,
+        "1": 250
+      }
+    }
+  ],
+  "comparacion_con_T2_punto_100pct": {
+    "nota": "El punto 100 % de esta parte debe reproducir los resultados de la Parte 2.",
+    "accuracy_100pct_naive_bayes_T3": 0.9473684210526315,
+    "accuracy_naive_bayes_T2": 0.9473684210526315,
+    "coincide_naive_bayes": true,
+    "accuracy_100pct_regresion_logistica_T3": 0.9883040935672515,
+    "accuracy_regresion_logistica_T2": 0.9883040935672515,
+    "coincide_regresion_logistica": true
+  },
+  "figura_png": "curvas_aprendizaje_parte3.png",
+  "tabla_markdown": "| % del entrenamiento | n_train | Accuracy prueba — NB gaussiano | Accuracy prueba — Reg. logística |\n|---|---|---|---|\n| 5 % | 19 | 0.9415 | 0.9298 |\n| 10 % | 39 | 0.9474 | 0.9357 |\n| 25 % | 99 | 0.9474 | 0.9415 |\n| 50 % | 199 | 0.9357 | 0.9766 |\n| 100 % | 398 | 0.9474 | 0.9883 |",
+  "notas": [
+    "El conjunto de prueba (n=171) es el de la Parte 1 y no se usa para ajustar nada.",
+    "El StandardScaler de la regresión logística se ajusta únicamente con cada submuestra de entrenamiento.",
+    "Naive Bayes gaussiano se entrena con los atributos crudos (invariante a transformaciones afines por atributo).",
+    "Submuestras estratificadas: train_test_split(X_train, y_train, train_size=fraccion, stratify=y_train, random_state=42); el tamaño resultante trunca hacia abajo (5 % de 398 -> 19, 10 % -> 39, 25 % -> 99, 50 % -> 199, 100 % -> 398)."
+  ]
+}

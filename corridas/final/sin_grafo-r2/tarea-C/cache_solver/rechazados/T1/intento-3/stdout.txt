@@ -1,0 +1,25 @@
+======================================================================
+T1 — Línea base TF-IDF (parámetros por defecto) + similitud coseno
+Corpus literal del enunciado (d01–d10):
+  d01: El mecanismo de atención pondera cada token según su similitud con la consulta; la atención escalada divide por la raíz de la dimensión.
+  d02: Los transformadores apilan capas de autoatención y redes feed-forward, con conexiones residuales y normalización.
+  d03: En la generación aumentada por recuperación, los fragmentos recuperados de una base de conocimiento externa se añaden al prompt como contexto.
+  d04: BM25 es una función de ranking léxica que pondera la frecuencia de términos con saturación y la rareza del término en la colección.
+  d05: La similitud coseno compara la orientación de dos vectores de texto mediante el coseno del ángulo entre ellos, sin depender de sus magnitudes.
+  d06: Un agente con herramientas decide en cada paso qué función llamar, ejecuta la llamada e incorpora el resultado a su contexto.
+  d07: ReAct intercala razonamiento y acciones; Reflexion añade una fase de autorreflexión sobre los errores para mejorar los intentos posteriores.
+  d08: LoRA entrena matrices de bajo rango que se suman a los pesos congelados del modelo, reduciendo los parámetros a actualizar.
+  d09: Una temperatura baja hace que el modelo sea más determinista al elegir la siguiente palabra, porque concentra la distribución de probabilidad en los tokens más probables.
+  d10: La cuantización reduce la precisión de los pesos a 8 o 4 bits para ahorrar memoria.
+======================================================================
+q1 | relevante=d04 | top-1=d04 (score=0.6163) | rank del relevante=1 [HIT@1] | RR=1.0000
+q2 | relevante=d03 | top-1=d03 (score=0.5844) | rank del relevante=1 [HIT@1] | RR=1.0000
+q3 | relevante=d08 | top-1=d08 (score=0.4797) | rank del relevante=1 [HIT@1] | RR=1.0000
+q4 | relevante=d05 | top-1=d05 (score=0.5462) | rank del relevante=1 [HIT@1] | RR=1.0000
+q5 | relevante=d09 | top-1=d09 (score=0.7008) | rank del relevante=1 [HIT@1] | RR=1.0000
+q6 | relevante=d02 | top-1=d02 (score=0.5767) | rank del relevante=1 [HIT@1] | RR=1.0000
+----------------------------------------------------------------------
+Hit@1 = 1.0000 (6/6)
+Hit@3 = 1.0000 (6/6)
+MRR   = 1.0000
+Archivos escritos: resultados.json, t1_similitud_tfidf.png

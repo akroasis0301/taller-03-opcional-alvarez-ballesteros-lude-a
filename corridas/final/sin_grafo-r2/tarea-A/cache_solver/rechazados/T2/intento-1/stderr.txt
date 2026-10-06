@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/Users/miguelestebanalvarez/Posgrado Maestría Inteligencia Artificial/1er Semestre/IA Generativa y Agentes/Talleres/Taller 03/taller-03-opcional-alvarez-ballesteros-ludeña/corridas/final/sin_grafo-r2/tarea-A/subtareas/T2/intento-1/script.py", line 185, in <module>
+    main()
+  File "/Users/miguelestebanalvarez/Posgrado Maestría Inteligencia Artificial/1er Semestre/IA Generativa y Agentes/Talleres/Taller 03/taller-03-opcional-alvarez-ballesteros-ludeña/corridas/final/sin_grafo-r2/tarea-A/subtareas/T2/intento-1/script.py", line 88, in main
+    assert np.array_equal(nb.predict(X_test), nb_std_check.predict(X_test_std)), \
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: NB gaussiano debería dar predicciones idénticas con o sin estandarización

@@ -1,0 +1,9 @@
+tarea,check,tipo,ok,detalle
+C,C01,archivo,1,1 archivo(s) con reporte.pdf
+C,C02,paginas_max,1,2 páginas
+C,C03,secciones,1,"todas, en orden"
+C,C04,cifra,1,verdad=0.8611 ±0.006; hallada
+C,C05,cifra,1,verdad=0.8333 ±0.006; hallada
+C,C06,cifra,0,verdad=0.7500 ±0.006; no hallada
+C,C07,contiene,1,todos presentes
+C,C08,procedencia,1,24/27 cifras respaldadas (0.89)

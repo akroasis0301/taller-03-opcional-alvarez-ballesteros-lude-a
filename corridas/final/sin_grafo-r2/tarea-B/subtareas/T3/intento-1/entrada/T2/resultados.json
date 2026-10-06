@@ -1,0 +1,113 @@
+{
+  "subtarea": "T2_top_p_nucleus_sampling",
+  "p": 0.9,
+  "fuente": "distribucion T=1.0 de entrada/T1/resultados.json",
+  "tokens": [
+    "t0",
+    "t1",
+    "t2",
+    "t3",
+    "t4",
+    "t5"
+  ],
+  "probabilidades_T1": [
+    0.5516226378718239,
+    0.2029306277578035,
+    0.12308364752983937,
+    0.09118260875807133,
+    0.02746367398498595,
+    0.003716804097476065
+  ],
+  "orden_descendente": [
+    "t0",
+    "t1",
+    "t2",
+    "t3",
+    "t4",
+    "t5"
+  ],
+  "probabilidades_ordenadas": [
+    0.5516226378718239,
+    0.2029306277578035,
+    0.12308364752983937,
+    0.09118260875807133,
+    0.02746367398498595,
+    0.003716804097476065
+  ],
+  "probabilidad_acumulada_ordenada": [
+    0.5516226378718239,
+    0.7545532656296273,
+    0.8776369131594667,
+    0.968819521917538,
+    0.9962831959025239,
+    1.0
+  ],
+  "tokens_sobrevivientes": [
+    "t0",
+    "t1",
+    "t2",
+    "t3"
+  ],
+  "tokens_descartados": [
+    "t4",
+    "t5"
+  ],
+  "num_tokens_nucleo": 4,
+  "probabilidad_acumulada_nucleo": 0.968819521917538,
+  "masa_descartada": 0.03118047808246205,
+  "probabilidades_originales_nucleo": {
+    "t0": 0.5516226378718239,
+    "t1": 0.2029306277578035,
+    "t2": 0.12308364752983937,
+    "t3": 0.09118260875807133
+  },
+  "distribucion_renormalizada": {
+    "t0": 0.5693760554907313,
+    "t1": 0.2094617451103304,
+    "t2": 0.12704497044632815,
+    "t3": 0.09411722895261025
+  },
+  "suma_distribucion_renormalizada": 1.0,
+  "tabla_4_decimales": {
+    "t0": {
+      "prob_T1": "0.5516",
+      "acumulada": "0.5516",
+      "sobrevive": "sí",
+      "renormalizada": "0.5694"
+    },
+    "t1": {
+      "prob_T1": "0.2029",
+      "acumulada": "0.7546",
+      "sobrevive": "sí",
+      "renormalizada": "0.2095"
+    },
+    "t2": {
+      "prob_T1": "0.1231",
+      "acumulada": "0.8776",
+      "sobrevive": "sí",
+      "renormalizada": "0.1270"
+    },
+    "t3": {
+      "prob_T1": "0.0912",
+      "acumulada": "0.9688",
+      "sobrevive": "sí",
+      "renormalizada": "0.0941"
+    },
+    "t4": {
+      "prob_T1": "0.0275",
+      "acumulada": "0.9963",
+      "sobrevive": "no",
+      "renormalizada": "—"
+    },
+    "t5": {
+      "prob_T1": "0.0037",
+      "acumulada": "1.0000",
+      "sobrevive": "no",
+      "renormalizada": "—"
+    }
+  },
+  "figuras": [
+    "top_p_nucleo_T1.png",
+    "tabla_top_p_T1.csv"
+  ]
+}

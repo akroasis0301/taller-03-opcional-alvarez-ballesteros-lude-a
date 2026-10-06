@@ -1,0 +1,188 @@
+{
+  "subtarea": "T3",
+  "dataset": "Breast Cancer Wisconsin (Diagnostic)",
+  "division_usada": {
+    "origen": "archivos de la Parte 1: entrada/T1/t1_train.csv y entrada/T1/t1_test.csv (columna objetivo: 'target')",
+    "test_size": 0.3,
+    "estratificada": true,
+    "random_state": 42,
+    "n_train": 398,
+    "n_test": 171
+  },
+  "protocolo": {
+    "fracciones_evaluadas": [
+      0.05,
+      0.1,
+      0.25,
+      0.5,
+      1.0
+    ],
+    "submuestreo": "train_test_split(X_train, y_train, train_size=fraccion, stratify=y_train, random_state=42); con 100 % se usa el conjunto de entrenamiento completo",
+    "modelos": {
+      "naive_bayes_gaussiano": "GaussianNB sobre los atributos crudos",
+      "regresion_logistica": "Pipeline(StandardScaler -> LogisticRegression(max_iter=1000)); el escalador se ajusta únicamente con cada submuestra de entrenamiento"
+    },
+    "evaluacion": "accuracy (y F1 macro) sobre el mismo conjunto de prueba (171 ejemplos) para todos los tamaños de entrenamiento"
+  },
+  "tamanos_train": [
+    19,
+    39,
+    99,
+    199,
+    398
+  ],
+  "tabla_accuracy": [
+    {
+      "fraccion": 0.05,
+      "n_train": 19,
+      "accuracy_naive_bayes_gaussiano": 0.9415204678362573,
+      "accuracy_regresion_logistica": 0.9298245614035088,
+      "f1_macro_naive_bayes_gaussiano": 0.9353056900726393,
+      "f1_macro_regresion_logistica": 0.9217271895025938
+    },
+    {
+      "fraccion": 0.1,
+      "n_train": 39,
+      "accuracy_naive_bayes_gaussiano": 0.9473684210526315,
+      "accuracy_regresion_logistica": 0.935672514619883,
+      "f1_macro_naive_bayes_gaussiano": 0.9420055017522704,
+      "f1_macro_regresion_logistica": 0.9285470085470086
+    },
+    {
+      "fraccion": 0.25,
+      "n_train": 99,
+      "accuracy_naive_bayes_gaussiano": 0.9473684210526315,
+      "accuracy_regresion_logistica": 0.9415204678362573,
+      "f1_macro_naive_bayes_gaussiano": 0.9424479264051457,
+      "f1_macro_regresion_logistica": 0.9362891207153503
+    },
+    {
+      "fraccion": 0.5,
+      "n_train": 199,
+      "accuracy_naive_bayes_gaussiano": 0.935672514619883,
+      "accuracy_regresion_logistica": 0.9766081871345029,
+      "f1_macro_naive_bayes_gaussiano": 0.9301703975943869,
+      "f1_macro_regresion_logistica": 0.97469665581533
+    },
+    {
+      "fraccion": 1.0,
+      "n_train": 398,
+      "accuracy_naive_bayes_gaussiano": 0.9473684210526315,
+      "accuracy_regresion_logistica": 0.9883040935672515,
+      "f1_macro_naive_bayes_gaussiano": 0.942866688940862,
+      "f1_macro_regresion_logistica": 0.9875146028037383
+    }
+  ],
+  "curvas": {
+    "naive_bayes_gaussiano": {
+      "n_train": [
+        19,
+        39,
+        99,
+        199,
+        398
+      ],
+      "accuracy_prueba": [
+        0.9415204678362573,
+        0.9473684210526315,
+        0.9473684210526315,
+        0.935672514619883,
+        0.9473684210526315
+      ],
+      "f1_macro_prueba": [
+        0.9353056900726393,
+        0.9420055017522704,
+        0.9424479264051457,
+        0.9301703975943869,
+        0.942866688940862
+      ]
+    },
+    "regresion_logistica": {
+      "n_train": [
+        19,
+        39,
+        99,
+        199,
+        398
+      ],
+      "accuracy_prueba": [
+        0.9298245614035088,
+        0.935672514619883,
+        0.9415204678362573,
+        0.9766081871345029,
+        0.9883040935672515
+      ],
+      "f1_macro_prueba": [
+        0.9217271895025938,
+        0.9285470085470086,
+        0.9362891207153503,
+        0.97469665581533,
+        0.9875146028037383
+      ]
+    }
+  },
+  "conteo_clases_submuestras": [
+    {
+      "fraccion": 0.05,
+      "n_train": 19,
+      "malignant": 7,
+      "benign": 12
+    },
+    {
+      "fraccion": 0.1,
+      "n_train": 39,
+      "malignant": 15,
+      "benign": 24
+    },
+    {
+      "fraccion": 0.25,
+      "n_train": 99,
+      "malignant": 37,
+      "benign": 62
+    },
+    {
+      "fraccion": 0.5,
+      "n_train": 199,
+      "malignant": 74,
+      "benign": 125
+    },
+    {
+      "fraccion": 1.0,
+      "n_train": 398,
+      "malignant": 148,
+      "benign": 250
+    }
+  ],
+  "mejor_modelo_por_tamano": [
+    {
+      "n_train": 19,
+      "mejor_modelo": "naive_bayes_gaussiano",
+      "accuracy": 0.9415204678362573
+    },
+    {
+      "n_train": 39,
+      "mejor_modelo": "naive_bayes_gaussiano",
+      "accuracy": 0.9473684210526315
+    },
+    {
+      "n_train": 99,
+      "mejor_modelo": "naive_bayes_gaussiano",
+      "accuracy": 0.9473684210526315
+    },
+    {
+      "n_train": 199,
+      "mejor_modelo": "regresion_logistica",
+      "accuracy": 0.9766081871345029
+    },
+    {
+      "n_train": 398,
+      "mejor_modelo": "regresion_logistica",
+      "accuracy": 0.9883040935672515
+    }
+  ],
+  "cruce_curvas": "Se observa el cruce de curvas: el Naive Bayes gaussiano supera a la regresión logística con n_train=[19, 39, 99] y la regresión logística supera al Naive Bayes con n_train=[199, 398] (patrón consistente con Ng y Jordan, 2002).",
+  "archivos_generados": {
+    "figura_curvas_aprendizaje": "t3_curvas_aprendizaje.png",
+    "figura_tabla_accuracy": "t3_tabla_accuracy.png"
+  }
+}

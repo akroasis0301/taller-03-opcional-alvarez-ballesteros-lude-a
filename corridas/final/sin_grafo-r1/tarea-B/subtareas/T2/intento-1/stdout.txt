@@ -1,0 +1,13 @@
+T2 — Muestreo de núcleo top-p (p=0.9) sobre la distribución T=1 de la Parte 1
+Tokens ordenados (desc): ['token_1', 'token_2', 'token_3', 'token_4', 'token_5', 'token_6']
+Prob. acumulada: [np.float64(0.551623), np.float64(0.754553), np.float64(0.877637), np.float64(0.96882), np.float64(0.996283), np.float64(1.0)]
+Núcleo (conjunto mínimo que alcanza 0.9): ['token_1', 'token_2', 'token_3', 'token_4']  | acumulada = 0.968820 (>= 0.9: True, mínimo: True)
+Descartados: ['token_5', 'token_6'] | masa descartada = 0.031180
+Distribución renormalizada:
+  token_1: 0.569376
+  token_2: 0.209462
+  token_3: 0.127045
+  token_4: 0.094117
+Suma de la distribución renormalizada = 1.000000000000
+Figura guardada: T2_top_p_renormalizada.png
+Resultados escritos en resultados.json

@@ -1,0 +1,603 @@
+{
+ "Parte 1": [
+  {
+   "clave": "tf idf",
+   "nombre": "TF-IDF",
+   "tipo": "metodo",
+   "alias": [
+    "TfidfVectorizer",
+    "matriz TF-IDF",
+    "tf-idf"
+   ],
+   "descripciones": [
+    "Método de recuperación del que BM25 es una evolución.",
+    "Vectorización léxica implementada con TfidfVectorizer de scikit-learn usando sus parámetros por defecto.",
+    "Matriz de representación de los documentos que se reduce a 4 dimensiones.",
+    "Método frente al cual se pregunta el costo del recuperador denso."
+   ],
+   "citas": [
+    "s2-rag-y-vector-search § 5. Retrieval: Sparse, Dense, Hybrid … 5.4 Reranking",
+    "Parte 1",
+    "Parte 2",
+    "Parte 4"
+   ],
+   "origen": [
+    "notas",
+    "enunciado"
+   ],
+   "fragmentos": [
+    "s2-rag-y-vector-search#5"
+   ],
+   "comunidad": 1
+  },
+  {
+   "clave": "similitud coseno",
+   "nombre": "similitud coseno",
+   "tipo": "metrica",
+   "alias": [
+    "coseno",
+    "cosine similarity"
+   ],
+   "descripciones": [
+    "Medida de similitud más usada, con rango [-1, 1], que no depende de la magnitud del vector.",
+    "Medida con la que se compara el embedding de la query contra los chunks embedidos.",
+    "Medida de similitud usada junto con TF-IDF para la recuperación."
+   ],
+   "citas": [
+    "s2-rag-y-vector-search § 2. Embeddings … 2.3 Similitud semántica",
+    "s2-rag-y-vector-search § 5. Retrieval: Sparse, Dense, Hybrid … 5.4 Reranking",
+    "Parte 1"
+   ],
+   "origen": [
+    "notas",
+    "enunciado"
+   ],
+   "fragmentos": [
+    "s2-rag-y-vector-search#2",
+    "s2-rag-y-vector-search#5"
+   ],
+   "comunidad": 1
+  },
+  {
+   "clave": "recuperacion",
+   "nombre": "recuperación",
+   "tipo": "concepto",
+   "alias": [
+    "línea base léxica"
+   ],
+   "descripciones": [
+    "Tarea de ordenar los diez documentos para cada consulta como línea base léxica."
+   ],
+   "citas": [
+    "Parte 1"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 1
+  },
+  {
+   "clave": "hit 1",
+   "nombre": "Hit@1",
+   "tipo": "metrica",
+   "alias": [],
+   "descripciones": [
+    "Métrica que se debe reportar sobre las seis consultas."
+   ],
+   "citas": [
+    "Parte 1"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 1
+  },
+  {
+   "clave": "hit 3",
+   "nombre": "Hit@3",
+   "tipo": "metrica",
+   "alias": [],
+   "descripciones": [
+    "Métrica que se debe reportar sobre las seis consultas."
+   ],
+   "citas": [
+    "Parte 1"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 1
+  },
+  {
+   "clave": "mrr",
+   "nombre": "MRR",
+   "tipo": "metrica",
+   "alias": [
+    "Mean Reciprocal Rank"
+   ],
+   "descripciones": [
+    "Métrica de retrieval que mide la posición promedio del primer chunk correcto (1/rank).",
+    "Métrica que se debe reportar sobre las seis consultas."
+   ],
+   "citas": [
+    "s2-rag-y-vector-search § 6. Evaluación de RAG … 6.3 GraphRAG",
+    "Parte 1"
+   ],
+   "origen": [
+    "notas",
+    "enunciado"
+   ],
+   "fragmentos": [
+    "s2-rag-y-vector-search#6"
+   ],
+   "comunidad": 9
+  },
+  {
+   "clave": "consulta",
+   "nombre": "consultas",
+   "tipo": "dataset",
+   "alias": [
+    "seis consultas",
+    "consulta",
+    "query"
+   ],
+   "descripciones": [
+    "Conjunto de seis consultas sobre las cuales se evalúa la recuperación.",
+    "Consultas de la parte anterior que se reutilizan sin cambios.",
+    "Pregunta en la que se evalúa si el método recupera el documento relevante."
+   ],
+   "citas": [
+    "Parte 1",
+    "Parte 2",
+    "Parte 3"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 1
+  },
+  {
+   "clave": "documento",
+   "nombre": "documentos",
+   "tipo": "dataset",
+   "alias": [
+    "diez documentos"
+   ],
+   "descripciones": [
+    "Colección de diez documentos que se ordenan para cada consulta."
+   ],
+   "citas": [
+    "Parte 1"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 1
+  }
+ ],
+ "Parte 2": [
+  {
+   "clave": "truncatedsvd",
+   "nombre": "TruncatedSVD",
+   "tipo": "metodo",
+   "alias": [
+    "LSA",
+    "SVD truncado",
+    "semántica latente"
+   ],
+   "descripciones": [
+    "Método con el que se proyecta la matriz TF-IDF a 4 dimensiones (LSA)."
+   ],
+   "citas": [
+    "Parte 2"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 1
+  },
+  {
+   "clave": "tf idf",
+   "nombre": "TF-IDF",
+   "tipo": "metodo",
+   "alias": [
+    "TfidfVectorizer",
+    "matriz TF-IDF",
+    "tf-idf"
+   ],
+   "descripciones": [
+    "Método de recuperación del que BM25 es una evolución.",
+    "Vectorización léxica implementada con TfidfVectorizer de scikit-learn usando sus parámetros por defecto.",
+    "Matriz de representación de los documentos que se reduce a 4 dimensiones.",
+    "Método frente al cual se pregunta el costo del recuperador denso."
+   ],
+   "citas": [
+    "s2-rag-y-vector-search § 5. Retrieval: Sparse, Dense, Hybrid … 5.4 Reranking",
+    "Parte 1",
+    "Parte 2",
+    "Parte 4"
+   ],
+   "origen": [
+    "notas",
+    "enunciado"
+   ],
+   "fragmentos": [
+    "s2-rag-y-vector-search#5"
+   ],
+   "comunidad": 1
+  },
+  {
+   "clave": "consulta",
+   "nombre": "consultas",
+   "tipo": "dataset",
+   "alias": [
+    "seis consultas",
+    "consulta",
+    "query"
+   ],
+   "descripciones": [
+    "Conjunto de seis consultas sobre las cuales se evalúa la recuperación.",
+    "Consultas de la parte anterior que se reutilizan sin cambios.",
+    "Pregunta en la que se evalúa si el método recupera el documento relevante."
+   ],
+   "citas": [
+    "Parte 1",
+    "Parte 2",
+    "Parte 3"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 1
+  },
+  {
+   "clave": "juicio",
+   "nombre": "juicios",
+   "tipo": "dataset",
+   "alias": [
+    "juicios de relevancia"
+   ],
+   "descripciones": [
+    "Juicios de la parte anterior que se reutilizan para la evaluación."
+   ],
+   "citas": [
+    "Parte 2"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": []
+  },
+  {
+   "clave": "n component 4",
+   "nombre": "n_components=4",
+   "tipo": "restriccion",
+   "alias": [
+    "4 dimensiones"
+   ],
+   "descripciones": [
+    "La proyección con TruncatedSVD debe tener 4 componentes."
+   ],
+   "citas": [
+    "Parte 2"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 1
+  },
+  {
+   "clave": "random state 0",
+   "nombre": "random_state=0",
+   "tipo": "restriccion",
+   "alias": [
+    "semilla 0"
+   ],
+   "descripciones": [
+    "Semilla aleatoria fijada en 0 al crear TruncatedSVD."
+   ],
+   "citas": [
+    "Parte 2"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 1
+  },
+  {
+   "clave": "evaluacion",
+   "nombre": "evaluación",
+   "tipo": "concepto",
+   "alias": [],
+   "descripciones": [
+    "Evaluación que se repite con LSA usando las mismas consultas y los mismos juicios."
+   ],
+   "citas": [
+    "Parte 2"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 1
+  },
+  {
+   "clave": "tre metrica",
+   "nombre": "tres métricas",
+   "tipo": "metrica",
+   "alias": [
+    "métricas"
+   ],
+   "descripciones": [
+    "Las tres métricas de los dos métodos que se reportan en una sola tabla."
+   ],
+   "citas": [
+    "Parte 2"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 1
+  }
+ ],
+ "Parte 3": [
+  {
+   "clave": "analisi por consulta",
+   "nombre": "análisis por consulta",
+   "tipo": "metodo",
+   "alias": [
+    "Parte 3"
+   ],
+   "descripciones": [
+    "Análisis que identifica en qué consultas falla cada método y explica por qué."
+   ],
+   "citas": [
+    "Parte 3"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": []
+  },
+  {
+   "clave": "top 3",
+   "nombre": "top 3",
+   "tipo": "restriccion",
+   "alias": [
+    "top-3"
+   ],
+   "descripciones": [
+    "Criterio de fallo: el documento relevante queda fuera del top 3."
+   ],
+   "citas": [
+    "Parte 3"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": []
+  },
+  {
+   "clave": "consulta",
+   "nombre": "consultas",
+   "tipo": "dataset",
+   "alias": [
+    "seis consultas",
+    "consulta",
+    "query"
+   ],
+   "descripciones": [
+    "Conjunto de seis consultas sobre las cuales se evalúa la recuperación.",
+    "Consultas de la parte anterior que se reutilizan sin cambios.",
+    "Pregunta en la que se evalúa si el método recupera el documento relevante."
+   ],
+   "citas": [
+    "Parte 1",
+    "Parte 2",
+    "Parte 3"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 1
+  },
+  {
+   "clave": "documento relevante",
+   "nombre": "documento relevante",
+   "tipo": "concepto",
+   "alias": [
+    "relevante"
+   ],
+   "descripciones": [
+    "Documento que se espera recuperar para una consulta."
+   ],
+   "citas": [
+    "Parte 3"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 1
+  },
+  {
+   "clave": "termino compartido",
+   "nombre": "términos compartidos",
+   "tipo": "concepto",
+   "alias": [
+    "términos en común"
+   ],
+   "descripciones": [
+    "Términos que comparten la consulta y su documento relevante, base para explicar los fallos."
+   ],
+   "citas": [
+    "Parte 3"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": []
+  }
+ ],
+ "Parte 4": [
+  {
+   "clave": "recuperador denso",
+   "nombre": "recuperador denso",
+   "tipo": "metodo",
+   "alias": [
+    "recuperador denso con embeddings"
+   ],
+   "descripciones": [
+    "Recuperador basado en embeddings de un modelo entrenado que, según la pregunta, resolvería mejor la consulta q5 que los dos métodos de la tarea."
+   ],
+   "citas": [
+    "Parte 4"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 1
+  },
+  {
+   "clave": "embedding",
+   "nombre": "embeddings",
+   "tipo": "metodo",
+   "alias": [
+    "embedding"
+   ],
+   "descripciones": [
+    "Representaciones que forman clusters en el espacio latente.",
+    "Función que mapea texto a un vector de alta dimensión (p. ej. d=384 o d=1536) de modo que textos semánticamente similares tienen vectores cercanos.",
+    "Representaciones con límite de tokens de contexto; un chunk muy grande las diluye con información irrelevante y uno muy pequeño pierde contexto.",
+    "Representación vectorial de la query y de los chunks usada en dense retrieval.",
+    "Paso del pipeline del baseline tras la ingesta y el chunking.",
+    "Representación usada para comparar pregunta y respuesta en Answer Relevancy.",
+    "Representaciones de un modelo entrenado que emplea el recuperador denso."
+   ],
+   "citas": [
+    "s1-transformers-y-foundation-models § 2.4 Gaussian Mixture Models — variables latentes … 2.5 Hidden Markov Models — generación secuencial",
+    "s2-rag-y-vector-search § 2. Embeddings … 2.3 Similitud semántica",
+    "s2-rag-y-vector-search § 4. Chunking Strategies … 4.3 Regla práctica",
+    "s2-rag-y-vector-search § 5. Retrieval: Sparse, Dense, Hybrid … 5.4 Reranking",
+    "s2-rag-y-vector-search § 7. Notas del Lab 02",
+    "s4-llmops-y-finetuning § 2.3 RAGAS para RAG",
+    "Parte 4"
+   ],
+   "origen": [
+    "notas",
+    "enunciado"
+   ],
+   "fragmentos": [
+    "s1-transformers-y-foundation-models#3",
+    "s2-rag-y-vector-search#2",
+    "s2-rag-y-vector-search#4",
+    "s2-rag-y-vector-search#5",
+    "s2-rag-y-vector-search#7",
+    "s4-llmops-y-finetuning#3"
+   ],
+   "comunidad": 1
+  },
+  {
+   "clave": "modelo entrenado",
+   "nombre": "modelo entrenado",
+   "tipo": "metodo",
+   "alias": [],
+   "descripciones": [
+    "Modelo previamente entrenado del cual provienen los embeddings del recuperador denso."
+   ],
+   "citas": [
+    "Parte 4"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 1
+  },
+  {
+   "clave": "consulta q5",
+   "nombre": "consulta q5",
+   "tipo": "dataset",
+   "alias": [
+    "q5"
+   ],
+   "descripciones": [
+    "Consulta de la tarea que motiva la comparación entre el recuperador denso y los dos métodos de la tarea."
+   ],
+   "citas": [
+    "Parte 4"
+   ],
+   "origen": [
+    "enunciado"
+   ],
+   "fragmentos": [],
+   "comunidad": 1
+  },
+  {
+   "clave": "tf idf",
+   "nombre": "TF-IDF",
+   "tipo": "metodo",
+   "alias": [
+    "TfidfVectorizer",
+    "matriz TF-IDF",
+    "tf-idf"
+   ],
+   "descripciones": [
+    "Método de recuperación del que BM25 es una evolución.",
+    "Vectorización léxica implementada con TfidfVectorizer de scikit-learn usando sus parámetros por defecto.",
+    "Matriz de representación de los documentos que se reduce a 4 dimensiones.",
+    "Método frente al cual se pregunta el costo del recuperador denso."
+   ],
+   "citas": [
+    "s2-rag-y-vector-search § 5. Retrieval: Sparse, Dense, Hybrid … 5.4 Reranking",
+    "Parte 1",
+    "Parte 2",
+    "Parte 4"
+   ],
+   "origen": [
+    "notas",
+    "enunciado"
+   ],
+   "fragmentos": [
+    "s2-rag-y-vector-search#5"
+   ],
+   "comunidad": 1
+  },
+  {
+   "clave": "costo",
+   "nombre": "costo",
+   "tipo": "metrica",
+   "alias": [
+    "precio"
+   ],
+   "descripciones": [
+    "Medida que varía ~10-100x entre modelos propietarios pequeños y grandes.",
+    "Medida con la que se evalúa el recuperador denso en comparación con TF-IDF."
+   ],
+   "citas": [
+    "s1-transformers-y-foundation-models § 6. Notas del Lab 01",
+    "Parte 4"
+   ],
+   "origen": [
+    "notas",
+    "enunciado"
+   ],
+   "fragmentos": [
+    "s1-transformers-y-foundation-models#10"
+   ],
+   "comunidad": 5
+  }
+ ]
+}

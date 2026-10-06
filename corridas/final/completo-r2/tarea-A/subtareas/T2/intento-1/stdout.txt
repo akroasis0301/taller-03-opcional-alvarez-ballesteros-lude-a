@@ -1,0 +1,10 @@
+================================================================
+T2 — Naive Bayes gaussiano vs. Regresión logística (prueba)
+================================================================
+División usada: train=398, test=171, atributos=30
+----------------------------------------------------------------
+Modelo                                            Acc   F1 macro
+Naive Bayes gaussiano                          0.9474     0.9429
+Regresión logística (estandarizada)            0.9883     0.9875
+----------------------------------------------------------------
+Archivos: resultados.json, tabla_parte2_metricas.png, comparativa_parte2_barras.png

@@ -1,0 +1,276 @@
+{
+ "fuente": "/Users/miguelestebanalvarez/Posgrado Maestría Inteligencia Artificial/1er Semestre/IA Generativa y Agentes/Talleres/Taller 03/taller-03-opcional-alvarez-ballesteros-ludeña/tareas/reales/semana2/enunciado.pdf",
+ "texto": "Versión adaptada para el solver · basada en el enunciado original del curso · uso exclusivo como banco de prueba\nPágina 1\nMATEMÁTICAS Y PROGRAMACIÓN PARA IA\nEjercicio de refuerzo - Semana 2\nComparación defendible de dos modelos sobre tiendas pareadas\nModalidad\nTiempo sugerido\nEntrega\nIndividual\n2-3 horas\nScripts, figura, CSV e informe.md\nVersión adaptada para el solver (Taller 03 v2, MMIA 6013). El contenido técnico, los datos, las\nconstantes y los resultados esperados son los del enunciado original del curso. Solo cambia la logística de\nentrega: no se usa Git, uv, pytest ni D2L; el informe.md se construye desde cero con las 18 preguntas que\nse listan en el Anexo, y los contratos de las pruebas públicas se escriben aquí como requisitos.\nObjetivo\nConstruir una comparación estadística reproducible entre dos modelos evaluados sobre las\nmismas unidades. El ejercicio integra auditoría de pares, diferencias por tienda, efecto,\nincertidumbre, prueba t pareada, referencia exacta por cambios de signo, bootstrap pareado e\ninterpretación limitada por la evidencia.\nEscenario\nDos modelos de regresión ya entrenados, A y B, pronostican la demanda semanal de las mismas\n16 tiendas. El archivo data/model_errors.csv (columnas store_id, error_a, error_b)\ncontiene el error absoluto de cada modelo, medido en unidades vendidas. Un error menor\nrepresenta un mejor pronóstico. Los mismos datos se reproducen en la tabla siguiente.\nProcedencia y límite: los datos son sintéticos, deterministas y creados para esta actividad. No\nprovienen de tiendas reales y no constituyen evidencia sobre una empresa, mercado o población\nexistente.\nstore_id\nerror_a\nerror_b\nS01\n12.4\n10.6\nS02\n9.8\n9.1\nS03\n15.1\n13.9\nS04\n11.0\n12.4\nS05\n8.7\n7.2\nS06\n13.6\n13.9\nS07\n10.2\n9.3\nS08\n14.9\n12.8\nS09\n7.5\n9.3\nS10\n16.0\n15.0\nS11\n9.3\n9.8\nS12\n12.8\n11.1\nS13\n11.7\n12.9\nS14\n8.9\n8.3\nS15\n13.2\n11.9\nS16\n10.6\n11.5\nReglas de interpretación\n• No ejecutar una prueba antes de completar la Parte 1 de informe.md.\n• Toda respuesta debe citar resultados numéricos o elementos concretos de la figura.\n• Una diferencia positiva favorece a B porque se define como error de A menos error de B.\n• No reducir la conclusión a significativo o no significativo.\nVersión adaptada para el solver · basada en el enunciado original del curso · uso exclusivo como banco de prueba\nPágina 2\n• No interpretar el p-value como la probabilidad de que la hipótesis nula sea verdadera.\nd_i = e_A(i) - e_B(i)        Δ = E(d_i)        H0: Δ = 0     H1: Δ ≠ 0\nTarea 1 - Completar el contrato de análisis\nResponder las preguntas 1 a 10 del informe antes de calcular resultados: modelos, proceso\nobjetivo propuesto, métrica y su dirección, unidad de análisis, evidencia de emparejamiento,\nestimando, hipótesis, procedimiento principal, resultados que acompañarán al p-value y límites\ndel diseño.\nTarea 2 - Auditar los datos y construir los pares\nCargar el CSV validando que existan exactamente las columnas store_id, error_a, error_b;\nque cada identificador sea único y no nulo (si no, ValueError que mencione el identificador); y\nque los errores sean numéricos, finitos y no negativos (si no, ValueError). No modificar el CSV\noriginal.\nConstruir la tabla pareada: conservar las tres columnas originales y añadir difference (=\nerror_a − error_b) y favors (\"B\" si la diferencia es positiva, \"A\" si es negativa). Verificar los pares\nmediante store_id; comprobar únicamente la longitud de dos vectores no demuestra que\ncorrespondan a las mismas tiendas.\nTarea 3 - Hacer visible la evidencia por tienda\nCrear una figura que muestre una observación por tienda, el signo y la magnitud de difference,\ny una referencia visible en cero. Guardarla en output/store_differences.png. En el informe,\nidentificar cuántas tiendas favorecen a cada modelo y las diferencias de mayor magnitud en\nambas direcciones.\nTarea 4 - Calcular el efecto y su incertidumbre\nReportar exactamente n, mean, sample_sd y standard_error de las diferencias. La desviación\ndebe ser muestral y SE = sd / √n. Interpretar la diferencia media en unidades vendidas y\ndistinguir la dispersión entre tiendas del error estándar de la media.\nCon scipy.stats sobre el vector de diferencias, calcular la prueba t y un intervalo t bilateral del\n95 % para la media pareada; conservar grados de libertad, estadístico, p-value e intervalo.\nTarea 5 - Comparar dos referencias nulas\nProcedimiento principal: prueba t de una muestra sobre las diferencias, alternativa bilateral.\nDespués, prueba exacta por cambios de signo: enumerar las 216 configuraciones de signos y\ncontar las medias nulas cuya magnitud sea al menos tan extrema como la observada. Reportar\nel total de configuraciones, el conteo de extremas y el p-value.\nEn el informe, explicar el p-value de forma condicional a la hipótesis nula, el diseño y los\nsupuestos, y por qué la prueba t y los cambios de signo no son procedimientos intercambiables\naunque produzcan resultados numéricos cercanos.\nTarea 6 - Realizar un bootstrap pareado\nUsar np.random.default_rng con la semilla indicada y 10 000 remuestras. Remuestrear tiendas\ncompletas mediante el vector de diferencias; no remuestrear por separado los errores de A y B.\nReportar el intervalo percentil del 95 % como análisis de sensibilidad aproximado. Dos\nejecuciones con la misma semilla deben dar el mismo intervalo.\nSEED = 20260829\nBOOTSTRAP_RESAMPLES = 10_000\nTarea 7 - Ejecutar el pipeline y redactar la conclusión\nEl programa debe guardar output/store_differences.csv (la tabla pareada) y\noutput/store_differences.png, y mostrar el resumen, la prueba t, la referencia por cambios\nde signo y el intervalo bootstrap. Completar las preguntas 11 a 17 y redactar el informe ejecutivo\nVersión adaptada para el solver · basada en el enunciado original del curso · uso exclusivo como banco de prueba\nPágina 3\nde máximo 150 palabras de la pregunta 18. La conclusión debe incluir unidad, procedencia,\nmétrica, emparejamiento, efecto, incertidumbre, procedimiento, p-value, sensibilidad, al menos\ndos limitaciones y una frase explícita sobre lo que no puede concluirse.\nEntregable\n• El código fuente en Python que produce todos los resultados.\n• output/store_differences.csv y output/store_differences.png.\n• informe.md con las cinco partes y las 18 preguntas del Anexo, en el mismo orden y\nnumeración. La respuesta 18 no supera las 150 palabras.\n• Toda cifra del informe debe provenir de una ejecución del código.\nAnexo - Preguntas de informe.md\nComplete las respuestas con frases propias y cite los resultados numéricos obtenidos por su\nprograma. Una salida de software sin interpretación no constituye una respuesta.\nParte 1. Contrato de análisis previo (responder antes de ejecutar la comparación\nestadística)\n1. ¿Qué dos modelos se comparan?\n2. ¿Qué población o proceso objetivo propone para interpretar el ejercicio? Aclare qué impide\nafirmar que los datos sintéticos representan realmente esa población.\n3. ¿Cuál es la métrica principal y qué dirección representa un mejor resultado?\n4. ¿Cuál es la unidad de análisis?\n5. ¿Por qué las observaciones están emparejadas y cómo verificará los pares?\n6. Defina el estimando y la diferencia por tienda. Explique qué significa una diferencia positiva.\n7. Escriba la hipótesis nula y la alternativa bilateral.\n8. ¿Cuál será el procedimiento principal y qué supuestos requiere?\n9. ¿Qué resultados reportará además del p-value?\n10. ¿Qué afirmaciones no permite realizar este diseño?\nParte 2. Auditoría y evidencia por tienda\n11. Confirme que los 16 pares fueron validados mediante store_id. Explique por qué comprobar\núnicamente que ambas columnas tienen la misma longitud no es suficiente.\n12. Indique cuántas tiendas favorecen a A, cuántas favorecen a B y si existen empates.\nIdentifique las diferencias de mayor magnitud en cada dirección.\nParte 3. Efecto e incertidumbre\n13. Reporte el número de tiendas, la diferencia media, la desviación estándar muestral y el\nerror estándar. Interprete el signo y la magnitud de la diferencia media en unidades vendidas.\n14. Reporte el intervalo t del 95 %. Explique qué valores del efecto son compatibles con los\ndatos bajo el modelo utilizado. No interprete el intervalo como una probabilidad posterior\nsobre el parámetro.\nParte 4. Referencias nulas y sensibilidad\n15. Reporte el estadístico t, sus grados de libertad y el p-value bilateral. Explique correctamente\nqué representa ese p-value.\n16. Reporte el p-value de la prueba exacta por cambios de signo. Explique por qué esta\nreferencia nula y la prueba t no tienen supuestos idénticos.\n17. Reporte el intervalo bootstrap pareado, la semilla y el número de remuestras. Explique por\nqué se remuestrean tiendas completas y qué problema no puede corregir automáticamente el\nbootstrap.\nVersión adaptada para el solver · basada en el enunciado original del curso · uso exclusivo como banco de prueba\nPágina 4\nParte 5. Informe ejecutivo\n18. Redacte un máximo de 150 palabras que incluya unidad, procedencia, métrica,\nemparejamiento, efecto, incertidumbre, procedimiento, p-value, análisis de sensibilidad, al\nmenos dos limitaciones y una afirmación explícita sobre lo que no puede concluirse.",
+ "secciones": [
+  {
+   "id": "S0",
+   "titulo": "Preámbulo",
+   "clave": "Preámbulo",
+   "trabajo": false,
+   "pagina": 1,
+   "texto": "Versión adaptada para el solver · basada en el enunciado original del curso · uso exclusivo como banco de prueba\nPágina 1\nMATEMÁTICAS Y PROGRAMACIÓN PARA IA"
+  },
+  {
+   "id": "S1",
+   "titulo": "Ejercicio de refuerzo - Semana 2",
+   "clave": "Ejercicio de refuerzo - Semana 2",
+   "trabajo": false,
+   "pagina": 1,
+   "texto": "Comparación defendible de dos modelos sobre tiendas pareadas\nModalidad\nTiempo sugerido\nEntrega\nIndividual\n2-3 horas\nScripts, figura, CSV e informe.md\nVersión adaptada para el solver (Taller 03 v2, MMIA 6013). El contenido técnico, los datos, las\nconstantes y los resultados esperados son los del enunciado original del curso. Solo cambia la logística de\nentrega: no se usa Git, uv, pytest ni D2L; el informe.md se construye desde cero con las 18 preguntas que\nse listan en el Anexo, y los contratos de las pruebas públicas se escriben aquí como requisitos."
+  },
+  {
+   "id": "S2",
+   "titulo": "Objetivo",
+   "clave": "Objetivo",
+   "trabajo": false,
+   "pagina": 1,
+   "texto": "Construir una comparación estadística reproducible entre dos modelos evaluados sobre las\nmismas unidades. El ejercicio integra auditoría de pares, diferencias por tienda, efecto,\nincertidumbre, prueba t pareada, referencia exacta por cambios de signo, bootstrap pareado e\ninterpretación limitada por la evidencia."
+  },
+  {
+   "id": "S3",
+   "titulo": "Escenario",
+   "clave": "Escenario",
+   "trabajo": false,
+   "pagina": 1,
+   "texto": "Dos modelos de regresión ya entrenados, A y B, pronostican la demanda semanal de las mismas\n16 tiendas. El archivo data/model_errors.csv (columnas store_id, error_a, error_b)\ncontiene el error absoluto de cada modelo, medido en unidades vendidas. Un error menor\nrepresenta un mejor pronóstico. Los mismos datos se reproducen en la tabla siguiente.\nProcedencia y límite: los datos son sintéticos, deterministas y creados para esta actividad. No\nprovienen de tiendas reales y no constituyen evidencia sobre una empresa, mercado o población\nexistente.\nstore_id\nerror_a\nerror_b\nS01\n12.4\n10.6\nS02\n9.8\n9.1\nS03\n15.1\n13.9\nS04\n11.0\n12.4\nS05\n8.7\n7.2\nS06\n13.6\n13.9\nS07\n10.2\n9.3\nS08\n14.9\n12.8\nS09\n7.5\n9.3\nS10\n16.0\n15.0\nS11\n9.3\n9.8\nS12\n12.8\n11.1\nS13\n11.7\n12.9\nS14\n8.9\n8.3\nS15\n13.2\n11.9\nS16\n10.6\n11.5"
+  },
+  {
+   "id": "S4",
+   "titulo": "Reglas de interpretación",
+   "clave": "Reglas de interpretación",
+   "trabajo": false,
+   "pagina": 1,
+   "texto": "• No ejecutar una prueba antes de completar la Parte 1 de informe.md.\n• Toda respuesta debe citar resultados numéricos o elementos concretos de la figura.\n• Una diferencia positiva favorece a B porque se define como error de A menos error de B.\n• No reducir la conclusión a significativo o no significativo.\nVersión adaptada para el solver · basada en el enunciado original del curso · uso exclusivo como banco de prueba\nPágina 2\n• No interpretar el p-value como la probabilidad de que la hipótesis nula sea verdadera.\nd_i = e_A(i) - e_B(i)        Δ = E(d_i)        H0: Δ = 0     H1: Δ ≠ 0"
+  },
+  {
+   "id": "S5",
+   "titulo": "Tarea 1 - Completar el contrato de análisis",
+   "clave": "Tarea 1",
+   "trabajo": true,
+   "pagina": 2,
+   "texto": "Responder las preguntas 1 a 10 del informe antes de calcular resultados: modelos, proceso\nobjetivo propuesto, métrica y su dirección, unidad de análisis, evidencia de emparejamiento,\nestimando, hipótesis, procedimiento principal, resultados que acompañarán al p-value y límites\ndel diseño."
+  },
+  {
+   "id": "S6",
+   "titulo": "Tarea 2 - Auditar los datos y construir los pares",
+   "clave": "Tarea 2",
+   "trabajo": true,
+   "pagina": 2,
+   "texto": "Cargar el CSV validando que existan exactamente las columnas store_id, error_a, error_b;\nque cada identificador sea único y no nulo (si no, ValueError que mencione el identificador); y\nque los errores sean numéricos, finitos y no negativos (si no, ValueError). No modificar el CSV\noriginal.\nConstruir la tabla pareada: conservar las tres columnas originales y añadir difference (=\nerror_a − error_b) y favors (\"B\" si la diferencia es positiva, \"A\" si es negativa). Verificar los pares\nmediante store_id; comprobar únicamente la longitud de dos vectores no demuestra que\ncorrespondan a las mismas tiendas."
+  },
+  {
+   "id": "S7",
+   "titulo": "Tarea 3 - Hacer visible la evidencia por tienda",
+   "clave": "Tarea 3",
+   "trabajo": true,
+   "pagina": 2,
+   "texto": "Crear una figura que muestre una observación por tienda, el signo y la magnitud de difference,\ny una referencia visible en cero. Guardarla en output/store_differences.png. En el informe,\nidentificar cuántas tiendas favorecen a cada modelo y las diferencias de mayor magnitud en\nambas direcciones."
+  },
+  {
+   "id": "S8",
+   "titulo": "Tarea 4 - Calcular el efecto y su incertidumbre",
+   "clave": "Tarea 4",
+   "trabajo": true,
+   "pagina": 2,
+   "texto": "Reportar exactamente n, mean, sample_sd y standard_error de las diferencias. La desviación\ndebe ser muestral y SE = sd / √n. Interpretar la diferencia media en unidades vendidas y\ndistinguir la dispersión entre tiendas del error estándar de la media.\nCon scipy.stats sobre el vector de diferencias, calcular la prueba t y un intervalo t bilateral del\n95 % para la media pareada; conservar grados de libertad, estadístico, p-value e intervalo."
+  },
+  {
+   "id": "S9",
+   "titulo": "Tarea 5 - Comparar dos referencias nulas",
+   "clave": "Tarea 5",
+   "trabajo": true,
+   "pagina": 2,
+   "texto": "Procedimiento principal: prueba t de una muestra sobre las diferencias, alternativa bilateral.\nDespués, prueba exacta por cambios de signo: enumerar las 216 configuraciones de signos y\ncontar las medias nulas cuya magnitud sea al menos tan extrema como la observada. Reportar\nel total de configuraciones, el conteo de extremas y el p-value.\nEn el informe, explicar el p-value de forma condicional a la hipótesis nula, el diseño y los\nsupuestos, y por qué la prueba t y los cambios de signo no son procedimientos intercambiables\naunque produzcan resultados numéricos cercanos."
+  },
+  {
+   "id": "S10",
+   "titulo": "Tarea 6 - Realizar un bootstrap pareado",
+   "clave": "Tarea 6",
+   "trabajo": true,
+   "pagina": 2,
+   "texto": "Usar np.random.default_rng con la semilla indicada y 10 000 remuestras. Remuestrear tiendas\ncompletas mediante el vector de diferencias; no remuestrear por separado los errores de A y B.\nReportar el intervalo percentil del 95 % como análisis de sensibilidad aproximado. Dos\nejecuciones con la misma semilla deben dar el mismo intervalo.\nSEED = 20260829\nBOOTSTRAP_RESAMPLES = 10_000"
+  },
+  {
+   "id": "S11",
+   "titulo": "Tarea 7 - Ejecutar el pipeline y redactar la conclusión",
+   "clave": "Tarea 7",
+   "trabajo": true,
+   "pagina": 2,
+   "texto": "El programa debe guardar output/store_differences.csv (la tabla pareada) y\noutput/store_differences.png, y mostrar el resumen, la prueba t, la referencia por cambios\nde signo y el intervalo bootstrap. Completar las preguntas 11 a 17 y redactar el informe ejecutivo\nVersión adaptada para el solver · basada en el enunciado original del curso · uso exclusivo como banco de prueba\nPágina 3\nde máximo 150 palabras de la pregunta 18. La conclusión debe incluir unidad, procedencia,\nmétrica, emparejamiento, efecto, incertidumbre, procedimiento, p-value, sensibilidad, al menos\ndos limitaciones y una frase explícita sobre lo que no puede concluirse."
+  },
+  {
+   "id": "S12",
+   "titulo": "Entregable",
+   "clave": "Entregable",
+   "trabajo": false,
+   "pagina": 3,
+   "texto": "• El código fuente en Python que produce todos los resultados.\n• output/store_differences.csv y output/store_differences.png.\n• informe.md con las cinco partes y las 18 preguntas del Anexo, en el mismo orden y\nnumeración. La respuesta 18 no supera las 150 palabras.\n• Toda cifra del informe debe provenir de una ejecución del código."
+  },
+  {
+   "id": "S13",
+   "titulo": "Anexo - Preguntas de informe.md",
+   "clave": "Anexo - Preguntas de informe.md",
+   "trabajo": false,
+   "pagina": 3,
+   "texto": "Complete las respuestas con frases propias y cite los resultados numéricos obtenidos por su\nprograma. Una salida de software sin interpretación no constituye una respuesta.\nParte 1. Contrato de análisis previo (responder antes de ejecutar la comparación\nestadística)\n1. ¿Qué dos modelos se comparan?\n2. ¿Qué población o proceso objetivo propone para interpretar el ejercicio? Aclare qué impide\nafirmar que los datos sintéticos representan realmente esa población.\n3. ¿Cuál es la métrica principal y qué dirección representa un mejor resultado?\n4. ¿Cuál es la unidad de análisis?\n5. ¿Por qué las observaciones están emparejadas y cómo verificará los pares?\n6. Defina el estimando y la diferencia por tienda. Explique qué significa una diferencia positiva.\n7. Escriba la hipótesis nula y la alternativa bilateral.\n8. ¿Cuál será el procedimiento principal y qué supuestos requiere?\n9. ¿Qué resultados reportará además del p-value?\n10. ¿Qué afirmaciones no permite realizar este diseño?"
+  },
+  {
+   "id": "S14",
+   "titulo": "Parte 2. Auditoría y evidencia por tienda",
+   "clave": "Parte 2",
+   "trabajo": true,
+   "pagina": 3,
+   "texto": "11. Confirme que los 16 pares fueron validados mediante store_id. Explique por qué comprobar\núnicamente que ambas columnas tienen la misma longitud no es suficiente.\n12. Indique cuántas tiendas favorecen a A, cuántas favorecen a B y si existen empates.\nIdentifique las diferencias de mayor magnitud en cada dirección."
+  },
+  {
+   "id": "S15",
+   "titulo": "Parte 3. Efecto e incertidumbre",
+   "clave": "Parte 3",
+   "trabajo": true,
+   "pagina": 3,
+   "texto": "13. Reporte el número de tiendas, la diferencia media, la desviación estándar muestral y el\nerror estándar. Interprete el signo y la magnitud de la diferencia media en unidades vendidas.\n14. Reporte el intervalo t del 95 %. Explique qué valores del efecto son compatibles con los\ndatos bajo el modelo utilizado. No interprete el intervalo como una probabilidad posterior\nsobre el parámetro."
+  },
+  {
+   "id": "S16",
+   "titulo": "Parte 4. Referencias nulas y sensibilidad",
+   "clave": "Parte 4",
+   "trabajo": true,
+   "pagina": 3,
+   "texto": "15. Reporte el estadístico t, sus grados de libertad y el p-value bilateral. Explique correctamente\nqué representa ese p-value.\n16. Reporte el p-value de la prueba exacta por cambios de signo. Explique por qué esta\nreferencia nula y la prueba t no tienen supuestos idénticos.\n17. Reporte el intervalo bootstrap pareado, la semilla y el número de remuestras. Explique por\nqué se remuestrean tiendas completas y qué problema no puede corregir automáticamente el\nbootstrap.\nVersión adaptada para el solver · basada en el enunciado original del curso · uso exclusivo como banco de prueba\nPágina 4"
+  },
+  {
+   "id": "S17",
+   "titulo": "Parte 5. Informe ejecutivo",
+   "clave": "Parte 5",
+   "trabajo": true,
+   "pagina": 4,
+   "texto": "18. Redacte un máximo de 150 palabras que incluya unidad, procedencia, métrica,\nemparejamiento, efecto, incertidumbre, procedimiento, p-value, análisis de sensibilidad, al\nmenos dos limitaciones y una afirmación explícita sobre lo que no puede concluirse."
+  }
+ ],
+ "tablas": [
+  {
+   "pagina": 1,
+   "filas": [
+    [
+     "Modalidad",
+     "Tiempo sugerido",
+     "Entrega"
+    ],
+    [
+     "Individual",
+     "2-3 horas",
+     "Scripts, figura, CSV e informe.md"
+    ]
+   ]
+  },
+  {
+   "pagina": 1,
+   "filas": [
+    [
+     "store id\n_",
+     "error a\n_",
+     "error b\n_"
+    ],
+    [
+     "S01",
+     "12.4",
+     "10.6"
+    ],
+    [
+     "S02",
+     "9.8",
+     "9.1"
+    ],
+    [
+     "S03",
+     "15.1",
+     "13.9"
+    ],
+    [
+     "S04",
+     "11.0",
+     "12.4"
+    ],
+    [
+     "S05",
+     "8.7",
+     "7.2"
+    ],
+    [
+     "S06",
+     "13.6",
+     "13.9"
+    ],
+    [
+     "S07",
+     "10.2",
+     "9.3"
+    ],
+    [
+     "S08",
+     "14.9",
+     "12.8"
+    ],
+    [
+     "S09",
+     "7.5",
+     "9.3"
+    ],
+    [
+     "S10",
+     "16.0",
+     "15.0"
+    ],
+    [
+     "S11",
+     "9.3",
+     "9.8"
+    ],
+    [
+     "S12",
+     "12.8",
+     "11.1"
+    ],
+    [
+     "S13",
+     "11.7",
+     "12.9"
+    ],
+    [
+     "S14",
+     "8.9",
+     "8.3"
+    ],
+    [
+     "S15",
+     "13.2",
+     "11.9"
+    ],
+    [
+     "S16",
+     "10.6",
+     "11.5"
+    ]
+   ]
+  }
+ ],
+ "paginas_sin_texto": [],
+ "escaneado": false,
+ "datos": "/Users/miguelestebanalvarez/Posgrado Maestría Inteligencia Artificial/1er Semestre/IA Generativa y Agentes/Talleres/Taller 03/taller-03-opcional-alvarez-ballesteros-ludeña/tareas/reales/semana2/data",
+ "restricciones": {
+  "entregable": "informe.md",
+  "formato": "md",
+  "palabras_max": null,
+  "paginas_max": null,
+  "secciones": [],
+  "limites_parciales": [
+   "Completar las preguntas 11 a 17 y redactar el informe ejecutivo Versión adaptada para el solver · basada en el enunciado original del curso · uso exclusivo como banco de prueba Página 3 de máximo 150 ",
+   "La respuesta 18 no supera las 150 palabras. • Toda cifra del informe debe provenir de una ejecución de",
+   "Redacte un máximo de 150 palabras que incluya unidad, procedencia, métrica, emparejamiento, e"
+  ],
+  "archivos": [
+   "output/store_differences.png",
+   "output/store_differences.csv"
+  ]
+ }
+}

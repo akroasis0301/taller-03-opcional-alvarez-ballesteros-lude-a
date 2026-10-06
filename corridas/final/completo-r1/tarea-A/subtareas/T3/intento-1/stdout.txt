@@ -1,0 +1,22 @@
+========================================================================
+T3 — Curva de aprendizaje (generativo vs. discriminativo)
+División usada: archivos de la Parte 1: entrada/T1/t1_train.csv y entrada/T1/t1_test.csv (columna objetivo: 'target')
+n_train=398 | n_test=171 (el mismo test para todos los tamaños)
+------------------------------------------------------------------------
+fraccion  n_train accuracy_naive_bayes_gaussiano accuracy_regresion_logistica f1_macro_naive_bayes_gaussiano f1_macro_regresion_logistica
+      5%       19                         0.9415                       0.9298                         0.9353                       0.9217
+     10%       39                         0.9474                       0.9357                         0.9420                       0.9285
+     25%       99                         0.9474                       0.9415                         0.9424                       0.9363
+     50%      199                         0.9357                       0.9766                         0.9302                       0.9747
+    100%      398                         0.9474                       0.9883                         0.9429                       0.9875
+------------------------------------------------------------------------
+Mejor modelo por tamaño de entrenamiento:
+  n_train= 19: naive_bayes_gaussiano (accuracy=0.9415)
+  n_train= 39: naive_bayes_gaussiano (accuracy=0.9474)
+  n_train= 99: naive_bayes_gaussiano (accuracy=0.9474)
+  n_train=199: regresion_logistica (accuracy=0.9766)
+  n_train=398: regresion_logistica (accuracy=0.9883)
+Cruce de curvas: Se observa el cruce de curvas: el Naive Bayes gaussiano supera a la regresión logística con n_train=[19, 39, 99] y la regresión logística supera al Naive Bayes con n_train=[199, 398] (patrón consistente con Ng y Jordan, 2002).
+Figura de curvas guardada en: t3_curvas_aprendizaje.png
+Figura de tabla guardada en: t3_tabla_accuracy.png
+Resultados escritos en: resultados.json

@@ -1,0 +1,23 @@
+=== T1: Línea base léxica TF-IDF + coseno ===
+Vocabulario: 105 términos | Docs: 10 | Consultas: 6
+
+Tabla por consulta:
+query_id relevante  rank_del_relevante  hit@1  hit@3  reciprocal_rank
+      q1       d04                   1      1      1         1.000000
+      q2       d03                   1      1      1         1.000000
+      q3       d08                   1      1      1         1.000000
+      q4       d05                   1      1      1         1.000000
+      q5       d09                   6      0      0         0.166667
+      q6       d02                   1      1      1         1.000000
+
+Globales: Hit@1 = 0.8333 | Hit@3 = 0.8333 | MRR = 0.8611
+
+Rankings (mejor → peor):
+  q1 (rel=d04): d04 > d01 > d06 > d10 > d02 > d08 > d09 > d05 > d03 > d07
+  q2 (rel=d03): d03 > d01 > d02 > d04 > d05 > d06 > d07 > d08 > d09 > d10
+  q3 (rel=d08): d08 > d06 > d04 > d01 > d10 > d02 > d03 > d05 > d07 > d09
+  q4 (rel=d05): d05 > d01 > d04 > d10 > d02 > d08 > d09 > d03 > d06 > d07
+  q5 (rel=d09): d03 > d06 > d04 > d01 > d10 > d09 > d08 > d05 > d02 > d07
+  q6 (rel=d02): d02 > d06 > d03 > d08 > d01 > d04 > d05 > d07 > d09 > d10
+
+Archivos escritos: resultados.json, matriz_similitud_tfidf.png, metricas_tfidf_baseline.png

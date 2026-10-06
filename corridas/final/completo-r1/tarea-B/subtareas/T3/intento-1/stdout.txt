@@ -1,0 +1,13 @@
+=== T3 — Comprobación empírica (Parte 3) ===
+Fuente distribución renormalizada   : entrada/T2/resultados.json
+Tokens supervivientes (top-p 0.9)    : ['t0', 't1', 't2', 't3']
+Muestras: 10000 con numpy.random.default_rng(0)
+  t0: teórica=0.569376  observada=0.568200  (conteo=5682)
+  t1: teórica=0.209462  observada=0.209300  (conteo=2093)
+  t2: teórica=0.127045  observada=0.129600  (conteo=1296)
+  t3: teórica=0.094117  observada=0.092900  (conteo=929)
+Divergencia KL(empírica || teórica) = 0.000050 bits (0.000035 nats)
+Referencia asintótica E[KL] ≈ 2.164043e-04 bits
+Verificación recálculo softmax+top-p: max|diff| = 0.000e+00
+Figura guardada: T3_frecuencias_vs_teorica.png
+Resultados escritos en resultados.json

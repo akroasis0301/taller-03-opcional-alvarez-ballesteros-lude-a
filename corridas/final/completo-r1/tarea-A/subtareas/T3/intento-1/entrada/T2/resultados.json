@@ -1,0 +1,41 @@
+{
+  "subtarea": "T2",
+  "dataset": "Breast Cancer Wisconsin (Diagnostic)",
+  "division_usada": {
+    "origen": "archivos de la Parte 1: entrada/T1/t1_train.csv y entrada/T1/t1_test.csv",
+    "test_size": 0.3,
+    "estratificada": true,
+    "random_state": 42,
+    "n_train": 398,
+    "n_test": 171
+  },
+  "preprocesamiento": {
+    "naive_bayes_gaussiano": "atributos crudos (sin estandarizar)",
+    "regresion_logistica": "StandardScaler ajustado unicamente con el entrenamiento"
+  },
+  "metricas_prueba": {
+    "naive_bayes_gaussiano": {
+      "accuracy": 0.9473684210526315,
+      "f1_macro": 0.942866688940862
+    },
+    "regresion_logistica": {
+      "accuracy": 0.9883040935672515,
+      "f1_macro": 0.9875146028037383
+    }
+  },
+  "tabla": [
+    {
+      "Modelo": "Naive Bayes gaussiano",
+      "Accuracy (prueba)": 0.9473684210526315,
+      "F1 macro (prueba)": 0.942866688940862
+    },
+    {
+      "Modelo": "Regresión logística",
+      "Accuracy (prueba)": 0.9883040935672515,
+      "F1 macro (prueba)": 0.9875146028037383
+    }
+  ],
+  "archivos_generados": {
+    "figura_tabla": "t2_tabla_metricas.png"
+  }
+}

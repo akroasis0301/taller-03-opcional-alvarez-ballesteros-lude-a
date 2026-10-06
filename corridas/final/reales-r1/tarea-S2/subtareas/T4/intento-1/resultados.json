@@ -1,0 +1,117 @@
+{
+  "subtarea": "T4_efecto_e_incertidumbre_diferencias_pareadas",
+  "fuente_datos": "data/model_errors.csv",
+  "definicion_diferencia": "difference = error_a - error_b (pareado por store_id)",
+  "n": 16,
+  "media": 0.4187499999999997,
+  "sample_sd": 1.2533787669070087,
+  "standard_error": 0.31334469172675217,
+  "estadistico_t": 1.3363877259014323,
+  "grados_de_libertad": 15,
+  "p_value_bilateral": 0.20134214922904944,
+  "ic95_t_limite_inferior": -0.24912840078455428,
+  "ic95_t_limite_superior": 1.0866284007845537,
+  "ic95_t_nivel": 0.95,
+  "ic95_t_semiancho": 0.667878400784554,
+  "t_critico_95": 2.131449545559776,
+  "ic95_contiene_cero": true,
+  "cifras_para_preguntas": {
+    "p13_n_media_sd_se": {
+      "n": 16,
+      "media": 0.4187499999999997,
+      "sample_sd": 1.2533787669070087,
+      "standard_error": 0.31334469172675217
+    },
+    "p14_prueba_t_bilateral": {
+      "estadistico_t": 1.3363877259014323,
+      "grados_de_libertad": 15,
+      "p_value": 0.20134214922904944
+    },
+    "p15_ic95_t_pareado": {
+      "limite_inferior": -0.24912840078455428,
+      "limite_superior": 1.0866284007845537,
+      "nivel": 0.95
+    }
+  },
+  "prueba_t": {
+    "metodo": "scipy.stats.ttest_1samp",
+    "popmean_nulo": 0.0,
+    "alternativa": "two-sided",
+    "estadistico": 1.3363877259014323,
+    "grados_de_libertad": 15,
+    "p_value": 0.20134214922904944
+  },
+  "intervalo_t": {
+    "tipo": "t bilateral para la media pareada",
+    "nivel": 0.95,
+    "limite_inferior": -0.24912840078455428,
+    "limite_superior": 1.0866284007845537,
+    "t_critico": 2.131449545559776,
+    "semiancho": 0.667878400784554,
+    "contiene_cero": true
+  },
+  "descriptivos": {
+    "n": 16,
+    "media": 0.4187499999999997,
+    "sample_sd_ddof1": 1.2533787669070087,
+    "standard_error": 0.31334469172675217,
+    "formula_se": "SE = sd / sqrt(n)",
+    "suma_diferencias": 6.699999999999995
+  },
+  "vector_diferencias": {
+    "store_ids": [
+      "S01",
+      "S02",
+      "S03",
+      "S04",
+      "S05",
+      "S06",
+      "S07",
+      "S08",
+      "S09",
+      "S10",
+      "S11",
+      "S12",
+      "S13",
+      "S14",
+      "S15",
+      "S16"
+    ],
+    "diferencias": [
+      1.8000000000000007,
+      0.7000000000000011,
+      1.1999999999999993,
+      -1.4000000000000004,
+      1.4999999999999991,
+      -0.3000000000000007,
+      0.8999999999999986,
+      2.0999999999999996,
+      -1.8000000000000007,
+      1.0,
+      -0.5,
+      1.700000000000001,
+      -1.200000000000001,
+      0.5999999999999996,
+      1.299999999999999,
+      -0.9000000000000004
+    ]
+  },
+  "interpretacion": {
+    "diferencia_media_unidades": 0.4187499999999997,
+    "dispersion_entre_tiendas_sd": 1.2533787669070087,
+    "error_estandar_de_la_media": 0.31334469172675217,
+    "nota_dispersion_vs_se": "La sd muestral (1.253379) describe la dispersion de las diferencias entre tiendas; el error estandar (0.313345) es la incertidumbre de la media pareada y se obtiene como sd/sqrt(n) = 1.253379/4.000000.",
+    "decision_al_5pct": "Con p = 0.201342 >= 0.05 y un IC t 95% de [-0.249128, 1.086628] (contiene 0: True), no se rechaza H0: media de diferencias = 0 al nivel del 5%."
+  },
+  "verificacion": {
+    "t_igual_a_media_sobre_se": true,
+    "p_igual_a_2_sf_bilateral": true,
+    "ic_igual_a_media_pm_tcrit_por_se": true,
+    "gl_igual_a_n_menos_1": true
+  },
+  "archivos_generados": {
+    "csv": "output/store_differences.csv",
+    "figura": "output/store_differences.png",
+    "resultados_json": "resultados.json"
+  }
+}

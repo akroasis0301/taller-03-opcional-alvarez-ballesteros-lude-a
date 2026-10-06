@@ -1,0 +1,11 @@
+=== T4: Efecto e incertidumbre de las diferencias pareadas ===
+Fuente: data/model_errors.csv
+n = 16
+media = 0.418750
+sd muestral (ddof=1) = 1.253379
+SE = sd/sqrt(n) = 0.313345
+Prueba t bilateral: t = 1.336388, gl = 15, p = 0.201342
+IC t 95%: [-0.249128, 1.086628] (t_critico = 2.131450)
+El IC contiene 0: True
+Verificacion: {'t_igual_a_media_sobre_se': True, 'p_igual_a_2_sf_bilateral': True, 'ic_igual_a_media_pm_tcrit_por_se': True, 'gl_igual_a_n_menos_1': True}
+Archivos generados: output/store_differences.csv, output/store_differences.png, resultados.json

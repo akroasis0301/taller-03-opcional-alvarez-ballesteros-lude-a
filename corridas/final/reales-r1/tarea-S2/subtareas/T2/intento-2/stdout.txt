@@ -1,0 +1,8 @@
+T2 completada: auditoría OK y tabla pareada construida.
+  Pares validados por store_id : 16
+  favors B (difference > 0)    : 10
+  favors A (difference < 0)    : 6
+  Empates (difference == 0)    : 0
+  Mayor diferencia a favor de B: S08 (+2.1000)
+  Mayor diferencia a favor de A: S09 (-1.8000)
+  Salidas: output/store_differences.csv, output/store_differences.png, resultados.json

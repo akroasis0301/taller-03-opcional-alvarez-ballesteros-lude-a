@@ -1,0 +1,62 @@
+{
+  "subtarea": "T2",
+  "descripcion": "Naive Bayes gaussiano y regresión logística (atributos estandarizados) entrenados sobre la división 70/30 estratificada de T1 (random_state=42); métricas medidas en el conjunto de prueba.",
+  "division": {
+    "origen": "entrada/T1 (única división de la tarea)",
+    "n_train": 398,
+    "n_test": 171,
+    "n_atributos": 30
+  },
+  "modelos": {
+    "naive_bayes_gaussiano": {
+      "tipo": "GaussianNB (atributos originales, sin estandarizar)",
+      "accuracy_prueba": 0.9473684210526315,
+      "f1_macro_prueba": 0.942866688940862,
+      "matriz_confusion_prueba": [
+        [
+          57,
+          7
+        ],
+        [
+          2,
+          105
+        ]
+      ]
+    },
+    "regresion_logistica": {
+      "tipo": "LogisticRegression",
+      "estandarizacion": "StandardScaler ajustado solo con el conjunto de entrenamiento",
+      "max_iter": 1000,
+      "random_state": 42,
+      "accuracy_prueba": 0.9883040935672515,
+      "f1_macro_prueba": 0.9875146028037383,
+      "matriz_confusion_prueba": [
+        [
+          63,
+          1
+        ],
+        [
+          1,
+          106
+        ]
+      ]
+    }
+  },
+  "tabla_comparativa": [
+    {
+      "modelo": "Naive Bayes gaussiano",
+      "accuracy_prueba": 0.9473684210526315,
+      "f1_macro_prueba": 0.942866688940862
+    },
+    {
+      "modelo": "Regresión logística (atributos estandarizados)",
+      "accuracy_prueba": 0.9883040935672515,
+      "f1_macro_prueba": 0.9875146028037383
+    }
+  ],
+  "archivos_generados": [
+    "resultados.json",
+    "tabla_comparativa.csv",
+    "tabla_comparativa.png"
+  ]
+}

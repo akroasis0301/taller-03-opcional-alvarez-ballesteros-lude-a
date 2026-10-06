@@ -1,0 +1,454 @@
+{
+  "subtarea": "T1_linea_base_tfidf",
+  "n_documentos": 10,
+  "n_consultas": 6,
+  "orden_documentos": [
+    "d01",
+    "d02",
+    "d03",
+    "d04",
+    "d05",
+    "d06",
+    "d07",
+    "d08",
+    "d09",
+    "d10"
+  ],
+  "juicios_relevancia": {
+    "q1": "d04",
+    "q2": "d03",
+    "q3": "d08",
+    "q4": "d05",
+    "q5": "d09",
+    "q6": "d02"
+  },
+  "consultas": {
+    "q1": "¿Qué función de ranking léxica pondera la frecuencia de términos?",
+    "q2": "¿Cómo se añaden fragmentos recuperados al prompt?",
+    "q3": "¿Qué técnica entrena matrices de bajo rango?",
+    "q4": "¿Cómo se compara la orientación de dos vectores de texto?",
+    "q5": "¿Qué hace que el modelo sea más determinista al elegir la siguiente palabra?",
+    "q6": "¿Qué arquitectura combina autoatención con capas feed-forward?"
+  },
+  "corpus": {
+    "d01": "Los embeddings representan palabras o documentos como vectores densos de números reales en un espacio continuo. Entrenados sobre grandes colecciones, capturan parecido semántico: las unidades con significados afines quedan cerca en ese espacio geométrico y sirven de entrada a muchos sistemas modernos de PLN.",
+    "d02": "La arquitectura Transformer apila capas donde cada bloque combina autoatención multicabeza con una red feed-forward, junto con conexiones residuales y normalización. Al prescindir de la recurrencia, paraleliza el entrenamiento y captura dependencias largas; es la base de los grandes modelos de lenguaje actuales.",
+    "d03": "En la generación aumentada por recuperación (RAG), el sistema busca en una base de conocimiento externa y los fragmentos recuperados se añaden al prompt como contexto; así el modelo redacta una respuesta apoyada en evidencia actual y puede citar sus fuentes.",
+    "d04": "BM25 es una función de ranking léxica clásica de la búsqueda: pondera la frecuencia de términos en el documento, la rareza de cada término en la colección (idf) y la longitud del documento con saturación; sigue siendo una referencia fuerte para la búsqueda por palabras clave.",
+    "d05": "La similitud coseno compara la orientación de dos vectores: calcula el coseno del ángulo entre ellos, de modo que dos textos con la misma dirección, aunque con magnitudes distintas, obtienen un valor cercano a uno; es la medida estándar para comparar representaciones vectoriales de texto.",
+    "d06": "La tokenización divide el texto crudo en unidades que el modelo puede consumir. Los métodos de subpalabra, como BPE o WordPiece, equilibran tamaño de vocabulario y longitud de secuencia: las palabras frecuentes se vuelven un solo token y las raras se parten en piezas menores, lo que evita tokens desconocidos.",
+    "d07": "El ajuste fino supervisado toma un modelo preentrenado y continúa su entrenamiento con ejemplos etiquetados de la tarea objetivo, actualizando todos los pesos o solo una parte; con instrucciones y diálogos de ejemplo, el modelo aprende a seguir órdenes y a responder en formatos útiles.",
+    "d08": "LoRA es una técnica de adaptación eficiente que entrena matrices de bajo rango junto a los pesos congelados del modelo: en lugar de actualizar toda la red, aprende las descomposiciones A y B cuyo producto aproxima el cambio necesario, lo que reduce memoria y costo de cómputo.",
+    "d09": "La temperatura controla la aleatoriedad del decodificador: al dividir los logits por un número pequeño la distribución se afila, lo que hace que el modelo sea más determinista al elegir la siguiente palabra; con valores altos el muestreo se vuelve más diverso y arriesgado.",
+    "d10": "La evaluación de modelos de lenguaje mezcla pruebas automáticas y juicio humano: se mide exactitud, F1 o coincidencia exacta sobre conjuntos de prueba reservados, y se complementa con comparaciones pareadas y rúbricas; un buen protocolo separa los datos de evaluación del entrenamiento para detectar contaminación."
+  },
+  "vectorizador": "TfidfVectorizer con parámetros por defecto, ajustado únicamente con los 10 documentos; similitud coseno para rankear.",
+  "tam_vocabulario": 263,
+  "ranking_por_consulta": {
+    "q1": [
+      {
+        "pos": 1,
+        "doc": "d04",
+        "score": 0.49359009596271336
+      },
+      {
+        "pos": 2,
+        "doc": "d05",
+        "score": 0.09958665573687059
+      },
+      {
+        "pos": 3,
+        "doc": "d02",
+        "score": 0.09951759971356657
+      },
+      {
+        "pos": 4,
+        "doc": "d08",
+        "score": 0.09881553607627379
+      },
+      {
+        "pos": 5,
+        "doc": "d10",
+        "score": 0.0943424197956139
+      },
+      {
+        "pos": 6,
+        "doc": "d06",
+        "score": 0.07187566919616772
+      },
+      {
+        "pos": 7,
+        "doc": "d01",
+        "score": 0.06288173608307697
+      },
+      {
+        "pos": 8,
+        "doc": "d07",
+        "score": 0.0575006787196752
+      },
+      {
+        "pos": 9,
+        "doc": "d09",
+        "score": 0.04093249096870456
+      },
+      {
+        "pos": 10,
+        "doc": "d03",
+        "score": 0.03372021817553934
+      }
+    ],
+    "q2": [
+      {
+        "pos": 1,
+        "doc": "d03",
+        "score": 0.39985738439180285
+      },
+      {
+        "pos": 2,
+        "doc": "d09",
+        "score": 0.14448886179790243
+      },
+      {
+        "pos": 3,
+        "doc": "d10",
+        "score": 0.06534350235279379
+      },
+      {
+        "pos": 4,
+        "doc": "d06",
+        "score": 0.06400615927237566
+      },
+      {
+        "pos": 5,
+        "doc": "d02",
+        "score": 0.04360052925470652
+      },
+      {
+        "pos": 6,
+        "doc": "d01",
+        "score": 0.0
+      },
+      {
+        "pos": 7,
+        "doc": "d04",
+        "score": 0.0
+      },
+      {
+        "pos": 8,
+        "doc": "d05",
+        "score": 0.0
+      },
+      {
+        "pos": 9,
+        "doc": "d07",
+        "score": 0.0
+      },
+      {
+        "pos": 10,
+        "doc": "d08",
+        "score": 0.0
+      }
+    ],
+    "q3": [
+      {
+        "pos": 1,
+        "doc": "d08",
+        "score": 0.4351779346658385
+      },
+      {
+        "pos": 2,
+        "doc": "d10",
+        "score": 0.04818618407957869
+      },
+      {
+        "pos": 3,
+        "doc": "d04",
+        "score": 0.044852097985728714
+      },
+      {
+        "pos": 4,
+        "doc": "d02",
+        "score": 0.03812208804913458
+      },
+      {
+        "pos": 5,
+        "doc": "d01",
+        "score": 0.036132047294264336
+      },
+      {
+        "pos": 6,
+        "doc": "d06",
+        "score": 0.03539999152792954
+      },
+      {
+        "pos": 7,
+        "doc": "d05",
+        "score": 0.03433368713174519
+      },
+      {
+        "pos": 8,
+        "doc": "d07",
+        "score": 0.02643205957554014
+      },
+      {
+        "pos": 9,
+        "doc": "d03",
+        "score": 0.012917163697917216
+      },
+      {
+        "pos": 10,
+        "doc": "d09",
+        "score": 0.0
+      }
+    ],
+    "q4": [
+      {
+        "pos": 1,
+        "doc": "d05",
+        "score": 0.47053569471222506
+      },
+      {
+        "pos": 2,
+        "doc": "d06",
+        "score": 0.18796223466432893
+      },
+      {
+        "pos": 3,
+        "doc": "d10",
+        "score": 0.16430027561439953
+      },
+      {
+        "pos": 4,
+        "doc": "d04",
+        "score": 0.1493864741675033
+      },
+      {
+        "pos": 5,
+        "doc": "d01",
+        "score": 0.11927340020152429
+      },
+      {
+        "pos": 6,
+        "doc": "d02",
+        "score": 0.10883244983880835
+      },
+      {
+        "pos": 7,
+        "doc": "d08",
+        "score": 0.10806467302536799
+      },
+      {
+        "pos": 8,
+        "doc": "d09",
+        "score": 0.10443701403582509
+      },
+      {
+        "pos": 9,
+        "doc": "d03",
+        "score": 0.06964900658341215
+      },
+      {
+        "pos": 10,
+        "doc": "d07",
+        "score": 0.06288274386106786
+      }
+    ],
+    "q5": [
+      {
+        "pos": 1,
+        "doc": "d09",
+        "score": 0.628768664627625
+      },
+      {
+        "pos": 2,
+        "doc": "d06",
+        "score": 0.09894077266539739
+      },
+      {
+        "pos": 3,
+        "doc": "d08",
+        "score": 0.09411870037803731
+      },
+      {
+        "pos": 4,
+        "doc": "d03",
+        "score": 0.08881368315273931
+      },
+      {
+        "pos": 5,
+        "doc": "d07",
+        "score": 0.0784220043009254
+      },
+      {
+        "pos": 6,
+        "doc": "d02",
+        "score": 0.0741390083818716
+      },
+      {
+        "pos": 7,
+        "doc": "d05",
+        "score": 0.0693559681714664
+      },
+      {
+        "pos": 8,
+        "doc": "d04",
+        "score": 0.062199459951472316
+      },
+      {
+        "pos": 9,
+        "doc": "d10",
+        "score": 0.009278870491688424
+      },
+      {
+        "pos": 10,
+        "doc": "d01",
+        "score": 0.0
+      }
+    ],
+    "q6": [
+      {
+        "pos": 1,
+        "doc": "d02",
+        "score": 0.45653451003021644
+      },
+      {
+        "pos": 2,
+        "doc": "d07",
+        "score": 0.034847366655024255
+      },
+      {
+        "pos": 3,
+        "doc": "d05",
+        "score": 0.030176449945302542
+      },
+      {
+        "pos": 4,
+        "doc": "d10",
+        "score": 0.015881865160078595
+      },
+      {
+        "pos": 5,
+        "doc": "d01",
+        "score": 0.015878529334947804
+      },
+      {
+        "pos": 6,
+        "doc": "d09",
+        "score": 0.015504050915683411
+      },
+      {
+        "pos": 7,
+        "doc": "d04",
+        "score": 0.014782971218048035
+      },
+      {
+        "pos": 8,
+        "doc": "d03",
+        "score": 0.0
+      },
+      {
+        "pos": 9,
+        "doc": "d06",
+        "score": 0.0
+      },
+      {
+        "pos": 10,
+        "doc": "d08",
+        "score": 0.0
+      }
+    ]
+  },
+  "rank_del_documento_relevante": {
+    "q1": 1,
+    "q2": 1,
+    "q3": 1,
+    "q4": 1,
+    "q5": 1,
+    "q6": 1
+  },
+  "reciprocal_rank_por_consulta": {
+    "q1": 1.0,
+    "q2": 1.0,
+    "q3": 1.0,
+    "q4": 1.0,
+    "q5": 1.0,
+    "q6": 1.0
+  },
+  "hit_at_1": 1.0,
+  "hit_at_3": 1.0,
+  "mrr": 1.0,
+  "matriz_similitud_coseno": {
+    "q1": [
+      0.06288173608307697,
+      0.09951759971356657,
+      0.03372021817553934,
+      0.49359009596271336,
+      0.09958665573687059,
+      0.07187566919616772,
+      0.0575006787196752,
+      0.09881553607627379,
+      0.04093249096870456,
+      0.0943424197956139
+    ],
+    "q2": [
+      0.0,
+      0.04360052925470652,
+      0.39985738439180285,
+      0.0,
+      0.0,
+      0.06400615927237566,
+      0.0,
+      0.0,
+      0.14448886179790243,
+      0.06534350235279379
+    ],
+    "q3": [
+      0.036132047294264336,
+      0.03812208804913458,
+      0.012917163697917216,
+      0.044852097985728714,
+      0.03433368713174519,
+      0.03539999152792954,
+      0.02643205957554014,
+      0.4351779346658385,
+      0.0,
+      0.04818618407957869
+    ],
+    "q4": [
+      0.11927340020152429,
+      0.10883244983880835,
+      0.06964900658341215,
+      0.1493864741675033,
+      0.47053569471222506,
+      0.18796223466432893,
+      0.06288274386106786,
+      0.10806467302536799,
+      0.10443701403582509,
+      0.16430027561439953
+    ],
+    "q5": [
+      0.0,
+      0.0741390083818716,
+      0.08881368315273931,
+      0.062199459951472316,
+      0.0693559681714664,
+      0.09894077266539739,
+      0.0784220043009254,
+      0.09411870037803731,
+      0.628768664627625,
+      0.009278870491688424
+    ],
+    "q6": [
+      0.015878529334947804,
+      0.45653451003021644,
+      0.0,
+      0.014782971218048035,
+      0.030176449945302542,
+      0.0,
+      0.034847366655024255,
+      0.0,
+      0.015504050915683411,
+      0.015881865160078595
+    ]
+  }
+}

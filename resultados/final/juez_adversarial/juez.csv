@@ -1,0 +1,8 @@
+variante,repeticion,tarea,check,tipo,golden,juez,detalle,formato,razon
+adulterado,1,C,C02,paginas_max,1,1,2 páginas,completo,El documento parece conciso y fácilmente cabría en dos páginas.
+adulterado,1,C,C03,secciones,1,1,"todas, en orden",completo,"El reporte claramente presenta las secciones Objetivo, Método, Resultados y Discusión en el orden solicitado."
+adulterado,1,C,C04,cifra,1,1,verdad=0.8611 ±0.006; hallada,completo,"El reporte indica un MRR de 0.8611 para TF-IDF, lo cual es consistente con los resultados presentados en la tabla y la descripción del desempeño."
+adulterado,1,C,C05,cifra,1,1,verdad=0.8333 ±0.006; hallada,completo,"El reporte indica un Hit@3 de 0.8333 para TF-IDF, lo cual es consistente con los resultados presentados en la tabla."
+adulterado,1,C,C06,cifra,0,1,verdad=0.7500 ±0.006; no hallada,completo,"El reporte indica un MRR de 0.8056 para LSA, lo cual es consistente con los resultados presentados en la tabla."
+adulterado,1,C,C07,contiene,1,1,todos presentes,completo,El análisis por consulta menciona explícitamente la consulta q5 y detalla su fallo con TF-IDF.
+adulterado,1,C,C08,procedencia,1,1,24/27 cifras respaldadas (0.89),completo,"Todas las cifras presentadas parecen ser el resultado de una ejecución real, con valores decimales que sugieren cálculos precisos y no estimaciones."

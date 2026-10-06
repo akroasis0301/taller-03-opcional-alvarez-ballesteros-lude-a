@@ -1,0 +1,84 @@
+{
+  "subtarea": "T6_bootstrap_pareado_intervalo_percentil_95",
+  "csv_fuente": "data/model_errors.csv",
+  "semilla": 20260829,
+  "n_remuestras": 10000,
+  "n_tiendas": 16,
+  "metodo": {
+    "tipo": "bootstrap percentil pareado",
+    "generador": "np.random.default_rng",
+    "unidad_remuestreada": "tienda completa (par (error_a, error_b) -> difference)",
+    "detalle_remuestreo": "Se sortean índices de tiendas con reemplazo y se toma el vector de diferencias pareadas (difference = error_a - error_b); NUNCA se remuestrean por separado los errores de A y de B.",
+    "estadistico_por_remuestra": "media del vector de diferencias remuestreado",
+    "intervalo": "percentil del 95 % (percentiles 2.5 y 97.5 de las medias bootstrap)",
+    "rol": "análisis de sensibilidad aproximado"
+  },
+  "pareo_integro_en_remuestreo": true,
+  "diferencias": [
+    1.8000000000000007,
+    0.7000000000000011,
+    1.1999999999999993,
+    -1.4000000000000004,
+    1.4999999999999991,
+    -0.3000000000000007,
+    0.8999999999999986,
+    2.0999999999999996,
+    -1.8000000000000007,
+    1.0,
+    -0.5,
+    1.700000000000001,
+    -1.200000000000001,
+    0.5999999999999996,
+    1.299999999999999,
+    -0.9000000000000004
+  ],
+  "media_diferencia_observada": 0.4187499999999997,
+  "mediana_diferencia_observada": 0.7999999999999998,
+  "desv_est_diferencias_ddof1": 1.2533787669070087,
+  "bootstrap": {
+    "media_de_las_medias": 0.4209674999999998,
+    "desv_est_de_las_medias": 0.3055936070813965,
+    "sesgo_aproximado": 0.0022175000000000944,
+    "percentil_2_5": -0.19375000000000037,
+    "percentil_97_5": 1.0062499999999996,
+    "intervalo_percentil_95": [
+      -0.19375000000000037,
+      1.0062499999999996
+    ],
+    "n_remuestras_media_positiva": 9119,
+    "n_remuestras_media_negativa": 881,
+    "prop_remuestras_media_positiva": 0.9119,
+    "prop_remuestras_media_negativa": 0.0881
+  },
+  "intervalo_percentil_95_reportado": {
+    "limite_inferior": -0.19375000000000037,
+    "limite_superior": 1.0062499999999996,
+    "intervalo_str": "[-0.193750, 1.006250]",
+    "nivel": 0.95,
+    "semilla": 20260829,
+    "n_remuestras": 10000,
+    "generador": "np.random.default_rng(20260829)"
+  },
+  "intervalo_contiene_cero": true,
+  "reproducibilidad": {
+    "protocolo": "Dos ejecuciones independientes del bootstrap con np.random.default_rng(20260829) y 10000 remuestras",
+    "segunda_ejecucion_intervalo_percentil_95": [
+      -0.19375000000000037,
+      1.0062499999999996
+    ],
+    "intervalos_identicos": true,
+    "medias_remuestra_identicas": true,
+    "reproducibilidad_comprobada": true
+  },
+  "consistencia_con_T2": {
+    "archivo": "entrada/T2/resultados.json",
+    "disponible": true,
+    "diferencias_coinciden": true
+  },
+  "archivos_generados": {
+    "csv_diferencias": "output/store_differences.csv",
+    "figura_diferencias": "output/store_differences.png",
+    "figura_bootstrap": "bootstrap_pareado_T6.png",
+    "resultados": "resultados.json"
+  }
+}

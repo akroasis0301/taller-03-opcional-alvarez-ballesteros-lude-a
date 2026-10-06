@@ -1,0 +1,81 @@
+{
+  "subtarea": "T5_referencia_exacta_cambios_de_signo",
+  "fuente_datos": "data/model_errors.csv",
+  "definicion_diferencia": "difference = error_a - error_b (pareado por store_id)",
+  "metodo": "Enumeracion exhaustiva de las 2^16 configuraciones de signos de las 16 diferencias; para cada configuracion se calcula la media nula y se compara su magnitud con la de la media observada (bilateral).",
+  "n_diferencias": 16,
+  "media_observada": 0.4187499999999997,
+  "suma_observada": 6.699999999999995,
+  "total_configuraciones": 65536,
+  "total_configuraciones_formula": "2^16 = 65536",
+  "conteo_configuraciones_extremas": 13372,
+  "criterio_extremo": "|media_nula| >= |media_observada| (empates incluidos)",
+  "p_value_exacto": 0.20404052734375,
+  "p_value_exacto_formula": "conteo_configuraciones_extremas / total_configuraciones",
+  "p_value_prueba_t_T4": 0.20134214922904944,
+  "cifras_para_preguntas": {
+    "total_configuraciones": 65536,
+    "conteo_extremas": 13372,
+    "p_value_exacto": 0.20404052734375,
+    "p_value_t_T4": 0.20134214922904944
+  },
+  "comparacion_con_prueba_t": {
+    "p_value_exacto": 0.20404052734375,
+    "p_value_t_T4": 0.20134214922904944,
+    "fuente_p_value_t": "entrada/T4/resultados.json",
+    "diferencia_absoluta": 0.002698378114700556,
+    "razon_exacto_sobre_t": 1.0134019534659424,
+    "decision_al_5pct_exacto": "no rechazar H0",
+    "decision_al_5pct_t": "no rechazar H0",
+    "misma_decision_al_5pct": true
+  },
+  "prueba_t_contexto": {
+    "estadistico_t": 1.3363877259014323,
+    "grados_de_libertad": 15,
+    "popmean_nulo": 0.0,
+    "alternativa": "two-sided"
+  },
+  "diagnostico": {
+    "tolerancia_comparacion": 1e-09,
+    "conteo_estrictamente_extremas": 12476,
+    "conteo_empatadas_con_observada": 896,
+    "max_abs_media_nula": 1.18125,
+    "media_de_las_medias_nulas": 0.0,
+    "cuantiles_medias_nulas": {
+      "q025": -0.6187500000000004,
+      "q50": 0.0,
+      "q975": 0.6187500000000004
+    },
+    "indice_configuracion_observada": 38184,
+    "media_nula_en_configuracion_observada": 1.18125,
+    "media_nula_en_configuracion_espejo": -1.18125,
+    "configuracion_observada_presente": false,
+    "fraccion_no_extremas": 0.79595947265625,
+    "diferencias_cero_empates": 0
+  },
+  "verificacion_independiente": {
+    "metodo": "DP de conteo subset-sum sobre |diferencias| x 10 (enteros exactos)",
+    "umbral_S10_le": 61,
+    "umbral_S10_ge": 128,
+    "n_subsets_le": 6686,
+    "n_subsets_ge": 6686,
+    "extremas_dp": 13372,
+    "total_subsets_dp": 65536,
+    "coincide_con_enumeracion": true,
+    "simetria_n_le_igual_n_ge": true
+  },
+  "verificacion_con_T4": {
+    "media_T4": 0.4187499999999997,
+    "coincide_media_con_T4": true,
+    "p_value_t_recalculado_scipy": 0.20134214922904944,
+    "coincide_p_value_t": true
+  },
+  "nota_p_value_condicional": "El p-value es una probabilidad condicional a la hipotesis nula: la probabilidad de que, si los signos de las diferencias fueran puro azar (H0: media de las diferencias = 0, signos intercambiables), se obtuviera una media con magnitud al menos tan extrema como la observada.",
+  "nota_no_intercambiabilidad": "La prueba t compara el estadistico con una referencia continua t de Student que supone diferencias normales (o n grande) y estima la varianza; la prueba exacta por cambios de signo no supone normalidad: su referencia nula es discreta (65536 medias) y se construye re-asignando signos a las propias diferencias observadas (intercambiabilidad/simetria). No son intercambiables porque dependen de supuestos distintos y generan referencias distintas (continua vs discreta); aqui coinciden numericamente (p exacto = 0.204041 vs p t = 0.201342) porque con n=16 y diferencias razonablemente simetricas la aproximacion t es buena, pero podrian divergir con datos asimetricos, atipicos o muestras pequenas.",
+  "archivos_generados": {
+    "csv": "output/store_differences.csv",
+    "figura": "output/store_differences.png",
+    "figura_copia_carpeta_actual": "store_differences.png",
+    "resultados_json": "resultados.json"
+  }
+}

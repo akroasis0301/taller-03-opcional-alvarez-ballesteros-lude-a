@@ -1,0 +1,8 @@
+=== T2: Comparación de clasificadores (conjunto de prueba) ===
+División de T1: 398 entrenamiento / 171 prueba, 30 atributos
+                                        modelo  accuracy_prueba  f1_macro_prueba
+                         Naive Bayes gaussiano         0.947368         0.942867
+Regresión logística (atributos estandarizados)         0.988304         0.987515
+Mejor accuracy : Regresión logística (atributos estandarizados)
+Mejor F1 macro : Regresión logística (atributos estandarizados)
+Archivos: resultados.json, tabla_comparativa.csv, tabla_comparativa.png

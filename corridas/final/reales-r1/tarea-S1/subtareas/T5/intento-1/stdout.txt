@@ -1,0 +1,14 @@
+Round trip verificado: output/server_analysis.parquet
+Filas: True
+Columnas: True
+Esquema: True
+Valores: True
+------------------------------------------------------------
+DataFrame: 300 filas x 9 columnas | origen: reconstruido desde data/server_measurements.csv (parámetros de entrada/T3/resultados.json)
+Parquet: output/server_analysis.parquet (17629 bytes, sin índice: True)
+Filas antes/después: 300/300 | Columnas antes/después: 9/9
+Esquema antes:     ['server: large_string', 'timestamp: timestamp[us]', 'gpu_utilization: double', 'cpu_utilization: double', 'memory_gb: double', 'power_w: double', 'temperature_c: double', 'load_score: double', 'requires_review: bool']
+Esquema después:   ['server: large_string', 'timestamp: timestamp[us]', 'gpu_utilization: double', 'cpu_utilization: double', 'memory_gb: double', 'power_w: double', 'temperature_c: double', 'load_score: double', 'requires_review: bool']
+Filas marcadas requires_review: 49
+Consistencia con T3: True
+resultados.json escrito.

@@ -1,0 +1,20 @@
+T2 — LSA (TruncatedSVD k=4, random_state=0) vs TF-IDF sobre 6 consultas
+
+Tabla comparativa (agregada sobre las 6 consultas):
+                metodo  hit_at_1  hit_at_3      mrr
+       TF-IDF (coseno)  0.833333  0.833333 0.861111
+LSA (TruncatedSVD k=4)  0.666667  0.833333 0.750000
+
+Rank del documento relevante por consulta (TF-IDF vs LSA):
+consulta_id relevante  rank_tfidf  rank_lsa
+         q1       d04           1         1
+         q2       d03           1         1
+         q3       d08           1         1
+         q4       d05           1         3
+         q5       d09           6         6
+         q6       d02           1         1
+
+Varianza explicada por LSA (4 componentes): 0.3953
+Verificación contra entrada/T1/resultados.json: coincide = True
+
+Archivos generados: resultados.json, tabla_comparativa.csv, tabla_comparativa_por_consulta.csv, comparativa_metricas_tfidf_lsa.png, ranks_por_consulta_tfidf_lsa.png

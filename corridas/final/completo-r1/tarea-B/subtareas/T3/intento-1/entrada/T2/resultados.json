@@ -1,0 +1,141 @@
+{
+  "subtarea": "T2_top_p_nucleus",
+  "p": 0.9,
+  "temperatura": 1.0,
+  "fuente_distribucion_T1": "entrada/T1/resultados.json (distribucion de T=1 de la Parte 1)",
+  "tokens": [
+    "t0",
+    "t1",
+    "t2",
+    "t3",
+    "t4",
+    "t5"
+  ],
+  "distribucion_T1_parte1": [
+    0.5516226378718239,
+    0.2029306277578035,
+    0.12308364752983937,
+    0.09118260875807133,
+    0.02746367398498595,
+    0.003716804097476065
+  ],
+  "verificacion_coincidencia_softmax_T1_max_abs_diff": 0.0,
+  "orden_descendente": [
+    "t0",
+    "t1",
+    "t2",
+    "t3",
+    "t4",
+    "t5"
+  ],
+  "probs_ordenadas": [
+    0.5516226378718239,
+    0.2029306277578035,
+    0.12308364752983937,
+    0.09118260875807133,
+    0.02746367398498595,
+    0.003716804097476065
+  ],
+  "acumulada_ordenada": [
+    0.5516226378718239,
+    0.7545532656296273,
+    0.8776369131594667,
+    0.968819521917538,
+    0.9962831959025239,
+    1.0
+  ],
+  "tokens_supervivientes": [
+    "t0",
+    "t1",
+    "t2",
+    "t3"
+  ],
+  "probabilidades_originales_supervivientes": [
+    0.5516226378718239,
+    0.2029306277578035,
+    0.12308364752983937,
+    0.09118260875807133
+  ],
+  "probabilidad_acumulada_por_token_superviviente": {
+    "t0": 0.5516226378718239,
+    "t1": 0.7545532656296273,
+    "t2": 0.8776369131594667,
+    "t3": 0.968819521917538
+  },
+  "probabilidad_acumulada_del_corte": 0.968819521917538,
+  "probabilidad_acumulada_alcanza_p": true,
+  "tokens_eliminados": [
+    "t4",
+    "t5"
+  ],
+  "distribucion_renormalizada": {
+    "t0": 0.5693760554907313,
+    "t1": 0.2094617451103304,
+    "t2": 0.12704497044632815,
+    "t3": 0.09411722895261025
+  },
+  "distribucion_renormalizada_vector_alineado_t0_t5": [
+    0.5693760554907313,
+    0.2094617451103304,
+    0.12704497044632815,
+    0.09411722895261025,
+    0.0,
+    0.0
+  ],
+  "suma_distribucion_renormalizada": 1.0,
+  "error_suma_vs_1": 0.0,
+  "entropia_bits_T1_original": 1.7998355411039506,
+  "entropia_bits_renormalizada": 1.6340748427749392,
+  "tabla_proceso": [
+    {
+      "posicion": 1,
+      "token": "t0",
+      "prob_T1": 0.5516226378718239,
+      "acumulada": 0.5516226378718239,
+      "sobrevive": true,
+      "prob_renormalizada": 0.5693760554907313
+    },
+    {
+      "posicion": 2,
+      "token": "t1",
+      "prob_T1": 0.2029306277578035,
+      "acumulada": 0.7545532656296273,
+      "sobrevive": true,
+      "prob_renormalizada": 0.2094617451103304
+    },
+    {
+      "posicion": 3,
+      "token": "t2",
+      "prob_T1": 0.12308364752983937,
+      "acumulada": 0.8776369131594667,
+      "sobrevive": true,
+      "prob_renormalizada": 0.12704497044632815
+    },
+    {
+      "posicion": 4,
+      "token": "t3",
+      "prob_T1": 0.09118260875807133,
+      "acumulada": 0.968819521917538,
+      "sobrevive": true,
+      "prob_renormalizada": 0.09411722895261025
+    },
+    {
+      "posicion": 5,
+      "token": "t4",
+      "prob_T1": 0.02746367398498595,
+      "acumulada": 0.9962831959025239,
+      "sobrevive": false,
+      "prob_renormalizada": 0.0
+    },
+    {
+      "posicion": 6,
+      "token": "t5",
+      "prob_T1": 0.003716804097476065,
+      "acumulada": 1.0,
+      "sobrevive": false,
+      "prob_renormalizada": 0.0
+    }
+  ],
+  "tabla_markdown_4_decimales": "| Posicion | Token | p (T=1) | Acumulada | Sobrevive? | p renormalizada |\n|---|---|---|---|---|---|\n| 1 | t0 | 0.5516 | 0.5516 | si | 0.5694 |\n| 2 | t1 | 0.2029 | 0.7546 | si | 0.2095 |\n| 3 | t2 | 0.1231 | 0.8776 | si | 0.1270 |\n| 4 | t3 | 0.0912 | 0.9688 | si | 0.0941 |\n| 5 | t4 | 0.0275 | 0.9963 | no | 0.0000 |\n| 6 | t5 | 0.0037 | 1.0000 | no | 0.0000 |",
+  "figura": "T2_top_p_nucleus.png"
+}

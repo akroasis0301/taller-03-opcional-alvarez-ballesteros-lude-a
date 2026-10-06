@@ -1,0 +1,8 @@
+=== T1: Carga y división de datos ===
+Ejemplos totales: 569
+Atributos: 30
+Clases: {'malignant': 212, 'benign': 357}
+División 70/30 estratificada (random_state=42):
+  Entrenamiento: 398 ejemplos -> {'malignant': 148, 'benign': 250}
+  Prueba:        171 ejemplos -> {'malignant': 64, 'benign': 107}
+Archivos escritos: resultados.json, train.parquet, test.parquet, train.csv, test.csv, distribucion_clases.png

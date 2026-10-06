@@ -1,0 +1,35 @@
+{
+  "subtarea": "T3_comprobacion_empirica_top_p",
+  "n_muestras": 10000,
+  "semilla": 0,
+  "rng": "numpy.random.default_rng(0)",
+  "fuente": "distribucion_renormalizada de entrada/T2/resultados.json",
+  "tokens": [
+    "t0",
+    "t1",
+    "t2",
+    "t3"
+  ],
+  "probabilidades_teoricas": {
+    "t0": 0.5693760554907313,
+    "t1": 0.2094617451103304,
+    "t2": 0.12704497044632815,
+    "t3": 0.09411722895261025
+  },
+  "conteos_observados": {
+    "t0": 5682,
+    "t1": 2093,
+    "t2": 1296,
+    "t3": 929
+  },
+  "frecuencias_observadas": {
+    "t0": 0.5682,
+    "t1": 0.2093,
+    "t2": 0.1296,
+    "t3": 0.0929
+  },
+  "suma_frecuencias_observadas": 1.0,
+  "divergencia_KL_bits": 5.006898814879229e-05,
+  "divergencia_KL_bits_4dec": "0.0001",
+  "figura": "barras_frecuencias_vs_teoricas.png"
+}

@@ -1,0 +1,20 @@
+==================================================================
+T2 · Z-score de la matriz de T1 y load_score
+==================================================================
+Fuente de la matriz : data/server_measurements.csv (build_measurements de T1)
+Características     : ('gpu_utilization', 'cpu_utilization', 'memory_gb')
+values.shape        -> (300, 3)
+means               = [57.99313333 50.54163333 29.45533333]
+stds                = [14.43011728 12.69846349  6.53680183]
+zscores.shape       -> (300, 3)
+load_score.shape    -> (300,)
+¿alguna std == 0?   : False
+------------------------------------------------------------------
+media por columna de zscores   = [ 5.68434189e-16  2.36847579e-16 -3.31586610e-16]  (|media| <= 1e-10: True)
+desv. por columna de zscores   = [1. 1. 1.]  (|desv-1| <= 1e-10: True)
+load_score == zscores @ pesos  : True
+means ≈ esperado [57.99313333, 50.54163333, 29.45533333] : True
+primeros 5 load_score          : [ 0.12997047 -0.29784606  0.08669904 -1.15660826 -0.97778418]
+------------------------------------------------------------------
+resultados.json escrito | t2_load_score_histograma.png guardado | output/server_analysis.parquet escrito
+RESUMEN T2: means=[57.99313333 50.54163333 29.45533333] | zscores(300, 3) | load_score(300,) | verificación (media 0, desv 1, producto matricial) = True

@@ -1,0 +1,15 @@
+=== T2: Muestreo de nucleo (top-p) con p=0.9 sobre la distribucion de T=1 ===
+Fuente de la distribucion T=1: entrada/T1/resultados.json (distribucion de T=1 de la Parte 1)
+Verificacion vs softmax estable de la Parte 1 (max |diff|): 0.000e+00
+Orden descendente: ['t0', 't1', 't2', 't3', 't4', 't5']
+Acumulada por token: {'t0': 0.5516226378718239, 't1': 0.7545532656296273, 't2': 0.8776369131594667, 't3': 0.968819521917538}
+Tokens supervivientes: ['t0', 't1', 't2', 't3'] (acumulada del corte = 0.9688195219 >= 0.9)
+Tokens eliminados: ['t4', 't5']
+Distribucion renormalizada:
+  t0: 0.5693760555
+  t1: 0.2094617451
+  t2: 0.1270449704
+  t3: 0.0941172290
+Suma de la distribucion renormalizada: 1.000000000000
+Entropia (bits): T=1 original = 1.799836 | renormalizada = 1.634075
+Figura guardada: T2_top_p_nucleus.png | Resultados en resultados.json

@@ -1,0 +1,10 @@
+T1 — Softmax con temperatura (distribución y entropía en bits)
+| Temperatura | token_1 | token_2 | token_3 | token_4 | token_5 | token_6 | Entropía (bits) |
+|---|---|---|---|---|---|---|---|
+| T=0.5 | 0.8231 | 0.1114 | 0.0410 | 0.0225 | 0.0020 | 0.0000 | 0.9147 |
+| T=1.0 | 0.5516 | 0.2029 | 0.1231 | 0.0912 | 0.0275 | 0.0037 | 1.7998 |
+| T=2.0 | 0.3583 | 0.2173 | 0.1693 | 0.1457 | 0.0800 | 0.0294 | 2.2888 |
+
+Suma de cada fila de probabilidades: {'T=0.5': '1.000000000000', 'T=1.0': '1.000000000000', 'T=2.0': '1.000000000000'}
+Figura guardada: softmax_temperaturas.png
+Resultados escritos en resultados.json

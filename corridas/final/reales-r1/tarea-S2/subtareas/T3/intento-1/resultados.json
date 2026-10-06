@@ -1,0 +1,215 @@
+{
+  "subtarea": "T3_figura_diferencias_por_tienda",
+  "descripcion": "Figura con una observación por tienda (barras horizontales) que muestra el signo y la magnitud de difference = error_a - error_b, con línea de referencia visible en cero.",
+  "fuente_tabla": "entrada/T2/resultados.json",
+  "verificaciones_cruzadas": {
+    "coincide_con_data_model_errors_csv": true,
+    "coincide_con_diferencias_de_T2": true
+  },
+  "n_tiendas": 16,
+  "convencion_favors": "'B' si difference>0; 'A' si difference<0; 'empate' si difference==0",
+  "por_tienda": [
+    {
+      "store_id": "S01",
+      "error_a": 12.4,
+      "error_b": 10.6,
+      "difference": 1.8000000000000007,
+      "favors": "B"
+    },
+    {
+      "store_id": "S02",
+      "error_a": 9.8,
+      "error_b": 9.1,
+      "difference": 0.7000000000000011,
+      "favors": "B"
+    },
+    {
+      "store_id": "S03",
+      "error_a": 15.1,
+      "error_b": 13.9,
+      "difference": 1.1999999999999993,
+      "favors": "B"
+    },
+    {
+      "store_id": "S04",
+      "error_a": 11.0,
+      "error_b": 12.4,
+      "difference": -1.4000000000000004,
+      "favors": "A"
+    },
+    {
+      "store_id": "S05",
+      "error_a": 8.7,
+      "error_b": 7.2,
+      "difference": 1.4999999999999991,
+      "favors": "B"
+    },
+    {
+      "store_id": "S06",
+      "error_a": 13.6,
+      "error_b": 13.9,
+      "difference": -0.3000000000000007,
+      "favors": "A"
+    },
+    {
+      "store_id": "S07",
+      "error_a": 10.2,
+      "error_b": 9.3,
+      "difference": 0.8999999999999986,
+      "favors": "B"
+    },
+    {
+      "store_id": "S08",
+      "error_a": 14.9,
+      "error_b": 12.8,
+      "difference": 2.0999999999999996,
+      "favors": "B"
+    },
+    {
+      "store_id": "S09",
+      "error_a": 7.5,
+      "error_b": 9.3,
+      "difference": -1.8000000000000007,
+      "favors": "A"
+    },
+    {
+      "store_id": "S10",
+      "error_a": 16.0,
+      "error_b": 15.0,
+      "difference": 1.0,
+      "favors": "B"
+    },
+    {
+      "store_id": "S11",
+      "error_a": 9.3,
+      "error_b": 9.8,
+      "difference": -0.5,
+      "favors": "A"
+    },
+    {
+      "store_id": "S12",
+      "error_a": 12.8,
+      "error_b": 11.1,
+      "difference": 1.700000000000001,
+      "favors": "B"
+    },
+    {
+      "store_id": "S13",
+      "error_a": 11.7,
+      "error_b": 12.9,
+      "difference": -1.200000000000001,
+      "favors": "A"
+    },
+    {
+      "store_id": "S14",
+      "error_a": 8.9,
+      "error_b": 8.3,
+      "difference": 0.5999999999999996,
+      "favors": "B"
+    },
+    {
+      "store_id": "S15",
+      "error_a": 13.2,
+      "error_b": 11.9,
+      "difference": 1.299999999999999,
+      "favors": "B"
+    },
+    {
+      "store_id": "S16",
+      "error_a": 10.6,
+      "error_b": 11.5,
+      "difference": -0.9000000000000004,
+      "favors": "A"
+    }
+  ],
+  "tiendas_favors_B": {
+    "conteo": 10,
+    "tiendas": [
+      "S01",
+      "S02",
+      "S03",
+      "S05",
+      "S07",
+      "S08",
+      "S10",
+      "S12",
+      "S14",
+      "S15"
+    ]
+  },
+  "tiendas_favors_A": {
+    "conteo": 6,
+    "tiendas": [
+      "S04",
+      "S06",
+      "S09",
+      "S11",
+      "S13",
+      "S16"
+    ]
+  },
+  "tiendas_empate": {
+    "conteo": 0,
+    "tiendas": []
+  },
+  "extremos": {
+    "mayor_diferencia_favors_B": {
+      "store_id": "S08",
+      "difference": 2.0999999999999996
+    },
+    "mayor_diferencia_favors_A": {
+      "store_id": "S09",
+      "difference": -1.8000000000000007
+    },
+    "mayor_magnitud_absoluta": {
+      "store_id": "S08",
+      "difference": 2.0999999999999996,
+      "valor_absoluto": 2.0999999999999996
+    }
+  },
+  "figura": {
+    "ruta": "output/store_differences.png",
+    "existe": true,
+    "es_png_valido": true,
+    "bytes": 91077,
+    "dimensiones_px": {
+      "alto_px": 936,
+      "ancho_px": 1140
+    },
+    "dpi": 120,
+    "tipo": "barras horizontales, una por tienda, coloreadas según el signo",
+    "n_barras": 16,
+    "tiendas_en_eje_y": [
+      "S01",
+      "S02",
+      "S03",
+      "S04",
+      "S05",
+      "S06",
+      "S07",
+      "S08",
+      "S09",
+      "S10",
+      "S11",
+      "S12",
+      "S13",
+      "S14",
+      "S15",
+      "S16"
+    ],
+    "referencia_cero": "línea vertical negra en x=0 (axvline), también en la leyenda",
+    "etiquetas_signo_magnitud": "valor con signo a 2 decimales en el extremo de cada barra"
+  },
+  "csv": {
+    "ruta": "output/store_differences.csv",
+    "existe": true,
+    "filas": 16,
+    "columnas": [
+      "store_id",
+      "error_a",
+      "error_b",
+      "difference",
+      "favors"
+    ]
+  }
+}

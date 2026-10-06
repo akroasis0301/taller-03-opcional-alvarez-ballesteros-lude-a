@@ -1,0 +1,22 @@
+==============================================================================
+T3 — Análisis por consulta: fallos y evidencia léxica
+==============================================================================
+Vocabulario TF-IDF: 105 términos | varianza LSA (4 comp.): 39.5%
+Verificación T1 (rankings TF-IDF): {'fuente': 'entrada/<subtarea>/resultados.json (rankings de la subtarea previa)', 'ranking_identico_al_previo': True, 'posicion_del_relevante_identica_al_previo': True}
+Verificación T2 (rankings LSA):    {'fuente': 'entrada/<subtarea>/resultados.json (rankings de la subtarea previa)', 'ranking_identico_al_previo': True, 'posicion_del_relevante_identica_al_previo': True}
+Consultas fallidas TF-IDF (relevante fuera del top 3): ['q5']
+Consultas fallidas LSA     (relevante fuera del top 3): ['q5']
+------------------------------------------------------------------------------
+consulta  rel.   compartidos   contenido   pos TF-IDF   pos LSA 
+q1        d04    8             6           1            1       
+q2        d03    3             2           1            1       
+q3        d08    5             4           1            1       
+q4        d05    4             3           1            3       
+q5        d09    1             0           6            6       
+q6        d02    5             4           1            1       
+------------------------------------------------------------------------------
+Evidencia q5 (relevante d09) — intersección: ['la']
+  [tfidf] Fallo de TF-IDF en q5: el documento relevante d09 queda en la posición 6 de 10, fuera del top 3. Evidencia léxica: la consulta y d09 comparten 1 término(s) del vocabulario TF-IDF (la), de los cuales 0 son de contenido (ninguno). Los términos de contenido de la consulta (hace, sea, determinista, elegir, siguiente, palabra) no aparecen en ningún documento (están fuera del vocabulario TF-IDF): la consulta parafrasea el concepto sin usar el léxico del relevante. Los términos de contenido del relevante (temperatura, reescala, logits, softmax, valores, bajos, concentran, probabilidad) no aparecen en la consulta. Documentos que desplazan al relevante dentro del top 3 → d03 (comparte: modelo, al, la); d06 (comparte: qué, el); d04 (comparte: que, la).
+  [lsa] Fallo de LSA en q5: el documento relevante d09 queda en la posición 6 de 10, fuera del top 3. Evidencia léxica: la consulta y d09 comparten 1 término(s) del vocabulario TF-IDF (la), de los cuales 0 son de contenido (ninguno). Los términos de contenido de la consulta (hace, sea, determinista, elegir, siguiente, palabra) no aparecen en ningún documento (están fuera del vocabulario TF-IDF): la consulta parafrasea el concepto sin usar el léxico del relevante. Los términos de contenido del relevante (temperatura, reescala, logits, softmax, valores, bajos, concentran, probabilidad) no aparecen en la consulta. Documentos que desplazan al relevante dentro del top 3 → d04 (comparte: que, la); d01 (comparte: el, la); d03 (comparte: modelo, al, la).
+------------------------------------------------------------------------------
+Archivos escritos: resultados.json, T3_fallos_y_evidencia.png, T3_mapa_interseccion.png

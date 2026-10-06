@@ -1,0 +1,13 @@
+================================================================
+T2 - Parte 2: dos clasificadores (generativo vs. discriminativo)
+================================================================
+Division usada : archivos de la Parte 1: entrada/T1/t1_train.csv y entrada/T1/t1_test.csv
+n_train = 398 | n_test = 171
+----------------------------------------------------------------
+               Modelo  Accuracy (prueba)  F1 macro (prueba)
+Naive Bayes gaussiano           0.947368           0.942867
+  Regresión logística           0.988304           0.987515
+----------------------------------------------------------------
+NB gaussiano   -> accuracy = 0.9474 | F1 macro = 0.9429
+Reg. logistica -> accuracy = 0.9883 | F1 macro = 0.9875
+Salidas: resultados.json, t2_tabla_metricas.png

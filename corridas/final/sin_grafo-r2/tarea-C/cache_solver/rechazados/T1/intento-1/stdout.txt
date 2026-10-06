@@ -1,0 +1,14 @@
+======================================================================
+T1 — Línea base TF-IDF (parámetros por defecto) + similitud coseno
+======================================================================
+q1 | relevante=d04 | top-1=d04 (score=0.4936) | rank del relevante=1 | RR=1.0000
+q2 | relevante=d03 | top-1=d03 (score=0.3999) | rank del relevante=1 | RR=1.0000
+q3 | relevante=d08 | top-1=d08 (score=0.4352) | rank del relevante=1 | RR=1.0000
+q4 | relevante=d05 | top-1=d05 (score=0.4705) | rank del relevante=1 | RR=1.0000
+q5 | relevante=d09 | top-1=d09 (score=0.6288) | rank del relevante=1 | RR=1.0000
+q6 | relevante=d02 | top-1=d02 (score=0.4565) | rank del relevante=1 | RR=1.0000
+----------------------------------------------------------------------
+Hit@1 = 1.0000 (6/6)
+Hit@3 = 1.0000 (6/6)
+MRR   = 1.0000
+Archivos escritos: resultados.json, t1_similitud_tfidf.png

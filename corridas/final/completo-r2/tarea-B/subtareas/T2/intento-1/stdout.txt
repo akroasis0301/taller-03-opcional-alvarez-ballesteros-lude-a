@@ -1,0 +1,13 @@
+T2 — Top-p (nucleus sampling) con p=0.9 sobre la distribución T=1 de la Parte 1
+Fuente de la distribución: entrada/T1/resultados.json (distribución de T=1 de la Parte 1)
+Orden descendente: ['t0', 't1', 't2', 't3', 't4', 't5']
+Prob. acumulada (orden desc.): [0.5516, 0.7546, 0.8776, 0.9688, 0.9963, 1.0]
+Tokens supervivientes (4): ['t0', 't1', 't2', 't3'] | prob. acumulada del núcleo = 0.968820
+Tokens filtrados: ['t4', 't5']
+Distribución renormalizada:
+  t0: 0.569376
+  t1: 0.209462
+  t2: 0.127045
+  t3: 0.094117
+Suma de la distribución renormalizada: 1.000000000000
+Figura: T2_top_p_nucleus.png | Resultados: resultados.json

@@ -1,0 +1,9 @@
+=== T1: Carga y división de Breast Cancer Wisconsin (Diagnostic) ===
+Ejemplos totales : 569
+Atributos        : 30
+Clases           : [np.str_('malignant'), np.str_('benign')] (codificación {np.str_('malignant'): 0, np.str_('benign'): 1})
+Conteo total     : {np.str_('malignant'): 212, np.str_('benign'): 357}
+División         : 70/30 estratificada, random_state=42
+Entrenamiento    : 398 ejemplos -> {np.str_('malignant'): 148, np.str_('benign'): 250}
+Prueba           : 171 ejemplos -> {np.str_('malignant'): 64, np.str_('benign'): 107}
+Archivos escritos: t1_train.csv, t1_test.csv, t1_distribucion_clases.png, resultados.json

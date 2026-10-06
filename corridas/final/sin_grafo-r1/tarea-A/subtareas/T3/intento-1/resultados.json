@@ -1,0 +1,150 @@
+{
+  "subtarea": "T3",
+  "descripcion": "Curva de aprendizaje: GNB y regresión logística (modelos de T2) entrenados con submuestras estratificadas del 5/10/25/50/100 % del entrenamiento de T1 (random_state=42) y evaluados siempre sobre el mismo conjunto de prueba de T1.",
+  "division": {
+    "origen": "entrada/T1 (única división 70/30 estratificada, random_state=42)",
+    "n_train_total": 398,
+    "n_test": 171,
+    "n_atributos": 30
+  },
+  "protocolo": {
+    "fracciones_entrenamiento": [
+      0.05,
+      0.1,
+      0.25,
+      0.5,
+      1.0
+    ],
+    "submuestreo": "train_test_split estratificado con random_state=42; para 100 % se usa el entrenamiento completo",
+    "conjunto_de_evaluacion": "mismo conjunto de prueba de T1 en todos los tamaños (171 ejemplos); nunca se usa para ajustar nada",
+    "escalado_regresion_logistica": "StandardScaler ajustado solo con la submuestra de entrenamiento de cada tamaño (nunca con el conjunto de prueba)",
+    "modelos": {
+      "naive_bayes_gaussiano": "GaussianNB sobre atributos originales (como en T2)",
+      "regresion_logistica": "LogisticRegression(max_iter=1000, random_state=42) sobre atributos estandarizados (como en T2)"
+    }
+  },
+  "tamanos_entrenamiento": [
+    19,
+    39,
+    99,
+    199,
+    398
+  ],
+  "composicion_submuestras": [
+    {
+      "fraccion": 0.05,
+      "etiqueta": "5 %",
+      "n_train": 19,
+      "n_clase_0_malignant": 7,
+      "n_clase_1_benign": 12
+    },
+    {
+      "fraccion": 0.1,
+      "etiqueta": "10 %",
+      "n_train": 39,
+      "n_clase_0_malignant": 15,
+      "n_clase_1_benign": 24
+    },
+    {
+      "fraccion": 0.25,
+      "etiqueta": "25 %",
+      "n_train": 99,
+      "n_clase_0_malignant": 37,
+      "n_clase_1_benign": 62
+    },
+    {
+      "fraccion": 0.5,
+      "etiqueta": "50 %",
+      "n_train": 199,
+      "n_clase_0_malignant": 74,
+      "n_clase_1_benign": 125
+    },
+    {
+      "fraccion": 1.0,
+      "etiqueta": "100 %",
+      "n_train": 398,
+      "n_clase_0_malignant": 148,
+      "n_clase_1_benign": 250
+    }
+  ],
+  "exactitud_prueba_por_tamano": {
+    "naive_bayes_gaussiano": [
+      0.9415204678362573,
+      0.9473684210526315,
+      0.9473684210526315,
+      0.935672514619883,
+      0.9473684210526315
+    ],
+    "regresion_logistica": [
+      0.9298245614035088,
+      0.935672514619883,
+      0.9415204678362573,
+      0.9766081871345029,
+      0.9883040935672515
+    ]
+  },
+  "f1_macro_prueba_por_tamano": {
+    "naive_bayes_gaussiano": [
+      0.9353056900726393,
+      0.9420055017522704,
+      0.9424479264051457,
+      0.9301703975943869,
+      0.942866688940862
+    ],
+    "regresion_logistica": [
+      0.9217271895025938,
+      0.9285470085470086,
+      0.9362891207153503,
+      0.97469665581533,
+      0.9875146028037383
+    ]
+  },
+  "tabla_por_tamano": [
+    {
+      "fraccion": "5 %",
+      "n_train": 19,
+      "accuracy_naive_bayes_gaussiano": 0.9415204678362573,
+      "accuracy_regresion_logistica": 0.9298245614035088,
+      "f1_macro_naive_bayes_gaussiano": 0.9353056900726393,
+      "f1_macro_regresion_logistica": 0.9217271895025938
+    },
+    {
+      "fraccion": "10 %",
+      "n_train": 39,
+      "accuracy_naive_bayes_gaussiano": 0.9473684210526315,
+      "accuracy_regresion_logistica": 0.935672514619883,
+      "f1_macro_naive_bayes_gaussiano": 0.9420055017522704,
+      "f1_macro_regresion_logistica": 0.9285470085470086
+    },
+    {
+      "fraccion": "25 %",
+      "n_train": 99,
+      "accuracy_naive_bayes_gaussiano": 0.9473684210526315,
+      "accuracy_regresion_logistica": 0.9415204678362573,
+      "f1_macro_naive_bayes_gaussiano": 0.9424479264051457,
+      "f1_macro_regresion_logistica": 0.9362891207153503
+    },
+    {
+      "fraccion": "50 %",
+      "n_train": 199,
+      "accuracy_naive_bayes_gaussiano": 0.935672514619883,
+      "accuracy_regresion_logistica": 0.9766081871345029,
+      "f1_macro_naive_bayes_gaussiano": 0.9301703975943869,
+      "f1_macro_regresion_logistica": 0.97469665581533
+    },
+    {
+      "fraccion": "100 %",
+      "n_train": 398,
+      "accuracy_naive_bayes_gaussiano": 0.9473684210526315,
+      "accuracy_regresion_logistica": 0.9883040935672515,
+      "f1_macro_naive_bayes_gaussiano": 0.942866688940862,
+      "f1_macro_regresion_logistica": 0.9875146028037383
+    }
+  ],
+  "figura": "curva_aprendizaje.png",
+  "archivos_generados": [
+    "resultados.json",
+    "curva_aprendizaje.png",
+    "tabla_exactitudes_por_tamano.csv"
+  ]
+}

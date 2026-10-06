@@ -1,0 +1,21 @@
+Tabla única — TF-IDF vs LSA (TruncatedSVD, 4 componentes):
+         TF-IDF  LSA (k=4)
+métrica                   
+Hit@1    0.8333     0.6667
+Hit@3    0.8333     0.8333
+MRR      0.8611     0.7500
+[check] Rankings TF-IDF idénticos a los de T1: True
+
+Resumen T2
+  Varianza explicada por las 4 componentes LSA: 0.3953
+  Posición del documento relevante (TF-IDF -> LSA):
+    q1: 1 -> 1  (relevante: d04)
+    q2: 1 -> 1  (relevante: d03)
+    q3: 1 -> 1  (relevante: d08)
+    q4: 1 -> 3  (relevante: d05)
+    q5: 6 -> 6  (relevante: d09)
+    q6: 1 -> 1  (relevante: d02)
+  Hit@1: TF-IDF=0.8333 | LSA=0.6667
+  Hit@3: TF-IDF=0.8333 | LSA=0.8333
+  MRR  : TF-IDF=0.8611 | LSA=0.7500
+  Archivos: resultados.json, t2_tabla_metricas.csv, t2_metricas_tfidf_vs_lsa.png, t2_mapa_calor_lsa.png

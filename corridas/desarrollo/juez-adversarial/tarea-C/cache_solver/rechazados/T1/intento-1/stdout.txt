@@ -1,0 +1,26 @@
+========================================================================
+T1 — Línea base léxica TF-IDF + similitud coseno
+========================================================================
+q1: ¿Cómo funciona BM25 como función de ranking?
+   ranking: d04 > d05 > d06 > d01 > d10 > d02 > d08 > d03 > d07 > d09
+   relevante d04 en posición 1 (sim=0.4493)  RR=1.0000
+q2: ¿Qué es la generación aumentada con recuperación?
+   ranking: d03 > d04 > d06 > d01 > d10 > d09 > d02 > d08 > d05 > d07
+   relevante d03 en posición 1 (sim=0.4580)  RR=1.0000
+q3: ¿Qué es el ajuste fino con LoRA?
+   ranking: d08 > d06 > d04 > d01 > d02 > d03 > d05 > d07 > d09 > d10
+   relevante d08 en posición 1 (sim=0.4788)  RR=1.0000
+q4: ¿Qué son los embeddings densos y cómo se comparan con la similitud coseno?
+   ranking: d05 > d01 > d06 > d10 > d03 > d09 > d02 > d08 > d04 > d07
+   relevante d05 en posición 1 (sim=0.5447)  RR=1.0000
+q5: ¿Qué hace la temperatura antes del softmax?
+   ranking: d09 > d04 > d06 > d03 > d01 > d10 > d05 > d02 > d07 > d08
+   relevante d09 en posición 1 (sim=0.5660)  RR=1.0000
+q6: ¿Cómo es la arquitectura de los transformadores?
+   ranking: d04 > d02 > d10 > d01 > d09 > d08 > d05 > d03 > d06 > d07
+   relevante d02 en posición 2 (sim=0.2892)  RR=0.5000
+------------------------------------------------------------------------
+Hit@1 = 0.8333
+Hit@3 = 1.0000
+MRR   = 0.9167
+Archivos generados: resultados.json, t1_mapa_calor_similitud.png, t1_rr_por_consulta.png

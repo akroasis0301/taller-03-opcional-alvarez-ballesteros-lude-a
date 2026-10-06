@@ -1,0 +1,13 @@
+metodo,consulta_id,relevante,rank_relevante,hit_at_1,hit_at_3,reciprocal_rank,fallo_top3,top3,n_terminos_compartidos_con_relevante,terminos_compartidos_con_relevante
+TF-IDF,q1,d04,1,1,1,1.0,False,d04; d01; d06,8,frecuencia; léxica; ranking; términos; función; pondera; de; la
+LSA,q1,d04,1,1,1,1.0,False,d04; d01; d06,8,frecuencia; léxica; ranking; términos; función; pondera; de; la
+TF-IDF,q2,d03,1,1,1,1.0,False,d03; d01; d02,3,al; fragmentos; prompt
+LSA,q2,d03,1,1,1,1.0,False,d03; d07; d09,3,al; fragmentos; prompt
+TF-IDF,q3,d08,1,1,1,1.0,False,d08; d06; d04,5,bajo; entrena; matrices; rango; de
+LSA,q3,d08,1,1,1,1.0,False,d08; d02; d06,5,bajo; entrena; matrices; rango; de
+TF-IDF,q4,d05,1,1,1,1.0,False,d05; d01; d04,4,compara; orientación; vectores; la
+LSA,q4,d05,3,0,1,0.3333333333333333,False,d01; d10; d05,4,compara; orientación; vectores; la
+TF-IDF,q5,d09,6,0,0,0.16666666666666666,True,d03; d06; d04,1,la
+LSA,q5,d09,6,0,0,0.16666666666666666,True,d04; d01; d03,1,la
+TF-IDF,q6,d02,1,1,1,1.0,False,d02; d06; d03,5,autoatención; capas; feed; forward; con
+LSA,q6,d02,1,1,1,1.0,False,d02; d08; d10,5,autoatención; capas; feed; forward; con

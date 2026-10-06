@@ -1,0 +1,27 @@
+Consider using the pymupdf_layout package for a greatly improved page layout analysis.
+  S1 S101 archivo         ✓  1 archivo(s) con reporte.md
+  S1 S102 archivo         ✓  1 archivo(s) con output/server_analysis.parquet
+  S1 S103 secciones       ✗  faltan: ['Tarea 2']
+  S1 S104 palabras_max    ✓  558 palabras
+  S1 S105 cifra_presente  ✓  verdad=57.9931 ±0.0005; hallada
+  S1 S106 cifra_presente  ✓  verdad=3.1362 ±0.002; hallada
+  S1 S107 cifra           ✓  verdad=363.4598 ±0.0005; hallada
+  S1 S108 cifra           ✓  verdad=0.6676 ±0.0005; hallada
+  S1 S109 procedencia     ✓  31/31 cifras respaldadas (1.00)
+Tarea S1: 8/9 · status=completado · 984.2 s
+
+  S2 S201 archivo         ✓  1 archivo(s) con informe.md
+  S2 S202 archivo         ✓  1 archivo(s) con output/store_differences.csv
+  S2 S203 archivo         ✓  1 archivo(s) con output/store_differences.png
+  S2 S204 secciones       ✓  todas, en orden
+  S2 S205 cifra_presente  ✓  verdad=1.2534 ±0.0005; hallada
+  S2 S206 cifra_presente  ✓  verdad=0.3133 ±0.0005; hallada
+  S2 S207 cifra_presente  ✓  verdad=0.2013 ±0.0005; hallada
+  S2 S208 cifra_presente  ✓  verdad=0.2040 ±0.0005; hallada
+  S2 S209 contiene        ✓  todos presentes
+  S2 S210 cifra_presente  ✓  verdad=0.1938 ±0.005; hallada
+  S2 S211 cifra_presente  ✓  verdad=1.0062 ±0.005; hallada
+  S2 S212 procedencia     ✓  51/51 cifras respaldadas (1.00)
+Tarea S2: 12/12 · status=parcial · 3002.1 s
+
+Comprobaciones aprobadas: 20/21 → resultados/final/resultados_reales_r1.csv

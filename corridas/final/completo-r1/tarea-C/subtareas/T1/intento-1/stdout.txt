@@ -1,0 +1,14 @@
+==============================================================================
+T1 · Línea base TF-IDF (parámetros por defecto) + similitud coseno
+Vocabulario aprendido del corpus: 105 términos
+------------------------------------------------------------------------------
+q1 [rel=d04] rank_relevante=1 RR=1.000  top-3: d04 (0.689) | d01 (0.241) | d06 (0.172)
+q2 [rel=d03] rank_relevante=1 RR=1.000  top-3: d03 (0.517) | d01 (0.000) | d02 (0.000)
+q3 [rel=d08] rank_relevante=1 RR=1.000  top-3: d08 (0.560) | d06 (0.123) | d04 (0.081)
+q4 [rel=d05] rank_relevante=1 RR=1.000  top-3: d05 (0.457) | d01 (0.248) | d04 (0.243)
+q5 [rel=d09] rank_relevante=6 RR=0.167  top-3: d03 (0.311) | d06 (0.201) | d04 (0.190)
+q6 [rel=d02] rank_relevante=1 RR=1.000  top-3: d02 (0.567) | d06 (0.166) | d03 (0.046)
+------------------------------------------------------------------------------
+Hit@1 = 0.8333   Hit@3 = 0.8333   MRR  = 0.8611
+Archivos generados: resultados.json, t1_rankings.csv, t1_mapa_calor_similitud.png, t1_mrr_por_consulta.png
+==============================================================================

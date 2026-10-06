@@ -1,0 +1,28 @@
+{
+  "repr": "ServerMeasurements(shape=(300, 3), features=('gpu_utilization', 'cpu_utilization', 'memory_gb'))",
+  "expected_repr": "ServerMeasurements(shape=(300, 3), features=('gpu_utilization', 'cpu_utilization', 'memory_gb'))",
+  "repr_matches_expected": true,
+  "shape": [
+    300,
+    3
+  ],
+  "feature_names": [
+    "gpu_utilization",
+    "cpu_utilization",
+    "memory_gb"
+  ],
+  "values_dtype": "float64",
+  "n_rows": 300,
+  "n_columns": 3,
+  "timestamp_dtype": "datetime64[us]",
+  "first_row_values": [
+    59.61,
+    59.61,
+    24.87
+  ],
+  "validation_tests": {
+    "not_2d_raises_valueerror": true,
+    "column_mismatch_raises_valueerror": true,
+    "non_numeric_raises_valueerror": true
+  }
+}

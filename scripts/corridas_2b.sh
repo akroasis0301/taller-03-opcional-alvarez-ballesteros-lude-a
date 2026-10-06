@@ -44,5 +44,5 @@ case "${1:-}" in
   tablas)    uv run python scripts/tablas_2b.py $(variantes --variante) --salida resultados/final/tablas_2b ;;
   frenos)    uv run python scripts/forzar_frenos.py ;;
   juez)      uv run python scripts/juez.py $(variantes --corrida) --salida resultados/final/juez ;;
-  *) sed -n '2,15p' "$0"; exit 1 ;;
+  *) sed -n '2,13p' "$0"; echo "argumento no reconocido: '$*' (¿en zsh pasaste \$c sin separar?)"; exit 1 ;;
 esac

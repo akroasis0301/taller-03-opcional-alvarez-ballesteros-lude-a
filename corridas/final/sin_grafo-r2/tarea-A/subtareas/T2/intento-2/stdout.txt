@@ -1,0 +1,6 @@
+T2 — Resultados en el conjunto de prueba (división 70/30 estratificada, random_state=42):
+                                        modelo  accuracy_test  f1_macro_test
+                         Naive Bayes gaussiano       0.947368       0.942867
+Regresión logística (atributos estandarizados)       0.988304       0.987515
+Verificación de la división contra T1: OK
+Archivos escritos: resultados.json, T2_tabla_prueba.png

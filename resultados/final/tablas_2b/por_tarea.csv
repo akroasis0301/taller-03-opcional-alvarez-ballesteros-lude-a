@@ -1,0 +1,13 @@
+variante,repeticion,corrida,tarea,aprobadas,total,procedencia,status,motivo,subtareas,no_logradas,detalle_subtareas,intentos_codigo,rechazos_codigo,rechazos_llm,tokens_entrada,tokens_salida,duracion_s,presupuesto_agotado,modelo
+completo,1,corridas/final/completo-r1,A,9,9,1.00,completado,cola vacía,4,0,T1:aprobada T2:aprobada T3:aprobada T4:aprobada,3,0,0,28561,56916,306.4,False,zai-org/GLM-5.3-Flash
+completo,1,corridas/final/completo-r1,B,9,9,1.00,completado,cola vacía,4,0,T1:aprobada T2:aprobada T3:aprobada T4:aprobada,3,0,0,31300,48498,254.4,False,zai-org/GLM-5.3-Flash
+completo,1,corridas/final/completo-r1,C,8,8,1.00,completado,cola vacía,5,0,T1:aprobada T2:aprobada T3:aprobada T4:aprobada T5:aprobada,5,2,0,66251,207618,1137.0,False,zai-org/GLM-5.3-Flash
+completo,2,corridas/final/completo-r2,A,9,9,0.96,completado,cola vacía,4,0,T1:aprobada T2:aprobada T3:aprobada T4:aprobada,3,0,0,28430,50756,265.1,False,zai-org/GLM-5.3-Flash
+completo,2,corridas/final/completo-r2,B,9,9,1.00,completado,cola vacía,4,0,T1:aprobada T2:aprobada T3:aprobada T4:aprobada,3,0,0,26680,44698,222.7,False,zai-org/GLM-5.3-Flash
+completo,2,corridas/final/completo-r2,C,8,8,1.00,completado,cola vacía,4,0,T1:aprobada T2:aprobada T3:aprobada T4:aprobada,3,0,0,69462,130299,873.2,False,zai-org/GLM-5.3-Flash
+sin_grafo,1,corridas/final/sin_grafo-r1,A,9,9,1.00,completado,cola vacía,4,0,T1:aprobada T2:aprobada T3:aprobada T4:aprobada,3,0,0,20059,30143,196.9,False,zai-org/GLM-5.3-Flash
+sin_grafo,1,corridas/final/sin_grafo-r1,B,9,9,1.00,completado,cola vacía,4,0,T1:aprobada T2:aprobada T3:aprobada T4:aprobada,3,0,0,19630,36692,244.9,False,zai-org/GLM-5.3-Flash
+sin_grafo,1,corridas/final/sin_grafo-r1,C,7,8,1.00,parcial,cola vacía,4,2,T1:aprobada T2:fallida T3:omitida T4:aprobada,5,3,1,41345,324259,2153.9,False,zai-org/GLM-5.3-Flash
+sin_grafo,2,corridas/final/sin_grafo-r2,A,9,9,1.00,completado,cola vacía,4,0,T1:aprobada T2:aprobada T3:aprobada T4:aprobada,4,1,0,28132,42193,317.6,False,zai-org/GLM-5.3-Flash
+sin_grafo,2,corridas/final/sin_grafo-r2,B,9,9,1.00,completado,cola vacía,4,0,T1:aprobada T2:aprobada T3:aprobada T4:aprobada,3,0,0,26071,56214,399.5,False,zai-org/GLM-5.3-Flash
+sin_grafo,2,corridas/final/sin_grafo-r2,C,5,8,1.00,parcial,cola vacía,5,3,T1:fallida T2:omitida T3:omitida T4:aprobada T5:aprobada,3,0,3,26501,61596,462.5,False,zai-org/GLM-5.3-Flash

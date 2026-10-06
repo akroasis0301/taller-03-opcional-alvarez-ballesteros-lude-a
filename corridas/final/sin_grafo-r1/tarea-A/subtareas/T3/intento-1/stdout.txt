@@ -1,0 +1,9 @@
+T3 — Curva de aprendizaje (evaluación fija en el conjunto de prueba de 171 ejemplos)
+fracción  n_train    acc GNB     acc RL
+     5 %       19     0.9415     0.9298
+    10 %       39     0.9474     0.9357
+    25 %       99     0.9474     0.9415
+    50 %      199     0.9357     0.9766
+   100 %      398     0.9474     0.9883
+Figura guardada: curva_aprendizaje.png
+Tablas guardadas: resultados.json, tabla_exactitudes_por_tamano.csv

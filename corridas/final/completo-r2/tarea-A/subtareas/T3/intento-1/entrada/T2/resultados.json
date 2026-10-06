@@ -1,0 +1,45 @@
+{
+  "subtarea": "T2",
+  "descripcion": "Naive Bayes gaussiano y regresión logística (atributos estandarizados, escalador ajustado solo con el entrenamiento) evaluados con accuracy y F1 macro sobre el conjunto de prueba de la división 70/30 de la Parte 1.",
+  "dataset": "Breast Cancer Wisconsin (Diagnostic)",
+  "division_usada": {
+    "fuente": "entrada/T1 (división única de la Parte 1)",
+    "test_size": 0.3,
+    "estratificada": true,
+    "random_state": 42,
+    "n_train": 398,
+    "n_test": 171,
+    "n_atributos": 30
+  },
+  "modelos": {
+    "naive_bayes_gaussiano": {
+      "tipo": "generativo",
+      "estandarizacion": "no requerida (invariante a transformaciones afines por atributo)",
+      "accuracy_prueba": 0.9473684210526315,
+      "f1_macro_prueba": 0.942866688940862
+    },
+    "regresion_logistica": {
+      "tipo": "discriminativo",
+      "estandarizacion": "StandardScaler ajustado solo con el conjunto de entrenamiento",
+      "accuracy_prueba": 0.9883040935672515,
+      "f1_macro_prueba": 0.9875146028037383
+    }
+  },
+  "tabla": [
+    {
+      "modelo": "Naive Bayes gaussiano",
+      "accuracy_prueba": 0.9473684210526315,
+      "f1_macro_prueba": 0.942866688940862
+    },
+    {
+      "modelo": "Regresión logística (atributos estandarizados)",
+      "accuracy_prueba": 0.9883040935672515,
+      "f1_macro_prueba": 0.9875146028037383
+    }
+  ],
+  "tabla_markdown": "| Modelo | Accuracy (prueba) | F1 macro (prueba) |\n|---|---|---|\n| Naive Bayes gaussiano | 0.9474 | 0.9429 |\n| Regresión logística (atributos estandarizados) | 0.9883 | 0.9875 |",
+  "archivos_generados": [
+    "tabla_parte2_metricas.png",
+    "comparativa_parte2_barras.png"
+  ]
+}

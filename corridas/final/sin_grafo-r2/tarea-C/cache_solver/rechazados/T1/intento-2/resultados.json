@@ -1,0 +1,454 @@
+{
+  "subtarea": "T1_linea_base_tfidf",
+  "n_documentos": 10,
+  "n_consultas": 6,
+  "orden_documentos": [
+    "d01",
+    "d02",
+    "d03",
+    "d04",
+    "d05",
+    "d06",
+    "d07",
+    "d08",
+    "d09",
+    "d10"
+  ],
+  "corpus_textos_enunciado": {
+    "d01": "El mecanismo de atención pondera cada token según su similitud con la consulta; la atención escalada divide por la raíz de la dimensión.",
+    "d02": "La arquitectura Transformer apila bloques que combinan autoatención multicabeza con redes feed-forward y conexiones residuales.",
+    "d03": "En la generación aumentada por recuperación, los fragmentos recuperados de una base de conocimiento externa se añaden al prompt como contexto.",
+    "d04": "BM25 es una función de ranking léxica que pondera la frecuencia de términos con saturación y la rareza del término en la colección.",
+    "d05": "La similitud coseno compara la orientación de dos vectores mediante el coseno del ángulo entre ellos, sin depender de sus magnitudes.",
+    "d06": "Los embeddings representan palabras o documentos como vectores densos donde la cercanía refleja parecido semántico.",
+    "d07": "La tokenización divide el texto en subpalabras mediante algoritmos como BPE, equilibrando el tamaño del vocabulario y la longitud de la secuencia.",
+    "d08": "LoRA entrena matrices de bajo rango que se suman a los pesos congelados del modelo, reduciendo los parámetros a actualizar.",
+    "d09": "La temperatura escala los logits antes del muestreo: con valores bajos la distribución se concentra en los tokens probables y la generación resulta predecible.",
+    "d10": "La cuantización reduce la precisión de los pesos a 8 o 4 bits para ahorrar memoria."
+  },
+  "juicios_relevancia": {
+    "q1": "d04",
+    "q2": "d03",
+    "q3": "d08",
+    "q4": "d05",
+    "q5": "d09",
+    "q6": "d02"
+  },
+  "consultas": {
+    "q1": "¿Qué función de ranking léxica pondera la frecuencia de términos?",
+    "q2": "¿Cómo se añaden fragmentos recuperados al prompt?",
+    "q3": "¿Qué técnica entrena matrices de bajo rango?",
+    "q4": "¿Cómo se compara la orientación de dos vectores de texto?",
+    "q5": "¿Qué hace que el modelo sea más determinista al elegir la siguiente palabra?",
+    "q6": "¿Qué arquitectura combina autoatención con capas feed-forward?"
+  },
+  "vectorizador": "TfidfVectorizer con parámetros por defecto, ajustado únicamente con los 10 documentos; similitud coseno para rankear.",
+  "tam_vocabulario": 125,
+  "ranking_por_consulta": {
+    "q1": [
+      {
+        "pos": 1,
+        "doc": "d04",
+        "score": 0.6715118113083243
+      },
+      {
+        "pos": 2,
+        "doc": "d01",
+        "score": 0.19694551173376226
+      },
+      {
+        "pos": 3,
+        "doc": "d05",
+        "score": 0.11312441303639917
+      },
+      {
+        "pos": 4,
+        "doc": "d03",
+        "score": 0.10596368987742368
+      },
+      {
+        "pos": 5,
+        "doc": "d10",
+        "score": 0.10257153026578296
+      },
+      {
+        "pos": 6,
+        "doc": "d07",
+        "score": 0.09047692214556158
+      },
+      {
+        "pos": 7,
+        "doc": "d08",
+        "score": 0.04719590136519738
+      },
+      {
+        "pos": 8,
+        "doc": "d09",
+        "score": 0.04387561776276099
+      },
+      {
+        "pos": 9,
+        "doc": "d06",
+        "score": 0.018263462082836007
+      },
+      {
+        "pos": 10,
+        "doc": "d02",
+        "score": 0.017292174136834843
+      }
+    ],
+    "q2": [
+      {
+        "pos": 1,
+        "doc": "d03",
+        "score": 0.5858675566283762
+      },
+      {
+        "pos": 2,
+        "doc": "d08",
+        "score": 0.060953047378661356
+      },
+      {
+        "pos": 3,
+        "doc": "d09",
+        "score": 0.0547367065510492
+      },
+      {
+        "pos": 4,
+        "doc": "d01",
+        "score": 0.0
+      },
+      {
+        "pos": 5,
+        "doc": "d02",
+        "score": 0.0
+      },
+      {
+        "pos": 6,
+        "doc": "d04",
+        "score": 0.0
+      },
+      {
+        "pos": 7,
+        "doc": "d05",
+        "score": 0.0
+      },
+      {
+        "pos": 8,
+        "doc": "d06",
+        "score": 0.0
+      },
+      {
+        "pos": 9,
+        "doc": "d07",
+        "score": 0.0
+      },
+      {
+        "pos": 10,
+        "doc": "d10",
+        "score": 0.0
+      }
+    ],
+    "q3": [
+      {
+        "pos": 1,
+        "doc": "d08",
+        "score": 0.5345585667059038
+      },
+      {
+        "pos": 2,
+        "doc": "d03",
+        "score": 0.05739521850631285
+      },
+      {
+        "pos": 3,
+        "doc": "d04",
+        "score": 0.0565735485585243
+      },
+      {
+        "pos": 4,
+        "doc": "d05",
+        "score": 0.05341400145099541
+      },
+      {
+        "pos": 5,
+        "doc": "d01",
+        "score": 0.05104372568599318
+      },
+      {
+        "pos": 6,
+        "doc": "d10",
+        "score": 0.038543106402853064
+      },
+      {
+        "pos": 7,
+        "doc": "d07",
+        "score": 0.028233870686371003
+      },
+      {
+        "pos": 8,
+        "doc": "d02",
+        "score": 0.0
+      },
+      {
+        "pos": 9,
+        "doc": "d06",
+        "score": 0.0
+      },
+      {
+        "pos": 10,
+        "doc": "d09",
+        "score": 0.0
+      }
+    ],
+    "q4": [
+      {
+        "pos": 1,
+        "doc": "d05",
+        "score": 0.45773783522604383
+      },
+      {
+        "pos": 2,
+        "doc": "d07",
+        "score": 0.19034707733068026
+      },
+      {
+        "pos": 3,
+        "doc": "d03",
+        "score": 0.1640064229015029
+      },
+      {
+        "pos": 4,
+        "doc": "d01",
+        "score": 0.14050767960974891
+      },
+      {
+        "pos": 5,
+        "doc": "d04",
+        "score": 0.13983204090138832
+      },
+      {
+        "pos": 6,
+        "doc": "d10",
+        "score": 0.10609731897181295
+      },
+      {
+        "pos": 7,
+        "doc": "d08",
+        "score": 0.10563879903989132
+      },
+      {
+        "pos": 8,
+        "doc": "d06",
+        "score": 0.1021387656506615
+      },
+      {
+        "pos": 9,
+        "doc": "d09",
+        "score": 0.0964094952082735
+      },
+      {
+        "pos": 10,
+        "doc": "d02",
+        "score": 0.017886574474983007
+      }
+    ],
+    "q5": [
+      {
+        "pos": 1,
+        "doc": "d08",
+        "score": 0.2230243347343184
+      },
+      {
+        "pos": 2,
+        "doc": "d07",
+        "score": 0.21617539804004848
+      },
+      {
+        "pos": 3,
+        "doc": "d03",
+        "score": 0.16002545297297877
+      },
+      {
+        "pos": 4,
+        "doc": "d01",
+        "score": 0.14783173451012352
+      },
+      {
+        "pos": 5,
+        "doc": "d04",
+        "score": 0.14162434467540005
+      },
+      {
+        "pos": 6,
+        "doc": "d05",
+        "score": 0.1127332026006843
+      },
+      {
+        "pos": 7,
+        "doc": "d02",
+        "score": 0.1093374715292497
+      },
+      {
+        "pos": 8,
+        "doc": "d09",
+        "score": 0.06344078487704287
+      },
+      {
+        "pos": 9,
+        "doc": "d10",
+        "score": 0.06056070935541502
+      },
+      {
+        "pos": 10,
+        "doc": "d06",
+        "score": 0.02640756821640971
+      }
+    ],
+    "q6": [
+      {
+        "pos": 1,
+        "doc": "d02",
+        "score": 0.5807924811883417
+      },
+      {
+        "pos": 2,
+        "doc": "d04",
+        "score": 0.05086464024225451
+      },
+      {
+        "pos": 3,
+        "doc": "d09",
+        "score": 0.04840225562824766
+      },
+      {
+        "pos": 4,
+        "doc": "d01",
+        "score": 0.045892838787662794
+      },
+      {
+        "pos": 5,
+        "doc": "d03",
+        "score": 0.0
+      },
+      {
+        "pos": 6,
+        "doc": "d05",
+        "score": 0.0
+      },
+      {
+        "pos": 7,
+        "doc": "d06",
+        "score": 0.0
+      },
+      {
+        "pos": 8,
+        "doc": "d07",
+        "score": 0.0
+      },
+      {
+        "pos": 9,
+        "doc": "d08",
+        "score": 0.0
+      },
+      {
+        "pos": 10,
+        "doc": "d10",
+        "score": 0.0
+      }
+    ]
+  },
+  "rank_del_documento_relevante": {
+    "q1": 1,
+    "q2": 1,
+    "q3": 1,
+    "q4": 1,
+    "q5": 8,
+    "q6": 1
+  },
+  "reciprocal_rank_por_consulta": {
+    "q1": 1.0,
+    "q2": 1.0,
+    "q3": 1.0,
+    "q4": 1.0,
+    "q5": 0.125,
+    "q6": 1.0
+  },
+  "hit_at_1": 0.8333333333333334,
+  "hit_at_3": 0.8333333333333334,
+  "mrr": 0.8541666666666666,
+  "matriz_similitud_coseno": {
+    "q1": [
+      0.19694551173376226,
+      0.017292174136834843,
+      0.10596368987742368,
+      0.6715118113083243,
+      0.11312441303639917,
+      0.018263462082836007,
+      0.09047692214556158,
+      0.04719590136519738,
+      0.04387561776276099,
+      0.10257153026578296
+    ],
+    "q2": [
+      0.0,
+      0.0,
+      0.5858675566283762,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.060953047378661356,
+      0.0547367065510492,
+      0.0
+    ],
+    "q3": [
+      0.05104372568599318,
+      0.0,
+      0.05739521850631285,
+      0.0565735485585243,
+      0.05341400145099541,
+      0.0,
+      0.028233870686371003,
+      0.5345585667059038,
+      0.0,
+      0.038543106402853064
+    ],
+    "q4": [
+      0.14050767960974891,
+      0.017886574474983007,
+      0.1640064229015029,
+      0.13983204090138832,
+      0.45773783522604383,
+      0.1021387656506615,
+      0.19034707733068026,
+      0.10563879903989132,
+      0.0964094952082735,
+      0.10609731897181295
+    ],
+    "q5": [
+      0.14783173451012352,
+      0.1093374715292497,
+      0.16002545297297877,
+      0.14162434467540005,
+      0.1127332026006843,
+      0.02640756821640971,
+      0.21617539804004848,
+      0.2230243347343184,
+      0.06344078487704287,
+      0.06056070935541502
+    ],
+    "q6": [
+      0.045892838787662794,
+      0.5807924811883417,
+      0.0,
+      0.05086464024225451,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.04840225562824766,
+      0.0
+    ]
+  }
+}

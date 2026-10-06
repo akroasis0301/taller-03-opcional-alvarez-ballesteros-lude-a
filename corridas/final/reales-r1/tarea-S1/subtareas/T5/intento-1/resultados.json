@@ -1,0 +1,107 @@
+{
+  "task": "T5_guardar_y_verificar_resultado",
+  "parquet_path": "output/server_analysis.parquet",
+  "file_exists": true,
+  "engine": "pyarrow",
+  "pyarrow_write_options": {
+    "preserve_index": false,
+    "version": "2.6"
+  },
+  "saved_without_index": true,
+  "dataframe_source": "reconstruido desde data/server_measurements.csv (parámetros de entrada/T3/resultados.json)",
+  "n_rows_before": 300,
+  "n_rows_after": 300,
+  "n_columns_before": 9,
+  "n_columns_after": 9,
+  "columns_before": [
+    "server",
+    "timestamp",
+    "gpu_utilization",
+    "cpu_utilization",
+    "memory_gb",
+    "power_w",
+    "temperature_c",
+    "load_score",
+    "requires_review"
+  ],
+  "columns_after": [
+    "server",
+    "timestamp",
+    "gpu_utilization",
+    "cpu_utilization",
+    "memory_gb",
+    "power_w",
+    "temperature_c",
+    "load_score",
+    "requires_review"
+  ],
+  "schema_before": [
+    "server: large_string",
+    "timestamp: timestamp[us]",
+    "gpu_utilization: double",
+    "cpu_utilization: double",
+    "memory_gb: double",
+    "power_w: double",
+    "temperature_c: double",
+    "load_score: double",
+    "requires_review: bool"
+  ],
+  "schema_after": [
+    "server: large_string",
+    "timestamp: timestamp[us]",
+    "gpu_utilization: double",
+    "cpu_utilization: double",
+    "memory_gb: double",
+    "power_w: double",
+    "temperature_c: double",
+    "load_score: double",
+    "requires_review: bool"
+  ],
+  "dtypes_before": {
+    "server": "str",
+    "timestamp": "datetime64[us]",
+    "gpu_utilization": "float64",
+    "cpu_utilization": "float64",
+    "memory_gb": "float64",
+    "power_w": "float64",
+    "temperature_c": "float64",
+    "load_score": "float64",
+    "requires_review": "bool"
+  },
+  "dtypes_after": {
+    "server": "str",
+    "timestamp": "datetime64[us]",
+    "gpu_utilization": "float64",
+    "cpu_utilization": "float64",
+    "memory_gb": "float64",
+    "power_w": "float64",
+    "temperature_c": "float64",
+    "load_score": "float64",
+    "requires_review": "bool"
+  },
+  "verificaciones": {
+    "Filas": true,
+    "Columnas": true,
+    "Esquema": true,
+    "Valores": true
+  },
+  "filas_iguales": true,
+  "columnas_iguales": true,
+  "esquema_igual": true,
+  "valores_iguales": true,
+  "valores_iguales_estricto_pandas": true,
+  "dtypes_iguales": true,
+  "round_trip_verified": true,
+  "n_requires_review": 49,
+  "load_score_min": -1.955649651274497,
+  "load_score_max": 3.136217861183744,
+  "t3_consistency_checks": {
+    "n_rows_match": true,
+    "load_score_max_match": true,
+    "n_requires_review_match": true,
+    "review_rule_consistent": true,
+    "requires_review_is_bool": true,
+    "flagged_row0_match": true
+  },
+  "file_size_bytes": 17629
+}

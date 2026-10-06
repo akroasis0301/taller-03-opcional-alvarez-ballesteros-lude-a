@@ -1,0 +1,14 @@
+==================================================================
+T5 - Referencia exacta por cambios de signo (enumeracion 2^16)
+==================================================================
+n diferencias pareadas              : 16
+media observada                     : 0.418750
+total de configuraciones            : 65536
+configuraciones extremas (>=|obs|)  : 13372
+p-value exacto (conteo/total)       : 0.204041
+p-value prueba t (T4, bilateral)    : 0.201342
+|p exacto - p t|                    : 0.002698
+decision al 5% (exacto | t)         : no rechazar H0 | no rechazar H0
+verificacion DP coincide            : True (extremas_dp=13372)
+configuracion observada presente    : False
+Archivos: resultados.json, output/store_differences.csv, output/store_differences.png

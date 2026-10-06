@@ -1,0 +1,25 @@
+========================================================================
+T3 — Análisis por consulta: fallos (relevante fuera del top 3) y términos compartidos
+========================================================================
+TF-IDF: fallos = 1 ['q5'] | Hit@1 = 0.8333 | Hit@3 = 0.8333 | MRR = 0.8611
+LSA: fallos = 1 ['q5'] | Hit@1 = 0.6667 | Hit@3 = 0.8333 | MRR = 0.7500
+------------------------------------------------------------------------
+[FALLO] TF-IDF · q5 · relevante d09 en rank 6 (top3: d03, d06, d04)
+        términos compartidos con el relevante: 'la' (suma IDF = 1.452)
+        consulta fuera de vocabulario: 'determinista', 'elegir', 'hace', 'más', 'palabra', 'sea', 'siguiente'
+[FALLO] LSA · q5 · relevante d09 en rank 6 (top3: d04, d01, d03)
+        términos compartidos con el relevante: 'la' (suma IDF = 1.452)
+        consulta fuera de vocabulario: 'determinista', 'elegir', 'hace', 'más', 'palabra', 'sea', 'siguiente'
+[LÍMITE] LSA · q4 · rank 3 (dentro del top 3, no es fallo)
+------------------------------------------------------------------------
+Términos compartidos consulta-relevante (todas las consultas):
+  q1 -> d04: 'frecuencia', 'léxica', 'ranking', 'términos', 'función', 'pondera', 'de', 'la'
+  q2 -> d03: 'al', 'fragmentos', 'prompt'
+  q3 -> d08: 'bajo', 'entrena', 'matrices', 'rango', 'de'
+  q4 -> d05: 'compara', 'orientación', 'vectores', 'la'
+  q5 -> d09: 'la'
+  q6 -> d02: 'autoatención', 'capas', 'feed', 'forward', 'con'
+------------------------------------------------------------------------
+Verificación contra T1/T2: TF-IDF ranks_ok=True metricas_ok=True, LSA ranks_ok=True metricas_ok=True
+Cobertura del criterio de éxito: toda_consulta_fallida_cubierta=True, q5_cubierta_en_ambos_metodos=True
+Archivos: resultados.json, T3_tabla_fallos.csv, T3_tabla_consultas_metodos.csv, T3_solape_consulta_documento.png, T3_fallo_q5.png

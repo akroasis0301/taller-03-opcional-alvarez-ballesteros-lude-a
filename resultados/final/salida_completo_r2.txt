@@ -1,0 +1,34 @@
+Consider using the pymupdf_layout package for a greatly improved page layout analysis.
+  A A01  archivo         ✓  1 archivo(s) con reporte.md
+  A A02  archivo         ✓  14 archivo(s) con **/*.png
+  A A03  secciones       ✓  todas, en orden
+  A A04  palabras_max    ✓  1010 palabras
+  A A05  cifra_presente  ✓  verdad=569.0000 ±0; hallada
+  A A06  cifra           ✓  verdad=0.9474 ±0.006; hallada
+  A A07  cifra           ✓  verdad=0.9883 ±0.012; hallada
+  A A08  procedencia     ✓  53/55 cifras respaldadas (0.96)
+  A A09  cifra_presente  ✓  verdad=0.9766 ±0.0006; hallada
+Tarea A: 9/9 · status=completado · 265.1 s
+
+  B B01  archivo         ✓  1 archivo(s) con *.ipynb
+  B B02  ipynb_ejecutado ✓  3 celdas de código, 0 sin ejecutar, 0 con error
+  B B03  cifra_presente  ✓  verdad=0.9147 ±0.00051; hallada
+  B B04  cifra_presente  ✓  verdad=1.7998 ±0.00051; hallada
+  B B05  cifra_presente  ✓  verdad=2.2888 ±0.00051; hallada
+  B B06  cifra_presente  ✓  verdad=0.5694 ±0.00051; hallada
+  B B07  contiene        ✓  todos presentes
+  B B08  archivo         ✓  16 archivo(s) con **/*.png
+  B B09  procedencia     ✓  72/72 cifras respaldadas (1.00)
+Tarea B: 9/9 · status=completado · 222.7 s
+
+  C C01  archivo         ✓  1 archivo(s) con reporte.pdf
+  C C02  paginas_max     ✓  2 páginas
+  C C03  secciones       ✓  todas, en orden
+  C C04  cifra           ✓  verdad=0.8611 ±0.006; hallada
+  C C05  cifra           ✓  verdad=0.8333 ±0.006; hallada
+  C C06  cifra           ✓  verdad=0.7500 ±0.006; hallada
+  C C07  contiene        ✓  todos presentes
+  C C08  procedencia     ✓  25/25 cifras respaldadas (1.00)
+Tarea C: 8/8 · status=completado · 873.2 s
+
+Comprobaciones aprobadas: 26/26 → resultados/final/resultados_completo_r2.csv

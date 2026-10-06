@@ -1,0 +1,104 @@
+{
+  "subtarea": "T3_comprobacion_empirica",
+  "parte": "Parte 3 — Comprobación empírica",
+  "fuente_distribucion_renormalizada": "entrada/T2/resultados.json",
+  "temperatura": 1.0,
+  "p_top": 0.9,
+  "semilla": 0,
+  "generador": "numpy.random.default_rng(0)",
+  "n_muestras": 10000,
+  "tokens": [
+    "t0",
+    "t1",
+    "t2",
+    "t3",
+    "t4",
+    "t5"
+  ],
+  "tokens_supervivientes": [
+    "t0",
+    "t1",
+    "t2",
+    "t3"
+  ],
+  "probabilidades_teoricas_renormalizadas": {
+    "t0": 0.5693760554907313,
+    "t1": 0.2094617451103304,
+    "t2": 0.12704497044632815,
+    "t3": 0.09411722895261025
+  },
+  "probabilidades_teoricas_alineadas_t0_t5": [
+    0.5693760554907313,
+    0.2094617451103304,
+    0.12704497044632815,
+    0.09411722895261025,
+    0.0,
+    0.0
+  ],
+  "conteos_observados": {
+    "t0": 5682,
+    "t1": 2093,
+    "t2": 1296,
+    "t3": 929,
+    "t4": 0,
+    "t5": 0
+  },
+  "frecuencias_observadas": {
+    "t0": 0.5682,
+    "t1": 0.2093,
+    "t2": 0.1296,
+    "t3": 0.0929,
+    "t4": 0.0,
+    "t5": 0.0
+  },
+  "frecuencias_observadas_alineadas_t0_t5": [
+    0.5682,
+    0.2093,
+    0.1296,
+    0.0929,
+    0.0,
+    0.0
+  ],
+  "suma_frecuencias_observadas": 1.0,
+  "divergencia_KL_bits": 5.006898814879229e-05,
+  "divergencia_KL_nats": 3.470517796882468e-05,
+  "KL_esperada_bits_referencia_asintotica": 0.00021640425613334452,
+  "verificacion_recalculo_softmax_topp_max_abs_diff": 0.0,
+  "tokens_supervivientes_verificacion": [
+    "t0",
+    "t1",
+    "t2",
+    "t3"
+  ],
+  "figura": "T3_frecuencias_vs_teorica.png",
+  "tabla_comparativa": [
+    {
+      "token": "t0",
+      "prob_teorica_renormalizada": 0.5693760554907313,
+      "conteo_observado": 5682,
+      "frecuencia_observada": 0.5682,
+      "diferencia_obs_menos_teo": -0.0011760554907312981
+    },
+    {
+      "token": "t1",
+      "prob_teorica_renormalizada": 0.2094617451103304,
+      "conteo_observado": 2093,
+      "frecuencia_observada": 0.2093,
+      "diferencia_obs_menos_teo": -0.00016174511033037464
+    },
+    {
+      "token": "t2",
+      "prob_teorica_renormalizada": 0.12704497044632815,
+      "conteo_observado": 1296,
+      "frecuencia_observada": 0.1296,
+      "diferencia_obs_menos_teo": 0.002555029553671845
+    },
+    {
+      "token": "t3",
+      "prob_teorica_renormalizada": 0.09411722895261025,
+      "conteo_observado": 929,
+      "frecuencia_observada": 0.0929,
+      "diferencia_obs_menos_teo": -0.0012172289526102553
+    }
+  ]
+}

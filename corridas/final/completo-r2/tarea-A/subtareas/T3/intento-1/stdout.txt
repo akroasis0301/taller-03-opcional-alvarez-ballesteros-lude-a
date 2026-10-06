@@ -1,0 +1,24 @@
+==============================================================================
+T3 — Parte 3: curva de aprendizaje (generativo vs. discriminativo)
+==============================================================================
+División: entrada/T1/train.parquet (división única de la Parte 1)
+Entrenamiento total: 398 | Prueba fija: 171 ejemplos
+
+| % del entrenamiento | n_train | Accuracy prueba — NB gaussiano | Accuracy prueba — Reg. logística |
+|---|---|---|---|
+| 5 % | 19 | 0.9415 | 0.9298 |
+| 10 % | 39 | 0.9474 | 0.9357 |
+| 25 % | 99 | 0.9474 | 0.9415 |
+| 50 % | 199 | 0.9357 | 0.9766 |
+| 100 % | 398 | 0.9474 | 0.9883 |
+
+n_train= 19: mejor -> naive_bayes_gaussiano (Δ accuracy NB-LR = +0.0117)
+n_train= 39: mejor -> naive_bayes_gaussiano (Δ accuracy NB-LR = +0.0117)
+n_train= 99: mejor -> naive_bayes_gaussiano (Δ accuracy NB-LR = +0.0058)
+n_train=199: mejor -> regresion_logistica (Δ accuracy NB-LR = -0.0409)
+n_train=398: mejor -> regresion_logistica (Δ accuracy NB-LR = -0.0409)
+
+Consistencia con la Parte 2 (punto 100 %): NB coincide=True, RL coincide=True
+
+Figura guardada: curvas_aprendizaje_parte3.png
+Resultados escritos: resultados.json

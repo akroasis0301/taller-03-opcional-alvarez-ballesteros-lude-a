@@ -1,0 +1,42 @@
+Traceback (most recent call last):
+  File "/Users/miguelestebanalvarez/Posgrado Maestría Inteligencia Artificial/1er Semestre/IA Generativa y Agentes/Talleres/Taller 03/taller-03-opcional-alvarez-ballesteros-ludeña/.venv/lib/python3.12/site-packages/pandas/core/internals/blocks.py", line 1115, in setitem
+    casted = np_can_hold_element(values.dtype, value)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/miguelestebanalvarez/Posgrado Maestría Inteligencia Artificial/1er Semestre/IA Generativa y Agentes/Talleres/Taller 03/taller-03-opcional-alvarez-ballesteros-ludeña/.venv/lib/python3.12/site-packages/pandas/core/dtypes/cast.py", line 1792, in np_can_hold_element
+    raise LossySetitemError
+pandas.errors.LossySetitemError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/miguelestebanalvarez/Posgrado Maestría Inteligencia Artificial/1er Semestre/IA Generativa y Agentes/Talleres/Taller 03/taller-03-opcional-alvarez-ballesteros-ludeña/corridas/final/reales-r1/tarea-S2/subtareas/T2/intento-1/script.py", line 310, in <module>
+    main()
+  File "/Users/miguelestebanalvarez/Posgrado Maestría Inteligencia Artificial/1er Semestre/IA Generativa y Agentes/Talleres/Taller 03/taller-03-opcional-alvarez-ballesteros-ludeña/corridas/final/reales-r1/tarea-S2/subtareas/T2/intento-1/script.py", line 210, in main
+    self_test = self_test_validaciones()
+                ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/miguelestebanalvarez/Posgrado Maestría Inteligencia Artificial/1er Semestre/IA Generativa y Agentes/Talleres/Taller 03/taller-03-opcional-alvarez-ballesteros-ludeña/corridas/final/reales-r1/tarea-S2/subtareas/T2/intento-1/script.py", line 143, in self_test_validaciones
+    no_num = base.copy(); no_num.loc[2, "error_a"] = "x"
+                          ~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/Users/miguelestebanalvarez/Posgrado Maestría Inteligencia Artificial/1er Semestre/IA Generativa y Agentes/Talleres/Taller 03/taller-03-opcional-alvarez-ballesteros-ludeña/.venv/lib/python3.12/site-packages/pandas/core/indexing.py", line 938, in __setitem__
+    iloc._setitem_with_indexer(indexer, value, self.name)
+  File "/Users/miguelestebanalvarez/Posgrado Maestría Inteligencia Artificial/1er Semestre/IA Generativa y Agentes/Talleres/Taller 03/taller-03-opcional-alvarez-ballesteros-ludeña/.venv/lib/python3.12/site-packages/pandas/core/indexing.py", line 1953, in _setitem_with_indexer
+    self._setitem_with_indexer_split_path(indexer, value, name)
+  File "/Users/miguelestebanalvarez/Posgrado Maestría Inteligencia Artificial/1er Semestre/IA Generativa y Agentes/Talleres/Taller 03/taller-03-opcional-alvarez-ballesteros-ludeña/.venv/lib/python3.12/site-packages/pandas/core/indexing.py", line 2044, in _setitem_with_indexer_split_path
+    self._setitem_single_column(loc, value, pi)
+  File "/Users/miguelestebanalvarez/Posgrado Maestría Inteligencia Artificial/1er Semestre/IA Generativa y Agentes/Talleres/Taller 03/taller-03-opcional-alvarez-ballesteros-ludeña/.venv/lib/python3.12/site-packages/pandas/core/indexing.py", line 2181, in _setitem_single_column
+    self.obj._mgr.column_setitem(loc, plane_indexer, value)
+  File "/Users/miguelestebanalvarez/Posgrado Maestría Inteligencia Artificial/1er Semestre/IA Generativa y Agentes/Talleres/Taller 03/taller-03-opcional-alvarez-ballesteros-ludeña/.venv/lib/python3.12/site-packages/pandas/core/internals/managers.py", line 1541, in column_setitem
+    new_mgr = col_mgr.setitem((idx,), value)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/miguelestebanalvarez/Posgrado Maestría Inteligencia Artificial/1er Semestre/IA Generativa y Agentes/Talleres/Taller 03/taller-03-opcional-alvarez-ballesteros-ludeña/.venv/lib/python3.12/site-packages/pandas/core/internals/managers.py", line 620, in setitem
+    return self.apply("setitem", indexer=indexer, value=value)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/miguelestebanalvarez/Posgrado Maestría Inteligencia Artificial/1er Semestre/IA Generativa y Agentes/Talleres/Taller 03/taller-03-opcional-alvarez-ballesteros-ludeña/.venv/lib/python3.12/site-packages/pandas/core/internals/managers.py", line 445, in apply
+    applied = getattr(b, f)(**kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/miguelestebanalvarez/Posgrado Maestría Inteligencia Artificial/1er Semestre/IA Generativa y Agentes/Talleres/Taller 03/taller-03-opcional-alvarez-ballesteros-ludeña/.venv/lib/python3.12/site-packages/pandas/core/internals/blocks.py", line 1118, in setitem
+    nb = self.coerce_to_target_dtype(value, raise_on_upcast=True)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/miguelestebanalvarez/Posgrado Maestría Inteligencia Artificial/1er Semestre/IA Generativa y Agentes/Talleres/Taller 03/taller-03-opcional-alvarez-ballesteros-ludeña/.venv/lib/python3.12/site-packages/pandas/core/internals/blocks.py", line 468, in coerce_to_target_dtype
+    raise TypeError(f"Invalid value '{other}' for dtype '{self.values.dtype}'")
+TypeError: Invalid value 'x' for dtype 'float64'

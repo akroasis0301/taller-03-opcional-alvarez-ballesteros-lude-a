@@ -1,0 +1,12 @@
+====================================================================
+T6 — Bootstrap pareado (intervalo percentil del 95 %)
+====================================================================
+Datos: data/model_errors.csv | tiendas (pares completos): 16
+Generador: np.random.default_rng | semilla: 20260829 | remuestras: 10000
+Unidad remuestreada: tienda completa via vector de diferencias (pareo íntegro: True)
+Media observada de la diferencia: 0.418750
+IC 95 % percentil (ejecución 1): [-0.193750, 1.006250]
+IC 95 % percentil (ejecución 2): [-0.193750, 1.006250]
+Reproducibilidad (misma semilla -> mismo intervalo): True | medias idénticas: True
+El intervalo contiene al 0 (lectura de sensibilidad aproximada).
+Archivos: output/store_differences.csv | output/store_differences.png | bootstrap_pareado_T6.png | resultados.json

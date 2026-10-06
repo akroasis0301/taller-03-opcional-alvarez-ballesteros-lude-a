@@ -1,0 +1,11 @@
+=== T3: Comprobación empírica de la distribución renormalizada ===
+Muestras: 10000 | Generador: numpy.random.default_rng(0)
+Token       Conteo    Freq. obs.     P teórica
+token_1       5682      0.568200      0.569376
+token_2       2093      0.209300      0.209462
+token_3       1296      0.129600      0.127045
+token_4        929      0.092900      0.094117
+
+Divergencia KL (empírica || teórica) = 0.000050 bits
+Figura guardada: barras_frecuencias_vs_teoricas.png
+Resultados escritos en resultados.json

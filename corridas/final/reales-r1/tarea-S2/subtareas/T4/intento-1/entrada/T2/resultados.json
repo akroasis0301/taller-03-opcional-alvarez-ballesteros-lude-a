@@ -1,0 +1,211 @@
+{
+  "subtarea": "T2_auditar_datos_y_construir_pares",
+  "csv_fuente": "data/model_errors.csv",
+  "csv_original_no_modificado": true,
+  "columnas_esperadas": [
+    "store_id",
+    "error_a",
+    "error_b"
+  ],
+  "columnas_encontradas": [
+    "store_id",
+    "error_a",
+    "error_b"
+  ],
+  "validaciones": {
+    "columnas_exactas": true,
+    "store_id_unico_y_no_nulo": true,
+    "errores_numericos_finitos_no_negativos": true,
+    "pareo_verificado_por_store_id": true,
+    "self_test_valueerror": {
+      "columnas_incorrectas": true,
+      "columna_faltante": true,
+      "store_id_duplicado": true,
+      "store_id_nulo": true,
+      "error_no_numerico": true,
+      "error_no_finito": true,
+      "error_negativo": true
+    }
+  },
+  "n_pares_validados": 16,
+  "n_tiendas_unicas": 16,
+  "convencion_favors": "'B' si difference>0; 'A' si difference<0; 'empate' si difference==0",
+  "nota_pareo": "Emparejamiento verificado por store_id (unicidad y ambos errores en la misma fila), no por longitud de vectores.",
+  "diferencias": [
+    1.8000000000000007,
+    0.7000000000000011,
+    1.1999999999999993,
+    -1.4000000000000004,
+    1.4999999999999991,
+    -0.3000000000000007,
+    0.8999999999999986,
+    2.0999999999999996,
+    -1.8000000000000007,
+    1.0,
+    -0.5,
+    1.700000000000001,
+    -1.200000000000001,
+    0.5999999999999996,
+    1.299999999999999,
+    -0.9000000000000004
+  ],
+  "tabla_pareada": [
+    {
+      "store_id": "S01",
+      "error_a": 12.4,
+      "error_b": 10.6,
+      "difference": 1.8000000000000007,
+      "favors": "B"
+    },
+    {
+      "store_id": "S02",
+      "error_a": 9.8,
+      "error_b": 9.1,
+      "difference": 0.7000000000000011,
+      "favors": "B"
+    },
+    {
+      "store_id": "S03",
+      "error_a": 15.1,
+      "error_b": 13.9,
+      "difference": 1.1999999999999993,
+      "favors": "B"
+    },
+    {
+      "store_id": "S04",
+      "error_a": 11.0,
+      "error_b": 12.4,
+      "difference": -1.4000000000000004,
+      "favors": "A"
+    },
+    {
+      "store_id": "S05",
+      "error_a": 8.7,
+      "error_b": 7.2,
+      "difference": 1.4999999999999991,
+      "favors": "B"
+    },
+    {
+      "store_id": "S06",
+      "error_a": 13.6,
+      "error_b": 13.9,
+      "difference": -0.3000000000000007,
+      "favors": "A"
+    },
+    {
+      "store_id": "S07",
+      "error_a": 10.2,
+      "error_b": 9.3,
+      "difference": 0.8999999999999986,
+      "favors": "B"
+    },
+    {
+      "store_id": "S08",
+      "error_a": 14.9,
+      "error_b": 12.8,
+      "difference": 2.0999999999999996,
+      "favors": "B"
+    },
+    {
+      "store_id": "S09",
+      "error_a": 7.5,
+      "error_b": 9.3,
+      "difference": -1.8000000000000007,
+      "favors": "A"
+    },
+    {
+      "store_id": "S10",
+      "error_a": 16.0,
+      "error_b": 15.0,
+      "difference": 1.0,
+      "favors": "B"
+    },
+    {
+      "store_id": "S11",
+      "error_a": 9.3,
+      "error_b": 9.8,
+      "difference": -0.5,
+      "favors": "A"
+    },
+    {
+      "store_id": "S12",
+      "error_a": 12.8,
+      "error_b": 11.1,
+      "difference": 1.700000000000001,
+      "favors": "B"
+    },
+    {
+      "store_id": "S13",
+      "error_a": 11.7,
+      "error_b": 12.9,
+      "difference": -1.200000000000001,
+      "favors": "A"
+    },
+    {
+      "store_id": "S14",
+      "error_a": 8.9,
+      "error_b": 8.3,
+      "difference": 0.5999999999999996,
+      "favors": "B"
+    },
+    {
+      "store_id": "S15",
+      "error_a": 13.2,
+      "error_b": 11.9,
+      "difference": 1.299999999999999,
+      "favors": "B"
+    },
+    {
+      "store_id": "S16",
+      "error_a": 10.6,
+      "error_b": 11.5,
+      "difference": -0.9000000000000004,
+      "favors": "A"
+    }
+  ],
+  "conteos": {
+    "positivas_favors_B": 10,
+    "negativas_favors_A": 6,
+    "empates_cero": 0,
+    "total": 16
+  },
+  "tiendas_favors_B": [
+    "S01",
+    "S02",
+    "S03",
+    "S05",
+    "S07",
+    "S08",
+    "S10",
+    "S12",
+    "S14",
+    "S15"
+  ],
+  "tiendas_favors_A": [
+    "S04",
+    "S06",
+    "S09",
+    "S11",
+    "S13",
+    "S16"
+  ],
+  "tiendas_empate": [],
+  "extremos": {
+    "mayor_positiva_favors_B": {
+      "store_id": "S08",
+      "error_a": 14.9,
+      "error_b": 12.8,
+      "difference": 2.0999999999999996
+    },
+    "mayor_negativa_favors_A": {
+      "store_id": "S09",
+      "error_a": 7.5,
+      "error_b": 9.3,
+      "difference": -1.8000000000000007
+    }
+  },
+  "archivos_generados": {
+    "csv": "output/store_differences.csv",
+    "figura": "output/store_differences.png"
+  }
+}

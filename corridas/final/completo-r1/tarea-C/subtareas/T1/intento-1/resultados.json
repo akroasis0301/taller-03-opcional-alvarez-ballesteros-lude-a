@@ -1,0 +1,494 @@
+{
+  "subtarea": "T1",
+  "titulo": "Línea base léxica: TF-IDF (TfidfVectorizer por defecto) + similitud coseno",
+  "config": {
+    "vectorizador": "sklearn.feature_extraction.text.TfidfVectorizer (parámetros por defecto)",
+    "nota_defaults": "lowercase=True, token_pattern='(?u)\\b\\w\\w\\b+' (descarta tokens de 1 carácter), sin stopwords, sin stemming, norm='l2', smooth_idf=True",
+    "ajuste": "fit sobre los 10 documentos del corpus; las consultas solo se transforman",
+    "similitud": "coseno (sklearn.metrics.pairwise.cosine_similarity)",
+    "n_documentos": 10,
+    "n_consultas": 6,
+    "tam_vocabulario": 105
+  },
+  "juicios_relevancia": {
+    "q1": "d04",
+    "q2": "d03",
+    "q3": "d08",
+    "q4": "d05",
+    "q5": "d09",
+    "q6": "d02"
+  },
+  "metricas_agregadas": {
+    "hit_at_1": 0.8333333333333334,
+    "hit_at_3": 0.8333333333333334,
+    "mrr": 0.8611111111111112,
+    "n_consultas": 6
+  },
+  "metricas_por_consulta": {
+    "q1": {
+      "consulta": "¿Qué función de ranking léxica pondera la frecuencia de términos?",
+      "relevante": "d04",
+      "rank_relevante": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": 1,
+      "hit_at_3": 1
+    },
+    "q2": {
+      "consulta": "¿Cómo se añaden fragmentos recuperados al prompt?",
+      "relevante": "d03",
+      "rank_relevante": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": 1,
+      "hit_at_3": 1
+    },
+    "q3": {
+      "consulta": "¿Qué técnica entrena matrices de bajo rango?",
+      "relevante": "d08",
+      "rank_relevante": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": 1,
+      "hit_at_3": 1
+    },
+    "q4": {
+      "consulta": "¿Cómo se compara la orientación de dos vectores de texto?",
+      "relevante": "d05",
+      "rank_relevante": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": 1,
+      "hit_at_3": 1
+    },
+    "q5": {
+      "consulta": "¿Qué hace que el modelo sea más determinista al elegir la siguiente palabra?",
+      "relevante": "d09",
+      "rank_relevante": 6,
+      "reciprocal_rank": 0.16666666666666666,
+      "hit_at_1": 0,
+      "hit_at_3": 0
+    },
+    "q6": {
+      "consulta": "¿Qué arquitectura combina autoatención con capas feed-forward?",
+      "relevante": "d02",
+      "rank_relevante": 1,
+      "reciprocal_rank": 1.0,
+      "hit_at_1": 1,
+      "hit_at_3": 1
+    }
+  },
+  "rankings": {
+    "q1": [
+      {
+        "pos": 1,
+        "doc_id": "d04",
+        "score": 0.6890762406943802
+      },
+      {
+        "pos": 2,
+        "doc_id": "d01",
+        "score": 0.24104429689047813
+      },
+      {
+        "pos": 3,
+        "doc_id": "d06",
+        "score": 0.17176219526377381
+      },
+      {
+        "pos": 4,
+        "doc_id": "d10",
+        "score": 0.1455818977299592
+      },
+      {
+        "pos": 5,
+        "doc_id": "d02",
+        "score": 0.07453421603164366
+      },
+      {
+        "pos": 6,
+        "doc_id": "d08",
+        "score": 0.07361653787213339
+      },
+      {
+        "pos": 7,
+        "doc_id": "d09",
+        "score": 0.06091203978803966
+      },
+      {
+        "pos": 8,
+        "doc_id": "d05",
+        "score": 0.030417830241207696
+      },
+      {
+        "pos": 9,
+        "doc_id": "d03",
+        "score": 0.030168272064907867
+      },
+      {
+        "pos": 10,
+        "doc_id": "d07",
+        "score": 0.0
+      }
+    ],
+    "q2": [
+      {
+        "pos": 1,
+        "doc_id": "d03",
+        "score": 0.517438736756843
+      },
+      {
+        "pos": 2,
+        "doc_id": "d01",
+        "score": 0.0
+      },
+      {
+        "pos": 3,
+        "doc_id": "d02",
+        "score": 0.0
+      },
+      {
+        "pos": 4,
+        "doc_id": "d04",
+        "score": 0.0
+      },
+      {
+        "pos": 5,
+        "doc_id": "d05",
+        "score": 0.0
+      },
+      {
+        "pos": 6,
+        "doc_id": "d06",
+        "score": 0.0
+      },
+      {
+        "pos": 7,
+        "doc_id": "d07",
+        "score": 0.0
+      },
+      {
+        "pos": 8,
+        "doc_id": "d08",
+        "score": 0.0
+      },
+      {
+        "pos": 9,
+        "doc_id": "d09",
+        "score": 0.0
+      },
+      {
+        "pos": 10,
+        "doc_id": "d10",
+        "score": 0.0
+      }
+    ],
+    "q3": [
+      {
+        "pos": 1,
+        "doc_id": "d08",
+        "score": 0.560429272422995
+      },
+      {
+        "pos": 2,
+        "doc_id": "d06",
+        "score": 0.12298847552390199
+      },
+      {
+        "pos": 3,
+        "doc_id": "d04",
+        "score": 0.08065431281941934
+      },
+      {
+        "pos": 4,
+        "doc_id": "d01",
+        "score": 0.06381465584320169
+      },
+      {
+        "pos": 5,
+        "doc_id": "d10",
+        "score": 0.049407824941549196
+      },
+      {
+        "pos": 6,
+        "doc_id": "d02",
+        "score": 0.045968561989839445
+      },
+      {
+        "pos": 7,
+        "doc_id": "d03",
+        "score": 0.0
+      },
+      {
+        "pos": 8,
+        "doc_id": "d05",
+        "score": 0.0
+      },
+      {
+        "pos": 9,
+        "doc_id": "d07",
+        "score": 0.0
+      },
+      {
+        "pos": 10,
+        "doc_id": "d09",
+        "score": 0.0
+      }
+    ],
+    "q4": [
+      {
+        "pos": 1,
+        "doc_id": "d05",
+        "score": 0.45692453531459537
+      },
+      {
+        "pos": 2,
+        "doc_id": "d01",
+        "score": 0.24754993848068024
+      },
+      {
+        "pos": 3,
+        "doc_id": "d04",
+        "score": 0.24252131947498234
+      },
+      {
+        "pos": 4,
+        "doc_id": "d10",
+        "score": 0.19166293170642723
+      },
+      {
+        "pos": 5,
+        "doc_id": "d02",
+        "score": 0.09812652932690284
+      },
+      {
+        "pos": 6,
+        "doc_id": "d08",
+        "score": 0.09691837852548282
+      },
+      {
+        "pos": 7,
+        "doc_id": "d09",
+        "score": 0.08019252602167252
+      },
+      {
+        "pos": 8,
+        "doc_id": "d03",
+        "score": 0.039717434369503
+      },
+      {
+        "pos": 9,
+        "doc_id": "d06",
+        "score": 0.0
+      },
+      {
+        "pos": 10,
+        "doc_id": "d07",
+        "score": 0.0
+      }
+    ],
+    "q5": [
+      {
+        "pos": 1,
+        "doc_id": "d03",
+        "score": 0.3106758887220715
+      },
+      {
+        "pos": 2,
+        "doc_id": "d06",
+        "score": 0.2008513459062183
+      },
+      {
+        "pos": 3,
+        "doc_id": "d04",
+        "score": 0.18955976285205217
+      },
+      {
+        "pos": 4,
+        "doc_id": "d01",
+        "score": 0.16230333908296432
+      },
+      {
+        "pos": 5,
+        "doc_id": "d10",
+        "score": 0.08491551831191195
+      },
+      {
+        "pos": 6,
+        "doc_id": "d09",
+        "score": 0.07900232923856973
+      },
+      {
+        "pos": 7,
+        "doc_id": "d08",
+        "score": 0.0748861092010969
+      },
+      {
+        "pos": 8,
+        "doc_id": "d05",
+        "score": 0.03945163300721819
+      },
+      {
+        "pos": 9,
+        "doc_id": "d02",
+        "score": 0.0
+      },
+      {
+        "pos": 10,
+        "doc_id": "d07",
+        "score": 0.0
+      }
+    ],
+    "q6": [
+      {
+        "pos": 1,
+        "doc_id": "d02",
+        "score": 0.5674153888326815
+      },
+      {
+        "pos": 2,
+        "doc_id": "d06",
+        "score": 0.16635706514893978
+      },
+      {
+        "pos": 3,
+        "doc_id": "d03",
+        "score": 0.04553295699284448
+      },
+      {
+        "pos": 4,
+        "doc_id": "d08",
+        "score": 0.045402589103718784
+      },
+      {
+        "pos": 5,
+        "doc_id": "d01",
+        "score": 0.03190732792160084
+      },
+      {
+        "pos": 6,
+        "doc_id": "d04",
+        "score": 0.0
+      },
+      {
+        "pos": 7,
+        "doc_id": "d05",
+        "score": 0.0
+      },
+      {
+        "pos": 8,
+        "doc_id": "d07",
+        "score": 0.0
+      },
+      {
+        "pos": 9,
+        "doc_id": "d09",
+        "score": 0.0
+      },
+      {
+        "pos": 10,
+        "doc_id": "d10",
+        "score": 0.0
+      }
+    ]
+  },
+  "matriz_similitud": {
+    "consultas": [
+      "q1",
+      "q2",
+      "q3",
+      "q4",
+      "q5",
+      "q6"
+    ],
+    "documentos": [
+      "d01",
+      "d02",
+      "d03",
+      "d04",
+      "d05",
+      "d06",
+      "d07",
+      "d08",
+      "d09",
+      "d10"
+    ],
+    "valores": [
+      [
+        0.24104429689047813,
+        0.07453421603164366,
+        0.030168272064907867,
+        0.6890762406943802,
+        0.030417830241207696,
+        0.17176219526377381,
+        0.0,
+        0.07361653787213339,
+        0.06091203978803966,
+        0.1455818977299592
+      ],
+      [
+        0.0,
+        0.0,
+        0.517438736756843,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.06381465584320169,
+        0.045968561989839445,
+        0.0,
+        0.08065431281941934,
+        0.0,
+        0.12298847552390199,
+        0.0,
+        0.560429272422995,
+        0.0,
+        0.049407824941549196
+      ],
+      [
+        0.24754993848068024,
+        0.09812652932690284,
+        0.039717434369503,
+        0.24252131947498234,
+        0.45692453531459537,
+        0.0,
+        0.0,
+        0.09691837852548282,
+        0.08019252602167252,
+        0.19166293170642723
+      ],
+      [
+        0.16230333908296432,
+        0.0,
+        0.3106758887220715,
+        0.18955976285205217,
+        0.03945163300721819,
+        0.2008513459062183,
+        0.0,
+        0.0748861092010969,
+        0.07900232923856973,
+        0.08491551831191195
+      ],
+      [
+        0.03190732792160084,
+        0.5674153888326815,
+        0.04553295699284448,
+        0.0,
+        0.0,
+        0.16635706514893978,
+        0.0,
+        0.045402589103718784,
+        0.0,
+        0.0
+      ]
+    ]
+  },
+  "figuras": [
+    "t1_mapa_calor_similitud.png",
+    "t1_mrr_por_consulta.png"
+  ],
+  "tablas": [
+    "t1_rankings.csv"
+  ]
+}

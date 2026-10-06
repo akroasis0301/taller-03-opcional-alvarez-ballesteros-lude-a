@@ -1,0 +1,13 @@
+================================================================
+T3 — Figura de diferencias por tienda
+================================================================
+Fuente de la tabla pareada : entrada/T2/resultados.json
+Tiendas representadas      : 16
+Favorecen a B (diff > 0)   : 10 -> S01, S02, S03, S05, S07, S08, S10, S12, S14, S15
+Favorecen a A (diff < 0)   : 6 -> S04, S06, S09, S11, S13, S16
+Empates (diff = 0)         : 0
+Mayor diferencia hacia B   : S08 (+2.10)
+Mayor diferencia hacia A   : S09 (-1.80)
+Figura                     : output/store_differences.png (existe=True, png_valido=True, dims={'alto_px': 936, 'ancho_px': 1140})
+CSV                        : output/store_differences.csv (verificado=True)
+Resultados                 : resultados.json

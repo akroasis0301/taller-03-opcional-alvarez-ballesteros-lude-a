@@ -1,0 +1,6 @@
+ServerMeasurements(shape=(300, 3), features=('gpu_utilization', 'cpu_utilization', 'memory_gb'))
+Filas: 300 | Columnas: 3
+Dtype de values: float64
+timestamp parseado como: datetime64[us]
+ValueError en pruebas (no-2D / columnas / no numérico): True / True / True
+repr coincide con el esperado: True

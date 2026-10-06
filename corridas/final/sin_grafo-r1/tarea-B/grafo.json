@@ -1,0 +1,66 @@
+{
+ "directed": true,
+ "multigraph": false,
+ "graph": {},
+ "nodes": [
+  {
+   "titulo": "Tarea B — Temperatura, top-p y entropía de la distribución de salida",
+   "trabajo": false,
+   "id": "Preámbulo",
+   "capa": "enunciado"
+  },
+  {
+   "titulo": "Parte 1 — Softmax con temperatura",
+   "trabajo": true,
+   "id": "Parte 1",
+   "capa": "enunciado"
+  },
+  {
+   "titulo": "Parte 2 — Muestreo de núcleo (top-p)",
+   "trabajo": true,
+   "id": "Parte 2",
+   "capa": "enunciado"
+  },
+  {
+   "titulo": "Parte 3 — Comprobación empírica",
+   "trabajo": true,
+   "id": "Parte 3",
+   "capa": "enunciado"
+  },
+  {
+   "titulo": "Parte 4 — Pregunta conceptual",
+   "trabajo": true,
+   "id": "Parte 4",
+   "capa": "enunciado"
+  },
+  {
+   "titulo": "Formato",
+   "trabajo": false,
+   "id": "Formato",
+   "capa": "enunciado"
+  }
+ ],
+ "aristas": [
+  {
+   "tipo": "depende_de",
+   "regla": "referencia",
+   "evidencia": "Con la distribución de T = 1 de la Parte 1, aplica top-p con p = 0.9: ordena los tokens por pro",
+   "source": "Parte 2",
+   "target": "Parte 1"
+  },
+  {
+   "tipo": "depende_de",
+   "regla": "referencia",
+   "evidencia": "Toma 10 000 muestras de la distribución renormalizada de la Parte 2 con numpy.random.default_rng(0). Compara las frecuen",
+   "source": "Parte 3",
+   "target": "Parte 2"
+  },
+  {
+   "tipo": "depende_de",
+   "regla": "referencia",
+   "evidencia": "a la decodificación voraz (greedy). Usa las entropías de la Parte 1 como evidencia.",
+   "source": "Parte 4",
+   "target": "Parte 1"
+  }
+ ]
+}

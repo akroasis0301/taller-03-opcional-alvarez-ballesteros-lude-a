@@ -1,0 +1,46 @@
+Juez: gemma3:27b en http://172.28.230.10:11434/
+  completo r1 A: 7 preguntas · 104.01 s · 2525+371 tokens
+  completo r1 B: 6 preguntas · 91.56 s · 4095+65 tokens
+  completo r1 C: 7 preguntas · 95.77 s · 2472+335 tokens
+  completo r2 A: 7 preguntas · 105.14 s · 2879+339 tokens
+  completo r2 B: 6 preguntas · 101.97 s · 3559+269 tokens
+  completo r2 C: 7 preguntas · 96.49 s · 2527+344 tokens
+  sin_grafo r1 A: 7 preguntas · 106.55 s · 2915+362 tokens
+  sin_grafo r1 B: 6 preguntas · 114.26 s · 3667+326 tokens
+  sin_grafo r1 C: 7 preguntas · 97.94 s · 2661+345 tokens
+  sin_grafo r2 A: 7 preguntas · 107.37 s · 2829+362 tokens
+  sin_grafo r2 B: 6 preguntas · 81.55 s · 4096+43 tokens
+  sin_grafo r2 C: 7 preguntas · 91.75 s · 2362+326 tokens
+# Parte 4 — Opción E: un juez de otra familia
+
+Juez `gemma3:27b` (Ollama de la H200) contra el golden determinístico (`evaluar_solver.py`). Generado por `scripts/juez.py` el 2026-10-05.
+
+Costo: 36587 tokens de entrada, 3487 de salida, 1194 s.
+
+## Acuerdo global
+
+- comprobaciones juzgadas: **74** (sin respuesta del juez: 6)
+- acuerdo: **0.986** · kappa de Cohen: **0.882**
+
+| | juez: aprueba | juez: rechaza |
+|---|---|---|
+| **golden: aprueba** | 69 | 1 |
+| **golden: rechaza** | 0 (falso positivo del juez) | 4 |
+
+Formato de las respuestas del juez (se pidió `{"ok", "razon"}` en todas): completo 68, sin_razon 6, faltante 6.
+
+## Por tipo de comprobación
+
+| tipo | n | acuerdo | kappa | falsos positivos del juez |
+|---|---|---|---|---|
+| cifra | 20 | 1.00 | 1.00 | 0 |
+| cifra_presente | 20 | 1.00 | — | 0 |
+| contiene | 7 | 1.00 | — | 0 |
+| paginas_max | 4 | 1.00 | — | 0 |
+| palabras_max | 4 | 1.00 | — | 0 |
+| procedencia | 11 | 0.91 | 0.00 | 0 |
+| secciones | 8 | 1.00 | — | 0 |
+
+## Donde el juez aprueba lo que el golden rechaza
+
+_Ninguno._

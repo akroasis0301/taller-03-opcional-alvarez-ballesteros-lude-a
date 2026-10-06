@@ -1,0 +1,10 @@
+T3 — Comprobación empírica del muestreo top-p (núcleo de la Parte 2)
+Muestras: 10000 | Semilla: numpy.random.default_rng(0)
+token        p_teorica    conteo    p_empirica
+t0            0.569376      5682      0.568200
+t1            0.209462      2093      0.209300
+t2            0.127045      1296      0.129600
+t3            0.094117       929      0.092900
+Divergencia KL (empírica || teórica) = 0.000050 bits
+Figura guardada: barras_frecuencias_vs_teoricas.png
+Resultados escritos en resultados.json
