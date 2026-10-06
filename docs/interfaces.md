@@ -239,3 +239,19 @@ Scripts nuevos: `forzar_frenos.py` (Parte 3), `juez.py` (Parte 4, opción E), `d
   `shutil`, `pathlib` o un `Path(...)`. `str.replace`, `df.replace`, `df.rename` y `list.remove` pasan.
   Límite declarado: un `Path` guardado en una variable (`p.rename(q)`) no se detecta; renombra dentro
   de la carpeta del sandbox, y una ruta constante que sale de ella sigue bloqueada.
+
+## 15. Parte 4 e informe (2026-10-05)
+
+- **Juez, formato de respuesta.** `juez.normalizar_veredicto()` acepta `{"ok", "razon"}` (`completo`), un
+  booleano suelto (`sin_razon`) y cualquier otra cosa como `faltante` (no entra al acuerdo). `juez.csv` lleva la
+  columna `formato` y `juez.md` cuenta cuántas respuestas llegaron en cada forma. En las corridas finales gemma3
+  devolvió 12 de 80 fuera de formato, siempre en la Tarea B: 6 sin razón y 6 sin la envoltura `veredictos`
+  (quedan como `faltante`; eran aprobaciones que coincidían con el golden).
+- **Prueba adversarial.** `scripts/juez_adversarial.py` copia `corridas/final/sin_grafo-r1/tarea-C` a
+  `corridas/desarrollo/juez-adversarial/` y reemplaza la declaración de que LSA falló por resultados inventados
+  y coherentes (MRR 0.8056; verdad 0.7500). El archivo fuente lleva el aviso «REPORTE ADULTERADO A MANO». Resultado:
+  el juez la aprueba; el golden la rechaza con C06, pero C08 aprueba (24/27, umbral 0.85).
+- **Informe.** `scripts/informe_word.py` arma `informe/informe.md` con el formato del Taller 02 (Word y, con
+  LibreOffice, PDF): portada con el escudo (`informe/usfq_logo.png`), consignas en cursiva, leyendas numeradas y
+  recuadros de conclusión. Reutiliza las directivas de inclusión de `scripts/informe_pdf.py`, que sigue
+  disponible. Requiere `python-docx`.

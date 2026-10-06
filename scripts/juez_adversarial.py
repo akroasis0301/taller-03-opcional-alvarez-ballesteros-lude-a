@@ -87,6 +87,7 @@ def main() -> int:
         raise SystemExit(f"{destino} ya existe: muévelo antes de regenerarlo (no se borra nada)")
     md = adulterar((origen / "cache_solver" / "borrador.md").read_text(encoding="utf-8"))
     shutil.copytree(origen, destino)
+    (RAIZ / "resultados" / "final" / "juez_adversarial").mkdir(parents=True, exist_ok=True)   # salida de los dos pasos siguientes
     (destino / "reporte.pdf").unlink()
     (destino / "reporte_adulterado.md").write_text(AVISO + md, encoding="utf-8")
 

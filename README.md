@@ -39,7 +39,7 @@ semana 3, que no está en el golden).
 ## 3. Verificar el entorno
 
 ```bash
-uv run pytest -q                                  # 100 pruebas, sin red ni H200
+uv run pytest -q                                  # 101 pruebas, sin red ni H200
 uv run python scripts/verificar_entorno.py        # librerías, LLM y embeddings de la H200 (con VPN)
 ```
 
@@ -100,7 +100,8 @@ nada se sobrescribe.
 | 4 | 2.b | `bash scripts/corridas_2b.sh tablas` → `resultados/final/tablas_2b/` | segundos |
 | 5 | 3 | `bash scripts/corridas_2b.sh frenos` → `corridas/frenos/` (modelo de guion, **sin VPN**) | 1 min |
 | 6 | 4 | `bash scripts/corridas_2b.sh juez` → `resultados/final/juez/` (gemma3 en el Ollama de la H200) | ≈30 min |
-| 7 | informe | `uv run python scripts/diagrama_png.py` y `uv run python scripts/informe_pdf.py` → `informe/informe.pdf` | segundos |
+| 7 | 4 | `uv run python scripts/juez_adversarial.py` y los dos comandos de su docstring → `resultados/final/juez_adversarial/` | 2 min |
+| 8 | informe | `uv run python scripts/diagrama_png.py` y `uv run python scripts/informe_word.py` → `informe/Informe_Taller03_Ballesteros_Alvarez_Ludena.docx` y `.pdf` (formato del Taller 02; el PDF requiere LibreOffice, si no se exporta desde Word) | segundos |
 
 Para guardar también lo que se ve en pantalla:
 
@@ -149,12 +150,12 @@ solver-v2/       kit del profesor, intacto: enunciados A-C, parte0/, golden del 
 golden/          nuestro golden set (2.a): golden_tareas.json, verdades_reales.py, README.md
 conocimiento/    notas teóricas del curso (s1-s4): la base del GraphRAG
 tareas/reales/   tareas reales (Matemáticas y Programación para IA, semanas 1-3) con sus datos
-scripts/         correr, corridas_2b.sh, tablas_2b, evidencia, forzar_frenos, juez, diagrama_png, informe_pdf
+scripts/         correr, corridas_2b.sh, tablas_2b, evidencia, forzar_frenos, juez, juez_adversarial, diagrama_png, informe_word
 corridas/        final/ (las medidas), frenos/ (Parte 3), desarrollo/ y anteriores (evidencia de la 2.c)
 resultados/      CSV crudos (final/), Entregables_Parte_0/, orquestador.png
-informe/         informe.md → informe.pdf, evidencia/
+informe/         informe.md → Informe_Taller03_…docx y .pdf, evidencia/, usfq_logo.png
 docs/            interfaces.md: configuración, eventos de la traza, cambios
-tests/           100 pruebas (sin red)
+tests/           101 pruebas (sin red)
 ```
 
 ## 8. Problemas frecuentes
